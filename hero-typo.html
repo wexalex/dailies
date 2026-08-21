@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,600;125,700&family=Inter+Tight:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <style>
   html { scroll-behavior: smooth; }
-  body { margin: 0; background: #FFF6E9; color: #0A171D; font-family: 'Inter Tight', Helvetica, Arial, sans-serif; font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  body { margin: 0; background: #FDFAF3; color: #0A171D; font-family: 'Inter Tight', Helvetica, Arial, sans-serif; font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
   a { color: #0A171D; text-decoration: none; }
   a:hover { color: #003F47; }
   h1, h2, h3 { hyphens: auto; }
@@ -25,25 +25,25 @@
   .app svg { width:100%; height:100%; display:block }
   .app--front { z-index:3; filter:drop-shadow(0 12px 20px rgba(10,23,29,.3)) }
   .app--back { z-index:1; filter:drop-shadow(0 6px 12px rgba(10,23,29,.16)); opacity:.96 }
-  .chip { position:absolute; display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:999px; background:#0A171D; color:#FFF6E9; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap; pointer-events:none; user-select:none; transform:rotate(var(--r, 0deg)); will-change:transform; z-index:3 }
+  .chip { position:absolute; display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:999px; background:#0A171D; color:#FDFAF3; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap; pointer-events:none; user-select:none; transform:rotate(var(--r, 0deg)); will-change:transform; z-index:3 }
   .hero-copy { position:relative; z-index:2 }
   @media (max-width: 900px) { .app, .chip { display:none } }
 </style>
 </head>
 <body>
-<div lang="de" style="--accent: #FFBD76; background:#FFF6E9">
+<div lang="de" style="--accent: #FFBD76; background:#FDFAF3">
 
-  <div style="position:fixed; top:0; left:0; right:0; z-index:80; background:#0A171D; color:#FFF6E9">
+  <div style="position:fixed; top:0; left:0; right:0; z-index:80; background:#0A171D; color:#FDFAF3">
     <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; height:26px; padding:0 20px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">
       <span data-timecode="" style="white-space:nowrap">00:00:00 / 00:12:40</span>
       <span data-section-readout="" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis">Clip 01 · Sichtung</span>
     </div>
-    <div style="height:3px; background:rgba(255,246,233,.2)">
+    <div style="height:3px; background:rgba(253,250,243,.2)">
       <div data-scrubfill="" style="height:100%; width:0%; background:var(--accent, #FFBD76)"></div>
     </div>
   </div>
 
-  <header style="position:sticky; top:29px; z-index:70; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:14px 32px; background:rgba(255,246,233,.94); backdrop-filter:blur(10px); border-bottom:1px solid rgba(10,23,29,.18)">
+  <header style="position:sticky; top:29px; z-index:70; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:14px 32px; background:rgba(253,250,243,.94); backdrop-filter:blur(10px); border-bottom:1px solid rgba(10,23,29,.18)">
     <div style="display:flex; align-items:baseline; gap:14px">
       <span style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:22px; letter-spacing:-0.02em; text-transform:uppercase">Dailies</span>
       <span style="display:flex; align-items:center; gap:5px; font-family:'DM Mono',monospace; font-size:8px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">powered by <img src="assets/wexplore-productions-dark.png" alt="WEXPLORE Productions" style="height:7px; width:auto; display:block" /></span>
@@ -77,7 +77,7 @@
     </div>
   </section>
 
-  <section data-screen-label="01 Sichtung · Kennzahlen" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); background:#F7EDDC; border-bottom:1px solid rgba(10,23,29,.18)">
+  <section data-screen-label="01 Sichtung · Kennzahlen" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(190px, 1fr)); background:#F5EFE3; border-bottom:1px solid rgba(10,23,29,.18)">
     <div style="padding:26px 32px; border-right:1px solid rgba(10,23,29,.16)">
       <div data-count="13" data-suffix="+" style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:40px; line-height:1; color:#003F47">13+</div>
       <div style="font-size:15px; margin-top:6px">Reels pro Quartal, ab Starter</div>
@@ -114,7 +114,7 @@
     </div>
   </section>
 
-  <section id="ablauf" data-screen-label="03 Ablauf" style="scroll-margin-top:100px; background:#F7EDDC; padding:88px 0; border-bottom:1px solid rgba(10,23,29,.18)">
+  <section id="ablauf" data-screen-label="03 Ablauf" style="scroll-margin-top:100px; background:#F5EFE3; padding:88px 0; border-bottom:1px solid rgba(10,23,29,.18)">
     <div style="padding:0 40px">
       <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 03 · Ablauf</p>
       <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; margin-top:20px">
@@ -123,32 +123,32 @@
       </div>
     </div>
     <div data-steps="" data-rail="" style="display:flex; gap:16px; overflow-x:auto; scrollbar-width:none; padding:30px 40px; scroll-snap-type:x mandatory">
-      <div style="flex:0 0 300px; scroll-snap-align:start; background:#FFF6E9; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:24px 22px">
+      <div style="flex:0 0 300px; scroll-snap-align:start; background:#FDFAF3; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:24px 22px">
         <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 01</div>
         <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2; margin-top:8px">Jahres- und Themenplanung</div>
         <p style="margin:10px 0 0; font-size:15px; line-height:1.55">Wir gehen einmal durch: Ziele, Termine, Angebote, wer im Lauf des Jahres vor die Kamera soll.</p>
       </div>
-      <div style="flex:0 0 300px; scroll-snap-align:start; background:#FFF6E9; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:24px 22px">
+      <div style="flex:0 0 300px; scroll-snap-align:start; background:#FDFAF3; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:24px 22px">
         <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 02</div>
         <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2; margin-top:8px">Vorbereitung des Drehtags</div>
         <p style="margin:10px 0 0; font-size:15px; line-height:1.55">Ihr bekommt vorab einen konkreten Themen- und Ablaufplan. Jede beteiligte Person weiß, was gebraucht wird und wann.</p>
       </div>
-      <div style="flex:0 0 300px; scroll-snap-align:start; background:#FFF6E9; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:24px 22px">
+      <div style="flex:0 0 300px; scroll-snap-align:start; background:#FDFAF3; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:24px 22px">
         <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 03</div>
         <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2; margin-top:8px">Video und Foto an einem Tag</div>
         <p style="margin:10px 0 0; font-size:15px; line-height:1.55">Zwei Leute, kompaktes Licht, professioneller Ton. Wir drehen bei euch oder an einer vereinbarten Location.</p>
       </div>
-      <div style="flex:0 0 300px; scroll-snap-align:start; background:#FFF6E9; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:24px 22px">
+      <div style="flex:0 0 300px; scroll-snap-align:start; background:#FDFAF3; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:24px 22px">
         <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 04</div>
         <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2; margin-top:8px">Schnitt und Bildbearbeitung</div>
         <p style="margin:10px 0 0; font-size:15px; line-height:1.55">Schnitt, Grading, Sound, Untertitel, Fotoauswahl und -bearbeitung. Formate und Crops sind beim Dreh mitgedacht.</p>
       </div>
-      <div style="flex:0 0 300px; scroll-snap-align:start; background:#FFF6E9; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:24px 22px">
+      <div style="flex:0 0 300px; scroll-snap-align:start; background:#FDFAF3; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:24px 22px">
         <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 05</div>
         <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2; margin-top:8px">Freigabe und Übergabe</div>
         <p style="margin:10px 0 0; font-size:15px; line-height:1.55">Alles liegt sortiert bereit. Ihr gebt frei und veröffentlicht Schritt für Schritt über das Quartal.</p>
       </div>
-      <div style="flex:0 0 300px; scroll-snap-align:start; background:#003F47; color:#FFF6E9; border:1px solid #003F47; border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:24px 22px">
+      <div style="flex:0 0 300px; scroll-snap-align:start; background:#003F47; color:#FDFAF3; border:1px solid #003F47; border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:24px 22px">
         <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF">Schritt 06</div>
         <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2; margin-top:8px">Review und nächstes Quartal</div>
         <p style="margin:10px 0 0; font-size:15px; line-height:1.55">Wir schauen uns an, was funktioniert hat, und planen das nächste Quartal darauf. Danach beginnt der Zyklus von vorne.</p>
@@ -159,47 +159,111 @@
   <section id="pakete" data-screen-label="04 Pakete" style="scroll-margin-top:100px; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
     <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 04 · Pakete</p>
     <h2 style="margin:20px 0 34px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Drei Pakete, eine Zeile pro Frage.</h2>
-    <div data-table="" style="display:grid; grid-template-columns:minmax(140px,.8fr) repeat(3, minmax(200px,1.2fr)); overflow-x:auto">
+    <div data-table="" style="display:grid; grid-template-columns:minmax(150px,.9fr) repeat(3, minmax(210px,1.1fr)); overflow-x:auto">
       <div style="border-bottom:1px solid rgba(10,23,29,.2)"></div>
       <div style="border-bottom:1px solid rgba(10,23,29,.2); padding:18px 20px">
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:26px; text-transform:uppercase; letter-spacing:-0.015em">Starter</div>
+        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:26px; text-transform:uppercase; letter-spacing:-0.015em">Start</div>
         <div style="font-size:15px; color:#7C8B8E">Der Grundtakt</div>
       </div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.2); padding:18px 20px; background:#003F47; color:#FFF6E9; border-top:4px solid var(--accent, #FFBD76)">
+      <div style="border-bottom:1px solid rgba(10,23,29,.2); padding:18px 20px; background:#003F47; color:#FDFAF3; border-top:4px solid var(--accent, #FFBD76)">
         <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:26px; text-transform:uppercase; letter-spacing:-0.015em">Grow</div>
-        <div style="font-size:15px; color:#9FBCBF">Mehr Formate, mehr Präsenz</div>
+        <div style="font-size:15px; color:#9FBCBF">Mehr Formate, zwei Kanäle</div>
       </div>
       <div style="border-bottom:1px solid rgba(10,23,29,.2); padding:18px 20px">
         <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:26px; text-transform:uppercase; letter-spacing:-0.015em">Scale</div>
         <div style="font-size:15px; color:#7C8B8E">Euer externes Content-Team</div>
       </div>
 
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Preis</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:28px; letter-spacing:-0.015em">ab € 3.800<span style="font-family:'Inter Tight',sans-serif; font-size:15px; font-weight:400; color:#7C8B8E"> / Quartal</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px; background:#003F47; color:#FFF6E9; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:28px; letter-spacing:-0.015em">ab € 7.900<span style="font-family:'Inter Tight',sans-serif; font-size:15px; font-weight:400; color:#9FBCBF"> / Quartal</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:28px; letter-spacing:-0.015em">ab € 14.900<span style="font-family:'Inter Tight',sans-serif; font-size:15px; font-weight:400; color:#7C8B8E"> / Quartal</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Preis</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px">
+        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:28px; letter-spacing:-0.015em">&euro; 1.290<span style="font-family:'Inter Tight',sans-serif; font-size:15px; font-weight:400; color:#7C8B8E"> / Monat</span></div>
+        <div style="font-size:13px; color:#7C8B8E; margin-top:4px">&euro; 3.870 pro Quartal verrechnet</div>
+        <div style="font-size:13px; color:#003F47; margin-top:2px">Jahr im Voraus: &euro; 12.500 (-19 %)</div>
+      </div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px; background:#003F47; color:#FDFAF3">
+        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:28px; letter-spacing:-0.015em">&euro; 2.690<span style="font-family:'Inter Tight',sans-serif; font-size:15px; font-weight:400; color:#9FBCBF"> / Monat</span></div>
+        <div style="font-size:13px; color:#9FBCBF; margin-top:4px">&euro; 8.070 pro Quartal verrechnet</div>
+      </div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px">
+        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:28px; letter-spacing:-0.015em">&euro; 4.990<span style="font-family:'Inter Tight',sans-serif; font-size:15px; font-weight:400; color:#7C8B8E"> / Monat</span></div>
+        <div style="font-size:13px; color:#7C8B8E; margin-top:4px">&euro; 15.000 pro Quartal verrechnet</div>
+      </div>
 
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Für wen</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px; font-size:15px">Ein Reel pro Woche, verlässlich</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px; background:#003F47; color:#FFF6E9; font-size:15px">Mehrere Posts pro Woche, mehr Bildsprache</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px; font-size:15px">Hohe Frequenz, mehrere Kanäle, operative Unterstützung</div>
-
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Drehtag</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px; font-size:15px">Kompakter Drehtag pro Quartal</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px; background:#003F47; color:#FFF6E9; font-size:15px">Längerer Drehtag pro Quartal</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px; font-size:15px">Mehrere Drehtage, auch an mehreren Standorten</div>
-
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Output</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px; font-size:15px">Mind. 13 Reels, Foto- und Titelbild-Set</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px; background:#003F47; color:#FFF6E9; font-size:15px">Mehr Reels und Fotos, zusätzliche Formate und Varianten</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px; font-size:15px">Voller Output plus Publishing- und Reporting-Module nach Scope</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Postings pro Woche</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">2</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px">3</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">5</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Reels (9:16)</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">13 / Quartal</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px">30 / Quartal</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Individuell</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Fotos (16:9 + 9:16)</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">36 / Quartal</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px">72 / Quartal</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Individuell</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Titelbilder</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#7C8B8E">-</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px">30 / Quartal</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Individuell</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Untertitel</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#003F47; font-weight:600">&#10003;</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px"><span style="color:var(--accent, #FFBD76); font-weight:600">&#10003;</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#003F47; font-weight:600">&#10003;</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Rohmaterial</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#7C8B8E">-</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px"><span style="color:#9FBCBF">-</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#003F47; font-weight:600">&#10003;</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Postings aufbereitet</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#7C8B8E">-</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px"><span style="color:#9FBCBF">-</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#003F47; font-weight:600">&#10003;</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Planung (PrePro)</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">0,5 Tage</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px">1 Tag</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">2 Tage</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Dreh</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">1 ganzer Drehtag, 2 Personen</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px">3 Halbtage über das Quartal verteilt, 2 Personen</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">3 ganze Drehtage, 3 Personen</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Post</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">2,5 Tage</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px">5 Tage</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">7 Tage</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Feedbackschleifen pro Asset</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">1</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px">2</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">4</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Kanäle</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Instagram</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px">Instagram, LinkedIn</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Instagram, TikTok, LinkedIn</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Publishing</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#7C8B8E">-</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px"><span style="color:#9FBCBF">-</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#003F47; font-weight:600">&#10003;</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Paid und Collabs</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#7C8B8E">-</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px"><span style="color:#9FBCBF">-</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#003F47; font-weight:600">&#10003;</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Community Management</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#7C8B8E">-</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px"><span style="color:#9FBCBF">-</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#7C8B8E">-</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Inhouse-Workshop</div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#7C8B8E">-</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px"><span style="color:var(--accent, #FFBD76); font-weight:600">&#10003;</span></div>
+      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#7C8B8E">-</span></div>
 
       <div style="padding:22px 0"></div>
-      <div style="padding:22px 20px"><a href="#bewerben" style="display:flex; align-items:center; justify-content:center; height:46px; border-radius:999px; border:1px solid #0A171D; font-weight:500; font-size:15px">Anfragen</a></div>
-      <div style="padding:22px 20px; background:#003F47"><a href="#bewerben" style="display:flex; align-items:center; justify-content:center; height:46px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; font-size:15px">Anfragen</a></div>
-      <div style="padding:22px 20px"><a href="#bewerben" style="display:flex; align-items:center; justify-content:center; height:46px; border-radius:999px; border:1px solid #0A171D; font-weight:500; font-size:15px">Anfragen</a></div>
+      <div style="padding:22px 20px"><a href="#bewerben" style="display:flex; align-items:center; justify-content:center; height:46px; border-radius:999px; border:1px solid #0A171D; font-weight:500; font-size:15px; text-align:center">Probe-Contenttag anfragen</a></div>
+      <div style="padding:22px 20px; background:#003F47"><a href="#bewerben" style="display:flex; align-items:center; justify-content:center; height:46px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; font-size:15px; text-align:center">Probe-Contenttag anfragen</a></div>
+      <div style="padding:22px 20px"><a href="mailto:office@wexplore.at?subject=DAILIES%20Scale%20-%20Scope%20besprechen" style="display:flex; align-items:center; justify-content:center; height:46px; border-radius:999px; border:1px solid #0A171D; font-weight:500; font-size:15px; text-align:center">Scope besprechen</a></div>
     </div>
-    <p style="margin:18px 0 0; font-size:15px; color:#7C8B8E">Alle Preise netto, exklusive Reisekosten außerhalb Oberösterreichs. Der genaue Umfang steht vor Start als schriftliche Assetliste fest.</p>
+    <div style="margin:18px 0 0; font-size:15px; color:#7C8B8E; display:grid; gap:4px">
+      <p style="margin:0">Alle Preise netto, exklusive Reisekosten außerhalb Oberösterreichs. Verrechnung quartalsweise, der Monatspreis ist die Darstellungsform.</p>
+      <p style="margin:0">Zusätzliche Feedbackschleifen, Zusatzdrehs und Community Management werden separat verrechnet.</p>
+      <p style="margin:0">Der genaue Umfang steht vor Start als schriftliche Assetliste fest.</p>
+    </div>
   </section>
 
   <section id="output" data-screen-label="05 Output" style="scroll-margin-top:100px; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
@@ -225,25 +289,25 @@
       <div>
         <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; margin-bottom:12px">Kontaktbogen · 8 Clips</div>
         <div data-stagger="" style="display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:10px">
-          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F7EDDC"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C001</div></div>
-          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F7EDDC"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C002</div></div>
-          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F7EDDC"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C003</div></div>
-          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F7EDDC"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C004</div></div>
-          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F7EDDC"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C005</div></div>
-          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F7EDDC"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C006</div></div>
-          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F7EDDC"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C007</div></div>
-          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F7EDDC"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C008</div></div>
+          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F5EFE3"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C001</div></div>
+          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F5EFE3"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C002</div></div>
+          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F5EFE3"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C003</div></div>
+          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F5EFE3"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C004</div></div>
+          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F5EFE3"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C005</div></div>
+          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F5EFE3"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C006</div></div>
+          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F5EFE3"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C007</div></div>
+          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F5EFE3"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C008</div></div>
                                                 </div>
       </div>
     </div>
   </section>
 
-  <section id="cases" data-screen-label="06 Referenzen" style="scroll-margin-top:100px; background:#F7EDDC; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
+  <section id="cases" data-screen-label="06 Referenzen" style="scroll-margin-top:100px; background:#F5EFE3; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
     <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 06 · Referenzen</p>
     <h2 style="margin:20px 0 34px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Woran wir gearbeitet haben.</h2>
     <div data-stagger="" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:22px">
       <div>
-        <div style="aspect-ratio:16/9; border-radius:4px; overflow:hidden; background:#FFF6E9"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">Standbild 16:9</div></div>
+        <div style="aspect-ratio:16/9; border-radius:4px; overflow:hidden; background:#FDFAF3"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">Standbild 16:9</div></div>
         <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:28px; line-height:1.2; margin-top:14px">F/LIST</div>
         <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">
           <div style="padding:8px 0; border-top:1px solid rgba(10,23,29,.16)">Ausgangslage</div>
@@ -253,7 +317,7 @@
         </div>
       </div>
       <div>
-        <div style="aspect-ratio:16/9; border-radius:4px; overflow:hidden; background:#FFF6E9"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">Standbild 16:9</div></div>
+        <div style="aspect-ratio:16/9; border-radius:4px; overflow:hidden; background:#FDFAF3"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">Standbild 16:9</div></div>
         <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:28px; line-height:1.2; margin-top:14px">wikifolio</div>
         <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">
           <div style="padding:8px 0; border-top:1px solid rgba(10,23,29,.16)">Ausgangslage</div>
@@ -263,7 +327,7 @@
         </div>
       </div>
       <div>
-        <div style="aspect-ratio:16/9; border-radius:4px; overflow:hidden; background:#FFF6E9"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">Standbild 16:9</div></div>
+        <div style="aspect-ratio:16/9; border-radius:4px; overflow:hidden; background:#FDFAF3"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">Standbild 16:9</div></div>
         <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:28px; line-height:1.2; margin-top:14px">Reichl und Partner</div>
         <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">
           <div style="padding:8px 0; border-top:1px solid rgba(10,23,29,.16)">Ausgangslage</div>
@@ -280,10 +344,10 @@
     </div>
   </section>
 
-  <section data-screen-label="06 Referenzen · Wer dahintersteht" style="background:#003F47; color:#FFF6E9">
+  <section data-screen-label="06 Referenzen · Wer dahintersteht" style="background:#003F47; color:#FDFAF3">
     <div style="padding:88px 40px; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:48px; align-items:center">
       <div style="max-width:400px">
-        <div style="aspect-ratio:4/5; border-radius:4px; overflow:hidden; background:#0A171D"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#FFF6E9; opacity:.55">Porträt Alex Gruber</div></div>
+        <div style="aspect-ratio:4/5; border-radius:4px; overflow:hidden; background:#0A171D"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#FDFAF3; opacity:.55">Porträt Alex Gruber</div></div>
       </div>
       <div>
         <p style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF">Wer dahintersteht</p>
@@ -296,7 +360,7 @@
     </div>
   </section>
 
-  <section id="bewerben" data-screen-label="07 Bewerbung" style="scroll-margin-top:100px; background:#0A171D; color:#FFF6E9; padding:96px 40px">
+  <section id="bewerben" data-screen-label="07 Bewerbung" style="scroll-margin-top:100px; background:#0A171D; color:#FDFAF3; padding:96px 40px">
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(330px, 1fr)); gap:48px; align-items:start">
       <div>
         <div style="display:flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent, #FFBD76)">
@@ -313,41 +377,41 @@
       <form data-form="" novalidate="" style="background:#16303A; border-radius:4px; padding:28px 26px; display:grid; gap:16px">
         <div>
           <label for="g-company" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Unternehmen *</label>
-          <input id="g-company" name="company" type="text" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(255,246,233,.28); border-radius:4px; background:#0A171D; color:#FFF6E9" />
+          <input id="g-company" name="company" type="text" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3" />
           <div data-error-for="company" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
         </div>
         <div>
           <label for="g-website" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Website</label>
-          <input id="g-website" name="website" type="url" placeholder="wexplore.at" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(255,246,233,.28); border-radius:4px; background:#0A171D; color:#FFF6E9" />
+          <input id="g-website" name="website" type="url" placeholder="wexplore.at" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3" />
           <div data-error-for="website" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
         </div>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px,1fr)); gap:16px">
           <div>
             <label for="g-name" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Name *</label>
-            <input id="g-name" name="name" type="text" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(255,246,233,.28); border-radius:4px; background:#0A171D; color:#FFF6E9" />
+            <input id="g-name" name="name" type="text" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3" />
             <div data-error-for="name" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
           </div>
           <div>
             <label for="g-role" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Funktion *</label>
-            <input id="g-role" name="role" type="text" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(255,246,233,.28); border-radius:4px; background:#0A171D; color:#FFF6E9" />
+            <input id="g-role" name="role" type="text" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3" />
             <div data-error-for="role" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
           </div>
         </div>
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px,1fr)); gap:16px">
           <div>
             <label for="g-email" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Firmen-E-Mail *</label>
-            <input id="g-email" name="email" type="email" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(255,246,233,.28); border-radius:4px; background:#0A171D; color:#FFF6E9" />
+            <input id="g-email" name="email" type="email" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3" />
             <div data-error-for="email" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
           </div>
           <div>
             <label for="g-location" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Standort *</label>
-            <input id="g-location" name="location" type="text" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(255,246,233,.28); border-radius:4px; background:#0A171D; color:#FFF6E9" />
+            <input id="g-location" name="location" type="text" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3" />
             <div data-error-for="location" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
           </div>
         </div>
         <div>
           <label for="g-about" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Was macht ihr, was soll sichtbarer werden? *</label>
-          <textarea id="g-about" name="about" required="" maxlength="500" rows="4" style="width:100%; box-sizing:border-box; padding:12px; border:1px solid rgba(255,246,233,.28); border-radius:4px; background:#0A171D; color:#FFF6E9; resize:vertical"></textarea>
+          <textarea id="g-about" name="about" required="" maxlength="500" rows="4" style="width:100%; box-sizing:border-box; padding:12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3; resize:vertical"></textarea>
           <div style="display:flex; justify-content:space-between; gap:12px">
             <div data-error-for="about" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
             <div data-counter-for="about" style="font-family:'DM Mono',monospace; font-size:12px; color:#9FBCBF; margin-top:5px; visibility:hidden">0 / 500</div>
@@ -356,27 +420,27 @@
         <div>
           <span style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:8px">Welche Kanäle nutzt ihr? *</span>
           <div style="display:flex; flex-wrap:wrap; gap:8px">
-            <label style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid rgba(255,246,233,.28); border-radius:999px; font-size:15px; cursor:pointer"><input type="checkbox" name="channels" value="Instagram" />Instagram</label>
-            <label style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid rgba(255,246,233,.28); border-radius:999px; font-size:15px; cursor:pointer"><input type="checkbox" name="channels" value="LinkedIn" />LinkedIn</label>
-            <label style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid rgba(255,246,233,.28); border-radius:999px; font-size:15px; cursor:pointer"><input type="checkbox" name="channels" value="TikTok" />TikTok</label>
-            <label style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid rgba(255,246,233,.28); border-radius:999px; font-size:15px; cursor:pointer"><input type="checkbox" name="channels" value="YouTube" />YouTube</label>
-            <label style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid rgba(255,246,233,.28); border-radius:999px; font-size:15px; cursor:pointer"><input type="checkbox" name="channels" value="Facebook" />Facebook</label>
-            <label style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid rgba(255,246,233,.28); border-radius:999px; font-size:15px; cursor:pointer"><input type="checkbox" name="channels" value="keine" />keine</label>
+            <label style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid rgba(253,250,243,.28); border-radius:999px; font-size:15px; cursor:pointer"><input type="checkbox" name="channels" value="Instagram" />Instagram</label>
+            <label style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid rgba(253,250,243,.28); border-radius:999px; font-size:15px; cursor:pointer"><input type="checkbox" name="channels" value="LinkedIn" />LinkedIn</label>
+            <label style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid rgba(253,250,243,.28); border-radius:999px; font-size:15px; cursor:pointer"><input type="checkbox" name="channels" value="TikTok" />TikTok</label>
+            <label style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid rgba(253,250,243,.28); border-radius:999px; font-size:15px; cursor:pointer"><input type="checkbox" name="channels" value="YouTube" />YouTube</label>
+            <label style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid rgba(253,250,243,.28); border-radius:999px; font-size:15px; cursor:pointer"><input type="checkbox" name="channels" value="Facebook" />Facebook</label>
+            <label style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid rgba(253,250,243,.28); border-radius:999px; font-size:15px; cursor:pointer"><input type="checkbox" name="channels" value="keine" />keine</label>
           </div>
           <div data-error-for="channels" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
         </div>
         <div>
           <label for="g-blocker" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Was hält euch von regelmäßigem Content ab?</label>
-          <textarea id="g-blocker" name="blocker" maxlength="300" rows="3" style="width:100%; box-sizing:border-box; padding:12px; border:1px solid rgba(255,246,233,.28); border-radius:4px; background:#0A171D; color:#FFF6E9; resize:vertical"></textarea>
+          <textarea id="g-blocker" name="blocker" maxlength="300" rows="3" style="width:100%; box-sizing:border-box; padding:12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3; resize:vertical"></textarea>
         </div>
         <div>
           <label for="g-faces" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Wer könnte vor die Kamera? *</label>
-          <input id="g-faces" name="faces" type="text" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(255,246,233,.28); border-radius:4px; background:#0A171D; color:#FFF6E9" />
+          <input id="g-faces" name="faces" type="text" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3" />
           <div data-error-for="faces" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
         </div>
         <div>
           <label for="g-window" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Passender Zeitraum in den nächsten 4–6 Wochen *</label>
-          <select id="g-window" name="window" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(255,246,233,.28); border-radius:4px; background:#0A171D; color:#FFF6E9">
+          <select id="g-window" name="window" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3">
             <option value="">Bitte wählen</option>
             <option>In den nächsten 2 Wochen</option>
             <option>In 2–4 Wochen</option>
@@ -386,7 +450,7 @@
           <div data-error-for="window" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
         </div>
         <div>
-          <label style="display:flex; gap:10px; align-items:flex-start; font-size:15px; line-height:1.5"><input type="checkbox" name="consent" required="" style="margin-top:4px" /><span>Ich stimme der Kontaktaufnahme und der <a href="#datenschutz" style="color:#FFF6E9; text-decoration:underline">Datenschutzerklärung</a> zu. *</span></label>
+          <label style="display:flex; gap:10px; align-items:flex-start; font-size:15px; line-height:1.5"><input type="checkbox" name="consent" required="" style="margin-top:4px" /><span>Ich stimme der Kontaktaufnahme und der <a href="#datenschutz" style="color:#FDFAF3; text-decoration:underline">Datenschutzerklärung</a> zu. *</span></label>
           <div data-error-for="consent" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
         </div>
         <button type="submit" data-submit="" style="height:50px; border:0; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; cursor:pointer">Bewerbung absenden</button>
@@ -450,30 +514,30 @@
     </div>
   </section>
 
-  <footer data-screen-label="08 FAQ · Ende" style="background:#0A171D; color:#FFF6E9">
+  <footer data-screen-label="08 FAQ · Ende" style="background:#0A171D; color:#FDFAF3">
     <div style="padding:56px 40px 36px; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:36px">
       <div>
         <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:26px; letter-spacing:-0.02em; text-transform:uppercase">Dailies</div>
         <div style="display:flex; align-items:center; gap:8px; margin-top:10px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">powered by <img src="assets/wexplore-productions-light.png" alt="WEXPLORE Productions" style="height:10px; width:auto; display:block" /></div>
       </div>
       <div style="font-size:15px; line-height:1.7; color:#D9D2C6">
-        <div><a href="mailto:office@wexplore.at" style="color:#FFF6E9">office@wexplore.at</a></div>
-        <div><a href="tel:+436763311100" style="color:#FFF6E9">+43 676 33 11 100</a></div>
+        <div><a href="mailto:office@wexplore.at" style="color:#FDFAF3">office@wexplore.at</a></div>
+        <div><a href="tel:+436763311100" style="color:#FDFAF3">+43 676 33 11 100</a></div>
         <div>Klammstraße 3/1, 4020 Linz</div>
       </div>
       <div style="display:grid; gap:6px; font-size:15px">
-        <a href="#ablauf" style="color:#FFF6E9">Ablauf</a>
-        <a href="#pakete" style="color:#FFF6E9">Pakete</a>
-        <a href="#cases" style="color:#FFF6E9">Cases</a>
-        <a href="#faq" style="color:#FFF6E9">FAQ</a>
+        <a href="#ablauf" style="color:#FDFAF3">Ablauf</a>
+        <a href="#pakete" style="color:#FDFAF3">Pakete</a>
+        <a href="#cases" style="color:#FDFAF3">Cases</a>
+        <a href="#faq" style="color:#FDFAF3">FAQ</a>
       </div>
       <div style="display:grid; gap:6px; font-size:15px">
-        <a href="#impressum" style="color:#FFF6E9">Impressum</a>
-        <a href="#datenschutz" style="color:#FFF6E9">Datenschutz</a>
+        <a href="#impressum" style="color:#FDFAF3">Impressum</a>
+        <a href="#datenschutz" style="color:#FDFAF3">Datenschutz</a>
       </div>
     </div>
     <div style="display:flex; height:6px">
-      <div style="flex:1; background:#FFF6E9"></div>
+      <div style="flex:1; background:#FDFAF3"></div>
       <div style="flex:1; background:#FFBD76"></div>
       <div style="flex:1; background:#9FBCBF"></div>
       <div style="flex:1; background:#003F47"></div>
@@ -482,7 +546,7 @@
     </div>
   </footer>
 
-  <div data-sticky-cta="" style="position:fixed; right:24px; bottom:24px; z-index:75; display:flex; align-items:center; gap:14px; padding:10px 12px 10px 18px; border-radius:999px; background:#003F47; color:#FFF6E9; opacity:0; transform:translateY(12px); pointer-events:none; transition:opacity .3s ease, transform .3s ease">
+  <div data-sticky-cta="" style="position:fixed; right:24px; bottom:24px; z-index:75; display:flex; align-items:center; gap:14px; padding:10px 12px 10px 18px; border-radius:999px; background:#003F47; color:#FDFAF3; opacity:0; transform:translateY(12px); pointer-events:none; transition:opacity .3s ease, transform .3s ease">
     <span style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap">3 Plätze im Monat</span>
     <a href="#bewerben" style="display:inline-flex; align-items:center; height:40px; padding:0 20px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; white-space:nowrap">Bewerben</a>
   </div>
@@ -601,7 +665,7 @@
   if (!form) return;
 
   var FREE = ["gmail.", "gmx.", "hotmail.", "outlook.", "yahoo.", "web.de"];
-  var base = "1px solid rgba(255,246,233,.28)";
+  var base = "1px solid rgba(253,250,243,.28)";
   function err(name, msg) {
     var box = form.querySelector('[data-error-for="' + name + '"]');
     var field = form.querySelector('[name="' + name + '"]');
@@ -657,7 +721,7 @@
     btn.textContent = "WIRD GESENDET";
     btn.style.background = "#7C8B8E";
     setTimeout(function () {
-      form.innerHTML = '<div style="display:grid; gap:12px"><div style="font-family:\'DM Mono\',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#FFBD76">Bewerbung eingegangen</div><div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:26px; line-height:1.2">Danke – wir melden uns innerhalb von fünf Werktagen.</div><p style="margin:0; color:#D9D2C6">Wir sehen uns an, was ihr macht, und sagen ehrlich, ob ein Probe-Contenttag passt. Bei Rückfragen: <a href="mailto:office@wexplore.at" style="color:#FFF6E9; text-decoration:underline">office@wexplore.at</a></p></div>';
+      form.innerHTML = '<div style="display:grid; gap:12px"><div style="font-family:\'DM Mono\',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#FFBD76">Bewerbung eingegangen</div><div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:26px; line-height:1.2">Danke – wir melden uns innerhalb von fünf Werktagen.</div><p style="margin:0; color:#D9D2C6">Wir sehen uns an, was ihr macht, und sagen ehrlich, ob ein Probe-Contenttag passt. Bei Rückfragen: <a href="mailto:office@wexplore.at" style="color:#FDFAF3; text-decoration:underline">office@wexplore.at</a></p></div>';
     }, 900);
   });
 })();
