@@ -38,6 +38,14 @@
   .chip { position:absolute; display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:999px; background:#0A171D; color:#FDFAF3; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap; pointer-events:none; user-select:none; transform:rotate(var(--r, 0deg)); will-change:transform; z-index:3 }
   .hero-copy { position:relative; z-index:2 }
 
+
+  @media (min-width: 901px) {
+    #sichtung { padding-top:64px !important; padding-bottom:88px !important }
+    #sichtung h1 { font-size:clamp(40px, 5.4vw, 78px) !important; margin-top:18px !important }
+    .hero-copy p:nth-of-type(2) { font-size:19px !important; margin-top:20px !important }
+    .hero-copy p:nth-of-type(3) { margin-top:12px !important }
+    .hero-copy > div { margin-top:26px !important }
+  }
   @media (max-width: 900px) {
     .app { width:44px; height:44px }
     .chip { display:none }
