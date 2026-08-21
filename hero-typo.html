@@ -21,18 +21,12 @@
   [data-steps]::-webkit-scrollbar, [data-table]::-webkit-scrollbar { display: none; }
   ::selection { background: #FFBD76; color: #0A171D; }
 
-  .app { position:absolute; width:66px; height:66px; cursor:grab; user-select:none; touch-action:none; transform:rotate(var(--r, 0deg)); animation:chip-bob var(--d, 6s) ease-in-out var(--dl, 0s) infinite }
+  .app { position:absolute; width:66px; height:66px; pointer-events:none; user-select:none; transform:rotate(var(--r, 0deg)); will-change:transform }
   .app svg { width:100%; height:100%; display:block }
   .app--front { z-index:3; filter:drop-shadow(0 12px 20px rgba(10,23,29,.3)) }
-  .app--back { z-index:1; filter:blur(1.5px) drop-shadow(0 6px 12px rgba(10,23,29,.18)); opacity:.92 }
-  .app:active { cursor:grabbing }
-  .app.dragging { animation:none; z-index:7; filter:drop-shadow(0 16px 26px rgba(10,23,29,.35)) }
-  .chip { position:absolute; display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:999px; background:#0A171D; color:#FFF6E9; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap; cursor:grab; user-select:none; touch-action:none; transform:rotate(var(--r, 0deg)); animation:chip-bob var(--d, 6s) ease-in-out var(--dl, 0s) infinite; z-index:3 }
-  .chip:active { cursor:grabbing }
-  .chip.dragging { animation:none; z-index:7 }
+  .app--back { z-index:1; filter:drop-shadow(0 6px 12px rgba(10,23,29,.16)); opacity:.96 }
+  .chip { position:absolute; display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:999px; background:#0A171D; color:#FFF6E9; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap; pointer-events:none; user-select:none; transform:rotate(var(--r, 0deg)); will-change:transform; z-index:3 }
   .hero-copy { position:relative; z-index:2 }
-  @keyframes chip-bob { 0%,100% { margin-top:0 } 50% { margin-top:-12px } }
-  @media (prefers-reduced-motion: reduce) { .app, .chip { animation:none } }
   @media (max-width: 900px) { .app, .chip { display:none } }
 </style>
 </head>
@@ -65,12 +59,12 @@
   </header>
 
   <section id="sichtung" data-hero="" data-screen-label="01 Sichtung" style="position:relative; overflow:hidden; padding:130px 40px 140px; border-bottom:1px solid rgba(10,23,29,.18); text-align:center">
-      <div class="app app--back" style="top:24%; right:26%; --r:6deg; --d:6.5s; --dl:.6s"><svg viewBox="0 0 64 64" role="img" aria-label="LinkedIn"><rect width="64" height="64" rx="14" fill="#0A66C2"/><g transform="translate(13,13) scale(1.6)" fill="#fff"><path d="M4 9h3v11H4z M10 9h2.9v1.6c.6-1 1.7-1.8 3.4-1.8 2.6 0 3.7 1.6 3.7 4.4V20h-3v-6c0-1.4-.5-2.3-1.7-2.3-1.3 0-2.3 1-2.3 2.8V20h-3z"/><circle cx="5.5" cy="5.5" r="1.8"/></g></svg></div>
-      <div class="app app--back" style="top:44%; left:26%; --r:-5deg; --d:7s; --dl:.3s"><svg viewBox="0 0 64 64" role="img" aria-label="TikTok"><rect width="64" height="64" rx="14" fill="#010101"/><g transform="translate(12.5,12.5) scale(1.6)"><path d="M15.5 3c.4 2.2 1.9 3.7 4.2 4v3c-1.6 0-3-.5-4.2-1.3v6.2a5.6 5.6 0 1 1-5.6-5.6c.3 0 .7 0 1 .1v3.1a2.6 2.6 0 1 0 1.8 2.4V3z" fill="#25F4EE" transform="translate(-1.1,-1.1)"/><path d="M15.5 3c.4 2.2 1.9 3.7 4.2 4v3c-1.6 0-3-.5-4.2-1.3v6.2a5.6 5.6 0 1 1-5.6-5.6c.3 0 .7 0 1 .1v3.1a2.6 2.6 0 1 0 1.8 2.4V3z" fill="#FE2C55" transform="translate(1.1,1.1)"/><path d="M15.5 3c.4 2.2 1.9 3.7 4.2 4v3c-1.6 0-3-.5-4.2-1.3v6.2a5.6 5.6 0 1 1-5.6-5.6c.3 0 .7 0 1 .1v3.1a2.6 2.6 0 1 0 1.8 2.4V3z" fill="#fff"/></g></svg></div>
-      <div class="app app--back" style="bottom:13%; right:9%; --r:7deg; --d:7.5s; --dl:.8s"><svg viewBox="0 0 64 64" role="img" aria-label="Facebook"><rect width="64" height="64" rx="14" fill="#1877F2"/><g transform="translate(12.5,12.5) scale(1.6)" fill="#fff"><path d="M13.4 21v-7.2h2.4l.4-2.9h-2.8V9c0-.8.3-1.4 1.5-1.4h1.4V5c-.3 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.5v2.5H8.5v2.9h2.4V21z"/></g></svg></div>
-      <div class="app app--front" style="top:21%; left:27%; --r:-8deg; --d:5.5s; --dl:0s"><svg viewBox="0 0 64 64" role="img" aria-label="Instagram"><defs><radialGradient id="igg" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs><rect width="64" height="64" rx="14" fill="url(#igg)"/><g fill="none" stroke="#fff" stroke-width="3.6"><rect x="17" y="17" width="30" height="30" rx="9"/><circle cx="32" cy="32" r="7"/></g><circle cx="41" cy="23" r="2.4" fill="#fff"/></svg></div>
-      <div class="app app--front" style="top:49%; right:23%; --r:5deg; --d:6s; --dl:1s"><svg viewBox="0 0 64 64" role="img" aria-label="YouTube"><rect width="64" height="64" rx="14" fill="#FF0000"/><path d="M26 21l18 11-18 11z" fill="#fff"/></svg></div>
-      <div class="chip" style="bottom:16%; left:8%; --r:-4deg; --d:6.8s; --dl:.4s">13+ Reels / Quartal</div>
+      <div class="app app--back" style="top:19%; right:29%; --r:6deg"><svg viewBox="0 0 64 64" role="img" aria-label="LinkedIn"><rect width="64" height="64" rx="14" fill="#0A66C2"/><g transform="translate(13,13) scale(1.6)" fill="#fff"><path d="M4 9h3v11H4z M10 9h2.9v1.6c.6-1 1.7-1.8 3.4-1.8 2.6 0 3.7 1.6 3.7 4.4V20h-3v-6c0-1.4-.5-2.3-1.7-2.3-1.3 0-2.3 1-2.3 2.8V20h-3z"/><circle cx="5.5" cy="5.5" r="1.8"/></g></svg></div>
+      <div class="app app--back" style="top:40%; left:25%; --r:-5deg"><svg viewBox="0 0 64 64" role="img" aria-label="TikTok"><rect width="64" height="64" rx="14" fill="#010101"/><g transform="translate(12.5,12.5) scale(1.6)"><path d="M15.5 3c.4 2.2 1.9 3.7 4.2 4v3c-1.6 0-3-.5-4.2-1.3v6.2a5.6 5.6 0 1 1-5.6-5.6c.3 0 .7 0 1 .1v3.1a2.6 2.6 0 1 0 1.8 2.4V3z" fill="#25F4EE" transform="translate(-1.1,-1.1)"/><path d="M15.5 3c.4 2.2 1.9 3.7 4.2 4v3c-1.6 0-3-.5-4.2-1.3v6.2a5.6 5.6 0 1 1-5.6-5.6c.3 0 .7 0 1 .1v3.1a2.6 2.6 0 1 0 1.8 2.4V3z" fill="#FE2C55" transform="translate(1.1,1.1)"/><path d="M15.5 3c.4 2.2 1.9 3.7 4.2 4v3c-1.6 0-3-.5-4.2-1.3v6.2a5.6 5.6 0 1 1-5.6-5.6c.3 0 .7 0 1 .1v3.1a2.6 2.6 0 1 0 1.8 2.4V3z" fill="#fff"/></g></svg></div>
+      <div class="app app--back" style="top:60%; left:31%; --r:7deg"><svg viewBox="0 0 64 64" role="img" aria-label="Facebook"><rect width="64" height="64" rx="14" fill="#1877F2"/><g transform="translate(12.5,12.5) scale(1.6)" fill="#fff"><path d="M13.4 21v-7.2h2.4l.4-2.9h-2.8V9c0-.8.3-1.4 1.5-1.4h1.4V5c-.3 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.5v2.5H8.5v2.9h2.4V21z"/></g></svg></div>
+      <div class="app app--front" style="top:15%; left:27%; --r:-8deg"><svg viewBox="0 0 64 64" role="img" aria-label="Instagram"><defs><radialGradient id="igg" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs><rect width="64" height="64" rx="14" fill="url(#igg)"/><g fill="none" stroke="#fff" stroke-width="3.6"><rect x="17" y="17" width="30" height="30" rx="9"/><circle cx="32" cy="32" r="7"/></g><circle cx="41" cy="23" r="2.4" fill="#fff"/></svg></div>
+      <div class="app app--front" style="top:44%; right:25%; --r:5deg"><svg viewBox="0 0 64 64" role="img" aria-label="YouTube"><rect width="64" height="64" rx="14" fill="#FF0000"/><path d="M26 21l18 11-18 11z" fill="#fff"/></svg></div>
+      <div class="chip" style="top:63%; right:27%; --r:-4deg">13+ Reels / Quartal</div>
     <div class="hero-copy">
     <p style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Content-Abo · Video + Foto · Oberösterreich</p>
     <h1 style="margin:24px auto 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(44px,7vw,104px); line-height:1; letter-spacing:-0.02em; max-width:14ch">Ein Drehtag.<br />Ein Quartal Content.</h1>
@@ -670,25 +664,44 @@
 </script>
 <script>
 (function () {
-  document.querySelectorAll('.app, .chip').forEach(function (el) {
-    var sx = 0, sy = 0, bx = 0, by = 0;
-    el.addEventListener('pointerdown', function (ev) {
-      ev.preventDefault();
-      el.setPointerCapture(ev.pointerId);
-      el.classList.add('dragging');
-      sx = ev.clientX; sy = ev.clientY;
-      var m = /translate\((-?[\d.]+)px,\s*(-?[\d.]+)px\)/.exec(el.style.transform || '');
-      bx = m ? parseFloat(m[1]) : 0;
-      by = m ? parseFloat(m[2]) : 0;
-    });
-    el.addEventListener('pointermove', function (ev) {
-      if (!el.classList.contains('dragging')) return;
-      el.style.transform = 'translate(' + (bx + ev.clientX - sx) + 'px, ' + (by + ev.clientY - sy) + 'px) rotate(var(--r, 0deg))';
-    });
-    ['pointerup', 'pointercancel'].forEach(function (t) {
-      el.addEventListener(t, function () { el.classList.remove('dragging'); });
-    });
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var icons = [];
+  document.querySelectorAll('.app, .chip').forEach(function (el, i) {
+    icons.push({ el: el, tx: 0, ty: 0, vx: 0, vy: 0, phase: i * 1.3 });
   });
+  if (!icons.length) return;
+  var mx = -9999, my = -9999;
+  window.addEventListener('pointermove', function (e) { mx = e.clientX; my = e.clientY; }, { passive: true });
+  document.addEventListener('pointerleave', function () { mx = -9999; my = -9999; });
+
+  var R = 140;      // Fluchtradius in px
+  var PUSH = 4.2;   // Fluchtkraft
+  var SPRING = 0.014, DAMP = 0.86, MAX = 420;
+  var t = 0;
+
+  function step() {
+    t += 0.016;
+    icons.forEach(function (o) {
+      var r = o.el.getBoundingClientRect();
+      var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      var dx = cx - mx, dy = cy - my;
+      var d = Math.hypot(dx, dy);
+      if (d < R && d > 0.001) {
+        var f = (1 - d / R) * PUSH;
+        o.vx += dx / d * f;
+        o.vy += dy / d * f;
+      }
+      o.vx += -o.tx * SPRING;
+      o.vy += -o.ty * SPRING;
+      o.vx *= DAMP; o.vy *= DAMP;
+      o.tx = Math.max(-MAX, Math.min(MAX, o.tx + o.vx));
+      o.ty = Math.max(-MAX, Math.min(MAX, o.ty + o.vy));
+      var bob = Math.sin(t + o.phase) * 5;
+      o.el.style.transform = 'translate(' + o.tx.toFixed(2) + 'px,' + (o.ty + bob).toFixed(2) + 'px) rotate(var(--r, 0deg))';
+    });
+    requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
 })();
 </script>
 </body>
