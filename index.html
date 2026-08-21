@@ -20,6 +20,16 @@
   *:focus-visible { outline: 2px solid #FFBD76; outline-offset: 2px; }
   [data-steps]::-webkit-scrollbar, [data-table]::-webkit-scrollbar { display: none; }
   ::selection { background: #FFBD76; color: #0A171D; }
+
+  .pk { transition: background-color .18s ease, color .18s ease, border-color .18s ease }
+  .pk.hl { background:#003F47; color:#FDFAF3 }
+  .pk .sub { color:#7C8B8E; transition: color .18s ease } .pk.hl .sub { color:#9FBCBF }
+  .pk .chk { color:#003F47; font-weight:600; transition: color .18s ease } .pk.hl .chk { color:var(--accent, #FFBD76) }
+  .pk .dsh { color:#7C8B8E; transition: color .18s ease } .pk.hl .dsh { color:#9FBCBF }
+  .pk .note { color:#003F47; transition: color .18s ease } .pk.hl .note { color:var(--accent, #FFBD76) }
+  .pk-head { border-top:4px solid transparent } .pk-head.hl { border-top-color:var(--accent, #FFBD76) }
+  .pk-cta a { display:flex; align-items:center; justify-content:center; height:46px; border-radius:999px; border:1px solid #0A171D; color:#0A171D; font-weight:500; font-size:15px; text-align:center; transition: background-color .18s ease, border-color .18s ease }
+  .pk-cta.hl a { background:var(--accent, #FFBD76); border-color:var(--accent, #FFBD76); color:#0A171D; font-weight:600 }
 </style>
 </head>
 <body>
@@ -175,103 +185,102 @@
     <h2 style="margin:20px 0 34px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Drei Pakete, eine Zeile pro Frage.</h2>
     <div data-table="" style="display:grid; grid-template-columns:minmax(150px,.9fr) repeat(3, minmax(210px,1.1fr)); overflow-x:auto">
       <div style="border-bottom:1px solid rgba(10,23,29,.2)"></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.2); padding:18px 20px">
+      <div class="pk pk-start pk-head" style="border-bottom:1px solid rgba(10,23,29,.2); padding:18px 20px">
         <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:26px; text-transform:uppercase; letter-spacing:-0.015em">Start</div>
-        <div style="font-size:15px; color:#7C8B8E">Der Grundtakt</div>
+        <div class="sub" style="font-size:15px">Der Grundtakt</div>
       </div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.2); padding:18px 20px; background:#003F47; color:#FDFAF3; border-top:4px solid var(--accent, #FFBD76)">
+      <div class="pk pk-grow pk-head hl" style="border-bottom:1px solid rgba(10,23,29,.2); padding:18px 20px">
         <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:26px; text-transform:uppercase; letter-spacing:-0.015em">Grow</div>
-        <div style="font-size:15px; color:#9FBCBF">Mehr Formate, zwei Kanäle</div>
+        <div class="sub" style="font-size:15px">Mehr Formate, zwei Kanäle</div>
       </div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.2); padding:18px 20px">
+      <div class="pk pk-scale pk-head" style="border-bottom:1px solid rgba(10,23,29,.2); padding:18px 20px">
         <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:26px; text-transform:uppercase; letter-spacing:-0.015em">Scale</div>
-        <div style="font-size:15px; color:#7C8B8E">Euer externes Content-Team</div>
+        <div class="sub" style="font-size:15px">Euer externes Content-Team</div>
       </div>
 
       <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Preis</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px">
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:28px; letter-spacing:-0.015em">&euro; 1.290<span style="font-family:'Inter Tight',sans-serif; font-size:15px; font-weight:400; color:#7C8B8E"> / Monat</span></div>
-        <div style="font-size:13px; color:#7C8B8E; margin-top:4px">&euro; 3.870 pro Quartal verrechnet</div>
-        <div style="font-size:13px; color:#003F47; margin-top:2px">Jahr im Voraus: &euro; 12.500 (-19 %)</div>
+      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px">
+        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:28px; letter-spacing:-0.015em">&euro; 1.290<span class="sub" style="font-family:'Inter Tight',sans-serif; font-size:15px; font-weight:400"> / Monat</span></div>
+        <div class="sub" style="font-size:13px; margin-top:4px">&euro; 3.870 pro Quartal verrechnet</div><div class="note" style="font-size:13px; margin-top:2px">Jahr im Voraus: &euro; 12.500 (-19 %)</div>
       </div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px; background:#003F47; color:#FDFAF3">
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:28px; letter-spacing:-0.015em">&euro; 2.690<span style="font-family:'Inter Tight',sans-serif; font-size:15px; font-weight:400; color:#9FBCBF"> / Monat</span></div>
-        <div style="font-size:13px; color:#9FBCBF; margin-top:4px">&euro; 8.070 pro Quartal verrechnet</div>
+      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px">
+        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:28px; letter-spacing:-0.015em">&euro; 2.690<span class="sub" style="font-family:'Inter Tight',sans-serif; font-size:15px; font-weight:400"> / Monat</span></div>
+        <div class="sub" style="font-size:13px; margin-top:4px">&euro; 8.070 pro Quartal verrechnet</div>
       </div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px">
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:28px; letter-spacing:-0.015em">&euro; 4.990<span style="font-family:'Inter Tight',sans-serif; font-size:15px; font-weight:400; color:#7C8B8E"> / Monat</span></div>
-        <div style="font-size:13px; color:#7C8B8E; margin-top:4px">&euro; 15.000 pro Quartal verrechnet</div>
+      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px">
+        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:28px; letter-spacing:-0.015em">&euro; 4.990<span class="sub" style="font-family:'Inter Tight',sans-serif; font-size:15px; font-weight:400"> / Monat</span></div>
+        <div class="sub" style="font-size:13px; margin-top:4px">&euro; 15.000 pro Quartal verrechnet</div>
       </div>
 
       <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Postings pro Woche</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">2</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px">3</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">5</div>
+      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">2</div>
+      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">3</div>
+      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">5</div>
       <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Reels (9:16)</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">13 / Quartal</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px">30 / Quartal</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Individuell</div>
+      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">13 / Quartal</div>
+      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">30 / Quartal</div>
+      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Individuell</div>
       <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Fotos (16:9 + 9:16)</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">36 / Quartal</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px">72 / Quartal</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Individuell</div>
+      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">36 / Quartal</div>
+      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">72 / Quartal</div>
+      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Individuell</div>
       <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Titelbilder</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#7C8B8E">-</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px">30 / Quartal</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Individuell</div>
+      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
+      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">30 / Quartal</div>
+      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Individuell</div>
       <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Untertitel</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#003F47; font-weight:600">&#10003;</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px"><span style="color:var(--accent, #FFBD76); font-weight:600">&#10003;</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#003F47; font-weight:600">&#10003;</span></div>
+      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="chk">&#10003;</span></div>
+      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="chk">&#10003;</span></div>
+      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="chk">&#10003;</span></div>
       <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Rohmaterial</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#7C8B8E">-</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px"><span style="color:#9FBCBF">-</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#003F47; font-weight:600">&#10003;</span></div>
+      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
+      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
+      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="chk">&#10003;</span></div>
       <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Postings aufbereitet</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#7C8B8E">-</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px"><span style="color:#9FBCBF">-</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#003F47; font-weight:600">&#10003;</span></div>
+      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
+      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
+      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="chk">&#10003;</span></div>
       <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Planung (PrePro)</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">0,5 Tage</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px">1 Tag</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">2 Tage</div>
+      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">0,5 Tage</div>
+      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">1 Tag</div>
+      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">2 Tage</div>
       <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Dreh</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">1 ganzer Drehtag, 2 Personen</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px">3 Halbtage über das Quartal verteilt, 2 Personen</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">3 ganze Drehtage, 3 Personen</div>
+      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">1 ganzer Drehtag, 2 Personen</div>
+      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">3 Halbtage über das Quartal verteilt, 2 Personen</div>
+      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">3 ganze Drehtage, 3 Personen</div>
       <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Post</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">2,5 Tage</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px">5 Tage</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">7 Tage</div>
+      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">2,5 Tage</div>
+      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">5 Tage</div>
+      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">7 Tage</div>
       <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Feedbackschleifen pro Asset</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">1</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px">2</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">4</div>
+      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">1</div>
+      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">2</div>
+      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">4</div>
       <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Kanäle</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Instagram</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px">Instagram, LinkedIn</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Instagram, TikTok, LinkedIn</div>
+      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Instagram</div>
+      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Instagram, LinkedIn</div>
+      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Instagram, TikTok, LinkedIn</div>
       <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Publishing</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#7C8B8E">-</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px"><span style="color:#9FBCBF">-</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#003F47; font-weight:600">&#10003;</span></div>
+      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
+      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
+      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="chk">&#10003;</span></div>
       <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Paid und Collabs</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#7C8B8E">-</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px"><span style="color:#9FBCBF">-</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#003F47; font-weight:600">&#10003;</span></div>
+      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
+      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
+      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="chk">&#10003;</span></div>
       <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Community Management</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#7C8B8E">-</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px"><span style="color:#9FBCBF">-</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#7C8B8E">-</span></div>
+      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
+      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
+      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
       <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Inhouse-Workshop</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#7C8B8E">-</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; background:#003F47; color:#FDFAF3; font-size:15px"><span style="color:var(--accent, #FFBD76); font-weight:600">&#10003;</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span style="color:#7C8B8E">-</span></div>
+      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
+      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="chk">&#10003;</span></div>
+      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
 
       <div style="padding:22px 0"></div>
-      <div style="padding:22px 20px"><a href="#bewerben" style="display:flex; align-items:center; justify-content:center; height:46px; border-radius:999px; border:1px solid #0A171D; font-weight:500; font-size:15px; text-align:center">Probe-Contenttag anfragen</a></div>
-      <div style="padding:22px 20px; background:#003F47"><a href="#bewerben" style="display:flex; align-items:center; justify-content:center; height:46px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; font-size:15px; text-align:center">Probe-Contenttag anfragen</a></div>
-      <div style="padding:22px 20px"><a href="mailto:office@wexplore.at?subject=DAILIES%20Scale%20-%20Scope%20besprechen" style="display:flex; align-items:center; justify-content:center; height:46px; border-radius:999px; border:1px solid #0A171D; font-weight:500; font-size:15px; text-align:center">Scope besprechen</a></div>
+      <div class="pk pk-start pk-cta" style="padding:22px 20px"><a href="#bewerben">Probe-Contenttag anfragen</a></div>
+      <div class="pk pk-grow pk-cta hl" style="padding:22px 20px"><a href="#bewerben">Probe-Contenttag anfragen</a></div>
+      <div class="pk pk-scale pk-cta" style="padding:22px 20px"><a href="mailto:office@wexplore.at?subject=DAILIES%20Scale%20-%20Scope%20besprechen">Scope besprechen</a></div>
     </div>
     <div style="margin:18px 0 0; font-size:15px; color:#7C8B8E; display:grid; gap:4px">
       <p style="margin:0">Alle Preise netto, exklusive Reisekosten außerhalb Oberösterreichs. Verrechnung quartalsweise, der Monatspreis ist die Darstellungsform.</p>
@@ -738,6 +747,22 @@
       form.innerHTML = '<div style="display:grid; gap:12px"><div style="font-family:\'DM Mono\',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#FFBD76">Bewerbung eingegangen</div><div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:26px; line-height:1.2">Danke – wir melden uns innerhalb von fünf Werktagen.</div><p style="margin:0; color:#D9D2C6">Wir sehen uns an, was ihr macht, und sagen ehrlich, ob ein Probe-Contenttag passt. Bei Rückfragen: <a href="mailto:office@wexplore.at" style="color:#FDFAF3; text-decoration:underline">office@wexplore.at</a></p></div>';
     }, 900);
   });
+})();
+</script>
+<script>
+(function () {
+  var table = document.querySelector('[data-table]');
+  if (!table) return;
+  var cells = Array.prototype.slice.call(table.querySelectorAll('.pk'));
+  function setHl(col) {
+    cells.forEach(function (c) { c.classList.toggle('hl', c.classList.contains('pk-' + col)); });
+  }
+  ['start', 'grow', 'scale'].forEach(function (col) {
+    cells.filter(function (c) { return c.classList.contains('pk-' + col); }).forEach(function (c) {
+      c.addEventListener('mouseenter', function () { setHl(col); });
+    });
+  });
+  table.addEventListener('mouseleave', function () { setHl('grow'); });
 })();
 </script>
 </body>
