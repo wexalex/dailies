@@ -68,8 +68,15 @@
     section > div[style*="padding:88px 40px"] { padding:64px 20px !important }
     footer > div:first-child { padding:44px 20px 28px !important }
     [data-sticky-cta] { left:0 !important; right:0 !important; bottom:0 !important; border-radius:0 !important; justify-content:space-between !important; padding:10px 14px 10px 18px !important }
-    .mobile-hint { display:block !important }
+    .plan-tabs { display:flex !important }
+    [data-table] { grid-template-columns:minmax(110px,.8fr) 1.2fr !important }
+    [data-table] .pk { display:none }
+    [data-table][data-plan="start"] .pk-start, [data-table][data-plan="grow"] .pk-grow, [data-table][data-plan="scale"] .pk-scale { display:block }
   }
+
+  .plan-tabs { display:none; border:1px solid #0A171D; border-radius:999px; overflow:hidden; margin:-14px 0 24px }
+  .plan-tabs button { flex:1; height:42px; border:0; background:transparent; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#0A171D; cursor:pointer; transition:background-color .18s ease, color .18s ease }
+  .plan-tabs button.active { background:#0A171D; color:#FDFAF3 }
 </style>
 </head>
 <body>
@@ -201,8 +208,12 @@
   <section id="pakete" data-screen-label="04 Pakete" style="scroll-margin-top:100px; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
     <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 04 · Pakete</p>
     <h2 style="margin:20px 0 34px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Drei Größen, ein System.</h2>
-    <div class="mobile-hint" style="display:none; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; margin:-20px 0 20px">Tabelle seitwärts wischen →</div>
-    <div data-table="" style="display:grid; grid-template-columns:minmax(150px,.9fr) repeat(3, minmax(210px,1.1fr)); overflow-x:auto">
+    <div class="plan-tabs" role="tablist" aria-label="Paket wählen">
+      <button type="button" data-plan="start">Start</button>
+      <button type="button" data-plan="grow" class="active">Grow</button>
+      <button type="button" data-plan="scale">Scale</button>
+    </div>
+    <div data-table="" data-plan="grow" style="display:grid; grid-template-columns:minmax(150px,.9fr) repeat(3, minmax(210px,1.1fr)); overflow-x:auto">
       <div style="border-bottom:1px solid rgba(10,23,29,.2)"></div>
       <div class="pk pk-start pk-head" style="border-bottom:1px solid rgba(10,23,29,.2); padding:18px 20px">
         <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:26px; text-transform:uppercase; letter-spacing:-0.015em">Start</div>
@@ -841,6 +852,21 @@
     requestAnimationFrame(step);
   }
   requestAnimationFrame(step);
+})();
+</script>
+<script>
+(function () {
+  var table = document.querySelector('[data-table]');
+  var tabs = document.querySelectorAll('.plan-tabs button');
+  if (!table || !tabs.length) return;
+  tabs.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var col = b.getAttribute('data-plan');
+      table.setAttribute('data-plan', col);
+      tabs.forEach(function (x) { x.classList.toggle('active', x === b); });
+      table.querySelectorAll('.pk').forEach(function (c) { c.classList.toggle('hl', c.classList.contains('pk-' + col)); });
+    });
+  });
 })();
 </script>
 </body>
