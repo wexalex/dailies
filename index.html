@@ -30,6 +30,14 @@
   .pk-head { border-top:4px solid transparent } .pk-head.hl { border-top-color:var(--accent, #FFBD76) }
   .pk-cta a { display:flex; align-items:center; justify-content:center; height:46px; border-radius:999px; border:1px solid #0A171D; color:#0A171D; font-weight:500; font-size:15px; text-align:center; transition: background-color .18s ease, border-color .18s ease }
   .pk-cta.hl a { background:var(--accent, #FFBD76); border-color:var(--accent, #FFBD76); color:#0A171D; font-weight:600 }
+
+  .app { position:absolute; width:66px; height:66px; pointer-events:none; user-select:none; transform:rotate(var(--r, 0deg)); will-change:transform }
+  .app svg { width:100%; height:100%; display:block }
+  .app--front { z-index:3; filter:drop-shadow(0 12px 20px rgba(10,23,29,.3)) }
+  .app--back { z-index:1; filter:drop-shadow(0 6px 12px rgba(10,23,29,.16)); opacity:.96 }
+  .chip { position:absolute; display:inline-flex; align-items:center; gap:8px; padding:10px 16px; border-radius:999px; background:#0A171D; color:#FDFAF3; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap; pointer-events:none; user-select:none; transform:rotate(var(--r, 0deg)); will-change:transform; z-index:3 }
+  .hero-copy { position:relative; z-index:2 }
+  @media (max-width: 900px) { .app, .chip { display:none } }
 </style>
 </head>
 <body>
@@ -60,44 +68,22 @@
     </nav>
   </header>
 
-  <section id="sichtung" data-hero="" data-screen-label="01 Sichtung" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(340px, 1fr)); border-bottom:1px solid rgba(10,23,29,.18)">
-    <div style="padding:80px 40px; display:flex; flex-direction:column; justify-content:center">
-      <p style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Content-Abo · Video + Foto · Oberösterreich</p>
-      <h1 style="margin:20px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(40px,4.8vw,72px); line-height:1; letter-spacing:-0.02em">Ein Drehtag.<br />Ein Quartal Content.</h1>
-      <p style="margin:24px 0 0; font-size:21px; line-height:1.5; max-width:44ch">Wir kommen einmal im Quartal zu euch, drehen Video und Foto an einem Tag und liefern daraus mindestens 13 Reels plus Fotos. Ihr plant das Budget einmal fürs Jahr und stoßt dazwischen nichts mehr an.</p>
-      <p style="margin:16px 0 0; font-size:15px; color:#7C8B8E; max-width:44ch">DAILIES ist das Content-Abo von WEXPLORE. Videoproduktion aus Linz, Büro in Wien.</p>
-      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:30px">
-        <a href="#bewerben" style="display:inline-flex; align-items:center; height:50px; padding:0 28px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; white-space:nowrap">Probe-Contenttag anfragen</a>
-        <a href="#pakete" style="display:inline-flex; align-items:center; height:50px; padding:0 28px; border-radius:999px; border:1px solid #0A171D; white-space:nowrap">Pakete ansehen</a>
-      </div>
+  <section id="sichtung" data-hero="" data-screen-label="01 Sichtung" style="position:relative; overflow:hidden; padding:130px 40px 140px; border-bottom:1px solid rgba(10,23,29,.18); text-align:center">
+      <div class="app app--front" style="top:19%; right:21%; --r:6deg"><svg viewBox="0 0 64 64" role="img" aria-label="LinkedIn"><rect width="64" height="64" rx="14" fill="#0A66C2"/><g transform="translate(13,13) scale(1.6)" fill="#fff"><path d="M4 9h3v11H4z M10 9h2.9v1.6c.6-1 1.7-1.8 3.4-1.8 2.6 0 3.7 1.6 3.7 4.4V20h-3v-6c0-1.4-.5-2.3-1.7-2.3-1.3 0-2.3 1-2.3 2.8V20h-3z"/><circle cx="5.5" cy="5.5" r="1.8"/></g></svg></div>
+      <div class="app app--front" style="top:40%; left:25%; --r:-5deg"><svg viewBox="0 0 64 64" role="img" aria-label="TikTok"><rect width="64" height="64" rx="14" fill="#010101"/><g transform="translate(12.5,12.5) scale(1.6)"><path d="M15.5 3c.4 2.2 1.9 3.7 4.2 4v3c-1.6 0-3-.5-4.2-1.3v6.2a5.6 5.6 0 1 1-5.6-5.6c.3 0 .7 0 1 .1v3.1a2.6 2.6 0 1 0 1.8 2.4V3z" fill="#25F4EE" transform="translate(-1.1,-1.1)"/><path d="M15.5 3c.4 2.2 1.9 3.7 4.2 4v3c-1.6 0-3-.5-4.2-1.3v6.2a5.6 5.6 0 1 1-5.6-5.6c.3 0 .7 0 1 .1v3.1a2.6 2.6 0 1 0 1.8 2.4V3z" fill="#FE2C55" transform="translate(1.1,1.1)"/><path d="M15.5 3c.4 2.2 1.9 3.7 4.2 4v3c-1.6 0-3-.5-4.2-1.3v6.2a5.6 5.6 0 1 1-5.6-5.6c.3 0 .7 0 1 .1v3.1a2.6 2.6 0 1 0 1.8 2.4V3z" fill="#fff"/></g></svg></div>
+      <div class="app app--front" style="top:60%; left:24%; --r:7deg"><svg viewBox="0 0 64 64" role="img" aria-label="Facebook"><rect width="64" height="64" rx="14" fill="#1877F2"/><g transform="translate(12.5,12.5) scale(1.6)" fill="#fff"><path d="M13.4 21v-7.2h2.4l.4-2.9h-2.8V9c0-.8.3-1.4 1.5-1.4h1.4V5c-.3 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.5v2.5H8.5v2.9h2.4V21z"/></g></svg></div>
+      <div class="app app--front" style="top:15%; left:27%; --r:-8deg"><svg viewBox="0 0 64 64" role="img" aria-label="Instagram"><defs><radialGradient id="igg" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs><rect width="64" height="64" rx="14" fill="url(#igg)"/><g fill="none" stroke="#fff" stroke-width="3.6"><rect x="17" y="17" width="30" height="30" rx="9"/><circle cx="32" cy="32" r="7"/></g><circle cx="41" cy="23" r="2.4" fill="#fff"/></svg></div>
+      <div class="app app--front" style="top:44%; right:25%; --r:5deg"><svg viewBox="0 0 64 64" role="img" aria-label="YouTube"><rect width="64" height="64" rx="14" fill="#FF0000"/><path d="M26 21l18 11-18 11z" fill="#fff"/></svg></div>
+      <div class="chip" style="top:63%; right:21%; --r:-4deg">13+ Reels / Quartal</div>
+    <div class="hero-copy">
+    <p style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Content-Abo · Video + Foto · Oberösterreich</p>
+    <h1 style="margin:24px auto 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(44px,7vw,104px); line-height:1; letter-spacing:-0.02em; max-width:14ch">Ein Drehtag.<br />Ein Quartal Content.</h1>
+    <p style="margin:28px auto 0; font-size:21px; line-height:1.5; max-width:48ch">Wir kommen einmal im Quartal zu euch, drehen Video und Foto an einem Tag und liefern daraus mindestens 13 Reels plus Fotos. Ihr plant das Budget einmal fürs Jahr und stoßt dazwischen nichts mehr an.</p>
+    <p style="margin:16px auto 0; font-size:15px; color:#7C8B8E; max-width:48ch">DAILIES ist das Content-Abo von WEXPLORE. Videoproduktion aus Linz, Büro in Wien.</p>
+    <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:34px">
+      <a href="#bewerben" style="display:inline-flex; align-items:center; height:50px; padding:0 28px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; white-space:nowrap">Probe-Contenttag anfragen</a>
+      <a href="#pakete" style="display:inline-flex; align-items:center; height:50px; padding:0 28px; border-radius:999px; border:1px solid #0A171D; white-space:nowrap">Pakete ansehen</a>
     </div>
-    <div style="background:#0A171D; padding:56px 40px; display:flex; align-items:center; justify-content:center">
-      <div data-drift="0.03" style="width:min(340px, 100%)">
-        <div style="display:flex; justify-content:space-between; align-items:center; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; margin-bottom:10px">
-          <span>A014_C003 · Take 02</span>
-          <span style="display:inline-flex; align-items:center; gap:6px"><span style="width:7px; height:7px; border-radius:50%; background:var(--accent, #FFBD76)"></span>Review</span>
-        </div>
-        <div style="position:relative; aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#16303A">
-          <div style="position:absolute; inset:0; border:1px dashed rgba(253,250,243,.35); border-radius:4px; box-sizing:border-box"></div>
-          <div style="position:absolute; top:20%; left:0; right:0; text-align:center; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#FDFAF3; opacity:.55">CLIP-SLOT 9:16</div>
-          <div style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center">
-            <div style="width:64px; height:64px; border-radius:50%; border:1px solid rgba(253,250,243,.4); display:flex; align-items:center; justify-content:center">
-              <div style="width:0; height:0; border-left:16px solid #FDFAF3; border-top:10px solid transparent; border-bottom:10px solid transparent; margin-left:5px"></div>
-            </div>
-          </div>
-          <div style="position:absolute; left:0; right:0; bottom:0; padding:16px 14px 12px; background:linear-gradient(transparent, rgba(10,23,29,.85))">
-            <div style="height:3px; border-radius:2px; background:rgba(253,250,243,.25); overflow:hidden"><div style="height:100%; width:34%; background:var(--accent, #FFBD76)"></div></div>
-            <div style="display:flex; justify-content:space-between; margin-top:8px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; color:#FDFAF3">
-              <span>00:00:14</span>
-              <span style="color:#7C8B8E">00:00:41</span>
-            </div>
-          </div>
-        </div>
-        <div style="display:flex; justify-content:space-between; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; margin-top:10px">
-          <span>Clip 01 / 13</span>
-          <span>9:16 · 4K</span>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -763,6 +749,48 @@
     });
   });
   table.addEventListener('mouseleave', function () { setHl('grow'); });
+})();
+</script>
+<script>
+(function () {
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  var icons = [];
+  document.querySelectorAll('.app, .chip').forEach(function (el, i) {
+    icons.push({ el: el, tx: 0, ty: 0, vx: 0, vy: 0, phase: i * 1.3 });
+  });
+  if (!icons.length) return;
+  var mx = -9999, my = -9999;
+  window.addEventListener('pointermove', function (e) { mx = e.clientX; my = e.clientY; }, { passive: true });
+  document.addEventListener('pointerleave', function () { mx = -9999; my = -9999; });
+
+  var R = 140;      // Fluchtradius in px
+  var PUSH = 4.2;   // Fluchtkraft
+  var SPRING = 0.014, DAMP = 0.86, MAX = 420;
+  var t = 0;
+
+  function step() {
+    t += 0.016;
+    icons.forEach(function (o) {
+      var r = o.el.getBoundingClientRect();
+      var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+      var dx = cx - mx, dy = cy - my;
+      var d = Math.hypot(dx, dy);
+      if (d < R && d > 0.001) {
+        var f = (1 - d / R) * PUSH;
+        o.vx += dx / d * f;
+        o.vy += dy / d * f;
+      }
+      o.vx += -o.tx * SPRING;
+      o.vy += -o.ty * SPRING;
+      o.vx *= DAMP; o.vy *= DAMP;
+      o.tx = Math.max(-MAX, Math.min(MAX, o.tx + o.vx));
+      o.ty = Math.max(-MAX, Math.min(MAX, o.ty + o.vy));
+      var bob = Math.sin(t + o.phase) * 5;
+      o.el.style.transform = 'translate(' + o.tx.toFixed(2) + 'px,' + (o.ty + bob).toFixed(2) + 'px) rotate(var(--r, 0deg))';
+    });
+    requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
 })();
 </script>
 </body>
