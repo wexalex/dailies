@@ -80,8 +80,7 @@
 
   .step-card { opacity:.45; transform:scale(.97); transition:opacity .25s ease, transform .25s ease }
   .step-card.active { opacity:1; transform:none }
-  .phone-frame { position:absolute; top:16px; left:26px; width:328px; height:462px; border:10px solid #0A171D; border-radius:44px; pointer-events:none; z-index:5; box-shadow:0 24px 48px rgba(10,23,29,.16) }
-  .phone-frame::before { content:""; position:absolute; top:8px; left:50%; transform:translateX(-50%); width:92px; height:20px; border-radius:999px; background:#0A171D }
+  .phone-frame { position:absolute; top:8px; left:25px; width:338px; height:683px; background:url(assets/iphone-frame.png) 0 0/100% 100% no-repeat; pointer-events:none; z-index:5; filter:drop-shadow(0 24px 40px rgba(10,23,29,.18)) }
   @media (max-width: 768px) {
     .phone-frame { display:none }
     [data-rail] { scroll-padding-left:20px !important }
@@ -181,8 +180,8 @@
       </div>
     </div>
     <div class="phone-wrap" style="position:relative">
-    <div data-steps="" data-rail="" style="display:flex; gap:16px; overflow-x:auto; scrollbar-width:none; padding:30px calc(100% - 340px) 36px 40px; scroll-snap-type:x mandatory; scroll-padding-left:40px">
-      <div class="step-card" style="flex:0 0 300px; scroll-snap-align:start; height:430px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
+    <div data-steps="" data-rail="" style="display:flex; gap:16px; overflow-x:auto; scrollbar-width:none; padding:96px calc(100% - 340px) 104px 40px; scroll-snap-type:x mandatory; scroll-padding-left:40px">
+      <div class="step-card" style="flex:0 0 300px; scroll-snap-align:start; height:500px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
         <div style="display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid rgba(10,23,29,.12)">
           <span style="width:30px; height:30px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:14px">D</span>
           <div style="line-height:1.3">
@@ -200,7 +199,7 @@
           <span style="margin-left:auto; display:flex; gap:4px; align-items:center"><span style="width:5px; height:5px; border-radius:50%; background:var(--accent, #FFBD76); opacity:1"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span></span>
         </div>
       </div>
-      <div class="step-card" style="flex:0 0 300px; scroll-snap-align:start; height:430px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
+      <div class="step-card" style="flex:0 0 300px; scroll-snap-align:start; height:500px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
         <div style="display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid rgba(10,23,29,.12)">
           <span style="width:30px; height:30px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:14px">D</span>
           <div style="line-height:1.3">
@@ -218,7 +217,7 @@
           <span style="margin-left:auto; display:flex; gap:4px; align-items:center"><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:var(--accent, #FFBD76); opacity:1"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span></span>
         </div>
       </div>
-      <div class="step-card" style="flex:0 0 300px; scroll-snap-align:start; height:430px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
+      <div class="step-card" style="flex:0 0 300px; scroll-snap-align:start; height:500px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
         <div style="display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid rgba(10,23,29,.12)">
           <span style="width:30px; height:30px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:14px">D</span>
           <div style="line-height:1.3">
@@ -236,7 +235,7 @@
           <span style="margin-left:auto; display:flex; gap:4px; align-items:center"><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:var(--accent, #FFBD76); opacity:1"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span></span>
         </div>
       </div>
-      <div class="step-card" style="flex:0 0 300px; scroll-snap-align:start; height:430px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
+      <div class="step-card" style="flex:0 0 300px; scroll-snap-align:start; height:500px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
         <div style="display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid rgba(10,23,29,.12)">
           <span style="width:30px; height:30px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:14px">D</span>
           <div style="line-height:1.3">
@@ -254,7 +253,7 @@
           <span style="margin-left:auto; display:flex; gap:4px; align-items:center"><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:var(--accent, #FFBD76); opacity:1"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span></span>
         </div>
       </div>
-      <div class="step-card" style="flex:0 0 300px; scroll-snap-align:start; height:430px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
+      <div class="step-card" style="flex:0 0 300px; scroll-snap-align:start; height:500px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
         <div style="display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid rgba(10,23,29,.12)">
           <span style="width:30px; height:30px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:14px">D</span>
           <div style="line-height:1.3">
@@ -272,7 +271,7 @@
           <span style="margin-left:auto; display:flex; gap:4px; align-items:center"><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:var(--accent, #FFBD76); opacity:1"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span></span>
         </div>
       </div>
-      <div class="step-card" style="flex:0 0 300px; scroll-snap-align:start; height:430px; box-sizing:border-box; display:flex; flex-direction:column; background:#003F47; color:#FDFAF3; border:1px solid #003F47; border-radius:18px; padding:16px 20px 14px">
+      <div class="step-card" style="flex:0 0 300px; scroll-snap-align:start; height:500px; box-sizing:border-box; display:flex; flex-direction:column; background:#003F47; color:#FDFAF3; border:1px solid #003F47; border-radius:18px; padding:16px 20px 14px">
         <div style="display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid rgba(253,250,243,.22)">
           <span style="width:30px; height:30px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:14px">D</span>
           <div style="line-height:1.3">
