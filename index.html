@@ -77,6 +77,15 @@
   .plan-tabs { display:none; border:1px solid #0A171D; border-radius:999px; overflow:hidden; margin:-14px 0 24px }
   .plan-tabs button { flex:1; height:42px; border:0; background:transparent; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#0A171D; cursor:pointer; transition:background-color .18s ease, color .18s ease }
   .plan-tabs button.active { background:#0A171D; color:#FDFAF3 }
+
+  .step-card { opacity:.45; transform:scale(.97); transition:opacity .25s ease, transform .25s ease }
+  .step-card.active { opacity:1; transform:none }
+  .phone-frame { position:absolute; top:16px; left:26px; width:328px; height:462px; border:10px solid #0A171D; border-radius:44px; pointer-events:none; z-index:5; box-shadow:0 24px 48px rgba(10,23,29,.16) }
+  .phone-frame::before { content:""; position:absolute; top:8px; left:50%; transform:translateX(-50%); width:92px; height:20px; border-radius:999px; background:#0A171D }
+  @media (max-width: 768px) {
+    .phone-frame { display:none }
+    [data-rail] { scroll-padding-left:20px !important }
+  }
 </style>
 </head>
 <body>
@@ -168,40 +177,121 @@
       <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 03 · Ablauf</p>
       <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; margin-top:20px">
         <h2 style="margin:0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em; max-width:20ch">Sechs Schritte, die sich jedes Quartal wiederholen.</h2>
-        <span style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Seitwärts scrollen →</span>
+        <span style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Durchwischen →</span>
       </div>
     </div>
-    <div data-steps="" data-rail="" style="display:flex; gap:16px; overflow-x:auto; scrollbar-width:none; padding:30px 40px; scroll-snap-type:x mandatory">
-      <div style="flex:0 0 300px; scroll-snap-align:start; background:#FDFAF3; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:24px 22px">
-        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 01</div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2; margin-top:8px">Jahres- und Themenplanung</div>
-        <p style="margin:10px 0 0; font-size:15px; line-height:1.55">Wir gehen einmal durch: Ziele, Termine, Angebote, wer im Lauf des Jahres vor die Kamera soll.</p>
+    <div class="phone-wrap" style="position:relative">
+    <div data-steps="" data-rail="" style="display:flex; gap:16px; overflow-x:auto; scrollbar-width:none; padding:30px 40px 36px; scroll-snap-type:x mandatory; scroll-padding-left:40px">
+      <div class="step-card" style="flex:0 0 300px; scroll-snap-align:start; height:430px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
+        <div style="display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid rgba(10,23,29,.12)">
+          <span style="width:30px; height:30px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:14px">D</span>
+          <div style="line-height:1.3">
+            <div style="font-size:13px; font-weight:600">dailies</div>
+            <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 01</div>
+          </div>
+          <span style="margin-left:auto; font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E">1/6</span>
+        </div>
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:center">
+          <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2">Jahres- und Themenplanung</div>
+          <p style="margin:12px 0 0; font-size:15px; line-height:1.55">Wir gehen einmal durch: Ziele, Termine, Angebote, wer im Lauf des Jahres vor die Kamera soll.</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; padding-top:12px; border-top:1px solid rgba(10,23,29,.12)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:17px;height:17px"><path d="M12 20s-7.5-4.9-7.5-10.2A4.3 4.3 0 0 1 12 6.6a4.3 4.3 0 0 1 7.5 3.2C19.5 15.1 12 20 12 20z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:17px;height:17px"><path d="M21 12a8 8 0 0 1-8 8H4l1.7-3.4A8 8 0 1 1 21 12z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:17px;height:17px"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
+          <span style="margin-left:auto; display:flex; gap:4px; align-items:center"><span style="width:5px; height:5px; border-radius:50%; background:var(--accent, #FFBD76); opacity:1"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span></span>
+        </div>
       </div>
-      <div style="flex:0 0 300px; scroll-snap-align:start; background:#FDFAF3; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:24px 22px">
-        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 02</div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2; margin-top:8px">Vorbereitung des Drehtags</div>
-        <p style="margin:10px 0 0; font-size:15px; line-height:1.55">Ihr bekommt vorab einen konkreten Themen- und Ablaufplan. Jede beteiligte Person weiß, was gebraucht wird und wann.</p>
+      <div class="step-card" style="flex:0 0 300px; scroll-snap-align:start; height:430px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
+        <div style="display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid rgba(10,23,29,.12)">
+          <span style="width:30px; height:30px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:14px">D</span>
+          <div style="line-height:1.3">
+            <div style="font-size:13px; font-weight:600">dailies</div>
+            <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 02</div>
+          </div>
+          <span style="margin-left:auto; font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E">2/6</span>
+        </div>
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:center">
+          <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2">Vorbereitung des Drehtags</div>
+          <p style="margin:12px 0 0; font-size:15px; line-height:1.55">Ihr bekommt vorab einen konkreten Themen- und Ablaufplan. Jede beteiligte Person weiß, was gebraucht wird und wann.</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; padding-top:12px; border-top:1px solid rgba(10,23,29,.12)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:17px;height:17px"><path d="M12 20s-7.5-4.9-7.5-10.2A4.3 4.3 0 0 1 12 6.6a4.3 4.3 0 0 1 7.5 3.2C19.5 15.1 12 20 12 20z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:17px;height:17px"><path d="M21 12a8 8 0 0 1-8 8H4l1.7-3.4A8 8 0 1 1 21 12z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:17px;height:17px"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
+          <span style="margin-left:auto; display:flex; gap:4px; align-items:center"><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:var(--accent, #FFBD76); opacity:1"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span></span>
+        </div>
       </div>
-      <div style="flex:0 0 300px; scroll-snap-align:start; background:#FDFAF3; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:24px 22px">
-        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 03</div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2; margin-top:8px">Video und Foto an einem Tag</div>
-        <p style="margin:10px 0 0; font-size:15px; line-height:1.55">Zwei Leute, kompaktes Licht, professioneller Ton. Wir drehen bei euch oder an einer vereinbarten Location.</p>
+      <div class="step-card" style="flex:0 0 300px; scroll-snap-align:start; height:430px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
+        <div style="display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid rgba(10,23,29,.12)">
+          <span style="width:30px; height:30px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:14px">D</span>
+          <div style="line-height:1.3">
+            <div style="font-size:13px; font-weight:600">dailies</div>
+            <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 03</div>
+          </div>
+          <span style="margin-left:auto; font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E">3/6</span>
+        </div>
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:center">
+          <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2">Video und Foto an einem Tag</div>
+          <p style="margin:12px 0 0; font-size:15px; line-height:1.55">Zwei Leute, kompaktes Licht, professioneller Ton. Wir drehen bei euch oder an einer vereinbarten Location.</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; padding-top:12px; border-top:1px solid rgba(10,23,29,.12)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:17px;height:17px"><path d="M12 20s-7.5-4.9-7.5-10.2A4.3 4.3 0 0 1 12 6.6a4.3 4.3 0 0 1 7.5 3.2C19.5 15.1 12 20 12 20z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:17px;height:17px"><path d="M21 12a8 8 0 0 1-8 8H4l1.7-3.4A8 8 0 1 1 21 12z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:17px;height:17px"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
+          <span style="margin-left:auto; display:flex; gap:4px; align-items:center"><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:var(--accent, #FFBD76); opacity:1"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span></span>
+        </div>
       </div>
-      <div style="flex:0 0 300px; scroll-snap-align:start; background:#FDFAF3; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:24px 22px">
-        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 04</div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2; margin-top:8px">Schnitt und Bildbearbeitung</div>
-        <p style="margin:10px 0 0; font-size:15px; line-height:1.55">Schnitt, Grading, Sound, Untertitel, Fotoauswahl und -bearbeitung. Formate und Crops sind beim Dreh mitgedacht.</p>
+      <div class="step-card" style="flex:0 0 300px; scroll-snap-align:start; height:430px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
+        <div style="display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid rgba(10,23,29,.12)">
+          <span style="width:30px; height:30px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:14px">D</span>
+          <div style="line-height:1.3">
+            <div style="font-size:13px; font-weight:600">dailies</div>
+            <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 04</div>
+          </div>
+          <span style="margin-left:auto; font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E">4/6</span>
+        </div>
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:center">
+          <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2">Schnitt und Bildbearbeitung</div>
+          <p style="margin:12px 0 0; font-size:15px; line-height:1.55">Schnitt, Grading, Sound, Untertitel, Fotoauswahl und -bearbeitung. Formate und Crops sind beim Dreh mitgedacht.</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; padding-top:12px; border-top:1px solid rgba(10,23,29,.12)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:17px;height:17px"><path d="M12 20s-7.5-4.9-7.5-10.2A4.3 4.3 0 0 1 12 6.6a4.3 4.3 0 0 1 7.5 3.2C19.5 15.1 12 20 12 20z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:17px;height:17px"><path d="M21 12a8 8 0 0 1-8 8H4l1.7-3.4A8 8 0 1 1 21 12z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:17px;height:17px"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
+          <span style="margin-left:auto; display:flex; gap:4px; align-items:center"><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:var(--accent, #FFBD76); opacity:1"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span></span>
+        </div>
       </div>
-      <div style="flex:0 0 300px; scroll-snap-align:start; background:#FDFAF3; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:24px 22px">
-        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 05</div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2; margin-top:8px">Freigabe und Übergabe</div>
-        <p style="margin:10px 0 0; font-size:15px; line-height:1.55">Alles liegt sortiert bereit. Ihr gebt frei und veröffentlicht Schritt für Schritt über das Quartal.</p>
+      <div class="step-card" style="flex:0 0 300px; scroll-snap-align:start; height:430px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
+        <div style="display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid rgba(10,23,29,.12)">
+          <span style="width:30px; height:30px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:14px">D</span>
+          <div style="line-height:1.3">
+            <div style="font-size:13px; font-weight:600">dailies</div>
+            <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 05</div>
+          </div>
+          <span style="margin-left:auto; font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E">5/6</span>
+        </div>
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:center">
+          <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2">Freigabe und Übergabe</div>
+          <p style="margin:12px 0 0; font-size:15px; line-height:1.55">Alles liegt sortiert bereit. Ihr gebt frei und veröffentlicht Schritt für Schritt über das Quartal.</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; padding-top:12px; border-top:1px solid rgba(10,23,29,.12)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:17px;height:17px"><path d="M12 20s-7.5-4.9-7.5-10.2A4.3 4.3 0 0 1 12 6.6a4.3 4.3 0 0 1 7.5 3.2C19.5 15.1 12 20 12 20z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:17px;height:17px"><path d="M21 12a8 8 0 0 1-8 8H4l1.7-3.4A8 8 0 1 1 21 12z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:17px;height:17px"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
+          <span style="margin-left:auto; display:flex; gap:4px; align-items:center"><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:var(--accent, #FFBD76); opacity:1"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span></span>
+        </div>
       </div>
-      <div style="flex:0 0 300px; scroll-snap-align:start; background:#003F47; color:#FDFAF3; border:1px solid #003F47; border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:24px 22px">
-        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF">Schritt 06</div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2; margin-top:8px">Review und nächstes Quartal</div>
-        <p style="margin:10px 0 0; font-size:15px; line-height:1.55">Wir schauen uns an, was funktioniert hat, und planen das nächste Quartal darauf. Danach beginnt der Zyklus von vorne.</p>
+      <div class="step-card" style="flex:0 0 300px; scroll-snap-align:start; height:430px; box-sizing:border-box; display:flex; flex-direction:column; background:#003F47; color:#FDFAF3; border:1px solid #003F47; border-radius:18px; padding:16px 20px 14px">
+        <div style="display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid rgba(253,250,243,.22)">
+          <span style="width:30px; height:30px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:14px">D</span>
+          <div style="line-height:1.3">
+            <div style="font-size:13px; font-weight:600">dailies</div>
+            <div style="font-family:'DM Mono',monospace; font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF">Schritt 06</div>
+          </div>
+          <span style="margin-left:auto; font-family:'DM Mono',monospace; font-size:11px; color:#9FBCBF">6/6</span>
+        </div>
+        <div style="flex:1; display:flex; flex-direction:column; justify-content:center">
+          <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2">Review und nächstes Quartal</div>
+          <p style="margin:12px 0 0; font-size:15px; line-height:1.55">Wir schauen uns an, was funktioniert hat, und planen das nächste Quartal darauf. Danach beginnt der Zyklus von vorne.</p>
+        </div>
+        <div style="display:flex; align-items:center; gap:14px; padding-top:12px; border-top:1px solid rgba(253,250,243,.22)">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:17px;height:17px"><path d="M12 20s-7.5-4.9-7.5-10.2A4.3 4.3 0 0 1 12 6.6a4.3 4.3 0 0 1 7.5 3.2C19.5 15.1 12 20 12 20z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:17px;height:17px"><path d="M21 12a8 8 0 0 1-8 8H4l1.7-3.4A8 8 0 1 1 21 12z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:17px;height:17px"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
+          <span style="margin-left:auto; display:flex; gap:4px; align-items:center"><span style="width:5px; height:5px; border-radius:50%; background:#9FBCBF; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#9FBCBF; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#9FBCBF; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#9FBCBF; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#9FBCBF; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:var(--accent, #FFBD76); opacity:1"></span></span>
+        </div>
       </div>
+    </div>
+    <div class="phone-frame" aria-hidden="true"></div>
     </div>
   </section>
 
@@ -867,6 +957,20 @@
       table.querySelectorAll('.pk').forEach(function (c) { c.classList.toggle('hl', c.classList.contains('pk-' + col)); });
     });
   });
+})();
+</script>
+<script>
+(function () {
+  var rail = document.querySelector('[data-rail]');
+  if (!rail) return;
+  var cards = Array.prototype.slice.call(rail.querySelectorAll('.step-card'));
+  var step = 316; // Kartenbreite + Gap
+  function upd() {
+    var i = Math.max(0, Math.min(cards.length - 1, Math.round(rail.scrollLeft / step)));
+    cards.forEach(function (c, j) { c.classList.toggle('active', j === i); });
+  }
+  rail.addEventListener('scroll', upd, { passive: true });
+  upd();
 })();
 </script>
 </body>
