@@ -80,7 +80,7 @@
 
   .step-card { opacity:.45; transform:scale(.97); transition:opacity .25s ease, transform .25s ease }
   .step-card.active { opacity:1; transform:none }
-  .phone-frame { position:absolute; top:9px; left:27px; width:295px; height:595px; background:url(assets/iphone-frame.png) 0 0/100% 100% no-repeat; pointer-events:none; z-index:5; filter:drop-shadow(0 24px 40px rgba(10,23,29,.18)) }
+  .phone-frame { position:absolute; top:-7px; left:27px; width:295px; height:595px; background:url(assets/iphone-frame.png) 0 0/100% 100% no-repeat; pointer-events:none; z-index:5; filter:drop-shadow(0 24px 40px rgba(10,23,29,.18)) }
   @media (max-width: 768px) {
     .phone-frame { display:none }
     [data-rail] { scroll-padding-left:20px !important }
@@ -94,8 +94,16 @@
   .big-heart svg { animation:heart-burst .9s ease forwards; filter:drop-shadow(0 6px 16px rgba(10,23,29,.25)) }
   @keyframes heart-burst { 0% { transform:scale(0); opacity:0 } 15% { transform:scale(1.15); opacity:1 } 30% { transform:scale(1) } 75% { transform:scale(1); opacity:1 } 100% { transform:scale(1.1); opacity:0 } }
 
-  .ig-grid { position:absolute; left:36px; top:18px; width:268px; height:570px; background:#FDFAF3; border-radius:34px; z-index:4; pointer-events:none; overflow:hidden; display:flex; flex-direction:column; transform-origin:50% 36%; will-change:transform, opacity }
+  .ig-grid { position:absolute; left:36px; top:2px; width:268px; height:570px; background:#FDFAF3; border-radius:34px; z-index:4; pointer-events:none; overflow:hidden; display:flex; flex-direction:column; transform-origin:50% 36%; will-change:transform, opacity }
   @media (max-width: 768px) { .ig-grid { display:none } }
+
+  #ablauf { position:relative }
+  .pin-stage { position:sticky; top:40px }
+  .pin-space { height:120vh }
+  @media (max-width: 768px) {
+    .pin-stage { position:static }
+    .pin-space { display:none }
+  }
 </style>
 </head>
 <body>
@@ -183,6 +191,7 @@
   </section>
 
   <section id="ablauf" data-screen-label="03 Ablauf" style="scroll-margin-top:100px; background:#F5EFE3; padding:88px 0; border-bottom:1px solid rgba(10,23,29,.18)">
+    <div class="pin-stage">
     <div style="padding:0 40px">
       <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 03 · Ablauf</p>
       <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; margin-top:20px">
@@ -191,7 +200,7 @@
       </div>
     </div>
     <div class="phone-wrap" style="position:relative">
-    <div data-steps="" data-rail="" style="display:flex; gap:16px; overflow-x:auto; scrollbar-width:none; padding:88px calc(100% - 316px) 96px 40px; scroll-snap-type:x mandatory; scroll-padding-left:40px">
+    <div data-steps="" data-rail="" style="display:flex; gap:16px; overflow-x:auto; scrollbar-width:none; padding:72px calc(100% - 316px) 80px 40px; scroll-snap-type:x mandatory; scroll-padding-left:40px">
       <div class="step-card" style="position:relative; flex:0 0 260px; scroll-snap-align:start; height:430px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
         <div style="display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid rgba(10,23,29,.12)">
           <span style="width:30px; height:30px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:14px">D</span>
@@ -314,6 +323,8 @@
     </div>
 
     </div>
+    </div>
+    <div class="pin-space" aria-hidden="true"></div>
   </section>
 
   <section id="pakete" data-screen-label="04 Pakete" style="scroll-margin-top:100px; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
@@ -1035,18 +1046,21 @@
   if (!section || !grid || !rail) return;
   var raf = null;
   function clamp(v) { return Math.max(0, Math.min(1, v)); }
+  var stage = document.querySelector('.pin-stage');
   function upd() {
     raf = null;
     if (window.innerWidth <= 768) { rail.style.opacity = '1'; return; }
-    var r = section.getBoundingClientRect();
+    var sr = section.getBoundingClientRect();
     var vh = window.innerHeight;
-    var pIn = clamp((vh * 0.9 - r.top) / (vh * 0.6));    // Hineinscrollen: Grid -> Zoom -> Post
-    var pOut = clamp((vh * 0.55 - r.bottom) / (vh * 0.3)); // Verlassen: Grid kommt zurueck
-    var g = Math.max(1 - pIn, pOut);
-    grid.style.opacity = String(g);
-    grid.style.transform = 'scale(' + (1 + (1 - g) * 1.5).toFixed(3) + ')';
+    var space = section.querySelector('.pin-space');
+    var travel = Math.max(1, space ? space.offsetHeight : 1);
+    var p = clamp(((40 + stage.offsetHeight) - space.getBoundingClientRect().top) / travel); // Fortschritt im gepinnten Bereich
+    var pOut = clamp((vh * 0.5 - sr.bottom) / (vh * 0.3)); // Verlassen: Grid kommt zurueck
+    var g = Math.max(1 - p, pOut);
+    grid.style.opacity = String(Math.min(1, g * 2.2).toFixed(3));
+    grid.style.transform = 'scale(' + (1 + (1 - g) * 1.8).toFixed(3) + ')';
     grid.style.visibility = g <= 0.01 ? 'hidden' : 'visible';
-    rail.style.opacity = String(0.15 + 0.85 * (1 - g));
+    rail.style.opacity = String((0.15 + 0.85 * (1 - g)).toFixed(3));
   }
   function onScroll() { if (!raf) raf = requestAnimationFrame(upd); }
   window.addEventListener('scroll', onScroll, { passive: true });
