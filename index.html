@@ -64,7 +64,7 @@
     #bewerben { padding-top:72px !important; padding-bottom:72px !important }
     #ablauf { padding-top:64px !important; padding-bottom:64px !important }
     #ablauf > div:first-child { padding:0 20px !important }
-    [data-steps] { padding:24px calc(100% - 320px) 28px 20px !important }
+    [data-steps] { padding:24px calc(100% - 296px) 28px 20px !important }
     section > div[style*="padding:88px 40px"] { padding:64px 20px !important }
     footer > div:first-child { padding:44px 20px 28px !important }
     [data-sticky-cta] { left:0 !important; right:0 !important; bottom:0 !important; border-radius:0 !important; justify-content:space-between !important; padding:10px 14px 10px 18px !important }
@@ -80,7 +80,7 @@
 
   .step-card { opacity:.45; transform:scale(.97); transition:opacity .25s ease, transform .25s ease }
   .step-card.active { opacity:1; transform:none }
-  .phone-frame { position:absolute; top:8px; left:25px; width:338px; height:683px; background:url(assets/iphone-frame.png) 0 0/100% 100% no-repeat; pointer-events:none; z-index:5; filter:drop-shadow(0 24px 40px rgba(10,23,29,.18)) }
+  .phone-frame { position:absolute; top:9px; left:27px; width:295px; height:595px; background:url(assets/iphone-frame.png) 0 0/100% 100% no-repeat; pointer-events:none; z-index:5; filter:drop-shadow(0 24px 40px rgba(10,23,29,.18)) }
   @media (max-width: 768px) {
     .phone-frame { display:none }
     [data-rail] { scroll-padding-left:20px !important }
@@ -93,6 +93,9 @@
   .big-heart { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none; z-index:4 }
   .big-heart svg { animation:heart-burst .9s ease forwards; filter:drop-shadow(0 6px 16px rgba(10,23,29,.25)) }
   @keyframes heart-burst { 0% { transform:scale(0); opacity:0 } 15% { transform:scale(1.15); opacity:1 } 30% { transform:scale(1) } 75% { transform:scale(1); opacity:1 } 100% { transform:scale(1.1); opacity:0 } }
+
+  .ig-grid { position:absolute; left:36px; top:18px; width:268px; height:570px; background:#FDFAF3; border-radius:34px; z-index:4; pointer-events:none; overflow:hidden; display:flex; flex-direction:column; transform-origin:50% 36%; will-change:transform, opacity }
+  @media (max-width: 768px) { .ig-grid { display:none } }
 </style>
 </head>
 <body>
@@ -188,8 +191,8 @@
       </div>
     </div>
     <div class="phone-wrap" style="position:relative">
-    <div data-steps="" data-rail="" style="display:flex; gap:16px; overflow-x:auto; scrollbar-width:none; padding:96px calc(100% - 340px) 104px 40px; scroll-snap-type:x mandatory; scroll-padding-left:40px">
-      <div class="step-card" style="position:relative; flex:0 0 300px; scroll-snap-align:start; height:500px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
+    <div data-steps="" data-rail="" style="display:flex; gap:16px; overflow-x:auto; scrollbar-width:none; padding:88px calc(100% - 316px) 96px 40px; scroll-snap-type:x mandatory; scroll-padding-left:40px">
+      <div class="step-card" style="position:relative; flex:0 0 260px; scroll-snap-align:start; height:430px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
         <div style="display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid rgba(10,23,29,.12)">
           <span style="width:30px; height:30px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:14px">D</span>
           <div style="line-height:1.3">
@@ -199,7 +202,7 @@
           <span style="margin-left:auto; font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E">1/6</span>
         </div>
         <div style="flex:1; display:flex; flex-direction:column; justify-content:center">
-          <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2">Jahres- und Themenplanung</div>
+          <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:21px; line-height:1.25">Jahres- und Themenplanung</div>
           <p style="margin:12px 0 0; font-size:15px; line-height:1.55">Wir gehen einmal durch: Ziele, Termine, Angebote, wer im Lauf des Jahres vor die Kamera soll.</p>
         </div>
         <div style="display:flex; align-items:center; gap:14px; padding-top:12px; border-top:1px solid rgba(10,23,29,.12)">
@@ -207,7 +210,7 @@
           <span style="margin-left:auto; display:flex; gap:4px; align-items:center"><span style="width:5px; height:5px; border-radius:50%; background:var(--accent, #FFBD76); opacity:1"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span></span>
         </div>
       </div>
-      <div class="step-card" style="position:relative; flex:0 0 300px; scroll-snap-align:start; height:500px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
+      <div class="step-card" style="position:relative; flex:0 0 260px; scroll-snap-align:start; height:430px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
         <div style="display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid rgba(10,23,29,.12)">
           <span style="width:30px; height:30px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:14px">D</span>
           <div style="line-height:1.3">
@@ -217,7 +220,7 @@
           <span style="margin-left:auto; font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E">2/6</span>
         </div>
         <div style="flex:1; display:flex; flex-direction:column; justify-content:center">
-          <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2">Vorbereitung des Drehtags</div>
+          <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:21px; line-height:1.25">Vorbereitung des Drehtags</div>
           <p style="margin:12px 0 0; font-size:15px; line-height:1.55">Ihr bekommt vorab einen konkreten Themen- und Ablaufplan. Jede beteiligte Person weiß, was gebraucht wird und wann.</p>
         </div>
         <div style="display:flex; align-items:center; gap:14px; padding-top:12px; border-top:1px solid rgba(10,23,29,.12)">
@@ -225,7 +228,7 @@
           <span style="margin-left:auto; display:flex; gap:4px; align-items:center"><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:var(--accent, #FFBD76); opacity:1"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span></span>
         </div>
       </div>
-      <div class="step-card" style="position:relative; flex:0 0 300px; scroll-snap-align:start; height:500px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
+      <div class="step-card" style="position:relative; flex:0 0 260px; scroll-snap-align:start; height:430px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
         <div style="display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid rgba(10,23,29,.12)">
           <span style="width:30px; height:30px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:14px">D</span>
           <div style="line-height:1.3">
@@ -235,7 +238,7 @@
           <span style="margin-left:auto; font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E">3/6</span>
         </div>
         <div style="flex:1; display:flex; flex-direction:column; justify-content:center">
-          <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2">Video und Foto an einem Tag</div>
+          <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:21px; line-height:1.25">Video und Foto an einem Tag</div>
           <p style="margin:12px 0 0; font-size:15px; line-height:1.55">Zwei Leute, kompaktes Licht, professioneller Ton. Wir drehen bei euch oder an einer vereinbarten Location.</p>
         </div>
         <div style="display:flex; align-items:center; gap:14px; padding-top:12px; border-top:1px solid rgba(10,23,29,.12)">
@@ -243,7 +246,7 @@
           <span style="margin-left:auto; display:flex; gap:4px; align-items:center"><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:var(--accent, #FFBD76); opacity:1"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span></span>
         </div>
       </div>
-      <div class="step-card" style="position:relative; flex:0 0 300px; scroll-snap-align:start; height:500px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
+      <div class="step-card" style="position:relative; flex:0 0 260px; scroll-snap-align:start; height:430px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
         <div style="display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid rgba(10,23,29,.12)">
           <span style="width:30px; height:30px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:14px">D</span>
           <div style="line-height:1.3">
@@ -253,7 +256,7 @@
           <span style="margin-left:auto; font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E">4/6</span>
         </div>
         <div style="flex:1; display:flex; flex-direction:column; justify-content:center">
-          <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2">Schnitt und Bildbearbeitung</div>
+          <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:21px; line-height:1.25">Schnitt und Bildbearbeitung</div>
           <p style="margin:12px 0 0; font-size:15px; line-height:1.55">Schnitt, Grading, Sound, Untertitel, Fotoauswahl und -bearbeitung. Formate und Crops sind beim Dreh mitgedacht.</p>
         </div>
         <div style="display:flex; align-items:center; gap:14px; padding-top:12px; border-top:1px solid rgba(10,23,29,.12)">
@@ -261,7 +264,7 @@
           <span style="margin-left:auto; display:flex; gap:4px; align-items:center"><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:var(--accent, #FFBD76); opacity:1"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span></span>
         </div>
       </div>
-      <div class="step-card" style="position:relative; flex:0 0 300px; scroll-snap-align:start; height:500px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
+      <div class="step-card" style="position:relative; flex:0 0 260px; scroll-snap-align:start; height:430px; box-sizing:border-box; display:flex; flex-direction:column; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-radius:18px; padding:16px 20px 14px">
         <div style="display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid rgba(10,23,29,.12)">
           <span style="width:30px; height:30px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:14px">D</span>
           <div style="line-height:1.3">
@@ -271,7 +274,7 @@
           <span style="margin-left:auto; font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E">5/6</span>
         </div>
         <div style="flex:1; display:flex; flex-direction:column; justify-content:center">
-          <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2">Freigabe und Übergabe</div>
+          <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:21px; line-height:1.25">Freigabe und Übergabe</div>
           <p style="margin:12px 0 0; font-size:15px; line-height:1.55">Alles liegt sortiert bereit. Ihr gebt frei und veröffentlicht Schritt für Schritt über das Quartal.</p>
         </div>
         <div style="display:flex; align-items:center; gap:14px; padding-top:12px; border-top:1px solid rgba(10,23,29,.12)">
@@ -279,7 +282,7 @@
           <span style="margin-left:auto; display:flex; gap:4px; align-items:center"><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span><span style="width:5px; height:5px; border-radius:50%; background:var(--accent, #FFBD76); opacity:1"></span><span style="width:5px; height:5px; border-radius:50%; background:#7C8B8E; opacity:0.5"></span></span>
         </div>
       </div>
-      <div class="step-card" style="position:relative; flex:0 0 300px; scroll-snap-align:start; height:500px; box-sizing:border-box; display:flex; flex-direction:column; background:#003F47; color:#FDFAF3; border:1px solid #003F47; border-radius:18px; padding:16px 20px 14px">
+      <div class="step-card" style="position:relative; flex:0 0 260px; scroll-snap-align:start; height:430px; box-sizing:border-box; display:flex; flex-direction:column; background:#003F47; color:#FDFAF3; border:1px solid #003F47; border-radius:18px; padding:16px 20px 14px">
         <div style="display:flex; align-items:center; gap:10px; padding-bottom:12px; border-bottom:1px solid rgba(253,250,243,.22)">
           <span style="width:30px; height:30px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:14px">D</span>
           <div style="line-height:1.3">
@@ -289,7 +292,7 @@
           <span style="margin-left:auto; font-family:'DM Mono',monospace; font-size:11px; color:#9FBCBF">6/6</span>
         </div>
         <div style="flex:1; display:flex; flex-direction:column; justify-content:center">
-          <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:24px; line-height:1.2">Review und nächstes Quartal</div>
+          <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:21px; line-height:1.25">Review und nächstes Quartal</div>
           <p style="margin:12px 0 0; font-size:15px; line-height:1.55">Wir schauen uns an, was funktioniert hat, und planen das nächste Quartal darauf. Danach beginnt der Zyklus von vorne.</p>
         </div>
         <div style="display:flex; align-items:center; gap:14px; padding-top:12px; border-top:1px solid rgba(253,250,243,.22)">
@@ -299,6 +302,17 @@
       </div>
     </div>
     <div class="phone-frame" aria-hidden="true"></div>
+    <div class="ig-grid" aria-hidden="true">
+      <div style="display:flex; align-items:center; gap:9px; padding:16px 14px 12px">
+        <span style="width:32px; height:32px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:15px">D</span>
+        <div style="line-height:1.3">
+          <div style="font-size:13px; font-weight:600">dailies</div>
+          <div style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">6 Schritte · 1 System</div>
+        </div>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:2px"><div style="aspect-ratio:1; background:#E9E2D2; display:flex; align-items:center; justify-content:center"></div><div style="aspect-ratio:1; background:#F5EFE3; display:flex; align-items:center; justify-content:center"><span style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.08em; color:#0A171D; opacity:.7">A014</span></div><div style="aspect-ratio:1; background:#003F47; display:flex; align-items:center; justify-content:center"></div><div style="aspect-ratio:1; background:#F5EFE3; display:flex; align-items:center; justify-content:center"></div><div style="aspect-ratio:1; background:#FFBD76; display:flex; align-items:center; justify-content:center"><span style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:13px; letter-spacing:.02em; text-transform:uppercase; color:#0A171D">Ablauf</span></div><div style="aspect-ratio:1; background:#E9E2D2; display:flex; align-items:center; justify-content:center"></div><div style="aspect-ratio:1; background:#16303A; display:flex; align-items:center; justify-content:center"><span style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.08em; color:rgba(253,250,243,.7); opacity:.7">9:16</span></div><div style="aspect-ratio:1; background:#F5EFE3; display:flex; align-items:center; justify-content:center"></div><div style="aspect-ratio:1; background:#E9E2D2; display:flex; align-items:center; justify-content:center"></div><div style="aspect-ratio:1; background:#003F47; display:flex; align-items:center; justify-content:center"><span style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.08em; color:rgba(253,250,243,.7); opacity:.7">REEL</span></div><div style="aspect-ratio:1; background:#F5EFE3; display:flex; align-items:center; justify-content:center"></div><div style="aspect-ratio:1; background:#E9E2D2; display:flex; align-items:center; justify-content:center"><span style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.08em; color:#0A171D; opacity:.7">C003</span></div></div>
+    </div>
+
     </div>
   </section>
 
@@ -971,7 +985,7 @@
   var rail = document.querySelector('[data-rail]');
   if (!rail) return;
   var cards = Array.prototype.slice.call(rail.querySelectorAll('.step-card'));
-  var step = 316; // Kartenbreite + Gap
+  var step = 276; // Kartenbreite + Gap
   function upd() {
     var i = Math.max(0, Math.min(cards.length - 1, Math.round(rail.scrollLeft / step)));
     cards.forEach(function (c, j) { c.classList.toggle('active', j === i); });
@@ -1006,6 +1020,38 @@
       burst(card);
     });
   });
+})();
+</script>
+<script>
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var g0 = document.querySelector('.ig-grid');
+    if (g0) g0.style.display = 'none';
+    return;
+  }
+  var section = document.querySelector('#ablauf');
+  var grid = document.querySelector('.ig-grid');
+  var rail = document.querySelector('[data-rail]');
+  if (!section || !grid || !rail) return;
+  var raf = null;
+  function clamp(v) { return Math.max(0, Math.min(1, v)); }
+  function upd() {
+    raf = null;
+    if (window.innerWidth <= 768) { rail.style.opacity = '1'; return; }
+    var r = section.getBoundingClientRect();
+    var vh = window.innerHeight;
+    var pIn = clamp((vh * 0.9 - r.top) / (vh * 0.6));    // Hineinscrollen: Grid -> Zoom -> Post
+    var pOut = clamp((vh * 0.55 - r.bottom) / (vh * 0.3)); // Verlassen: Grid kommt zurueck
+    var g = Math.max(1 - pIn, pOut);
+    grid.style.opacity = String(g);
+    grid.style.transform = 'scale(' + (1 + (1 - g) * 1.5).toFixed(3) + ')';
+    grid.style.visibility = g <= 0.01 ? 'hidden' : 'visible';
+    rail.style.opacity = String(0.15 + 0.85 * (1 - g));
+  }
+  function onScroll() { if (!raf) raf = requestAnimationFrame(upd); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  upd();
 })();
 </script>
 </body>
