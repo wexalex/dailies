@@ -116,12 +116,12 @@
 
   .ig-chrome { position:absolute; left:36px; top:14px; width:268px; height:570px; border-radius:30px; overflow:hidden; z-index:4; pointer-events:none; display:flex; flex-direction:column; font-family:'Inter Tight',Helvetica,sans-serif; color:#0A171D }
   .ig-top { height:44px; box-sizing:border-box; background:#fff; display:flex; align-items:center; justify-content:space-between; padding:14px 14px 2px }
-  .ig-logo { font-family:'Snell Roundhand','Segoe Script','Brush Script MT',cursive; font-size:21px; font-weight:600 }
   .ig-account { height:42px; box-sizing:border-box; background:#fff; display:flex; align-items:center; gap:8px; padding:4px 12px 8px }
   .ig-slot { height:335px; flex:none }
   .ig-bottom { flex:1; background:#fff; display:flex; flex-direction:column; gap:5px; padding:9px 12px 4px }
-  .ig-actions { display:flex; align-items:center; gap:12px; position:relative }
+  .ig-actions { display:flex; align-items:center; gap:14px; position:relative }
   .ig-actions .like { pointer-events:auto }
+  .ig-actions .like:focus, .ig-actions .like:focus-visible { outline:none }
   .ig-dots { position:absolute; left:50%; transform:translateX(-50%); display:flex; gap:4px }
   .ig-tabbar { margin-top:auto; display:flex; justify-content:space-between; align-items:center; padding:8px 8px 4px; border-top:1px solid rgba(10,23,29,.08) }
   @media (max-width: 768px) { .ig-chrome { display:none } }
@@ -254,8 +254,8 @@
     </div>
     <div class="ig-chrome">
       <div class="ig-top" aria-hidden="true">
-        <span class="ig-logo">Instagram</span>
-        <span style="display:flex; gap:14px"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px"><path d="M12 20s-7.5-4.9-7.5-10.2A4.3 4.3 0 0 1 12 6.6a4.3 4.3 0 0 1 7.5 3.2C19.5 15.1 12 20 12 20z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg></span>
+        <span></span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px"><path d="M12 20s-7.5-4.9-7.5-10.2A4.3 4.3 0 0 1 12 6.6a4.3 4.3 0 0 1 7.5 3.2C19.5 15.1 12 20 12 20z"/></svg>
       </div>
       <div class="ig-account" aria-hidden="true">
         <span style="width:27px; height:27px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:13px; flex:none">D</span>
@@ -268,10 +268,10 @@
       <div class="ig-slot"></div>
       <div class="ig-bottom">
         <div class="ig-actions">
-          <button class="like" type="button" aria-label="Gefällt mir" style="border:0; background:none; padding:0; margin:0; color:inherit; cursor:pointer; display:flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:23px;height:23px"><path d="M12 20s-7.5-4.9-7.5-10.2A4.3 4.3 0 0 1 12 6.6a4.3 4.3 0 0 1 7.5 3.2C19.5 15.1 12 20 12 20z"/></svg></button>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:23px;height:23px"><path d="M21 12a8 8 0 0 1-8 8H4l1.7-3.4A8 8 0 1 1 21 12z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:23px;height:23px"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
+          <button class="like" type="button" aria-label="Gefällt mir" style="border:0; background:none; padding:0; margin:0; color:inherit; cursor:pointer; display:flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px"><path d="M12 20s-7.5-4.9-7.5-10.2A4.3 4.3 0 0 1 12 6.6a4.3 4.3 0 0 1 7.5 3.2C19.5 15.1 12 20 12 20z"/></svg></button>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px"><path d="M21 12a8 8 0 0 1-8 8H4l1.7-3.4A8 8 0 1 1 21 12z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></svg>
           <span class="ig-dots" aria-hidden="true"><span style="width:6px; height:6px; border-radius:50%; background:#C7C7C7; display:inline-block"></span><span style="width:6px; height:6px; border-radius:50%; background:#C7C7C7; display:inline-block"></span><span style="width:6px; height:6px; border-radius:50%; background:#C7C7C7; display:inline-block"></span><span style="width:6px; height:6px; border-radius:50%; background:#C7C7C7; display:inline-block"></span><span style="width:6px; height:6px; border-radius:50%; background:#C7C7C7; display:inline-block"></span><span style="width:6px; height:6px; border-radius:50%; background:#C7C7C7; display:inline-block"></span></span>
-          <span style="margin-left:auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:23px;height:23px"><path d="M6 3h12v18l-6-4.5L6 21z"/></svg></span>
+          <span style="margin-left:auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px"><path d="M6 3h12v18l-6-4.5L6 21z"/></svg></span>
         </div>
         <div style="font-size:12px" aria-hidden="true">Gefällt <b>wexplore.productions</b> und 214 anderen</div>
         <div style="font-size:12px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap" aria-hidden="true"><b>dailies</b> <span id="ig-cap">Schritt 01 · Jahres- und Themenplanung</span></div>
