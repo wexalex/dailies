@@ -126,14 +126,13 @@
   .mb-slides { position:relative; display:flex; width:100%; height:100% }
   .mb-slides img, .mb-slides video { width:100%; height:100%; object-fit:cover; flex:none }
 
-  .bts-strip { display:flex; flex-wrap:wrap; gap:18px; margin-top:40px }
-  .bts { width:200px; max-width:29% }
-  .bts { margin:0; transform:rotate(var(--rot, 0deg)); transition:transform .25s ease }
-  .bts:hover { transform:rotate(0deg) scale(1.02) }
-  .bts-bild { position:relative; aspect-ratio:4/3; border-radius:4px; overflow:hidden; background:#F5EFE3; box-shadow:0 6px 16px rgba(10,23,29,.10) }
-  .bts-bild img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
-  .bts-platzhalter { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; border:1px dashed rgba(10,23,29,.35); border-radius:4px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E }
-  @media (prefers-reduced-motion: reduce) { .bts, .bts:hover { transform:none } }
+  .bts-collage { position:relative; aspect-ratio:1/1.05; align-self:center; max-width:560px; width:100% ; justify-self:center }
+  .bts-c { position:absolute; margin:0; border-radius:16px; overflow:hidden; background:#F5EFE3; box-shadow:0 14px 34px rgba(10,23,29,.14) }
+  .bts-c img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
+  .bts-platzhalter { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; border:1px dashed rgba(10,23,29,.35); border-radius:16px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E }
+  #bts-a { left:0; top:12%; width:46%; aspect-ratio:3/4; z-index:1 }
+  #bts-b { right:0; top:0; width:48%; aspect-ratio:3/4; z-index:1 }
+  #bts-c { left:20%; top:52%; width:72%; aspect-ratio:16/10; z-index:2 }
 </style>
 </head>
 <body>
@@ -227,38 +226,29 @@
         <h2 style="margin:0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Social Media scheitert selten an den Ideen.</h2>
         <p style="margin:20px 0 0; max-width:52ch">In kleinen Marketing-Teams läuft Social neben allem anderen. Ein Reel wird intern gedreht, für die Fotos kommt jemand anderes, beim nächsten Mal beginnt die Suche von vorne. Am Ende sieht jeder dritte Post aus wie von einer anderen Firma.</p>
         <p style="margin:14px 0 0; max-width:52ch">Bei DAILIES steht der Plan für das Jahr, bevor das Tagesgeschäft dazwischenkommt. Wir legen Themen und Formate fest, bündeln die Produktion auf einen Tag pro Quartal und liefern laufend aus.</p>
-      </div>
-      <ul style="margin:0; padding:0; list-style:none; align-self:center">
+        <ul style="margin:26px 0 0; padding:0; list-style:none; margin-top:26px">
         <li style="display:grid; grid-template-columns:40px 1fr; gap:12px; padding:14px 0; border-top:1px solid rgba(10,23,29,.16)"><span style="font-family:'DM Mono',monospace; font-size:12px; color:#003F47">01</span>Ein Budget, das im Jahresplan steht statt in fünf Einzelangeboten</li>
         <li style="display:grid; grid-template-columns:40px 1fr; gap:12px; padding:14px 0; border-top:1px solid rgba(10,23,29,.16)"><span style="font-family:'DM Mono',monospace; font-size:12px; color:#003F47">02</span>Nachschub, auch in Wochen, in denen intern nichts weitergeht</li>
         <li style="display:grid; grid-template-columns:40px 1fr; gap:12px; padding:14px 0; border-top:1px solid rgba(10,23,29,.16)"><span style="font-family:'DM Mono',monospace; font-size:12px; color:#003F47">03</span>Ein Look über Instagram, LinkedIn und alles andere</li>
         <li style="display:grid; grid-template-columns:40px 1fr; gap:12px; padding:14px 0; border-top:1px solid rgba(10,23,29,.16)"><span style="font-family:'DM Mono',monospace; font-size:12px; color:#003F47">04</span>Ein Ansprechpartner statt vier Dienstleister</li>
         <li style="display:grid; grid-template-columns:40px 1fr; gap:12px; padding:14px 0; border-top:1px solid rgba(10,23,29,.16); border-bottom:1px solid rgba(10,23,29,.16)"><span style="font-family:'DM Mono',monospace; font-size:12px; color:#003F47">05</span>Ein Team, das eure Themen nach zwei Quartalen selbst erkennt</li>
       </ul>
-    </div>
-  <!-- BTS-Slots: Bilder einfach als assets/dailies/bts-01.jpg bis bts-03.jpg ablegen -->
-    <div class="bts-strip">
-      <figure class="bts" style="--rot:-1.5deg">
-        <div class="bts-bild">
+      </div>
+      <!-- BTS-Collage: Bilder als assets/dailies/bts-01.jpg bis bts-03.jpg ablegen -->
+      <div class="bts-collage" aria-label="Behind the Scenes">
+        <figure class="bts-c" id="bts-a">
           <span class="bts-platzhalter">BTS folgt</span>
           <img src="assets/dailies/bts-01.jpg" alt="Behind the Scenes vom DAILIES-Drehtag" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-        </div>
-        <figcaption style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; margin-top:8px">BTS_01 · Am Set</figcaption>
-      </figure>
-      <figure class="bts" style="--rot:1.2deg">
-        <div class="bts-bild">
+        </figure>
+        <figure class="bts-c" id="bts-b">
           <span class="bts-platzhalter">BTS folgt</span>
           <img src="assets/dailies/bts-02.jpg" alt="Behind the Scenes vom DAILIES-Drehtag" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-        </div>
-        <figcaption style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; margin-top:8px">BTS_02 · Setup</figcaption>
-      </figure>
-      <figure class="bts" style="--rot:-0.8deg">
-        <div class="bts-bild">
+        </figure>
+        <figure class="bts-c" id="bts-c">
           <span class="bts-platzhalter">BTS folgt</span>
           <img src="assets/dailies/bts-03.jpg" alt="Behind the Scenes vom DAILIES-Drehtag" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-        </div>
-        <figcaption style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; margin-top:8px">BTS_03 · Interview</figcaption>
-      </figure>
+        </figure>
+      </div>
     </div>
   </section>
 
