@@ -501,88 +501,13 @@
         </div>
       </div>
 
-      <form data-form="" novalidate="" style="background:#16303A; border-radius:4px; padding:28px 26px; display:grid; gap:16px">
-        <div>
-          <label for="g-company" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Unternehmen *</label>
-          <input id="g-company" name="company" type="text" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3" />
-          <div data-error-for="company" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
-        </div>
-        <div>
-          <label for="g-website" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Website</label>
-          <input id="g-website" name="website" type="url" placeholder="wexplore.at" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3" />
-          <div data-error-for="website" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
-        </div>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px,1fr)); gap:16px">
-          <div>
-            <label for="g-name" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Name *</label>
-            <input id="g-name" name="name" type="text" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3" />
-            <div data-error-for="name" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
-          </div>
-          <div>
-            <label for="g-role" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Funktion *</label>
-            <input id="g-role" name="role" type="text" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3" />
-            <div data-error-for="role" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
-          </div>
-        </div>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px,1fr)); gap:16px">
-          <div>
-            <label for="g-email" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Firmen-E-Mail *</label>
-            <input id="g-email" name="email" type="email" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3" />
-            <div data-error-for="email" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
-          </div>
-          <div>
-            <label for="g-location" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Standort *</label>
-            <input id="g-location" name="location" type="text" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3" />
-            <div data-error-for="location" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
-          </div>
-        </div>
-        <div>
-          <label for="g-about" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Was macht ihr, was soll sichtbarer werden? *</label>
-          <textarea id="g-about" name="about" required="" maxlength="500" rows="4" style="width:100%; box-sizing:border-box; padding:12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3; resize:vertical"></textarea>
-          <div style="display:flex; justify-content:space-between; gap:12px">
-            <div data-error-for="about" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
-            <div data-counter-for="about" style="font-family:'DM Mono',monospace; font-size:12px; color:#9FBCBF; margin-top:5px; visibility:hidden">0 / 500</div>
-          </div>
-        </div>
-        <div>
-          <span style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:8px">Welche Kanäle nutzt ihr? *</span>
-          <div style="display:flex; flex-wrap:wrap; gap:8px">
-            <label style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid rgba(253,250,243,.28); border-radius:999px; font-size:15px; cursor:pointer"><input type="checkbox" name="channels" value="Instagram" />Instagram</label>
-            <label style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid rgba(253,250,243,.28); border-radius:999px; font-size:15px; cursor:pointer"><input type="checkbox" name="channels" value="LinkedIn" />LinkedIn</label>
-            <label style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid rgba(253,250,243,.28); border-radius:999px; font-size:15px; cursor:pointer"><input type="checkbox" name="channels" value="TikTok" />TikTok</label>
-            <label style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid rgba(253,250,243,.28); border-radius:999px; font-size:15px; cursor:pointer"><input type="checkbox" name="channels" value="YouTube" />YouTube</label>
-            <label style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid rgba(253,250,243,.28); border-radius:999px; font-size:15px; cursor:pointer"><input type="checkbox" name="channels" value="Facebook" />Facebook</label>
-            <label style="display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 14px; border:1px solid rgba(253,250,243,.28); border-radius:999px; font-size:15px; cursor:pointer"><input type="checkbox" name="channels" value="keine" />keine</label>
-          </div>
-          <div data-error-for="channels" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
-        </div>
-        <div>
-          <label for="g-blocker" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Was hält euch von regelmäßigem Content ab?</label>
-          <textarea id="g-blocker" name="blocker" maxlength="300" rows="3" style="width:100%; box-sizing:border-box; padding:12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3; resize:vertical"></textarea>
-        </div>
-        <div>
-          <label for="g-faces" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Wer könnte vor die Kamera? *</label>
-          <input id="g-faces" name="faces" type="text" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3" />
-          <div data-error-for="faces" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
-        </div>
-        <div>
-          <label for="g-window" style="display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF; margin-bottom:6px">Passender Zeitraum in den nächsten 4-6 Wochen *</label>
-          <select id="g-window" name="window" required="" style="width:100%; box-sizing:border-box; height:46px; padding:0 12px; border:1px solid rgba(253,250,243,.28); border-radius:4px; background:#0A171D; color:#FDFAF3">
-            <option value="">Bitte wählen</option>
-            <option>In den nächsten 2 Wochen</option>
-            <option>In 2-4 Wochen</option>
-            <option>In 4-6 Wochen</option>
-            <option>Flexibel</option>
-          </select>
-          <div data-error-for="window" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
-        </div>
-        <div>
-          <label style="display:flex; gap:10px; align-items:flex-start; font-size:15px; line-height:1.5"><input type="checkbox" name="consent" required="" style="margin-top:4px" /><span>Ich stimme der Kontaktaufnahme und der <a href="#datenschutz" style="color:#FDFAF3; text-decoration:underline">Datenschutzerklärung</a> zu. *</span></label>
-          <div data-error-for="consent" style="display:none; font-size:14px; color:var(--accent, #FFBD76); margin-top:5px"></div>
-        </div>
-        <button type="submit" data-submit="" style="height:50px; border:0; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; cursor:pointer">Bewerbung absenden</button>
+      <div style="background:#16303A; border-radius:4px; padding:34px 30px; display:grid; gap:16px; align-content:start">
+        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF">Bewerbung per Mail</div>
+        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:26px; line-height:1.2">In zwei Minuten beworben.</div>
+        <p style="margin:0; color:#D9D2C6; font-size:15px; line-height:1.55">Schreibt uns kurz, wer ihr seid, was ihr macht und welche Kanäle ihr nutzt - wir melden uns innerhalb von fünf Werktagen mit einer ehrlichen Einschätzung.</p>
+        <a href="mailto:office@wexplore.at?subject=Bewerbung%20Probe-Contenttag" style="display:inline-flex; align-items:center; justify-content:center; height:50px; padding:0 28px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600">Jetzt per Mail bewerben</a>
         <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Zwei Minuten · drei Plätze pro Monat · keine Verpflichtung</div>
-      </form>
+      </div>
     </div>
   </section>
 
@@ -788,69 +713,6 @@
   window.addEventListener("resize", onScroll);
   onScroll();
 
-  var form = document.querySelector("[data-form]");
-  if (!form) return;
-
-  var FREE = ["gmail.", "gmx.", "hotmail.", "outlook.", "yahoo.", "web.de"];
-  var base = "1px solid rgba(253,250,243,.28)";
-  function err(name, msg) {
-    var box = form.querySelector('[data-error-for="' + name + '"]');
-    var field = form.querySelector('[name="' + name + '"]');
-    if (box) { box.textContent = msg || ""; box.style.display = msg ? "block" : "none"; }
-    if (field && field.type !== "checkbox") field.style.border = msg ? "1px solid #FFBD76" : base;
-  }
-
-  var about = form.querySelector('[name="about"]');
-  var counter = form.querySelector('[data-counter-for="about"]');
-  if (about && counter) {
-    about.addEventListener("input", function () {
-      counter.textContent = about.value.length + " / 500";
-      counter.style.visibility = about.value.length >= 400 ? "visible" : "hidden";
-    });
-  }
-
-  form.querySelectorAll("input, select, textarea").forEach(function (el) {
-    el.addEventListener("focus", function () { if (el.type !== "checkbox") el.style.border = "2px solid #FFBD76"; });
-    el.addEventListener("blur", function () { if (el.type !== "checkbox") el.style.border = base; });
-  });
-
-  form.addEventListener("submit", function (ev) {
-    ev.preventDefault();
-    function get(n) { var f = form.querySelector('[name="' + n + '"]'); return f ? f.value || "" : ""; }
-    var ok = true;
-    var need = { company: "Bitte den Firmennamen angeben.", name: "Bitte den Namen angeben.", role: "Bitte die Funktion angeben.", location: "Bitte den Standort angeben.", faces: "Bitte angeben, wer vor die Kamera könnte.", window: "Bitte einen Zeitraum wählen.", about: "Bitte kurz beschreiben, was sichtbarer werden soll." };
-    Object.keys(need).forEach(function (n) {
-      var v = get(n).trim();
-      var bad = n === "company" ? v.length < 2 : v.length === 0;
-      err(n, bad ? need[n] : "");
-      if (bad) ok = false;
-    });
-
-    var site = get("website").trim();
-    if (site && !/^(https?:\/\/)?[\w-]+(\.[\w-]+)+([\/?#].*)?$/i.test(site)) { err("website", "Bitte eine gültige Adresse eingeben."); ok = false; } else err("website", "");
-
-    var mail = get("email").trim().toLowerCase();
-    if (!/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(mail)) { err("email", "Bitte eine gültige E-Mail-Adresse eingeben."); ok = false; }
-    else if (FREE.some(function (d) { return mail.split("@")[1].indexOf(d) === 0; })) { err("email", "Bitte eine Firmen-E-Mail verwenden, keinen Freemailer."); ok = false; }
-    else err("email", "");
-
-    var channels = form.querySelectorAll('[name="channels"]:checked').length;
-    err("channels", channels ? "" : "Bitte mindestens einen Kanal wählen.");
-    if (!channels) ok = false;
-
-    var consent = form.querySelector('[name="consent"]');
-    err("consent", consent && consent.checked ? "" : "Bitte der Kontaktaufnahme zustimmen.");
-    if (!consent || !consent.checked) ok = false;
-    if (!ok) return;
-
-    var btn = form.querySelector("[data-submit]");
-    btn.disabled = true;
-    btn.textContent = "WIRD GESENDET";
-    btn.style.background = "#7C8B8E";
-    setTimeout(function () {
-      form.innerHTML = '<div style="display:grid; gap:12px"><div style="font-family:\'DM Mono\',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#FFBD76">Bewerbung eingegangen</div><div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:26px; line-height:1.2">Danke - wir melden uns innerhalb von fünf Werktagen.</div><p style="margin:0; color:#D9D2C6">Wir sehen uns an, was ihr macht, und sagen ehrlich, ob ein Probe-Contenttag passt. Bei Rückfragen: <a href="mailto:office@wexplore.at" style="color:#FDFAF3; text-decoration:underline">office@wexplore.at</a></p></div>';
-    }, 900);
-  });
 })();
 </script>
 <script>
