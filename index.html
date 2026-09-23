@@ -125,6 +125,14 @@
   .mb-placeholder { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E }
   .mb-slides { position:relative; display:flex; width:100%; height:100% }
   .mb-slides img, .mb-slides video { width:100%; height:100%; object-fit:cover; flex:none }
+
+  .bts-strip { display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:26px; margin-top:56px }
+  .bts { margin:0; transform:rotate(var(--rot, 0deg)); transition:transform .25s ease }
+  .bts:hover { transform:rotate(0deg) scale(1.02) }
+  .bts-bild { position:relative; aspect-ratio:4/3; border-radius:4px; overflow:hidden; background:#F5EFE3; box-shadow:0 10px 24px rgba(10,23,29,.12) }
+  .bts-bild img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
+  .bts-platzhalter { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; border:1px dashed rgba(10,23,29,.35); border-radius:4px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E }
+  @media (prefers-reduced-motion: reduce) { .bts, .bts:hover { transform:none } }
 </style>
 </head>
 <body>
@@ -226,6 +234,30 @@
         <li style="display:grid; grid-template-columns:40px 1fr; gap:12px; padding:14px 0; border-top:1px solid rgba(10,23,29,.16)"><span style="font-family:'DM Mono',monospace; font-size:12px; color:#003F47">04</span>Ein Ansprechpartner statt vier Dienstleister</li>
         <li style="display:grid; grid-template-columns:40px 1fr; gap:12px; padding:14px 0; border-top:1px solid rgba(10,23,29,.16); border-bottom:1px solid rgba(10,23,29,.16)"><span style="font-family:'DM Mono',monospace; font-size:12px; color:#003F47">05</span>Ein Team, das eure Themen nach zwei Quartalen selbst erkennt</li>
       </ul>
+    </div>
+  <!-- BTS-Slots: Bilder einfach als assets/dailies/bts-01.jpg bis bts-03.jpg ablegen -->
+    <div class="bts-strip">
+      <figure class="bts" style="--rot:-1.5deg">
+        <div class="bts-bild">
+          <span class="bts-platzhalter">BTS folgt</span>
+          <img src="assets/dailies/bts-01.jpg" alt="Behind the Scenes vom DAILIES-Drehtag" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+        </div>
+        <figcaption style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; margin-top:8px">BTS_01 · Am Set</figcaption>
+      </figure>
+      <figure class="bts" style="--rot:1.2deg">
+        <div class="bts-bild">
+          <span class="bts-platzhalter">BTS folgt</span>
+          <img src="assets/dailies/bts-02.jpg" alt="Behind the Scenes vom DAILIES-Drehtag" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+        </div>
+        <figcaption style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; margin-top:8px">BTS_02 · Setup</figcaption>
+      </figure>
+      <figure class="bts" style="--rot:-0.8deg">
+        <div class="bts-bild">
+          <span class="bts-platzhalter">BTS folgt</span>
+          <img src="assets/dailies/bts-03.jpg" alt="Behind the Scenes vom DAILIES-Drehtag" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+        </div>
+        <figcaption style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; margin-top:8px">BTS_03 · Interview</figcaption>
+      </figure>
     </div>
   </section>
 
