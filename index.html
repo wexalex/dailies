@@ -425,7 +425,7 @@
         <div class="mb-screen">
           <span class="mb-placeholder">Screen folgt</span>
           <div class="mb-slides">
-            <img src="assets/dailies/plattform-screen-01.png" alt="DAILIES Kundenplattform" loading="lazy" decoding="async" onerror="this.style.display='none'" />
+            <video id="plattform-video" src="assets/dailies/plattform-screen-01.mp4" muted loop playsinline preload="none" aria-label="Bildschirmaufnahme der DAILIES Kundenplattform"></video>
           </div>
         </div>
         <img class="mb-frame" src="assets/macbook-frame.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1280" height="781" />
@@ -780,6 +780,24 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
+</script>
+<script>
+(function () {
+  var video = document.getElementById('plattform-video');
+  if (!video || !('IntersectionObserver' in window)) return;
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        if (reduce) { video.preload = 'metadata'; video.load(); }
+        else { video.play().catch(function () {}); }
+      } else if (!video.paused) {
+        video.pause();
+      }
+    });
+  }, { threshold: 0.25 });
+  io.observe(video);
+})();
 </script>
 </body>
 </html>
