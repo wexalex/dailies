@@ -70,7 +70,7 @@ window.DAILIES = {
         price: "€ 1.290",
         priceSub: "€ 3.870 pro Quartal verrechnet",
         priceNote: "Jahr im Voraus: € 12.500 (-19 %)",
-        cta: { label: "Probe-Contenttag anfragen", href: "#bewerben" },
+        cta: { label: "Probe-Contenttag anfragen", href: "mailto:office@wexplore.at?subject=Gratis%20Probe-Contenttag" },
         features: ["2", "13 / Quartal", "36 / Quartal", false, true, false, false, "0,5 Tage", "1 ganzer Drehtag, 2 Personen", "2,5 Tage", "1", "Instagram", false, false, false, false]
       },
       {
@@ -81,7 +81,7 @@ window.DAILIES = {
         price: "€ 2.690",
         priceSub: "€ 8.070 pro Quartal verrechnet",
         priceNote: "",
-        cta: { label: "Probe-Contenttag anfragen", href: "#bewerben" },
+        cta: { label: "Probe-Contenttag anfragen", href: "mailto:office@wexplore.at?subject=Gratis%20Probe-Contenttag" },
         features: ["3", "30 / Quartal", "72 / Quartal", "30 / Quartal", true, false, false, "1 Tag", "3 Halbtage über das Quartal verteilt, 2 Personen", "5 Tage", "2", "Instagram, LinkedIn", false, false, false, true]
       },
       {
