@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,600;125,700&family=Inter+Tight:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<script src="assets/config.js"></script>
+<script src="assets/config.js" defer></script>
 <style>
   html { scroll-behavior: smooth; }
   body { margin: 0; background: #FDFAF3; color: #0A171D; font-family: 'Inter Tight', Helvetica, Arial, sans-serif; font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
@@ -279,7 +279,7 @@
     </div>
     <div data-table="" data-plan="grow" style="display:grid; grid-template-columns:minmax(150px,.9fr) repeat(3, minmax(210px,1.1fr)); overflow-x:auto"></div>
     <script>
-    (function () {
+    document.addEventListener('DOMContentLoaded', function () {
       var table = document.querySelector('[data-table]');
       if (!table || !window.DAILIES) return;
       var P = window.DAILIES.pricing;
@@ -316,7 +316,7 @@
         out.push('<div class="pk pk-' + p.id + ' pk-cta' + (p.highlighted ? ' hl' : '') + '" style="padding:22px 20px"><a href="' + p.cta.href + '">' + p.cta.label + '</a></div>');
       });
       table.innerHTML = out.join('');
-    })();
+    });
     </script>
     <div style="margin:18px 0 0; font-size:15px; color:#7C8B8E; display:grid; gap:4px">
       <p style="margin:0">Alle Preise netto, exklusive Reisekosten außerhalb Oberösterreichs. Verrechnung quartalsweise, der Monatspreis ist die Darstellungsform.</p>
@@ -387,10 +387,10 @@
         <div class="mb-screen">
           <span class="mb-placeholder">Screen folgt</span>
           <div class="mb-slides">
-            <img src="assets/dailies/plattform-screen-01.png" alt="DAILIES Kundenplattform" onerror="this.style.display='none'" />
+            <img src="assets/dailies/plattform-screen-01.png" alt="DAILIES Kundenplattform" loading="lazy" decoding="async" onerror="this.style.display='none'" />
           </div>
         </div>
-        <img class="mb-frame" src="assets/macbook-frame.png" alt="" aria-hidden="true" />
+        <img class="mb-frame" src="assets/macbook-frame.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1280" height="781" />
       </div>
     </div>
   </section>
@@ -400,7 +400,7 @@
     <h2 style="margin:20px 0 34px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Für wen wir schon gedreht haben.</h2>
     <div id="cases-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:22px"></div>
     <script>
-    (function () {
+    document.addEventListener('DOMContentLoaded', function () {
       var grid = document.getElementById('cases-grid');
       if (!grid || !window.DAILIES) return;
       var MONO = "font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase";
@@ -425,7 +425,7 @@
           testimonial +
         '</div>';
       }).join('');
-    })();
+    });
     </script>
   </section>
 
@@ -433,7 +433,7 @@
     <div style="padding:88px 40px; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:48px; align-items:center">
       <div style="max-width:400px">
         <div style="position:relative">
-          <div style="aspect-ratio:4/5; border-radius:20px; overflow:hidden; background:#0A171D"><img src="assets/alex-gruber.jpg" alt="Alex Gruber, WEXPLORE Productions" style="width:100%; height:100%; object-fit:cover; display:block" /></div>
+          <div style="aspect-ratio:4/5; border-radius:20px; overflow:hidden; background:#0A171D"><img src="assets/alex-gruber.jpg" alt="Alex Gruber, WEXPLORE Productions" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block" /></div>
           <div aria-hidden="true" style="position:absolute; top:50%; transform:translateY(-50%); height:34%; left:-16px; width:14px; border:3px solid #FDFAF3; border-right:none"></div>
           <div aria-hidden="true" style="position:absolute; top:50%; transform:translateY(-50%); height:34%; right:-16px; width:14px; border:3px solid #FDFAF3; border-left:none"></div>
         </div>
@@ -443,7 +443,7 @@
         <blockquote style="margin:18px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:clamp(23px,2.3vw,30px); line-height:1.3; letter-spacing:-0.01em">„Ich höre in fast jedem Gespräch mit kleineren Betrieben dasselbe: Es gäbe genug zu erzählen, aber niemand hat Zeit, jede Woche eine Produktion anzuschieben. Genau diese Aufgabe nehmen wir ab."</blockquote>
         <div style="margin-top:22px; font-weight:600">Alex Gruber · WEXPLORE Productions</div>
         <div style="font-size:15px; color:#9FBCBF">Videoproduktion aus Linz</div>
-        <div style="display:flex; align-items:center; gap:8px; margin-top:18px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF">powered by <img src="assets/wexplore-productions-light.png" alt="WEXPLORE Productions" style="height:10px; width:auto; display:block" /></div>
+        <div style="display:flex; align-items:center; gap:8px; margin-top:18px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF">powered by <img src="assets/wexplore-productions-light.png" alt="WEXPLORE Productions" loading="lazy" decoding="async" style="height:10px; width:auto; display:block" /></div>
         <a href="#bewerben" style="display:inline-flex; align-items:center; height:50px; padding:0 28px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; margin-top:26px">Content-Abo besprechen</a>
       </div>
     </div>
@@ -607,7 +607,7 @@
     <div style="padding:56px 40px 36px; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:36px">
       <div>
         <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:26px; letter-spacing:-0.02em; text-transform:uppercase">Dailies</div>
-        <div style="display:flex; align-items:center; gap:8px; margin-top:10px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">powered by <a href="https://wexplore.at" target="_blank" rel="noopener" style="display:block"><img src="assets/wexplore-productions-light.png" alt="WEXPLORE Productions" style="height:10px; width:auto; display:block" /></a></div>
+        <div style="display:flex; align-items:center; gap:8px; margin-top:10px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">powered by <a href="https://wexplore.at" target="_blank" rel="noopener" style="display:block"><img src="assets/wexplore-productions-light.png" alt="WEXPLORE Productions" loading="lazy" decoding="async" style="height:10px; width:auto; display:block" /></a></div>
       </div>
       <div style="font-size:15px; line-height:1.7; color:#D9D2C6">
         <div><a href="mailto:office@wexplore.at" style="color:#FDFAF3">office@wexplore.at</a></div>
@@ -816,7 +816,7 @@
 })();
 </script>
 <script>
-(function () {
+document.addEventListener('DOMContentLoaded', function () {
   var table = document.querySelector('[data-table]');
   if (!table) return;
   var cells = Array.prototype.slice.call(table.querySelectorAll('.pk'));
@@ -829,7 +829,7 @@
     });
   });
   table.addEventListener('mouseleave', function () { setHl('grow'); });
-})();
+});
 </script>
 <script>
 (function () {
@@ -874,7 +874,7 @@
 })();
 </script>
 <script>
-(function () {
+document.addEventListener('DOMContentLoaded', function () {
   var table = document.querySelector('[data-table]');
   var tabs = document.querySelectorAll('.plan-tabs button');
   if (!table || !tabs.length) return;
@@ -886,7 +886,7 @@
       table.querySelectorAll('.pk').forEach(function (c) { c.classList.toggle('hl', c.classList.contains('pk-' + col)); });
     });
   });
-})();
+});
 </script>
 </body>
 </html>
