@@ -5,6 +5,26 @@
  */
 window.DAILIES = {
 
+  /* ---------- Lead-Magnet-Flow ("Content-Richtung entdecken") ----------
+   * Der Flow ist ausdruecklich KEINE Terminbuchung. Interessent:innen bewerben sich
+   * fuer die Moeglichkeit eines Probe-Content-Tags, danach schlagen wir ein
+   * 30-minuetiges Briefing vor.
+   *
+   * uebermittlung.endpoint: solange null, zeigt der Flow KEINE Erfolgsmeldung,
+   * sondern oeffnet eine fertig ausgefuellte E-Mail und sagt, dass die Bewerbung
+   * erst mit dem Senden dort raus ist. Es wird keine Uebermittlung vorgetaeuscht.
+   * Sobald ein Endpunkt eingetragen ist, wird per JSON gepostet und die
+   * Erfolgsmeldung erscheint erst nach einer erfolgreichen Antwort.
+   */
+  flow: {
+    uebermittlung: {
+      endpoint: null,          // TODO: Formular-Endpunkt oder CRM-Webhook eintragen
+      methode: "POST",
+      fallbackEmail: "office@wexplore.at"
+    }
+  },
+
+
   /* ---------- Cases (Sektion "Referenzen") ----------
    * tag: "Employer Brand" | "Produkt" | "Brand"
    * image: Pfad zu Thumbnail/Standbild (16:9). Leer = gestrichelter Platzhalter.
