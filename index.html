@@ -3,11 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>DAILIES - Ein Drehtag. Ein Quartal Content.</title>
+<title>Dailies - das Content-Abo von WEXPLORE</title>
+<!-- TODO: Meta-Description finalisieren (aktueller Text ist Arbeitsstand) -->
 <meta name="description" content="DAILIES ist das Content-Abo von WEXPLORE Productions: ein Drehtag pro Quartal, mindestens 13 Reels plus Fotos. Für Unternehmen in Oberösterreich.">
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,600;125,700&family=Inter+Tight:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<script src="assets/config.js"></script>
 <style>
   html { scroll-behavior: smooth; }
   body { margin: 0; background: #FDFAF3; color: #0A171D; font-family: 'Inter Tight', Helvetica, Arial, sans-serif; font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
@@ -18,7 +20,7 @@
   summary { list-style: none; cursor: pointer; }
   input, select, textarea, button { font: inherit; color: inherit; }
   *:focus-visible { outline: 2px solid #FFBD76; outline-offset: 2px; }
-  [data-steps]::-webkit-scrollbar, [data-table]::-webkit-scrollbar { display: none; }
+  [data-table]::-webkit-scrollbar { display: none; }
   ::selection { background: #FFBD76; color: #0A171D; }
 
   .pk { transition: background-color .18s ease, color .18s ease, border-color .18s ease }
@@ -64,7 +66,6 @@
     #bewerben { padding-top:72px !important; padding-bottom:72px !important }
     #ablauf { padding-top:64px !important; padding-bottom:64px !important }
     #ablauf > div:first-child { padding:0 20px !important }
-    [data-steps] { padding:24px calc(100% - 288px) 28px 20px !important }
     section > div[style*="padding:88px 40px"] { padding:64px 20px !important }
     footer > div:first-child { padding:44px 20px 28px !important }
     [data-sticky-cta] { left:0 !important; right:0 !important; bottom:0 !important; border-radius:0 !important; justify-content:space-between !important; padding:10px 14px 10px 18px !important }
@@ -78,21 +79,9 @@
   .plan-tabs button { flex:1; height:42px; border:0; background:transparent; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#0A171D; cursor:pointer; transition:background-color .18s ease, color .18s ease }
   .plan-tabs button.active { background:#0A171D; color:#FDFAF3 }
 
-  .step-card { opacity:.45; transform:scale(.97); transition:opacity .25s ease, transform .25s ease }
-  .step-card.active { opacity:1; transform:none }
-  .phone-frame { position:absolute; top:5px; left:311px; width:295px; height:595px; background:url(assets/iphone-frame.png) 0 0/100% 100% no-repeat; pointer-events:none; z-index:5; filter:drop-shadow(0 24px 40px rgba(10,23,29,.18)) }
   @media (max-width: 768px) {
-    .phone-frame { display:none }
-    [data-rail] { scroll-padding-left:20px !important }
   }
 
-  .like svg { transition:transform .15s ease }
-  .like.liked svg path { fill:#FF3040; stroke:#FF3040 }
-  .like.liked svg { animation:like-pop .35s ease }
-  @keyframes like-pop { 0% { transform:scale(1) } 40% { transform:scale(1.45) } 100% { transform:scale(1) } }
-  .big-heart { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none; z-index:4 }
-  .big-heart svg { animation:heart-burst .9s ease forwards; filter:drop-shadow(0 6px 16px rgba(10,23,29,.25)) }
-  @keyframes heart-burst { 0% { transform:scale(0); opacity:0 } 15% { transform:scale(1.15); opacity:1 } 30% { transform:scale(1) } 75% { transform:scale(1); opacity:1 } 100% { transform:scale(1.1); opacity:0 } }
 
   a[style*="border-radius:999px"], .pk-cta a, [data-submit], .plan-tabs button {
     transition: transform .18s cubic-bezier(.2,0,0,1), box-shadow .18s ease, background-color .18s ease, color .18s ease, border-color .18s ease;
@@ -114,17 +103,29 @@
     a[style*="border-radius:999px"], .pk-cta a, [data-submit], .plan-tabs button { transition:none; animation:none !important; transform:none !important }
   }
 
-  .ig-chrome { position:absolute; left:320px; top:14px; width:268px; height:570px; border-radius:30px; overflow:hidden; z-index:4; pointer-events:none; display:flex; flex-direction:column; font-family:'Inter Tight',Helvetica,sans-serif; color:#0A171D }
-  .ig-top { height:44px; box-sizing:border-box; background:#fff; display:flex; align-items:center; justify-content:space-between; padding:14px 14px 2px }
-  .ig-account { height:42px; box-sizing:border-box; background:#fff; display:flex; align-items:center; gap:8px; padding:4px 12px 8px }
-  .ig-slot { height:335px; flex:none }
-  .ig-bottom { flex:1; background:#fff; display:flex; flex-direction:column; gap:5px; padding:9px 12px 4px }
-  .ig-actions { display:flex; align-items:center; gap:9px; position:relative }
-  .ig-actions .like { pointer-events:auto }
-  .ig-actions .like:focus, .ig-actions .like:focus-visible { outline:none }
-  .ig-dots { position:absolute; left:50%; transform:translateX(-50%); display:flex; gap:4px }
-  .ig-tabbar { margin-top:auto; display:flex; justify-content:space-between; align-items:center; padding:8px 8px 4px; border-top:1px solid rgba(10,23,29,.08) }
-  @media (max-width: 768px) { .ig-chrome { display:none } }
+
+  .steps { list-style:none; display:grid; grid-template-columns:repeat(6, 1fr); gap:0 28px; margin:48px 0 0; padding:0 40px }
+  .steps li { position:relative; padding-top:26px }
+  .steps li::before { content:""; position:absolute; top:5px; left:0; right:-28px; height:1px; background:rgba(10,23,29,.25) }
+  .steps li:last-child::before { right:0 }
+  .steps li::after { content:""; position:absolute; top:0; left:0; width:11px; height:11px; border-radius:50%; background:var(--accent, #FFBD76); border:1px solid rgba(10,23,29,.25); box-sizing:border-box }
+  @media (max-width: 1180px) {
+    .steps { grid-template-columns:repeat(3, 1fr); gap:36px 28px }
+    .steps li:nth-child(3n)::before { right:0 }
+  }
+  @media (max-width: 768px) {
+    .steps { grid-template-columns:1fr; gap:0; padding:0 20px; margin-top:36px }
+    .steps li { padding:0 0 30px 30px }
+    .steps li::before { top:5px; left:5px; right:auto; bottom:-5px; width:1px; height:auto }
+    .steps li:last-child::before { display:none }
+  }
+
+  .mb { position:relative }
+  .mb-frame { position:relative; z-index:2; width:100%; height:auto; display:block; pointer-events:none }
+  .mb-screen { position:absolute; z-index:1; left:9%; top:4.6%; width:82%; height:84.4%; background:#D9D5CC; overflow:hidden }
+  .mb-placeholder { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E }
+  .mb-slides { position:relative; display:flex; width:100%; height:100% }
+  .mb-slides img, .mb-slides video { width:100%; height:100%; object-fit:cover; flex:none }
 </style>
 </head>
 <body>
@@ -141,9 +142,9 @@
   </div>
 
   <header style="position:sticky; top:29px; z-index:70; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:14px 32px; background:rgba(253,250,243,.94); backdrop-filter:blur(10px); border-bottom:1px solid rgba(10,23,29,.18)">
-    <div style="display:flex; align-items:baseline; gap:14px">
-      <span style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:22px; letter-spacing:-0.02em; text-transform:uppercase">Dailies</span>
-      <span style="display:flex; align-items:center; gap:5px; font-family:'DM Mono',monospace; font-size:8px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">powered by <img src="assets/wexplore-productions-dark.png" alt="WEXPLORE Productions" style="height:7px; width:auto; display:block" /></span>
+    <div style="line-height:1.2">
+      <span style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:22px; letter-spacing:-0.02em; text-transform:uppercase; display:block">Dailies</span>
+      <span style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:block; margin-top:1px">Das Content-Abo von WEXPLORE</span>
     </div>
     <nav style="display:flex; align-items:center; gap:24px; font-size:15px; flex-wrap:wrap">
       <a class="navlink" href="#ablauf">Ablauf</a>
@@ -167,6 +168,8 @@
     <h1 style="margin:24px auto 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(44px,7vw,104px); line-height:1; letter-spacing:-0.02em; max-width:14ch">Ein Drehtag.<br />Ein Quartal Content.</h1>
     <p style="margin:28px auto 0; font-size:21px; line-height:1.5; max-width:48ch">Ab einem Drehtag pro Quartal: Wir drehen Video und Foto bei euch und machen daraus mindestens 13 Reels plus Fotos. Das Budget plant ihr einmal im Jahr - alles andere übernehmen wir.</p>
     <p style="margin:16px auto 0; font-size:15px; color:#7C8B8E; max-width:48ch">DAILIES ist das Content-Abo von WEXPLORE. Videoproduktion aus Linz.</p>
+    <!-- TODO: Claim einsetzen und hidden-Attribut entfernen -->
+    <p id="hero-claim" hidden style="margin:14px auto 0; font-family:'DM Mono',monospace; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:#003F47; max-width:48ch">[CLAIM FOLGT]</p>
     <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:34px">
       <a href="#bewerben" style="display:inline-flex; align-items:center; height:50px; padding:0 28px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; white-space:nowrap">Gratis Probe-Contenttag anfragen</a>
       <a href="#pakete" style="display:inline-flex; align-items:center; height:50px; padding:0 28px; border-radius:999px; border:1px solid #0A171D; white-space:nowrap">Pakete ansehen</a>
@@ -175,8 +178,42 @@
   </section>
 
 
-  <section id="warum" data-screen-label="02 Warum" style="scroll-margin-top:100px; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
-    <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 02 · Warum es liegen bleibt</p>
+  <section id="ziel" data-screen-label="02 Ziel" style="scroll-margin-top:100px; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
+    <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 02 · Ziel</p>
+    <h2 style="margin:20px 0 34px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Was ist dein Social-Media-Ziel?</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:22px">
+      <div style="background:#F5EFE3; border-radius:4px; border-top:3px solid var(--accent, #FFBD76); padding:28px 26px; display:flex; flex-direction:column; gap:0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#003F47" stroke-width="1.8" style="width:34px;height:34px"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9.5" r="2.4"/><path d="M15.5 14.6a4.6 4.6 0 0 1 5.5 4.4"/></svg>
+        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:23px; line-height:1.25; margin-top:16px">Mitarbeiter &amp; Lehrlinge finden</div>
+        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px; margin-top:6px">Employer Brand</div>
+        <!-- TODO: Zieltext einsetzen (2-3 Zeilen) -->
+        <p style="margin:12px 0 0; font-size:15px; line-height:1.55">[TEXT FOLGT]</p>
+        <!-- TODO: Link später auf konkreten Case bzw. URL zeigen lassen -->
+        <a href="#cases" style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; color:#003F47; margin-top:14px">Zum Case →</a>
+      </div>
+      <div style="background:#F5EFE3; border-radius:4px; border-top:3px solid var(--accent, #FFBD76); padding:28px 26px; display:flex; flex-direction:column; gap:0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#003F47" stroke-width="1.8" style="width:34px;height:34px"><path d="M3 3h8l10 10-8 8L3 11z"/><circle cx="8" cy="8" r="1.6"/></svg>
+        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:23px; line-height:1.25; margin-top:16px">Produkte verkaufen</div>
+        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px; margin-top:6px">Produkt</div>
+        <!-- TODO: Zieltext einsetzen (2-3 Zeilen) -->
+        <p style="margin:12px 0 0; font-size:15px; line-height:1.55">[TEXT FOLGT]</p>
+        <!-- TODO: Link später auf konkreten Case bzw. URL zeigen lassen -->
+        <a href="#cases" style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; color:#003F47; margin-top:14px">Zum Case →</a>
+      </div>
+      <div style="background:#F5EFE3; border-radius:4px; border-top:3px solid var(--accent, #FFBD76); padding:28px 26px; display:flex; flex-direction:column; gap:0">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#003F47" stroke-width="1.8" style="width:34px;height:34px"><path d="M3 10v4h3l8 5V5l-8 5z"/><path d="M17.5 8.5a5 5 0 0 1 0 7"/><path d="M20 6a9 9 0 0 1 0 12"/></svg>
+        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:23px; line-height:1.25; margin-top:16px">Als Marke sichtbar sein</div>
+        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px; margin-top:6px">Brand Awareness</div>
+        <!-- TODO: Zieltext einsetzen (2-3 Zeilen) -->
+        <p style="margin:12px 0 0; font-size:15px; line-height:1.55">[TEXT FOLGT]</p>
+        <!-- TODO: Link später auf konkreten Case bzw. URL zeigen lassen -->
+        <a href="#cases" style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; color:#003F47; margin-top:14px">Zum Case →</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="warum" data-screen-label="03 Warum" style="scroll-margin-top:100px; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
+    <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 03 · Warum es liegen bleibt</p>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:48px; margin-top:24px">
       <div>
         <h2 style="margin:0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Social Media scheitert selten an den Ideen.</h2>
@@ -193,184 +230,94 @@
     </div>
   </section>
 
-  <section id="ablauf" data-screen-label="03 Ablauf" style="scroll-margin-top:100px; background:#F5EFE3; padding:88px 0; border-bottom:1px solid rgba(10,23,29,.18)">
+  <section id="ablauf" data-screen-label="04 Ablauf" style="scroll-margin-top:100px; background:#F5EFE3; padding:88px 0; border-bottom:1px solid rgba(10,23,29,.18)">
     <div style="padding:0 40px">
-      <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 03 · Ablauf</p>
-      <div style="display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap; margin-top:20px">
-        <h2 style="margin:0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em; max-width:26ch">Sechs Schritte, die sich jedes Quartal wiederholen.</h2>
-        <span style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Durchwischen →</span>
-      </div>
+      <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 04 · Ablauf</p>
+      <h2 style="margin:20px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em; max-width:26ch">Sechs Schritte, die sich jedes Quartal wiederholen.</h2>
     </div>
-    <div class="phone-wrap" style="position:relative">
-    <div data-steps="" data-rail="" style="display:flex; gap:16px; overflow-x:auto; scrollbar-width:none; padding:100px calc(100% - 588px) 130px 320px; scroll-snap-type:x mandatory; scroll-padding-left:320px">
-      <div class="step-card" data-step-title="Schritt 01 · Jahres- und Themenplanung" style="position:relative; flex:0 0 268px; scroll-snap-align:start; height:335px; box-sizing:border-box; display:flex; flex-direction:column; justify-content:center; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:22px 22px">
-        <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 01 / 06</div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:20px; line-height:1.25; margin-top:8px">Jahres- und Themenplanung</div>
-        <p style="margin:10px 0 0; font-size:13.5px; line-height:1.5">Wir gehen einmal durch: Ziele, Termine, Angebote, wer im Lauf des Jahres vor die Kamera soll.</p>
-      </div>
-      <div class="step-card" data-step-title="Schritt 02 · Vorbereitung des Drehtags" style="position:relative; flex:0 0 268px; scroll-snap-align:start; height:335px; box-sizing:border-box; display:flex; flex-direction:column; justify-content:center; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:22px 22px">
-        <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 02 / 06</div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:20px; line-height:1.25; margin-top:8px">Vorbereitung des Drehtags</div>
-        <p style="margin:10px 0 0; font-size:13.5px; line-height:1.5">Ihr bekommt vorab einen konkreten Themen- und Ablaufplan. Jede beteiligte Person weiß, was gebraucht wird und wann.</p>
-      </div>
-      <div class="step-card" data-step-title="Schritt 03 · Video und Foto an einem Tag" style="position:relative; flex:0 0 268px; scroll-snap-align:start; height:335px; box-sizing:border-box; display:flex; flex-direction:column; justify-content:center; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:22px 22px">
-        <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 03 / 06</div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:20px; line-height:1.25; margin-top:8px">Video und Foto an einem Tag</div>
-        <p style="margin:10px 0 0; font-size:13.5px; line-height:1.5">Zwei Leute, kompaktes Licht, professioneller Ton. Wir drehen bei euch oder an einer vereinbarten Location.</p>
-      </div>
-      <div class="step-card" data-step-title="Schritt 04 · Schnitt und Bildbearbeitung" style="position:relative; flex:0 0 268px; scroll-snap-align:start; height:335px; box-sizing:border-box; display:flex; flex-direction:column; justify-content:center; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:22px 22px">
-        <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 04 / 06</div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:20px; line-height:1.25; margin-top:8px">Schnitt und Bildbearbeitung</div>
-        <p style="margin:10px 0 0; font-size:13.5px; line-height:1.5">Schnitt, Grading, Sound, Untertitel, Fotoauswahl und -bearbeitung. Formate und Crops sind beim Dreh mitgedacht.</p>
-      </div>
-      <div class="step-card" data-step-title="Schritt 05 · Freigabe und Übergabe" style="position:relative; flex:0 0 268px; scroll-snap-align:start; height:335px; box-sizing:border-box; display:flex; flex-direction:column; justify-content:center; background:#FDFAF3; color:#0A171D; border:1px solid rgba(10,23,29,.18); border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:22px 22px">
-        <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Schritt 05 / 06</div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:20px; line-height:1.25; margin-top:8px">Freigabe und Übergabe</div>
-        <p style="margin:10px 0 0; font-size:13.5px; line-height:1.5">Alles liegt sortiert bereit. Ihr gebt frei und veröffentlicht Schritt für Schritt über das Quartal.</p>
-      </div>
-      <div class="step-card" data-step-title="Schritt 06 · Review und nächstes Quartal" style="position:relative; flex:0 0 268px; scroll-snap-align:start; height:335px; box-sizing:border-box; display:flex; flex-direction:column; justify-content:center; background:#003F47; color:#FDFAF3; border:1px solid #003F47; border-top:3px solid var(--accent, #FFBD76); border-radius:4px; padding:22px 22px">
-        <div style="font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF">Schritt 06 / 06</div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:20px; line-height:1.25; margin-top:8px">Review und nächstes Quartal</div>
-        <p style="margin:10px 0 0; font-size:13.5px; line-height:1.5">Wir schauen uns an, was funktioniert hat, und planen das nächste Quartal darauf. Danach beginnt der Zyklus von vorne.</p>
-      </div>
-    </div>
-    <div class="ig-chrome">
-      <div class="ig-top" aria-hidden="true">
-        <span></span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px"><path d="M12 20s-7.5-4.9-7.5-10.2A4.3 4.3 0 0 1 12 6.6a4.3 4.3 0 0 1 7.5 3.2C19.5 15.1 12 20 12 20z"/></svg>
-      </div>
-      <div class="ig-account" aria-hidden="true">
-        <span style="width:27px; height:27px; border-radius:50%; background:var(--accent, #FFBD76); color:#0A171D; display:flex; align-items:center; justify-content:center; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:13px; flex:none">D</span>
-        <div style="line-height:1.25; flex:1; min-width:0">
-          <div style="font-size:12.5px; font-weight:600">dailies</div>
-          <div style="font-size:10.5px; color:#7C8B8E">Linz, Österreich</div>
-        </div>
-        <span style="font-weight:700; letter-spacing:1px">···</span>
-      </div>
-      <div class="ig-slot"></div>
-      <div class="ig-bottom">
-        <div class="ig-actions">
-          <button class="like" type="button" aria-label="Gefällt mir" style="border:0; background:none; padding:0; margin:0; color:inherit; cursor:pointer; display:flex"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px"><path d="M12 20s-7.5-4.9-7.5-10.2A4.3 4.3 0 0 1 12 6.6a4.3 4.3 0 0 1 7.5 3.2C19.5 15.1 12 20 12 20z"/></svg></button>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px"><path d="M21 12a8 8 0 0 1-8 8H4l1.7-3.4A8 8 0 1 1 21 12z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:22px;height:22px"><g transform="translate(12,12) scale(.8) translate(-12,-12)"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4z"/></g></svg>
-          <span class="ig-dots" aria-hidden="true"><span style="width:6px; height:6px; border-radius:50%; background:#C7C7C7; display:inline-block"></span><span style="width:6px; height:6px; border-radius:50%; background:#C7C7C7; display:inline-block"></span><span style="width:6px; height:6px; border-radius:50%; background:#C7C7C7; display:inline-block"></span><span style="width:6px; height:6px; border-radius:50%; background:#C7C7C7; display:inline-block"></span><span style="width:6px; height:6px; border-radius:50%; background:#C7C7C7; display:inline-block"></span><span style="width:6px; height:6px; border-radius:50%; background:#C7C7C7; display:inline-block"></span></span>
-          <span style="margin-left:auto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px"><path d="M6 3h12v18l-6-4.5L6 21z"/></svg></span>
-        </div>
-        <div style="font-size:12px" aria-hidden="true">Gefällt <b>wexplore.productions</b> und 214 anderen</div>
-        <div style="font-size:12px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap" aria-hidden="true"><b>dailies</b> <span id="ig-cap">Schritt 01 · Jahres- und Themenplanung</span></div>
-        <div class="ig-tabbar" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px"><path d="M4 10 12 3l8 7v10h-5v-6h-6v6H4z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><path d="M12 8.5v7M8.5 12h7"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><path d="M3.5 8.5h17M8 3.5 11 8.5M14 3.5 17 8.5M10.5 12.5l4 2.5-4 2.5z"/></svg><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" style="width:22px;height:22px"><circle cx="12" cy="9" r="3.5"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg></div>
-      </div>
-    </div>
-    <div class="phone-frame" aria-hidden="true"></div>
-    </div>
+    <ol class="steps">
+      <li>
+        <span style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px">Schritt 01</span>
+        <h3 style="margin:8px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:18px; line-height:1.3">Jahres- und Themenplanung</h3>
+        <p style="margin:8px 0 0; font-size:14px; line-height:1.55">Wir gehen einmal durch: Ziele, Termine, Angebote, wer im Lauf des Jahres vor die Kamera soll.</p>
+      </li>
+      <li>
+        <span style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px">Schritt 02</span>
+        <h3 style="margin:8px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:18px; line-height:1.3">Vorbereitung des Drehtags</h3>
+        <p style="margin:8px 0 0; font-size:14px; line-height:1.55">Ihr bekommt vorab einen konkreten Themen- und Ablaufplan. Jede beteiligte Person weiß, was gebraucht wird und wann.</p>
+      </li>
+      <li>
+        <span style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px">Schritt 03</span>
+        <h3 style="margin:8px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:18px; line-height:1.3">Video und Foto an einem Tag</h3>
+        <p style="margin:8px 0 0; font-size:14px; line-height:1.55">Zwei Leute, kompaktes Licht, professioneller Ton. Wir drehen bei euch oder an einer vereinbarten Location.</p>
+      </li>
+      <li>
+        <span style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px">Schritt 04</span>
+        <h3 style="margin:8px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:18px; line-height:1.3">Schnitt und Bildbearbeitung</h3>
+        <p style="margin:8px 0 0; font-size:14px; line-height:1.55">Schnitt, Grading, Sound, Untertitel, Fotoauswahl und -bearbeitung. Formate und Crops sind beim Dreh mitgedacht.</p>
+      </li>
+      <li>
+        <span style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px">Schritt 05</span>
+        <h3 style="margin:8px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:18px; line-height:1.3">Freigabe und Übergabe</h3>
+        <p style="margin:8px 0 0; font-size:14px; line-height:1.55">Alles liegt sortiert bereit. Ihr gebt frei und veröffentlicht Schritt für Schritt über das Quartal.</p>
+      </li>
+      <li>
+        <span style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px">Schritt 06</span>
+        <h3 style="margin:8px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:18px; line-height:1.3">Review und nächstes Quartal</h3>
+        <p style="margin:8px 0 0; font-size:14px; line-height:1.55">Wir schauen uns an, was funktioniert hat, und planen das nächste Quartal darauf. Danach beginnt der Zyklus von vorne.</p>
+      </li>
+    </ol>
   </section>
 
-  <section id="pakete" data-screen-label="04 Pakete" style="scroll-margin-top:100px; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
-    <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 04 · Pakete</p>
+  <section id="pakete" data-screen-label="05 Pakete" style="scroll-margin-top:100px; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
+    <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 05 · Pakete</p>
     <h2 style="margin:20px 0 34px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Drei Größen, ein System.</h2>
     <div class="plan-tabs" role="tablist" aria-label="Paket wählen">
       <button type="button" data-plan="start">Start</button>
       <button type="button" data-plan="grow" class="active">Grow</button>
       <button type="button" data-plan="scale">Scale</button>
     </div>
-    <div data-table="" data-plan="grow" style="display:grid; grid-template-columns:minmax(150px,.9fr) repeat(3, minmax(210px,1.1fr)); overflow-x:auto">
-      <div style="border-bottom:1px solid rgba(10,23,29,.2)"></div>
-      <div class="pk pk-start pk-head" style="border-bottom:1px solid rgba(10,23,29,.2); padding:18px 20px">
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:26px; text-transform:uppercase; letter-spacing:-0.015em">Start</div>
-        <div class="sub" style="font-size:15px">Der Grundtakt</div>
-      </div>
-      <div class="pk pk-grow pk-head hl" style="border-bottom:1px solid rgba(10,23,29,.2); padding:18px 20px">
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:26px; text-transform:uppercase; letter-spacing:-0.015em">Grow</div>
-        <div class="sub" style="font-size:15px">Mehr Formate, zwei Kanäle</div>
-      </div>
-      <div class="pk pk-scale pk-head" style="border-bottom:1px solid rgba(10,23,29,.2); padding:18px 20px">
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:26px; text-transform:uppercase; letter-spacing:-0.015em">Scale</div>
-        <div class="sub" style="font-size:15px">Euer externes Content-Team</div>
-      </div>
-
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Preis</div>
-      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px">
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:28px; letter-spacing:-0.015em">&euro; 1.290<span class="sub" style="font-family:'Inter Tight',sans-serif; font-size:15px; font-weight:400"> / Monat</span></div>
-        <div class="sub" style="font-size:13px; margin-top:4px">&euro; 3.870 pro Quartal verrechnet</div><div class="note" style="font-size:13px; margin-top:2px">Jahr im Voraus: &euro; 12.500 (-19 %)</div>
-      </div>
-      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px">
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:28px; letter-spacing:-0.015em">&euro; 2.690<span class="sub" style="font-family:'Inter Tight',sans-serif; font-size:15px; font-weight:400"> / Monat</span></div>
-        <div class="sub" style="font-size:13px; margin-top:4px">&euro; 8.070 pro Quartal verrechnet</div>
-      </div>
-      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px">
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:28px; letter-spacing:-0.015em">&euro; 4.990<span class="sub" style="font-family:'Inter Tight',sans-serif; font-size:15px; font-weight:400"> / Monat</span></div>
-        <div class="sub" style="font-size:13px; margin-top:4px">&euro; 15.000 pro Quartal verrechnet</div>
-      </div>
-
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Postings pro Woche</div>
-      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">2</div>
-      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">3</div>
-      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">5</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Reels (9:16)</div>
-      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">13 / Quartal</div>
-      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">30 / Quartal</div>
-      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Individuell</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Fotos (16:9 + 9:16)</div>
-      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">36 / Quartal</div>
-      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">72 / Quartal</div>
-      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Individuell</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Titelbilder</div>
-      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
-      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">30 / Quartal</div>
-      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Individuell</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Untertitel</div>
-      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="chk">&#10003;</span></div>
-      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="chk">&#10003;</span></div>
-      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="chk">&#10003;</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Rohmaterial</div>
-      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
-      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
-      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="chk">&#10003;</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Postings aufbereitet</div>
-      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
-      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
-      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="chk">&#10003;</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Planung (PrePro)</div>
-      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">0,5 Tage</div>
-      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">1 Tag</div>
-      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">2 Tage</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Dreh</div>
-      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">1 ganzer Drehtag, 2 Personen</div>
-      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">3 Halbtage über das Quartal verteilt, 2 Personen</div>
-      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">3 ganze Drehtage, 3 Personen</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Post</div>
-      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">2,5 Tage</div>
-      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">5 Tage</div>
-      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">7 Tage</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Feedbackschleifen pro Asset</div>
-      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">1</div>
-      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">2</div>
-      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">4</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Kanäle</div>
-      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Instagram</div>
-      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Instagram, LinkedIn</div>
-      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">Instagram, TikTok, LinkedIn</div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Publishing</div>
-      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
-      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
-      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="chk">&#10003;</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Paid und Collabs</div>
-      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
-      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
-      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="chk">&#10003;</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Community Management</div>
-      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
-      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
-      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
-      <div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:flex; align-items:center">Inhouse-Workshop</div>
-      <div class="pk pk-start" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
-      <div class="pk pk-grow hl" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="chk">&#10003;</span></div>
-      <div class="pk pk-scale" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px"><span class="dsh">-</span></div>
-
-      <div style="padding:22px 0"></div>
-      <div class="pk pk-start pk-cta" style="padding:22px 20px"><a href="#bewerben">Probe-Contenttag anfragen</a></div>
-      <div class="pk pk-grow pk-cta hl" style="padding:22px 20px"><a href="#bewerben">Probe-Contenttag anfragen</a></div>
-      <div class="pk pk-scale pk-cta" style="padding:22px 20px"><a href="mailto:office@wexplore.at?subject=DAILIES%20Scale%20-%20Scope%20besprechen">Scope besprechen</a></div>
-    </div>
+    <div data-table="" data-plan="grow" style="display:grid; grid-template-columns:minmax(150px,.9fr) repeat(3, minmax(210px,1.1fr)); overflow-x:auto"></div>
+    <script>
+    (function () {
+      var table = document.querySelector('[data-table]');
+      if (!table || !window.DAILIES) return;
+      var P = window.DAILIES.pricing;
+      var MONO = "font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E";
+      var ARCH = "font-family:Archivo,Helvetica,sans-serif; font-stretch:125%";
+      function val(v) {
+        if (v === true) return '<span class="chk">\u2713</span>';
+        if (v === false) return '<span class="dsh">-</span>';
+        return v;
+      }
+      var out = [];
+      out.push('<div style="border-bottom:1px solid rgba(10,23,29,.2)"></div>');
+      P.plans.forEach(function (p) {
+        out.push('<div class="pk pk-' + p.id + ' pk-head' + (p.highlighted ? ' hl' : '') + '" style="border-bottom:1px solid rgba(10,23,29,.2); padding:18px 20px">' +
+          '<div style="' + ARCH + '; font-weight:700; font-size:26px; text-transform:uppercase; letter-spacing:-0.015em">' + p.name + '</div>' +
+          '<div class="sub" style="font-size:15px">' + p.tagline + '</div></div>');
+      });
+      out.push('<div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 0; ' + MONO + '; display:flex; align-items:center">Preis</div>');
+      P.plans.forEach(function (p) {
+        out.push('<div class="pk pk-' + p.id + (p.highlighted ? ' hl' : '') + '" style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px">' +
+          '<div style="' + ARCH + "; font-weight:700; font-size:28px; letter-spacing:-0.015em\">" + p.price + '<span class="sub" style="font-family:\'Inter Tight\',sans-serif; font-size:15px; font-weight:400"> / Monat</span></div>' +
+          '<div class="sub" style="font-size:13px; margin-top:4px">' + p.priceSub + '</div>' +
+          (p.priceNote ? '<div class="note" style="font-size:13px; margin-top:2px">' + p.priceNote + '</div>' : '') +
+        '</div>');
+      });
+      P.featureLabels.forEach(function (label, i) {
+        out.push('<div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; ' + MONO + '; display:flex; align-items:center">' + label + '</div>');
+        P.plans.forEach(function (p) {
+          out.push('<div class="pk pk-' + p.id + (p.highlighted ? ' hl' : '') + '" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">' + val(p.features[i]) + '</div>');
+        });
+      });
+      out.push('<div style="padding:22px 0"></div>');
+      P.plans.forEach(function (p) {
+        out.push('<div class="pk pk-' + p.id + ' pk-cta' + (p.highlighted ? ' hl' : '') + '" style="padding:22px 20px"><a href="' + p.cta.href + '">' + p.cta.label + '</a></div>');
+      });
+      table.innerHTML = out.join('');
+    })();
+    </script>
     <div style="margin:18px 0 0; font-size:15px; color:#7C8B8E; display:grid; gap:4px">
       <p style="margin:0">Alle Preise netto, exklusive Reisekosten außerhalb Oberösterreichs. Verrechnung quartalsweise, der Monatspreis ist die Darstellungsform.</p>
       <p style="margin:0">Zusätzliche Feedbackschleifen, Zusatzdrehs und Community Management werden separat verrechnet.</p>
@@ -391,8 +338,8 @@
     <p style="margin:18px 0 0; font-size:15px; color:#7C8B8E">Und wenn doch einmal mehr ansteht - ein Imagefilm, eine Projektkommunikation oder ein größerer Dreh - unterstützt euch WEXPLORE gerne darüber hinaus.</p>
   </section>
 
-  <section id="output" data-screen-label="05 Output" style="scroll-margin-top:100px; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
-    <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 05 · Output</p>
+  <section id="output" data-screen-label="06 Output" style="scroll-margin-top:100px; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
+    <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 06 · Output</p>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:48px; margin-top:24px">
       <div>
         <h2 style="margin:0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Formate, die immer wieder funktionieren.</h2>
@@ -427,49 +374,62 @@
     </div>
   </section>
 
-  <section id="cases" data-screen-label="06 Referenzen" style="scroll-margin-top:100px; background:#F5EFE3; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
-    <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 06 · Referenzen</p>
-    <h2 style="margin:20px 0 34px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Für wen wir schon gedreht haben.</h2>
-    <div data-stagger="" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:22px">
+  <section id="plattform" data-screen-label="07 Plattform" style="scroll-margin-top:100px; background:#F5EFE3; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
+    <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 07 · Plattform</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:48px; align-items:center; margin-top:24px">
       <div>
-        <div style="aspect-ratio:16/9; border-radius:4px; overflow:hidden; background:#FDFAF3"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">Standbild 16:9</div></div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:28px; line-height:1.2; margin-top:14px">F/LIST</div>
-        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">
-          <div style="padding:8px 0; border-top:1px solid rgba(10,23,29,.16)">Ausgangslage</div>
-          <div style="padding:8px 0; border-top:1px solid rgba(10,23,29,.16)">System</div>
-          <div style="padding:8px 0; border-top:1px solid rgba(10,23,29,.16)">Output</div>
-          <div style="padding:8px 0; border-top:1px solid rgba(10,23,29,.16); border-bottom:1px solid rgba(10,23,29,.16)">Zeitraum</div>
-        </div>
+        <h2 style="margin:0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Eure Inhalte, ein Ort.</h2>
+        <!-- TODO: Plattform-Text einsetzen (2 Zeilen) -->
+        <p style="margin:20px 0 0; max-width:52ch">[TEXT FOLGT]</p>
       </div>
-      <div>
-        <div style="aspect-ratio:16/9; border-radius:4px; overflow:hidden; background:#FDFAF3"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">Standbild 16:9</div></div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:28px; line-height:1.2; margin-top:14px">Sparkasse Oberösterreich</div>
-        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">
-          <div style="padding:8px 0; border-top:1px solid rgba(10,23,29,.16)">Ausgangslage</div>
-          <div style="padding:8px 0; border-top:1px solid rgba(10,23,29,.16)">System</div>
-          <div style="padding:8px 0; border-top:1px solid rgba(10,23,29,.16)">Output</div>
-          <div style="padding:8px 0; border-top:1px solid rgba(10,23,29,.16); border-bottom:1px solid rgba(10,23,29,.16)">Zeitraum</div>
+      <div class="mb">
+        <!-- Slides-Container: weitere <img>/<video> einfach ergaenzen, spaeter Karussell/GIF ohne Umbau moeglich -->
+        <div class="mb-screen">
+          <span class="mb-placeholder">Screen folgt</span>
+          <div class="mb-slides">
+            <img src="assets/dailies/plattform-screen-01.png" alt="DAILIES Kundenplattform" onerror="this.style.display='none'" />
+          </div>
         </div>
-      </div>
-      <div>
-        <div style="aspect-ratio:16/9; border-radius:4px; overflow:hidden; background:#FDFAF3"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">Standbild 16:9</div></div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:28px; line-height:1.2; margin-top:14px">APG</div>
-        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">
-          <div style="padding:8px 0; border-top:1px solid rgba(10,23,29,.16)">Ausgangslage</div>
-          <div style="padding:8px 0; border-top:1px solid rgba(10,23,29,.16)">System</div>
-          <div style="padding:8px 0; border-top:1px solid rgba(10,23,29,.16)">Output</div>
-          <div style="padding:8px 0; border-top:1px solid rgba(10,23,29,.16); border-bottom:1px solid rgba(10,23,29,.16)">Zeitraum</div>
-        </div>
-      </div>
-      <div>
-        <div style="aspect-ratio:16/9; border-radius:4px; border:1px dashed rgba(10,23,29,.45); display:flex; align-items:center; justify-content:center; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Case-Slot</div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:28px; line-height:1.2; margin-top:14px; color:#7C8B8E">KMU-Case folgt</div>
-        <p style="margin:8px 0 0; font-size:15px; line-height:1.55; color:#7C8B8E; max-width:44ch">Hier kommt als Nächstes ein Betrieb in genau der Größe, für die DAILIES gebaut ist.</p>
+        <img class="mb-frame" src="assets/macbook-frame.png" alt="" aria-hidden="true" />
       </div>
     </div>
   </section>
 
-  <section data-screen-label="06 Referenzen · Wer dahintersteht" style="background:#003F47; color:#FDFAF3">
+  <section id="cases" data-screen-label="08 Referenzen" style="scroll-margin-top:100px; background:#F5EFE3; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
+    <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 08 · Referenzen</p>
+    <h2 style="margin:20px 0 34px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Für wen wir schon gedreht haben.</h2>
+    <div id="cases-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:22px"></div>
+    <script>
+    (function () {
+      var grid = document.getElementById('cases-grid');
+      if (!grid || !window.DAILIES) return;
+      var MONO = "font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase";
+      grid.innerHTML = window.DAILIES.cases.map(function (c) {
+        var media;
+        if (c.video) {
+          media = '<video src="' + c.video + '" autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover; display:block"></video>';
+        } else if (c.image) {
+          media = '<img src="' + c.image + '" alt="' + c.name + '" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block" />';
+        } else {
+          media = '<div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; ' + MONO + '; font-size:11px; color:#7C8B8E; opacity:.55">Standbild 16:9</div>';
+        }
+        var t = c.testimonial;
+        var testimonial = (t && t.quote)
+          ? '<blockquote style="margin:14px 0 0; padding:14px 16px; background:#FDFAF3; border-left:3px solid var(--accent, #FFBD76); font-size:15px; line-height:1.5">\u201E' + t.quote + '\u201C<footer style="margin-top:8px; font-size:13px; color:#7C8B8E">' + t.name + (t.role ? ' \u00B7 ' + t.role : '') + '</footer></blockquote>'
+          : '';
+        return '<div>' +
+          '<div style="aspect-ratio:16/9; border-radius:4px; overflow:hidden; background:#FDFAF3">' + media + '</div>' +
+          '<div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:28px; line-height:1.2; margin-top:14px">' + c.name + '</div>' +
+          '<div style="display:inline-block; margin-top:8px; padding:4px 12px; border:1px solid #003F47; border-radius:999px; color:#003F47; ' + MONO + '; font-size:11px">' + c.tag + '</div>' +
+          '<p style="margin:10px 0 0; font-size:15px; line-height:1.55">' + c.text + '</p>' +
+          testimonial +
+        '</div>';
+      }).join('');
+    })();
+    </script>
+  </section>
+
+  <section data-screen-label="08 Referenzen · Wer dahintersteht" style="background:#003F47; color:#FDFAF3">
     <div style="padding:88px 40px; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:48px; align-items:center">
       <div style="max-width:400px">
         <div style="position:relative">
@@ -489,7 +449,7 @@
     </div>
   </section>
 
-  <section id="bewerben" data-screen-label="07 Bewerbung" style="scroll-margin-top:100px; background:#0A171D; color:#FDFAF3; padding:96px 40px">
+  <section id="bewerben" data-screen-label="09 Bewerbung" style="scroll-margin-top:100px; background:#0A171D; color:#FDFAF3; padding:96px 40px">
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(330px, 1fr)); gap:48px; align-items:start">
       <div>
         <div style="display:flex; align-items:center; gap:8px; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent, #FFBD76)">
@@ -588,10 +548,10 @@
     </div>
   </section>
 
-  <section id="faq" data-screen-label="08 FAQ" style="scroll-margin-top:100px; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
+  <section id="faq" data-screen-label="10 FAQ" style="scroll-margin-top:100px; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
     <div>
       <div style="max-width:34ch">
-        <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 08 · FAQ</p>
+        <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 10 · FAQ</p>
         <h2 style="margin:20px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Häufige Fragen</h2>
       </div>
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:0 48px; align-items:start; margin-top:36px">
@@ -643,7 +603,7 @@
     </div>
   </section>
 
-  <footer data-screen-label="08 FAQ · Ende" style="background:#0A171D; color:#FDFAF3">
+  <footer data-screen-label="10 FAQ · Ende" style="background:#0A171D; color:#FDFAF3">
     <div style="padding:56px 40px 36px; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:36px">
       <div>
         <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:26px; letter-spacing:-0.02em; text-transform:uppercase">Dailies</div>
@@ -924,44 +884,6 @@
       table.setAttribute('data-plan', col);
       tabs.forEach(function (x) { x.classList.toggle('active', x === b); });
       table.querySelectorAll('.pk').forEach(function (c) { c.classList.toggle('hl', c.classList.contains('pk-' + col)); });
-    });
-  });
-})();
-</script>
-<script>
-(function () {
-  var rail = document.querySelector('[data-rail]');
-  if (!rail) return;
-  var cards = Array.prototype.slice.call(rail.querySelectorAll('.step-card'));
-  var cap = document.getElementById('ig-cap');
-  var dots = document.querySelectorAll('.ig-dots span');
-  var like = document.querySelector('.ig-chrome .like');
-  var step = 284; // Kartenbreite + Gap
-
-  function upd() {
-    var i = Math.max(0, Math.min(cards.length - 1, Math.round(rail.scrollLeft / step)));
-    cards.forEach(function (c, j) { c.classList.toggle('active', j === i); });
-    if (cap) cap.textContent = cards[i].getAttribute('data-step-title');
-    dots.forEach(function (d, j) { d.style.background = j === i ? '#0095F6' : '#C7C7C7'; });
-  }
-  rail.addEventListener('scroll', upd, { passive: true });
-  upd();
-
-  function setLiked(on) {
-    if (!like) return;
-    like.classList.remove('liked');
-    if (on) { void like.offsetWidth; like.classList.add('liked'); }
-  }
-  if (like) like.addEventListener('click', function () { setLiked(!like.classList.contains('liked')); });
-
-  cards.forEach(function (card) {
-    card.addEventListener('dblclick', function () {
-      setLiked(true);
-      var d = document.createElement('div');
-      d.className = 'big-heart';
-      d.innerHTML = '<svg viewBox="0 0 24 24" style="width:76px;height:76px" fill="#FF3040"><path d="M12 20s-7.5-4.9-7.5-10.2A4.3 4.3 0 0 1 12 6.6a4.3 4.3 0 0 1 7.5 3.2C19.5 15.1 12 20 12 20z"/></svg>';
-      card.appendChild(d);
-      setTimeout(function () { d.remove(); }, 950);
     });
   });
 })();
