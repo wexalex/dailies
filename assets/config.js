@@ -5,7 +5,7 @@
  */
 window.DAILIES = {
 
-  /* ---------- Lead-Magnet-Flow ("Content-Richtung entdecken") ----------
+  /* ---------- Lead-Magnet-Flow ("Content-Ideen entdecken") ----------
    * Der Flow ist ausdruecklich KEINE Terminbuchung. Interessent:innen bewerben sich
    * fuer die Moeglichkeit eines Probe-Content-Tags, danach schlagen wir ein
    * 30-minuetiges Briefing vor.
