@@ -133,6 +133,70 @@
   #bts-a { left:0; top:12%; width:46%; aspect-ratio:3/4; z-index:1 }
   #bts-b { right:0; top:0; width:48%; aspect-ratio:3/4; z-index:1 }
   #bts-c { left:20%; top:52%; width:72%; aspect-ratio:16/10; z-index:2 }
+
+  .ziel-cta { margin-top:16px; align-self:flex-start; border:1px solid #0A171D; cursor:pointer; background:transparent; color:#0A171D; font-family:inherit; font-size:15px; height:42px; padding:0 20px; border-radius:999px }
+  .ziel-cta:hover { background:#0A171D; color:#FDFAF3 }
+  @media (prefers-reduced-motion: reduce) { .ziel-cta { transition:none } }
+
+  .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
+
+  /* ---- Lead-Magnet-Flow ---- */
+  .fl-ovl[hidden] { display:none }
+  .fl-ovl { position:fixed; inset:0; z-index:200; background:#FDFAF3; color:#0A171D; display:flex; flex-direction:column }
+  .fl-top { flex:none; padding:14px 24px; border-bottom:1px solid rgba(10,23,29,.14) }
+  .fl-toprow { display:flex; align-items:center; justify-content:space-between; gap:16px; max-width:760px; margin:0 auto }
+  .fl-phases { display:flex; gap:6px; flex-wrap:wrap }
+  .fl-phase { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#636F72; padding:5px 11px; border-radius:999px; border:1px solid rgba(10,23,29,.18) }
+  .fl-phase.on { background:#0A171D; color:#FDFAF3; border-color:#0A171D }
+  .fl-x { border:0; background:transparent; cursor:pointer; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#636F72; padding:8px }
+  .fl-bar { height:3px; background:rgba(10,23,29,.12) }
+  .fl-bar i { display:block; height:100%; width:0; background:var(--accent, #FFBD76); transition:width .3s cubic-bezier(.2,0,0,1) }
+  .fl-body { flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch }
+  .fl-inner { max-width:760px; margin:0 auto; padding:44px 24px 40px }
+  .fl-count { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#636F72 }
+  .fl-q { margin:14px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(26px,3.2vw,42px); line-height:1.08; letter-spacing:-0.015em }
+  .fl-hint { margin:14px 0 0; max-width:60ch; color:#3C4A4E }
+  .fl-opts { display:grid; gap:10px; margin-top:28px }
+  .fl-opt { display:flex; align-items:center; gap:12px; width:100%; box-sizing:border-box; text-align:left; cursor:pointer; padding:17px 20px; border:1px solid rgba(10,23,29,.18); border-radius:4px; background:transparent; color:#0A171D; font-size:17px; line-height:1.3; transition:background-color .16s ease, border-color .16s ease, color .16s ease }
+  .fl-opt:hover { border-color:#0A171D }
+  .fl-opt[aria-pressed="true"], .fl-opt.on { background:#003F47; border-color:#003F47; color:#FDFAF3 }
+  .fl-box { width:19px; height:19px; flex:none; border:1px solid currentColor; border-radius:3px; display:flex; align-items:center; justify-content:center; font-size:12px; line-height:1 }
+  .fl-opt[aria-pressed="false"] .fl-box::after { content:"" }
+  .fl-opt[aria-pressed="true"] .fl-box::after { content:"\2713" }
+  .fl-radio .fl-box { border-radius:50%; }
+  .fl-field { margin-top:26px }
+  .fl-lab { display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#636F72; margin-bottom:7px }
+  .fl-in, .fl-ta, .fl-sel { width:100%; box-sizing:border-box; padding:13px 14px; border:1px solid rgba(10,23,29,.24); border-radius:4px; background:#fff; color:#0A171D; font-size:17px }
+  .fl-in { height:52px; padding:0 14px }
+  .fl-sel { height:52px; padding:0 14px }
+  .fl-ta { min-height:96px; resize:vertical; line-height:1.5 }
+  .fl-in::placeholder, .fl-ta::placeholder { color:#6B7A7D }
+  .fl-meta { margin-top:7px; font-size:14px; color:#636F72 }
+  .fl-err { margin-top:7px; font-size:14px; font-weight:600; color:#9A3412 }
+  .fl-foot { flex:none; border-top:1px solid rgba(10,23,29,.14); background:#FDFAF3; padding:14px 24px calc(14px + env(safe-area-inset-bottom)) }
+  .fl-footrow { display:flex; align-items:center; justify-content:space-between; gap:12px; max-width:760px; margin:0 auto }
+  .fl-back { border:1px solid rgba(10,23,29,.24); background:transparent; cursor:pointer; height:48px; padding:0 20px; border-radius:999px; color:#0A171D; font-size:16px }
+  .fl-back[disabled] { opacity:.4; cursor:default }
+  .fl-next { border:0; cursor:pointer; height:48px; padding:0 26px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; font-size:16px }
+  .fl-next.wait { background:#E4DDD0 }
+  .fl-next[disabled] { background:#D9D2C6; cursor:default }
+  .fl-mehr { margin-top:22px; border-top:1px solid rgba(10,23,29,.16); padding-top:14px }
+  .fl-mehr > summary { display:inline-flex; align-items:center; gap:7px; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#636F72 }
+  .fl-mehr > summary::before { content:"+"; font-size:14px; line-height:1 }
+  .fl-mehr[open] > summary::before { content:"\2212" }
+  .fl-card { border:1px solid rgba(10,23,29,.18); border-radius:4px; padding:24px 22px; margin-top:20px; background:#fff }
+  .fl-card h3 { margin:0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:19px; line-height:1.25 }
+  .fl-card p { margin:8px 0 0; line-height:1.55 }
+  .fl-two { display:grid; grid-template-columns:1fr 1fr; gap:16px }
+  @media (max-width: 640px) {
+    .fl-inner { padding:32px 20px 32px }
+    .fl-top, .fl-foot { padding-left:20px; padding-right:20px }
+    .fl-two { grid-template-columns:1fr }
+    .fl-opt { padding:15px 16px; font-size:16px }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fl-bar i, .fl-opt { transition:none }
+  }
 </style>
 </head>
 <body>
@@ -159,7 +223,7 @@
       <a class="navlink" href="#output">Output</a>
       <a class="navlink" href="#cases">Cases</a>
       <a class="navlink" href="#faq">FAQ</a>
-      <a href="mailto:office@wexplore.at?subject=Gratis%20Probe-Contenttag" style="display:inline-flex; align-items:center; height:40px; padding:0 22px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; white-space:nowrap">Bewerben</a>
+      <button type="button" data-flow-start="nav" style="border:0; cursor:pointer; display:inline-flex; align-items:center; height:40px; padding:0 22px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; white-space:nowrap">Content-Ideen entdecken</button>
     </nav>
   </header>
 
@@ -178,7 +242,7 @@
     <!-- TODO: Claim einsetzen und hidden-Attribut entfernen -->
     <p id="hero-claim" hidden style="margin:14px auto 0; font-family:'DM Mono',monospace; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:#003F47; max-width:48ch">[CLAIM FOLGT]</p>
     <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:34px">
-      <a href="mailto:office@wexplore.at?subject=Gratis%20Probe-Contenttag" style="display:inline-flex; align-items:center; height:50px; padding:0 28px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; white-space:nowrap">Gratis Probe-Contenttag anfragen</a>
+      <button type="button" data-flow-start="hero" style="border:0; cursor:pointer; display:inline-flex; align-items:center; height:50px; padding:0 28px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; white-space:nowrap">Eure Content-Ideen entdecken</button>
       <a href="#pakete" style="display:inline-flex; align-items:center; height:50px; padding:0 28px; border-radius:999px; border:1px solid #0A171D; white-space:nowrap">Pakete ansehen</a>
     </div>
     </div>
@@ -197,6 +261,7 @@
         <p style="margin:12px 0 0; font-size:15px; line-height:1.55">Die besten Leute bewerben sich dort, wo sie sehen, wie ihr wirklich arbeitet. Regelmäßige Einblicke in Team und Alltag machen euren Auftritt zum Argument - und aus Zusehern Bewerbungen.</p>
         <!-- TODO: Link später auf konkreten Case bzw. URL zeigen lassen -->
         <a href="#cases" style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; color:#003F47; margin-top:14px">Zum Case →</a>
+        <button type="button" class="ziel-cta" data-flow-start="ziel" data-ziel-cta="bewerbungen">Content-Ideen entdecken</button>
       </div>
       <div style="background:#F5EFE3; border-radius:4px; border-top:3px solid var(--accent, #FFBD76); padding:28px 26px; display:flex; flex-direction:column; gap:0">
         <svg viewBox="0 0 24 24" fill="none" stroke="#003F47" stroke-width="1.8" style="width:34px;height:34px"><path d="M3 3h8l10 10-8 8L3 11z"/><circle cx="8" cy="8" r="1.6"/></svg>
@@ -206,6 +271,7 @@
         <p style="margin:12px 0 0; font-size:15px; line-height:1.55">Wer euer Produkt versteht, kauft es auch. Wir zeigen, was es kann, beantworten die Fragen eurer Kundschaft und machen aus Interesse Anfragen - Woche für Woche.</p>
         <!-- TODO: Link später auf konkreten Case bzw. URL zeigen lassen -->
         <a href="#cases" style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; color:#003F47; margin-top:14px">Zum Case →</a>
+        <button type="button" class="ziel-cta" data-flow-start="ziel" data-ziel-cta="nachfrage">Content-Ideen entdecken</button>
       </div>
       <div style="background:#F5EFE3; border-radius:4px; border-top:3px solid var(--accent, #FFBD76); padding:28px 26px; display:flex; flex-direction:column; gap:0">
         <svg viewBox="0 0 24 24" fill="none" stroke="#003F47" stroke-width="1.8" style="width:34px;height:34px"><path d="M3 10v4h3l8 5V5l-8 5z"/><path d="M17.5 8.5a5 5 0 0 1 0 7"/><path d="M20 6a9 9 0 0 1 0 12"/></svg>
@@ -215,6 +281,7 @@
         <p style="margin:12px 0 0; font-size:15px; line-height:1.55">Wer regelmäßig auftaucht, bleibt im Kopf. Ein konsistenter Look und laufender Content sorgen dafür, dass man euch kennt, bevor man euch braucht.</p>
         <!-- TODO: Link später auf konkreten Case bzw. URL zeigen lassen -->
         <a href="#cases" style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; color:#003F47; margin-top:14px">Zum Case →</a>
+        <button type="button" class="ziel-cta" data-flow-start="ziel" data-ziel-cta="bekanntheit">Content-Ideen entdecken</button>
       </div>
     </div>
   </section>
@@ -490,7 +557,7 @@
         <div style="margin-top:22px; font-weight:600">Alex Gruber · WEXPLORE Productions</div>
         <div style="font-size:15px; color:#9FBCBF">Videoproduktion aus Linz</div>
         <div style="display:flex; align-items:center; gap:8px; margin-top:18px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF">powered by <img src="assets/wexplore-productions-light.png" alt="WEXPLORE Productions" loading="lazy" decoding="async" style="height:10px; width:auto; display:block" /></div>
-        <a href="mailto:office@wexplore.at?subject=Gratis%20Probe-Contenttag" style="display:inline-flex; align-items:center; height:50px; padding:0 28px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; margin-top:26px">Content-Abo besprechen</a>
+        <button type="button" data-flow-start="kontakt" style="border:0; cursor:pointer; display:inline-flex; align-items:center; height:50px; padding:0 28px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; margin-top:26px">Eure Content-Ideen entdecken</button>
       </div>
     </div>
   </section>
@@ -585,7 +652,7 @@
 
   <div data-sticky-cta="" style="position:fixed; right:24px; bottom:24px; z-index:75; display:flex; align-items:center; gap:14px; padding:10px 12px 10px 18px; border-radius:999px; background:#003F47; color:#FDFAF3; opacity:0; transform:translateY(12px); pointer-events:none; transition:opacity .3s ease, transform .3s ease">
     <span style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap">3 Plätze im Monat</span>
-    <a href="mailto:office@wexplore.at?subject=Gratis%20Probe-Contenttag" style="display:inline-flex; align-items:center; height:40px; padding:0 20px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; white-space:nowrap">Bewerben</a>
+    <button type="button" data-flow-start="sticky" style="border:0; cursor:pointer; display:inline-flex; align-items:center; height:40px; padding:0 20px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; white-space:nowrap">Content-Ideen entdecken</button>
   </div>
 </div>
 
@@ -787,6 +854,572 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }, { threshold: 0.25 });
   io.observe(video);
+})();
+</script>
+<!--
+  LEAD-MAGNET-FLOW "Content-Ideen entdecken"
+
+  Bewusst KEINE Terminbuchung: kein Kalender, keine automatische Terminvergabe.
+  Interessent:innen bewerben sich fuer die Moeglichkeit eines Probe-Content-Tags.
+  Der naechste Schritt ist ein Terminvorschlag von Dailies fuer ein 30-minuetiges Briefing.
+
+  Die Schrittinhalte rendert das Skript weiter unten. Hier steht nur die Huelle.
+-->
+<div id="flow" class="fl-ovl" hidden role="dialog" aria-modal="true" aria-labelledby="fl-frage">
+  <div class="fl-top">
+    <div class="fl-toprow">
+      <div class="fl-phases" aria-hidden="true">
+        <span class="fl-phase" data-phase="ziel">Ziel</span>
+        <span class="fl-phase" data-phase="idee">Idee</span>
+        <span class="fl-phase" data-phase="bewerbung">Bewerbung</span>
+      </div>
+      <button type="button" class="fl-x" data-flow-close>Schliessen</button>
+    </div>
+  </div>
+  <div class="fl-bar" aria-hidden="true"><i data-flow-bar></i></div>
+
+  <div class="fl-body" data-flow-body>
+    <div class="fl-inner">
+      <p class="fl-count" data-flow-count></p>
+      <h2 class="fl-q" id="fl-frage" tabindex="-1"></h2>
+      <p class="fl-hint" data-flow-hint hidden></p>
+      <div data-flow-content></div>
+      <p class="fl-err" data-flow-error hidden role="alert"></p>
+    </div>
+  </div>
+
+  <div class="fl-foot">
+    <div class="fl-footrow">
+      <button type="button" class="fl-back" data-flow-back>Zurueck</button>
+      <button type="button" class="fl-next" data-flow-next>Weiter</button>
+    </div>
+  </div>
+  <p class="sr-only" aria-live="polite" data-flow-live></p>
+</div>
+
+<script>
+/*
+  LEAD-MAGNET-FLOW
+
+  Ablauf: Ziel waehlen, wenige Fragen, erste Content-Ideen, danach optional
+  Bewerbung fuer die Moeglichkeit eines Probe-Content-Tags.
+
+  Bewusst NICHT enthalten: Kalender, Terminauswahl, automatische Terminvergabe.
+
+  Uebermittlung: siehe assets/config.js unter window.DAILIES.flow.uebermittlung. Ist dort kein endpoint
+  eingetragen, zeigt der Flow KEINE Erfolgsmeldung, sondern oeffnet eine fertig
+  ausgefuellte E-Mail und sagt klar, dass die Bewerbung erst mit dem Senden dort
+  raus ist. Es wird keine Uebermittlung vorgetaeuscht.
+
+  Analytics: der Flow ruft window.dailiesTrack(event, props) auf. Gibt es keine
+  Implementierung, passiert nichts. Es werden nur Ereignisnamen, Schrittnummern
+  und Auswahl-Schluessel uebergeben, niemals Freitext, Namen oder E-Mail-Adressen.
+*/
+(function () {
+  var ovl = document.getElementById("flow");
+  if (!ovl) return;
+
+  var elBody  = ovl.querySelector("[data-flow-body]");
+  var elCount = ovl.querySelector("[data-flow-count]");
+  var elQ     = ovl.querySelector("#fl-frage");
+  var elHint  = ovl.querySelector("[data-flow-hint]");
+  var elCont  = ovl.querySelector("[data-flow-content]");
+  var elErr   = ovl.querySelector("[data-flow-error]");
+  var elBack  = ovl.querySelector("[data-flow-back]");
+  var elNext  = ovl.querySelector("[data-flow-next]");
+  var elBar   = ovl.querySelector("[data-flow-bar]");
+  var elLive  = ovl.querySelector("[data-flow-live]");
+  var phases  = Array.prototype.slice.call(ovl.querySelectorAll(".fl-phase"));
+
+  var SPEICHER = "dailies-flow-v1";
+  var cfg = {};
+  var idx = 0;
+  var offen = false;
+  var vorherFokus = null;
+
+  var S = {
+    ziel: "", unternehmen: "", website: "", zielAntwort: "",
+    inhalte: [], personen: [], ort: "", bundesland: "", groesse: ""
+  };
+  var K = { name: "", firma: "", funktion: "", email: "", telefon: "", erreichbar: "", optin: false };
+
+  function track(ev, props) {
+    try { if (typeof window.dailiesTrack === "function") window.dailiesTrack(ev, props || {}); } catch (e) {}
+  }
+  function esc(t) {
+    return String(t == null ? "" : t).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  /* ---- Zustand nur fuer die Session sichern, ohne Kontaktdaten ---- */
+  function sichern() {
+    try { sessionStorage.setItem(SPEICHER, JSON.stringify(S)); } catch (e) {}
+  }
+  function laden() {
+    try {
+      var roh = sessionStorage.getItem(SPEICHER);
+      if (!roh) return;
+      var d = JSON.parse(roh);
+      if (d && typeof d === "object") {
+        Object.keys(S).forEach(function (k) { if (d[k] !== undefined) S[k] = d[k]; });
+      }
+    } catch (e) {}
+  }
+
+  /* ---- Inhalte der Schritte ---- */
+  var ZIELE = [
+    { k: "bewerbungen", t: "Mehr passende Bewerbungen" },
+    { k: "nachfrage",   t: "Mehr Nachfrage für Produkt oder Leistung" },
+    { k: "bekanntheit", t: "Mehr Bekanntheit und Vertrauen" },
+    { k: "anderes",     t: "Etwas anderes" }
+  ];
+
+  var ZIELFRAGE = {
+    bewerbungen: { q: "Welche Rolle oder welches Berufsfeld möchtet ihr sichtbarer machen?", bsp: "z. B. Zerspanungstechnik, Montage, Lehrstellen im technischen Bereich" },
+    nachfrage:   { q: "Welches Produkt oder welche Leistung soll als Erstes mehr Aufmerksamkeit bekommen?", bsp: "z. B. Sonderanfertigungen für den Maschinenbau" },
+    bekanntheit: { q: "Wofür soll euer Unternehmen stärker bekannt sein?", bsp: "z. B. für Fertigungstiefe und Liefertreue in der Region" },
+    anderes:     { q: "Was sollte sich durch euren Content verändern?", bsp: "z. B. dass unsere Partner verstehen, was wir alles selbst fertigen" }
+  };
+
+  var INHALTE = [
+    { k: "menschen",  t: "Menschen und Team" },
+    { k: "produkte",  t: "Produkte oder Anwendungen" },
+    { k: "ablaeufe",  t: "Einblicke in Arbeitsabläufe" },
+    { k: "knowhow",   t: "Know-how und häufige Kundenfragen" },
+    { k: "projekte",  t: "Projekte oder Kundenergebnisse" },
+    { k: "unklar",    t: "Das kann ich noch nicht einschätzen" }
+  ];
+
+  var PERSONEN = [
+    { k: "gf",        t: "Geschäftsführung" },
+    { k: "team",      t: "Mitarbeiter:innen oder Fachleute" },
+    { k: "kunden",    t: "Kund:innen oder Partner:innen" },
+    { k: "objekte",   t: "Produkte, Maschinen oder Arbeitsabläufe" },
+    { k: "offen",     t: "Noch offen, wir brauchen dabei Unterstützung" }
+  ];
+
+  var GROESSEN = ["1 bis 20 Mitarbeiter:innen", "21 bis 99", "100 bis 250", "Über 250", "Möchte ich lieber im Gespräch erklären"];
+
+  var PLZ_LAND = [
+    [1000, 1999, "Wien"], [2000, 2999, "Niederösterreich"], [3000, 3999, "Niederösterreich"],
+    [4000, 4999, "Oberösterreich"], [5000, 5999, "Salzburg"], [6000, 6499, "Tirol"],
+    [6500, 6999, "Vorarlberg"], [7000, 7999, "Burgenland"], [8000, 8999, "Steiermark"],
+    [9000, 9999, "Kärnten"]
+  ];
+  function landAusPlz(v) {
+    var m = String(v).match(/\b(\d{4})\b/);
+    if (!m) return "";
+    var n = Number(m[1]);
+    for (var i = 0; i < PLZ_LAND.length; i++) {
+      if (n >= PLZ_LAND[i][0] && n <= PLZ_LAND[i][1]) return PLZ_LAND[i][2];
+    }
+    return "";
+  }
+
+  /* ---- Regelbasierte Content-Ideen ---- */
+  var ANSATZ = {
+    bewerbungen: "Menschen aus eurem Betrieb erzählen selbst, wie ein Arbeitstag bei euch abläuft. Wer sich bewirbt, weiß dann schon, worauf er sich einlässt.",
+    nachfrage:   "Die Fragen, die eure Kundschaft im Erstgespräch ohnehin stellt, einmal sauber beantwortet. Das nimmt dem Vertrieb die immer gleichen Erklärungen ab.",
+    bekanntheit: "Eine wiedererkennbare Stimme aus eurem Haus zu den Themen, bei denen ihr wirklich etwas zu sagen habt.",
+    anderes:     "Wir setzen an dem an, was ihr oben beschrieben habt, und bauen daraus eine Reihe, die sich jedes Quartal fortsetzen lässt."
+  };
+  var HOOK = {
+    bewerbungen: {
+      menschen: "„Was drei Leute aus der Produktion an ihrem Job unterschätzt finden.“",
+      ablaeufe: "„Ein Tag in der Fertigung, von der Frühschicht bis zur Übergabe.“",
+      knowhow:  "„Was ihr im ersten Lehrjahr bei uns wirklich lernt.“",
+      _:        "„Warum Leute bei uns bleiben, obwohl sie woanders mehr verdienen könnten.“"
+    },
+    nachfrage: {
+      knowhow:  "„Die drei Fragen, die uns jeder Kunde vor der Bestellung stellt.“",
+      produkte: "„Woran ihr erkennt, ob ihr Standard oder Sonderanfertigung braucht.“",
+      projekte: "„Was bei diesem Auftrag schiefgehen konnte und warum es das nicht tat.“",
+      _:        "„Was euch eine Fehlbestellung kostet und wie ihr sie vermeidet.“"
+    },
+    bekanntheit: {
+      projekte: "„Das Projekt, von dem wir bis heute erzählen.“",
+      knowhow:  "„Was sich in unserer Branche gerade ändert und was das für euch heißt.“",
+      menschen: "„Drei Entscheidungen, die unseren Betrieb geprägt haben.“",
+      _:        "„Woran man einen guten Lieferanten erkennt, bevor man bestellt.“"
+    },
+    anderes: { _: "„Das, was bei uns alle fragen und niemand von außen sieht.“" }
+  };
+
+  function richtung() {
+    var z = S.ziel || "anderes";
+    var zTxt = (ZIELE.filter(function (x) { return x.k === z; })[0] || {}).t || "Euer Ziel";
+    var tabelle = HOOK[z] || HOOK.anderes;
+    var treffer = S.inhalte.filter(function (k) { return k !== "unklar" && tabelle[k]; })[0];
+    var hook = tabelle[treffer] || tabelle._;
+
+    var offenePunkte = [];
+    if (!S.inhalte.length || S.inhalte.indexOf("unklar") !== -1) {
+      offenePunkte.push("Welche Themen bei euch überhaupt zur Verfügung stehen. Das klären wir im Briefing gemeinsam, ihr müsst das nicht vorher wissen.");
+    }
+    if (!S.personen.length || S.personen.indexOf("offen") !== -1) {
+      offenePunkte.push("Wer vor der Kamera stehen kann und wer lieber nicht. Wir bereiten die Personen vor, Erfahrung ist keine Voraussetzung.");
+    }
+    if (S.personen.indexOf("gf") !== -1) {
+      offenePunkte.push("Wie viel Zeit die Geschäftsführung am Drehtag tatsächlich einplanen kann.");
+    }
+    if (S.inhalte.indexOf("ablaeufe") !== -1 || S.inhalte.indexOf("produkte") !== -1) {
+      offenePunkte.push("Welche Bereiche gefilmt werden dürfen und wo Geheimhaltung oder Sicherheit dagegen sprechen.");
+    }
+    if (!offenePunkte.length) {
+      offenePunkte.push("Die Reihenfolge der Themen über das Quartal und wer die Freigaben macht.");
+    }
+    return { ziel: zTxt, ansatz: ANSATZ[z] || ANSATZ.anderes, hook: hook, offen: offenePunkte.slice(0, 3) };
+  }
+
+  /* ---- Schrittdefinitionen ---- */
+  function optionen(liste, feld, mehrfach) {
+    return '<div class="fl-opts" role="group">' + liste.map(function (o) {
+      var aktiv = mehrfach ? S[feld].indexOf(o.k) !== -1 : S[feld] === o.k;
+      return '<button type="button" class="fl-opt' + (mehrfach ? "" : " fl-radio") + '" data-opt="' + o.k + '" ' +
+             'aria-pressed="' + (aktiv ? "true" : "false") + '"><span class="fl-box" aria-hidden="true"></span>' +
+             '<span>' + esc(o.t) + "</span></button>";
+    }).join("") + "</div>";
+  }
+
+  var SCHRITTE = [
+    { id: "ziel", phase: "ziel",
+      frage: "Was soll euer Content gerade am ehesten erreichen?",
+      hinweis: "Ihr könnt das später jederzeit ändern. Es geht nur um die Richtung.",
+      html: function () { return optionen(ZIELE, "ziel", false); },
+      bind: function (root) {
+        root.querySelectorAll("[data-opt]").forEach(function (b) {
+          b.addEventListener("click", function () {
+            S.ziel = b.getAttribute("data-opt");
+            root.querySelectorAll("[data-opt]").forEach(function (x) {
+              x.setAttribute("aria-pressed", x === b ? "true" : "false");
+            });
+            sichern(); pruefen();
+          });
+        });
+      },
+      gueltig: function () { return !!S.ziel; },
+      fehler: "Bitte wählt ein Ziel aus."
+    },
+
+    { id: "unternehmen", phase: "idee",
+      frage: "Was macht ihr, und für wen?",
+      hinweis: "Zwei Sätze genügen. Wir brauchen kein Briefing, nur den Rahmen.",
+      html: function () {
+        return '<div class="fl-field"><label class="fl-lab" for="fl-unt">Euer Unternehmen und eure Kundschaft</label>' +
+          '<textarea class="fl-ta" id="fl-unt" maxlength="200" placeholder="z. B. Wir fertigen Blechteile für den Maschinenbau, hauptsächlich für Kunden in Österreich und Süddeutschland.">' + esc(S.unternehmen) + "</textarea>" +
+          '<p class="fl-meta"><span data-zaehler></span> von 200 Zeichen</p></div>' +
+          '<div class="fl-field"><label class="fl-lab" for="fl-web">Website (optional)</label>' +
+          '<input class="fl-in" id="fl-web" type="text" inputmode="url" placeholder="beispiel.at" value="' + esc(S.website) + '"></div>';
+      },
+      bind: function (root) {
+        var ta = root.querySelector("#fl-unt"), z = root.querySelector("[data-zaehler]");
+        function zaehl() { z.textContent = ta.value.length; }
+        zaehl();
+        ta.addEventListener("input", function () { S.unternehmen = ta.value; zaehl(); sichern(); pruefen(); });
+        root.querySelector("#fl-web").addEventListener("input", function (e) { S.website = e.target.value; sichern(); });
+      },
+      gueltig: function () { return S.unternehmen.trim().length >= 10; },
+      fehler: "Bitte beschreibt kurz, was ihr macht. Ein Satz reicht."
+    },
+
+    { id: "zielfrage", phase: "idee",
+      frage: function () { return (ZIELFRAGE[S.ziel] || ZIELFRAGE.anderes).q; },
+      hinweis: "Eine kurze Antwort genügt. Ihr müsst noch keine Strategie liefern.",
+      html: function () {
+        var d = ZIELFRAGE[S.ziel] || ZIELFRAGE.anderes;
+        return '<div class="fl-field"><label class="fl-lab" for="fl-za">Eure Antwort</label>' +
+          '<textarea class="fl-ta" id="fl-za" maxlength="200" placeholder="' + esc(d.bsp) + '">' + esc(S.zielAntwort) + "</textarea>" +
+          '<p class="fl-meta">' + esc(d.bsp) + "</p></div>";
+      },
+      bind: function (root) {
+        root.querySelector("#fl-za").addEventListener("input", function (e) { S.zielAntwort = e.target.value; sichern(); pruefen(); });
+      },
+      gueltig: function () { return S.zielAntwort.trim().length >= 3; },
+      fehler: "Bitte schreibt ein paar Worte dazu."
+    },
+
+    { id: "inhalte", phase: "idee",
+      frage: "Was könnten wir bei euch zeigen oder erzählen?",
+      hinweis: "Mehrfachauswahl. Wenn ihr es noch nicht wisst, ist das auch eine Antwort.",
+      html: function () { return optionen(INHALTE, "inhalte", true); },
+      bind: function (root) { mehrfachBinden(root, "inhalte", "unklar"); },
+      gueltig: function () { return S.inhalte.length > 0; },
+      fehler: "Bitte wählt mindestens einen Punkt."
+    },
+
+    { id: "personen", phase: "idee",
+      frage: "Wer könnte bei euch Inhalte mitgestalten oder vor der Kamera stehen?",
+      hinweis: "Das dient der Planung, nicht der Auswahl. Wir bereiten die Personen vor.",
+      html: function () { return optionen(PERSONEN, "personen", true); },
+      bind: function (root) { mehrfachBinden(root, "personen", "offen"); },
+      gueltig: function () { return S.personen.length > 0; },
+      fehler: "Bitte wählt mindestens einen Punkt."
+    },
+
+    { id: "standort", phase: "idee",
+      frage: "Wo seid ihr, und wie groß ist euer Unternehmen?",
+      hinweis: "Nur zur Einordnung. Beides entscheidet nichts vorab.",
+      html: function () {
+        return '<div class="fl-two">' +
+          '<div class="fl-field" style="margin-top:0"><label class="fl-lab" for="fl-ort">Ort oder Postleitzahl</label>' +
+          '<input class="fl-in" id="fl-ort" type="text" placeholder="4020 Linz" value="' + esc(S.ort) + '"></div>' +
+          '<div class="fl-field" style="margin-top:0"><label class="fl-lab" for="fl-land">Bundesland</label>' +
+          '<input class="fl-in" id="fl-land" type="text" placeholder="wird ergänzt" value="' + esc(S.bundesland) + '">' +
+          '<p class="fl-meta">Wird aus der Postleitzahl ergänzt und lässt sich überschreiben.</p></div></div>' +
+          '<div class="fl-field"><label class="fl-lab" for="fl-gr">Unternehmensgröße</label>' +
+          '<select class="fl-sel" id="fl-gr"><option value="">Bitte wählen</option>' +
+          GROESSEN.map(function (g) { return '<option' + (S.groesse === g ? " selected" : "") + ">" + esc(g) + "</option>"; }).join("") +
+          "</select></div>";
+      },
+      bind: function (root) {
+        var ort = root.querySelector("#fl-ort"), land = root.querySelector("#fl-land");
+        ort.addEventListener("input", function () {
+          S.ort = ort.value;
+          var l = landAusPlz(ort.value);
+          if (l && !land.dataset.manuell) { land.value = l; S.bundesland = l; }
+          sichern(); pruefen();
+        });
+        land.addEventListener("input", function () { land.dataset.manuell = "1"; S.bundesland = land.value; sichern(); });
+        root.querySelector("#fl-gr").addEventListener("change", function (e) { S.groesse = e.target.value; sichern(); pruefen(); });
+      },
+      gueltig: function () { return S.ort.trim().length >= 2 && !!S.groesse; },
+      fehler: "Bitte tragt Ort und Unternehmensgröße ein."
+    },
+
+    { id: "richtung", phase: "idee",
+      frage: "Eure ersten Content-Ideen",
+      hinweis: "Erste Ideen, kein fertiges Konzept. Die Feinplanung machen wir im Briefing.",
+      weiter: "Weiter zur Bewerbung",
+      html: function () {
+        var r = richtung();
+        return '<div class="fl-card"><h3>Euer Ziel</h3><p>' + esc(r.ziel) + "</p></div>" +
+          '<div class="fl-card"><h3>Möglicher Ansatz</h3><p>' + esc(r.ansatz) + "</p></div>" +
+          '<div class="fl-card"><h3>Eine erste mögliche Story</h3><p>' + esc(r.hook) + "</p></div>" +
+          '<div class="fl-card"><h3>Was wir im Briefing noch klären</h3><ul style="margin:8px 0 0; padding-left:20px; line-height:1.55">' +
+          r.offen.map(function (o) { return "<li>" + esc(o) + "</li>"; }).join("") + "</ul></div>";
+      },
+      bind: function () { track("lead_magnet_preview_viewed", { ziel: S.ziel }); },
+      gueltig: function () { return true; }
+    },
+
+    { id: "bewerbung", phase: "bewerbung",
+      frage: "Möchtet ihr diese Ideen mit uns ausprobieren?",
+      weiter: "Bewerbung unverbindlich absenden",
+      html: function () {
+        // Bewusst nur drei Pflichtfelder. Alles Weitere steht hinter "Optional ergaenzen",
+        // damit der letzte Schritt vor dem Absenden leicht bleibt.
+        return '<p style="margin:0 0 4px; max-width:60ch; line-height:1.6">Wir prüfen eure Angaben persönlich und melden uns. Passt es, schlagen wir einen Termin für ein 30-minütiges Briefing vor.</p>' +
+          '<div class="fl-two"><div class="fl-field"><label class="fl-lab" for="fl-name">Vor- und Nachname</label><input class="fl-in" id="fl-name" type="text" autocomplete="name" value="' + esc(K.name) + '"></div>' +
+          '<div class="fl-field"><label class="fl-lab" for="fl-firma">Unternehmen</label><input class="fl-in" id="fl-firma" type="text" autocomplete="organization" value="' + esc(K.firma) + '"></div></div>' +
+          '<div class="fl-field"><label class="fl-lab" for="fl-mail">Geschäftliche E-Mail-Adresse</label><input class="fl-in" id="fl-mail" type="email" autocomplete="email" value="' + esc(K.email) + '"></div>' +
+          '<details class="fl-mehr"' + ((K.funktion || K.telefon || K.erreichbar) ? ' open' : '') + '><summary>Optional ergänzen</summary>' +
+          '<div class="fl-two" style="margin-top:14px"><div class="fl-field" style="margin-top:0"><label class="fl-lab" for="fl-funktion">Funktion</label><input class="fl-in" id="fl-funktion" type="text" autocomplete="organization-title" value="' + esc(K.funktion) + '"></div>' +
+          '<div class="fl-field" style="margin-top:0"><label class="fl-lab" for="fl-tel">Telefon</label><input class="fl-in" id="fl-tel" type="tel" autocomplete="tel" value="' + esc(K.telefon) + '"></div></div>' +
+          '<div class="fl-field"><label class="fl-lab" for="fl-err2">Wann erreichen wir euch am besten?</label><select class="fl-sel" id="fl-err2"><option value="">Keine Angabe</option><option' + (K.erreichbar === "Vormittags" ? " selected" : "") + '>Vormittags</option><option' + (K.erreichbar === "Nachmittags" ? " selected" : "") + '>Nachmittags</option></select></div></details>' +
+          '<div class="fl-field"><label style="display:flex; gap:10px; align-items:flex-start; line-height:1.45; font-size:15px"><input type="checkbox" id="fl-optin" style="margin-top:3px"' + (K.optin ? " checked" : "") + '><span>Ihr dürft uns gelegentlich Beispiele schicken. Für die Bewerbung nicht nötig.</span></label></div>' +
+          '<p class="fl-meta" style="margin-top:16px"><strong>Noch kein Termin und kein Abo.</strong> Zur Verarbeitung eurer Angaben: <a href="#datenschutz" style="color:#0A171D">Datenschutzerklärung</a>.</p>';
+      },
+      bind: function (root) {
+        track("lead_magnet_application_started", { ziel: S.ziel });
+        var map = { "fl-name": "name", "fl-firma": "firma", "fl-funktion": "funktion", "fl-mail": "email", "fl-tel": "telefon", "fl-err2": "erreichbar" };
+        Object.keys(map).forEach(function (id) {
+          var el = root.querySelector("#" + id);
+          el.addEventListener("input", function () { K[map[id]] = el.value; pruefen(); });
+          el.addEventListener("change", function () { K[map[id]] = el.value; pruefen(); });
+        });
+        root.querySelector("#fl-optin").addEventListener("change", function (e) { K.optin = e.target.checked; });
+      },
+      gueltig: function () {
+        return K.name.trim().length >= 2 && K.firma.trim().length >= 2 &&
+               /^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(K.email.trim());
+      },
+      fehler: "Bitte füllt Name, Unternehmen und eine gültige E-Mail-Adresse aus."
+    }
+  ];
+
+  function mehrfachBinden(root, feld, exklusiv) {
+    root.querySelectorAll("[data-opt]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        var k = b.getAttribute("data-opt");
+        var i = S[feld].indexOf(k);
+        if (k === exklusiv) { S[feld] = i === -1 ? [exklusiv] : []; }
+        else {
+          if (i === -1) S[feld].push(k); else S[feld].splice(i, 1);
+          S[feld] = S[feld].filter(function (x) { return x !== exklusiv; });
+        }
+        root.querySelectorAll("[data-opt]").forEach(function (x) {
+          x.setAttribute("aria-pressed", S[feld].indexOf(x.getAttribute("data-opt")) !== -1 ? "true" : "false");
+        });
+        sichern(); pruefen();
+      });
+    });
+  }
+
+  /* ---- Rendern ---- */
+  function pruefen() {
+    // Der Knopf bleibt bedienbar. Ein deaktivierter Knopf sagt nicht, was fehlt,
+    // und wird von Screenreadern schlechter angekuendigt. Stattdessen erklaert
+    // der Klick die fehlende Angabe inline.
+    var ok = SCHRITTE[idx].gueltig();
+    elNext.classList.toggle("wait", !ok);
+    elNext.setAttribute("aria-disabled", ok ? "false" : "true");
+    if (ok) elErr.hidden = true;
+  }
+
+  function rendern() {
+    var st = SCHRITTE[idx];
+    elCount.textContent = "Schritt " + (idx + 1) + " von " + SCHRITTE.length;
+    elQ.textContent = typeof st.frage === "function" ? st.frage() : st.frage;
+    if (st.hinweis) { elHint.textContent = st.hinweis; elHint.hidden = false; } else { elHint.hidden = true; }
+    elCont.innerHTML = st.html();
+    elErr.hidden = true;
+    elBack.disabled = idx === 0;
+    elNext.textContent = st.weiter || "Weiter";
+    elBar.style.width = Math.round(((idx) / (SCHRITTE.length - 1)) * 100) + "%";
+    phases.forEach(function (p) { p.classList.toggle("on", p.getAttribute("data-phase") === st.phase); });
+    if (st.bind) st.bind(elCont);
+    pruefen();
+    elBody.scrollTop = 0;
+    elQ.focus();
+    elLive.textContent = "Schritt " + (idx + 1) + " von " + SCHRITTE.length + ": " + elQ.textContent;
+    track("lead_magnet_step_viewed", { schritt: idx + 1, id: st.id });
+  }
+
+  /* ---- Navigation ---- */
+  elNext.addEventListener("click", function () {
+    var st = SCHRITTE[idx];
+    if (!st.gueltig()) { elErr.textContent = st.fehler || "Bitte ergänzt die Angabe."; elErr.hidden = false; return; }
+    track("lead_magnet_step_completed", { schritt: idx + 1, id: st.id });
+    if (st.id === "bewerbung") { absenden(); return; }
+    idx++; rendern();
+  });
+  elBack.addEventListener("click", function () { if (idx > 0) { idx--; rendern(); } });
+
+  /* ---- Uebermittlung ---- */
+  function nutzlast() {
+    return {
+      ziel: S.ziel, unternehmen: S.unternehmen, website: S.website, zielAntwort: S.zielAntwort,
+      inhalte: S.inhalte, personen: S.personen, ort: S.ort, bundesland: S.bundesland, groesse: S.groesse,
+      kontakt: { name: K.name, firma: K.firma, funktion: K.funktion, email: K.email, telefon: K.telefon, erreichbar: K.erreichbar },
+      marketingOptIn: K.optin, quelle: "dailies-flow"
+    };
+  }
+
+  function alsText() {
+    var d = nutzlast(), r = richtung();
+    return [
+      "Bewerbung fuer einen Probe-Content-Tag", "",
+      "Ziel: " + r.ziel,
+      "Unternehmen: " + d.unternehmen,
+      "Website: " + (d.website || "keine Angabe"),
+      "Antwort zum Ziel: " + d.zielAntwort,
+      "Moegliche Inhalte: " + d.inhalte.join(", "),
+      "Vor der Kamera: " + d.personen.join(", "),
+      "Standort: " + d.ort + (d.bundesland ? " (" + d.bundesland + ")" : ""),
+      "Groesse: " + d.groesse, "",
+      "Name: " + d.kontakt.name,
+      "Firma: " + d.kontakt.firma,
+      "Funktion: " + d.kontakt.funktion,
+      "E-Mail: " + d.kontakt.email,
+      "Telefon: " + (d.kontakt.telefon || "keine Angabe"),
+      "Erreichbarkeit: " + (d.kontakt.erreichbar || "keine Angabe"),
+      "Marketing-Einwilligung: " + (d.marketingOptIn ? "ja" : "nein")
+    ].join("\n");
+  }
+
+  function ergebnis(titel, text, extra) {
+    elCount.textContent = "";
+    elQ.textContent = titel;
+    elHint.hidden = true;
+    elCont.innerHTML = '<p style="margin:18px 0 0; max-width:62ch; line-height:1.6">' + text + "</p>" + (extra || "");
+    elErr.hidden = true;
+    elBack.style.display = "none";
+    elNext.style.display = "none";
+    elBar.style.width = "100%";
+    elQ.focus();
+    elLive.textContent = titel;
+  }
+
+  function absenden() {
+    var u = (cfg && cfg.uebermittlung) || {};
+    var mail = u.fallbackEmail || "office@wexplore.at";
+
+    if (!u.endpoint) {
+      // Kein Backend eingetragen. Wir taeuschen keine Uebermittlung vor, sondern
+      // oeffnen eine fertige E-Mail und sagen klar, dass erst das Senden dort zaehlt.
+      var href = "mailto:" + mail + "?subject=" + encodeURIComponent("Bewerbung Probe-Content-Tag") + "&body=" + encodeURIComponent(alsText());
+      track("lead_magnet_submission_error", { grund: "kein_endpoint" });
+      ergebnis("Fast fertig: bitte einmal senden",
+        "Wir können eure Bewerbung hier noch nicht automatisch entgegennehmen. Über den Knopf öffnet sich eine fertig ausgefüllte E-Mail an uns. <strong>Abgeschickt ist eure Bewerbung erst, wenn ihr sie in eurem E-Mail-Programm sendet.</strong>",
+        '<p style="margin:22px 0 0"><a class="fl-next" style="text-decoration:none; display:inline-flex" href="' + esc(href) + '">Bewerbung per E-Mail öffnen</a></p>' +
+        '<p class="fl-meta" style="margin-top:14px">Klappt das nicht, schreibt uns direkt an <a href="mailto:' + esc(mail) + '" style="color:#0A171D">' + esc(mail) + "</a>.</p>");
+      return;
+    }
+
+    elNext.disabled = true;
+    elNext.classList.remove("wait");
+    elNext.textContent = "Wird gesendet";
+    fetch(u.endpoint, {
+      method: u.methode || "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(nutzlast())
+    }).then(function (r) {
+      if (!r.ok) throw new Error("HTTP " + r.status);
+      track("lead_magnet_application_submitted", { ziel: S.ziel });
+      try { sessionStorage.removeItem(SPEICHER); } catch (e) {}
+      ergebnis("Danke, eure Bewerbung ist bei uns.",
+        "Wir schauen uns eure Angaben persönlich an. Wenn der Probe-Content-Tag zu eurem Unternehmen passt, melden wir uns mit einem Vorschlag für ein 30-minütiges Dailies-Briefing. In dem Gespräch holen wir das Detailbriefing ein und planen anschließend die Inhalte für den Probe-Tag.",
+        '<p class="fl-meta" style="margin-top:16px">Ihr habt noch keinen Termin gebucht. Es entsteht auch keine Verpflichtung zu einem Dailies-Abo.</p>');
+    }).catch(function (err) {
+      track("lead_magnet_submission_error", { grund: "netzwerk" });
+      elNext.disabled = false;
+      elNext.textContent = "Erneut senden";
+      elErr.textContent = "Das Senden hat nicht geklappt. Bitte versucht es noch einmal oder schreibt uns an " + mail + ".";
+      elErr.hidden = false;
+    });
+  }
+
+  /* ---- Oeffnen und schliessen ---- */
+  function oeffnen(quelle, ziel) {
+    if (ziel) S.ziel = ziel;
+    idx = 0; offen = true;
+    vorherFokus = document.activeElement;
+    ovl.hidden = false;
+    document.body.style.overflow = "hidden";
+    elBack.style.display = ""; elNext.style.display = "";
+    rendern();
+    track("lead_magnet_started", { quelle: quelle || "unbekannt", ziel: S.ziel || null });
+  }
+  function schliessen() {
+    offen = false;
+    ovl.hidden = true;
+    document.body.style.overflow = "";
+    if (vorherFokus && vorherFokus.focus) vorherFokus.focus();
+  }
+
+  document.querySelectorAll("[data-flow-start]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      oeffnen(b.getAttribute("data-flow-start"), b.getAttribute("data-ziel-cta") || "");
+    });
+  });
+  ovl.querySelector("[data-flow-close]").addEventListener("click", schliessen);
+
+  ovl.addEventListener("keydown", function (ev) {
+    if (ev.key === "Escape") { ev.preventDefault(); schliessen(); return; }
+    if (ev.key !== "Tab") return;
+    var f = Array.prototype.slice.call(ovl.querySelectorAll('a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+      .filter(function (el) { return el.offsetParent !== null; });
+    if (!f.length) return;
+    var erste = f[0], letzte = f[f.length - 1];
+    if (ev.shiftKey && document.activeElement === erste) { ev.preventDefault(); letzte.focus(); }
+    else if (!ev.shiftKey && document.activeElement === letzte) { ev.preventDefault(); erste.focus(); }
+  });
+
+  laden();
+  // Konfiguration liegt in assets/config.js unter window.DAILIES.flow und ist beim
+  // Start bereits geladen (defer). Fehlt sie, greifen die Standardwerte.
+  cfg = (window.DAILIES && window.DAILIES.flow) || {};
 })();
 </script>
 </body>
