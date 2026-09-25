@@ -347,11 +347,17 @@
   .fl-idee-quelle { margin:10px 0 0; font-size:13px; color:var(--grau-hell) }
   .fl-bruecke { margin-top:14px; border-radius:16px; padding:20px 22px; background:var(--dunkel); color:#fff }
   .fl-bruecke p { margin:0; line-height:1.55 }
+  .fl-weiter { margin-top:26px; padding:18px 20px; border-radius:12px; background:var(--flaeche) }
+  .fl-weiter .fl-lab { margin:0 0 10px }
+  .fl-weiter ol { margin:0; padding:0; list-style:none; counter-reset:w }
+  .fl-weiter li { position:relative; padding-left:32px; line-height:1.5 }
+  .fl-weiter li + li { margin-top:8px }
+  .fl-weiter li::before { counter-increment:w; content:counter(w); position:absolute; left:0; top:1px; width:22px; height:22px; border-radius:50%; background:var(--dunkel); color:#fff; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center }
+  .fl-fussnote { max-width:760px; margin:0 auto 10px; font-size:13px; color:var(--text-hell); text-align:right }
   .fl-offen { margin-top:26px }
   .fl-offen ul { margin:0; padding-left:20px; line-height:1.55; color:var(--text-hell) }
   .fl-offen li + li { margin-top:6px }
-  .fl-two { display:grid; grid-template-columns:1fr 1fr; gap:16px }
-  [data-flow-content] > .fl-two:first-child { margin-top:26px }
+  .fl-two { display:grid; grid-template-columns:1fr 1fr; gap:0 16px }
   .fl-mehr { margin-top:22px; border-top:1px solid var(--linie-hell); padding-top:14px }
   .fl-mehr > summary { display:flex; align-items:center; min-height:44px; gap:7px; padding:10px 0; margin:-10px 0; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-hell); cursor:pointer; list-style:none }
   .fl-mehr > summary::before { content:"+"; font-size:14px; line-height:1 }
@@ -359,6 +365,7 @@
   @media (max-width: 640px) {
     /* Standzeile einzeilig halten: kleinere Schrift, schmalerer Schliessen-Knopf */
     .fl-stand { font-size:13px; text-wrap:balance }
+    .fl-fussnote { text-align:center; margin-bottom:8px }
     .fl-x { letter-spacing:.08em; padding:10px 8px; margin-right:-8px }
     .fl-inner { padding:32px 20px }
     .fl-top, .fl-foot { padding-left:20px; padding-right:20px }
@@ -820,6 +827,7 @@
   </div>
 
   <div class="fl-foot">
+    <p class="fl-fussnote" data-flow-fussnote hidden></p>
     <div class="fl-footrow">
       <button type="button" class="fl-back" data-flow-back>Zurück</button>
       <button type="button" class="fl-next" data-flow-next>Weiter</button>
@@ -1214,6 +1222,7 @@ bereit(function () {
   var elBar   = ovl.querySelector("[data-flow-bar]");
   var elLive  = ovl.querySelector("[data-flow-live]");
   var elFoot  = ovl.querySelector(".fl-foot");
+  var elFuss  = ovl.querySelector("[data-flow-fussnote]");
   var elStand = ovl.querySelector("[data-flow-stand]");
 
   var SPEICHER = "dailies-flow-v2";
@@ -1350,6 +1359,14 @@ bereit(function () {
     bekanntheit: ["projekte", "knowhow", "menschen"],
     anderes:     ["menschen", "ablaeufe", "projekte"]
   };
+
+  var MAIL = /^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i;
+
+  // Echte Referenzen aus assets/config.js, damit neben dem Formular nichts erfunden steht.
+  function referenzen() {
+    var n = ((window.DAILIES && window.DAILIES.cases) || []).map(function (c) { return c.name; }).filter(Boolean);
+    return n.length > 1 ? n.slice(0, -1).join(", ") + " und " + n[n.length - 1] : (n[0] || "");
+  }
 
   function kuerzen(t, max) {
     t = String(t || "").trim();
@@ -1547,14 +1564,22 @@ bereit(function () {
 
     { id: "bewerbung", phase: "bewerbung",
       frage: "Möchtet ihr diese Ideen mit uns ausprobieren?",
+      hinweis: "Drei Angaben genügen. Alles Weitere ist freiwillig.",
+      fussnote: "Noch kein Termin und kein Abo.",
       weiter: "Bewerbung absenden",
       html: function () {
         // Bewusst nur drei Pflichtfelder. Alles Weitere steht hinter "Optional ergaenzen",
         // damit der letzte Schritt vor dem Absenden leicht bleibt.
-        return '<p style="margin:18px 0 4px; max-width:60ch; line-height:1.6">Wir prüfen eure Angaben persönlich und melden uns. Passt es, schlagen wir einen Termin für ein 30-minütiges Briefing vor.</p>' +
-          '<div class="fl-two"><div class="fl-field"><label class="fl-lab" for="fl-name">Vor- und Nachname</label><input class="fl-in" id="fl-name" type="text" autocomplete="name" value="' + esc(K.name) + '"></div>' +
-          '<div class="fl-field"><label class="fl-lab" for="fl-firma">Unternehmen</label><input class="fl-in" id="fl-firma" type="text" autocomplete="organization" value="' + esc(K.firma) + '"></div></div>' +
-          '<div class="fl-field"><label class="fl-lab" for="fl-mail">Geschäftliche E-Mail-Adresse</label><input class="fl-in" id="fl-mail" type="email" autocomplete="email" value="' + esc(K.email) + '"></div>' +
+        var refs = referenzen();
+        return '<div class="fl-two"><div class="fl-field"><label class="fl-lab" for="fl-name">Vor- und Nachname</label><input class="fl-in" id="fl-name" type="text" autocomplete="name" enterkeyhint="next" value="' + esc(K.name) + '"></div>' +
+          '<div class="fl-field"><label class="fl-lab" for="fl-firma">Unternehmen</label><input class="fl-in" id="fl-firma" type="text" autocomplete="organization" enterkeyhint="next" value="' + esc(K.firma) + '"></div></div>' +
+          '<div class="fl-field"><label class="fl-lab" for="fl-mail">Geschäftliche E-Mail-Adresse</label><input class="fl-in" id="fl-mail" type="email" autocomplete="email" enterkeyhint="send" aria-describedby="fl-mail-err" value="' + esc(K.email) + '">' +
+          '<p class="fl-err" id="fl-mail-err" hidden>Bitte prüft die E-Mail-Adresse, z. B. name@firma.at.</p></div>' +
+          '<div class="fl-weiter"><p class="fl-lab">So geht es weiter</p><ol>' +
+          '<li>Wir prüfen eure Angaben persönlich.</li>' +
+          '<li>Passt es, schlagen wir einen Termin für ein 30-minütiges Briefing vor.</li>' +
+          '<li>Aus dem Briefing planen wir die Inhalte für euren Probe-Content-Tag.</li></ol>' +
+          (refs ? '<p class="fl-meta" style="margin-top:14px">Gedreht unter anderem für ' + esc(refs) + '.</p>' : '') + '</div>' +
           '<details class="fl-mehr"' + ((K.funktion || K.telefon || K.erreichbar || S.website || S.unternehmen) ? ' open' : '') + '><summary>Optional ergänzen</summary>' +
           '<div class="fl-field" style="margin-top:14px"><label class="fl-lab" for="fl-web">Website</label><input class="fl-in" id="fl-web" type="text" inputmode="url" autocomplete="url" autocapitalize="none" autocorrect="off" spellcheck="false" value="' + esc(S.website) + '"></div>' +
           '<div class="fl-field"><label class="fl-lab" for="fl-unt">Was macht ihr, und für wen?</label><textarea class="fl-ta" id="fl-unt" maxlength="200" aria-describedby="fl-unt-bsp">' + esc(S.unternehmen) + '</textarea>' +
@@ -1562,8 +1587,8 @@ bereit(function () {
           '<div class="fl-two"><div class="fl-field"><label class="fl-lab" for="fl-funktion">Funktion</label><input class="fl-in" id="fl-funktion" type="text" autocomplete="organization-title" value="' + esc(K.funktion) + '"></div>' +
           '<div class="fl-field"><label class="fl-lab" for="fl-tel">Telefon</label><input class="fl-in" id="fl-tel" type="tel" autocomplete="tel" value="' + esc(K.telefon) + '"></div></div>' +
           '<div class="fl-field"><label class="fl-lab" for="fl-err2">Wann erreichen wir euch am besten?</label><select class="fl-sel" id="fl-err2"><option value="">Keine Angabe</option><option' + (K.erreichbar === "Vormittags" ? " selected" : "") + '>Vormittags</option><option' + (K.erreichbar === "Nachmittags" ? " selected" : "") + '>Nachmittags</option></select></div></details>' +
-          '<div class="fl-field"><label style="display:flex; gap:10px; align-items:flex-start; line-height:1.45; font-size:15px"><input type="checkbox" id="fl-optin" style="margin-top:3px"' + (K.optin ? " checked" : "") + '><span>Ihr dürft uns gelegentlich Beispiele schicken. Für die Bewerbung nicht nötig.</span></label></div>' +
-          '<p class="fl-meta" style="margin-top:16px"><strong>Noch kein Termin und kein Abo.</strong> Zur Verarbeitung eurer Angaben: <a href="https://www.wexplore.at/datenschutz" target="_blank" rel="noopener" style="color:#0A171D">Datenschutzerklärung</a>.</p>';
+          '<div class="fl-field"><label style="display:flex; gap:10px; align-items:flex-start; line-height:1.45; font-size:15px"><input type="checkbox" id="fl-optin" style="margin-top:3px"' + (K.optin ? " checked" : "") + '><span>Gelegentlich Beispiele aus neuen Produktionen per E-Mail bekommen. Freiwillig, jederzeit abbestellbar und für die Bewerbung nicht nötig.</span></label></div>' +
+          '<p class="fl-meta" style="margin-top:16px">Zur Verarbeitung eurer Angaben: <a href="https://www.wexplore.at/datenschutz" target="_blank" rel="noopener" style="color:#0A171D">Datenschutzerklärung</a>.</p>';
       },
       bind: function (root) {
         track("lead_magnet_application_started", { ziel: S.ziel });
@@ -1574,12 +1599,20 @@ bereit(function () {
           el.addEventListener("change", function () { K[map[id]] = el.value; pruefen(); });
         });
         root.querySelector("#fl-optin").addEventListener("change", function (e) { K.optin = e.target.checked; });
+        var mail = root.querySelector("#fl-mail"), mailErr = root.querySelector("#fl-mail-err");
+        mail.addEventListener("blur", function () {
+          var v = mail.value.trim();
+          mailErr.hidden = !v || MAIL.test(v);
+          mail.setAttribute("aria-invalid", mailErr.hidden ? "false" : "true");
+        });
+        mail.addEventListener("input", function () {
+          if (!mailErr.hidden && MAIL.test(mail.value.trim())) { mailErr.hidden = true; mail.setAttribute("aria-invalid", "false"); }
+        });
         root.querySelector("#fl-web").addEventListener("input", function (e) { S.website = e.target.value; sichern(); });
         root.querySelector("#fl-unt").addEventListener("input", function (e) { S.unternehmen = e.target.value; sichern(); });
       },
       gueltig: function () {
-        return K.name.trim().length >= 2 && K.firma.trim().length >= 2 &&
-               /^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(K.email.trim());
+        return K.name.trim().length >= 2 && K.firma.trim().length >= 2 && MAIL.test(K.email.trim());
       },
       fehler: "Bitte füllt Name, Unternehmen und eine gültige E-Mail-Adresse aus."
     }
@@ -1664,6 +1697,8 @@ bereit(function () {
     elErr.hidden = true;
     elBack.hidden = idx === 0;
     elNext.textContent = st.weiter || "Weiter";
+    elFuss.textContent = st.fussnote || "";
+    elFuss.hidden = !st.fussnote;
     elBar.style.width = Math.round(((idx + 1) / (SCHRITTE.length + 1)) * 100) + "%";
     if (st.bind) st.bind(elCont);
     pruefen();
@@ -1682,6 +1717,14 @@ bereit(function () {
     idx++; rendern();
   });
   elBack.addEventListener("click", function () { if (idx > 0) { idx--; rendern(); } });
+  elCont.addEventListener("keydown", function (ev) {
+    if (ev.key !== "Enter" || ev.isComposing || !ev.target.matches || !ev.target.matches("input.fl-in")) return;
+    ev.preventDefault();
+    var felder = Array.prototype.slice.call(elCont.querySelectorAll("input.fl-in")).filter(function (el) { return el.offsetParent !== null; });
+    var leer = felder.slice(felder.indexOf(ev.target) + 1).filter(function (el) { return !el.value.trim(); })[0];
+    if (!SCHRITTE[idx].gueltig() && leer) { leer.focus(); return; }
+    elNext.click();
+  });
 
   /* ---- Uebermittlung ---- */
   function nutzlast() {
