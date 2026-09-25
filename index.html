@@ -330,6 +330,13 @@
   .fl-next { border:0; cursor:pointer; height:48px; padding:0 26px; border-radius:6px; background:var(--rot-hell); color:#fff; font-weight:600; font-size:16px; display:inline-flex; align-items:center; justify-content:center; margin-left:auto; text-decoration:none }
   .fl-next.wait { background:#F3D6D1; color:#7A1F14 }
   .fl-next[disabled] { background:#ddd; color:#666; cursor:default }
+  /* Chips: voll rund, Auswahlkarten 12px. Beides bewusst unterschiedlich, damit Kurzantworten nicht wie Hauptoptionen wirken. */
+  .fl-group { margin-top:26px }
+  .fl-group > .fl-lab { margin:0 0 10px }
+  .fl-chips { display:flex; flex-wrap:wrap; gap:8px }
+  .fl-chip { min-height:44px; padding:10px 16px; border:2px solid var(--linie-hell); border-radius:999px; background:transparent; color:#000; font-family:inherit; font-size:16px; line-height:1.2; cursor:pointer; transition:background-color .16s ease, border-color .16s ease, color .16s ease }
+  .fl-chip:hover { border-color:#000 }
+  .fl-chip[aria-pressed="true"] { background:var(--dunkel); border-color:var(--dunkel); color:#fff }
   .fl-card { border:2px solid var(--linie-hell); border-radius:16px; padding:24px 22px; margin-top:20px; background:#fff }
   .fl-card h3 { margin:0; font-size:19px; font-weight:700; line-height:1.3 }
   .fl-card p { margin:8px 0 0; line-height:1.55 }
@@ -1200,7 +1207,7 @@ bereit(function () {
   var elFoot  = ovl.querySelector(".fl-foot");
   var phases  = Array.prototype.slice.call(ovl.querySelectorAll(".fl-phase"));
 
-  var SPEICHER = "dailies-flow-v1";
+  var SPEICHER = "dailies-flow-v2";
   var cfg = {};
   var idx = 0;
   var offen = false;
@@ -1245,10 +1252,12 @@ bereit(function () {
   ];
 
   var ZIELFRAGE = {
-    bewerbungen: { q: "Welche Rolle oder welches Berufsfeld möchtet ihr sichtbarer machen?", bsp: "z. B. Zerspanungstechnik, Montage, Lehrstellen im technischen Bereich" },
+    bewerbungen: { q: "Welche Rolle oder welches Berufsfeld möchtet ihr sichtbarer machen?", bsp: "z. B. Zerspanungstechnik, Montage, Lehrstellen im technischen Bereich",
+                   vorschlaege: ["Lehrstellen", "Produktion und Technik", "Montage und Service", "Büro und Verwaltung"] },
     nachfrage:   { q: "Welches Produkt oder welche Leistung soll als Erstes mehr Aufmerksamkeit bekommen?", bsp: "z. B. Sonderanfertigungen für den Maschinenbau" },
-    bekanntheit: { q: "Wofür soll euer Unternehmen stärker bekannt sein?", bsp: "z. B. für Fertigungstiefe und Liefertreue in der Region" },
-    anderes:     { q: "Was sollte sich durch euren Content verändern?", bsp: "z. B. dass unsere Partner verstehen, was wir alles selbst fertigen" }
+    bekanntheit: { q: "Wofür soll euer Unternehmen stärker bekannt sein?", bsp: "z. B. für Fertigungstiefe und Liefertreue in der Region",
+                   vorschlaege: ["Qualität", "Verlässlichkeit", "Know-how", "Nähe zur Region"] },
+    anderes:     { q: "Was soll sich durch euren Content verändern?", bsp: "z. B. dass unsere Partner verstehen, was wir alles selbst fertigen" }
   };
 
   var INHALTE = [
@@ -1268,22 +1277,17 @@ bereit(function () {
     { k: "offen",     t: "Noch offen, wir brauchen dabei Unterstützung" }
   ];
 
-  var GROESSEN = ["1 bis 20 Mitarbeiter:innen", "21 bis 99", "100 bis 250", "Über 250", "Möchte ich lieber im Gespräch erklären"];
+  var GROESSEN = ["1 bis 20", "21 bis 99", "100 bis 250", "Über 250", "Lieber im Gespräch"];
+  var REGIONEN = ["Oberösterreich", "Anderes Bundesland", "Außerhalb Österreichs"];
 
-  var PLZ_LAND = [
-    [1000, 1999, "Wien"], [2000, 2999, "Niederösterreich"], [3000, 3999, "Niederösterreich"],
-    [4000, 4999, "Oberösterreich"], [5000, 5999, "Salzburg"], [6000, 6499, "Tirol"],
-    [6500, 6999, "Vorarlberg"], [7000, 7999, "Burgenland"], [8000, 8999, "Steiermark"],
-    [9000, 9999, "Kärnten"]
-  ];
-  function landAusPlz(v) {
-    var m = String(v).match(/\b(\d{4})\b/);
-    if (!m) return "";
-    var n = Number(m[1]);
-    for (var i = 0; i < PLZ_LAND.length; i++) {
-      if (n >= PLZ_LAND[i][0] && n <= PLZ_LAND[i][1]) return PLZ_LAND[i][2];
-    }
-    return "";
+  function teile(v) {
+    return String(v || "").split(",").map(function (x) { return x.trim(); }).filter(Boolean);
+  }
+  function label(liste, k) {
+    return (liste.filter(function (x) { return x.k === k; })[0] || {}).t || k;
+  }
+  function groesseText(g) {
+    return /^(\d|Über)/.test(g || "") ? g + " Mitarbeiter:innen" : (g || "keine Angabe");
   }
 
   /* ---- Regelbasierte Content-Ideen ---- */
@@ -1371,43 +1375,6 @@ bereit(function () {
       fehler: "Bitte wählt ein Ziel aus."
     },
 
-    { id: "unternehmen", phase: "idee",
-      frage: "Was macht ihr, und für wen?",
-      hinweis: "Zwei Sätze genügen. Wir brauchen kein Briefing, nur den Rahmen.",
-      html: function () {
-        return '<div class="fl-field"><label class="fl-lab" for="fl-unt">Euer Unternehmen und eure Kundschaft</label>' +
-          '<textarea class="fl-ta" id="fl-unt" maxlength="200" placeholder="z. B. Wir fertigen Blechteile für den Maschinenbau, hauptsächlich für Kunden in Österreich und Süddeutschland.">' + esc(S.unternehmen) + "</textarea>" +
-          '<p class="fl-meta"><span data-zaehler></span> von 200 Zeichen</p></div>' +
-          '<div class="fl-field"><label class="fl-lab" for="fl-web">Website (optional)</label>' +
-          '<input class="fl-in" id="fl-web" type="text" inputmode="url" autocomplete="url" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="beispiel.at" value="' + esc(S.website) + '"></div>';
-      },
-      bind: function (root) {
-        var ta = root.querySelector("#fl-unt"), z = root.querySelector("[data-zaehler]");
-        function zaehl() { z.textContent = ta.value.length; }
-        zaehl();
-        ta.addEventListener("input", function () { S.unternehmen = ta.value; zaehl(); sichern(); pruefen(); });
-        root.querySelector("#fl-web").addEventListener("input", function (e) { S.website = e.target.value; sichern(); });
-      },
-      gueltig: function () { return S.unternehmen.trim().length >= 10; },
-      fehler: "Bitte beschreibt kurz, was ihr macht. Ein Satz reicht."
-    },
-
-    { id: "zielfrage", phase: "idee",
-      frage: function () { return (ZIELFRAGE[S.ziel] || ZIELFRAGE.anderes).q; },
-      hinweis: "Eine kurze Antwort genügt. Ihr müsst noch keine Strategie liefern.",
-      html: function () {
-        var d = ZIELFRAGE[S.ziel] || ZIELFRAGE.anderes;
-        return '<div class="fl-field"><label class="fl-lab" for="fl-za">Eure Antwort</label>' +
-          '<textarea class="fl-ta" id="fl-za" maxlength="200" placeholder="' + esc(d.bsp) + '">' + esc(S.zielAntwort) + "</textarea>" +
-          '<p class="fl-meta">' + esc(d.bsp) + "</p></div>";
-      },
-      bind: function (root) {
-        root.querySelector("#fl-za").addEventListener("input", function (e) { S.zielAntwort = e.target.value; sichern(); pruefen(); });
-      },
-      gueltig: function () { return S.zielAntwort.trim().length >= 3; },
-      fehler: "Bitte schreibt ein paar Worte dazu."
-    },
-
     { id: "inhalte", phase: "idee",
       frage: "Was könnten wir bei euch zeigen oder erzählen?",
       hinweis: "Mehrfachauswahl. Wenn ihr es noch nicht wisst, ist das auch eine Antwort.",
@@ -1426,34 +1393,42 @@ bereit(function () {
       fehler: "Bitte wählt mindestens einen Punkt."
     },
 
-    { id: "standort", phase: "idee",
-      frage: "Wo seid ihr, und wie groß ist euer Unternehmen?",
-      hinweis: "Nur zur Einordnung. Beides entscheidet nichts vorab.",
+    { id: "zielfrage", phase: "idee",
+      frage: function () { return (ZIELFRAGE[S.ziel] || ZIELFRAGE.anderes).q; },
+      hinweis: "Ein paar Worte genügen. Daraus bauen wir eure Ideen.",
       html: function () {
-        return '<div class="fl-two">' +
-          '<div class="fl-field" style="margin-top:0"><label class="fl-lab" for="fl-ort">Ort oder Postleitzahl</label>' +
-          '<input class="fl-in" id="fl-ort" type="text" placeholder="4020 Linz" value="' + esc(S.ort) + '"></div>' +
-          '<div class="fl-field" style="margin-top:0"><label class="fl-lab" for="fl-land">Bundesland</label>' +
-          '<input class="fl-in" id="fl-land" type="text" autocomplete="address-level1" placeholder="wird ergänzt" value="' + esc(S.bundesland) + '">' +
-          '<p class="fl-meta">Wird aus der Postleitzahl ergänzt und lässt sich überschreiben.</p></div></div>' +
-          '<div class="fl-field"><label class="fl-lab" for="fl-gr">Unternehmensgröße</label>' +
-          '<select class="fl-sel" id="fl-gr"><option value="">Bitte wählen</option>' +
-          GROESSEN.map(function (g) { return '<option' + (S.groesse === g ? " selected" : "") + ">" + esc(g) + "</option>"; }).join("") +
-          "</select></div>";
+        var d = ZIELFRAGE[S.ziel] || ZIELFRAGE.anderes;
+        var gewaehlt = teile(S.zielAntwort);
+        var vorschlaege = (d.vorschlaege || []).length
+          ? '<div class="fl-chips" role="group" aria-label="Vorschläge zum Antippen" style="margin-top:14px">' + d.vorschlaege.map(function (t) {
+              return '<button type="button" class="fl-chip" data-vorschlag="' + esc(t) + '" aria-pressed="' + (gewaehlt.indexOf(t) !== -1 ? "true" : "false") + '">' + esc(t) + "</button>";
+            }).join("") + "</div>"
+          : "";
+        // Kein Platzhalter im Feld: das Beispiel steht dauerhaft darunter (NN/g).
+        return '<div class="fl-field"><label class="fl-lab" for="fl-za">Eure Antwort</label>' +
+          '<input class="fl-in" id="fl-za" type="text" maxlength="120" autocomplete="off" enterkeyhint="next" aria-describedby="fl-za-bsp" value="' + esc(S.zielAntwort) + '">' +
+          '<p class="fl-meta" id="fl-za-bsp">' + esc(d.bsp) + "</p>" + vorschlaege + "</div>";
       },
       bind: function (root) {
-        var ort = root.querySelector("#fl-ort"), land = root.querySelector("#fl-land");
-        ort.addEventListener("input", function () {
-          S.ort = ort.value;
-          var l = landAusPlz(ort.value);
-          if (l && !land.dataset.manuell) { land.value = l; S.bundesland = l; }
-          sichern(); pruefen();
+        var feld = root.querySelector("#fl-za");
+        function markieren() {
+          var t = teile(feld.value);
+          root.querySelectorAll("[data-vorschlag]").forEach(function (b) {
+            b.setAttribute("aria-pressed", t.indexOf(b.getAttribute("data-vorschlag")) !== -1 ? "true" : "false");
+          });
+        }
+        feld.addEventListener("input", function () { S.zielAntwort = feld.value; markieren(); sichern(); pruefen(); });
+        root.querySelectorAll("[data-vorschlag]").forEach(function (b) {
+          b.addEventListener("click", function () {
+            var v = b.getAttribute("data-vorschlag"), t = teile(feld.value), i = t.indexOf(v);
+            if (i === -1) t.push(v); else t.splice(i, 1);
+            feld.value = t.join(", ");
+            S.zielAntwort = feld.value; markieren(); sichern(); pruefen();
+          });
         });
-        land.addEventListener("input", function () { land.dataset.manuell = "1"; S.bundesland = land.value; sichern(); });
-        root.querySelector("#fl-gr").addEventListener("change", function (e) { S.groesse = e.target.value; sichern(); pruefen(); });
       },
-      gueltig: function () { return S.ort.trim().length >= 2 && !!S.groesse; },
-      fehler: "Bitte tragt Ort und Unternehmensgröße ein."
+      gueltig: function () { return S.zielAntwort.trim().length >= 3; },
+      fehler: "Bitte schreibt ein paar Worte dazu."
     },
 
     { id: "richtung", phase: "idee",
@@ -1472,6 +1447,21 @@ bereit(function () {
       gueltig: function () { return true; }
     },
 
+    { id: "rahmen", phase: "bewerbung",
+      frage: "Wo seid ihr, und wie groß ist euer Unternehmen?",
+      hinweis: "Nur zur Einordnung. Beides entscheidet nichts vorab.",
+      html: function () {
+        return '<div class="fl-group" data-gruppe="region"><p class="fl-lab" id="fl-lab-region">Standort</p>' + chips(REGIONEN, "bundesland", "fl-lab-region") + "</div>" +
+               '<div class="fl-group" data-gruppe="groesse"><p class="fl-lab" id="fl-lab-groesse">Mitarbeiter:innen</p>' + chips(GROESSEN, "groesse", "fl-lab-groesse") + "</div>";
+      },
+      bind: function (root) {
+        chipsBinden(root, '[data-gruppe="region"]', "bundesland");
+        chipsBinden(root, '[data-gruppe="groesse"]', "groesse");
+      },
+      gueltig: function () { return !!S.bundesland && !!S.groesse; },
+      fehler: "Bitte wählt Standort und Unternehmensgröße."
+    },
+
     { id: "bewerbung", phase: "bewerbung",
       frage: "Möchtet ihr diese Ideen mit uns ausprobieren?",
       weiter: "Bewerbung absenden",
@@ -1482,9 +1472,12 @@ bereit(function () {
           '<div class="fl-two"><div class="fl-field"><label class="fl-lab" for="fl-name">Vor- und Nachname</label><input class="fl-in" id="fl-name" type="text" autocomplete="name" value="' + esc(K.name) + '"></div>' +
           '<div class="fl-field"><label class="fl-lab" for="fl-firma">Unternehmen</label><input class="fl-in" id="fl-firma" type="text" autocomplete="organization" value="' + esc(K.firma) + '"></div></div>' +
           '<div class="fl-field"><label class="fl-lab" for="fl-mail">Geschäftliche E-Mail-Adresse</label><input class="fl-in" id="fl-mail" type="email" autocomplete="email" value="' + esc(K.email) + '"></div>' +
-          '<details class="fl-mehr"' + ((K.funktion || K.telefon || K.erreichbar) ? ' open' : '') + '><summary>Optional ergänzen</summary>' +
-          '<div class="fl-two" style="margin-top:14px"><div class="fl-field" style="margin-top:0"><label class="fl-lab" for="fl-funktion">Funktion</label><input class="fl-in" id="fl-funktion" type="text" autocomplete="organization-title" value="' + esc(K.funktion) + '"></div>' +
-          '<div class="fl-field" style="margin-top:0"><label class="fl-lab" for="fl-tel">Telefon</label><input class="fl-in" id="fl-tel" type="tel" autocomplete="tel" value="' + esc(K.telefon) + '"></div></div>' +
+          '<details class="fl-mehr"' + ((K.funktion || K.telefon || K.erreichbar || S.website || S.unternehmen) ? ' open' : '') + '><summary>Optional ergänzen</summary>' +
+          '<div class="fl-field" style="margin-top:14px"><label class="fl-lab" for="fl-web">Website</label><input class="fl-in" id="fl-web" type="text" inputmode="url" autocomplete="url" autocapitalize="none" autocorrect="off" spellcheck="false" value="' + esc(S.website) + '"></div>' +
+          '<div class="fl-field"><label class="fl-lab" for="fl-unt">Was macht ihr, und für wen?</label><textarea class="fl-ta" id="fl-unt" maxlength="200" aria-describedby="fl-unt-bsp">' + esc(S.unternehmen) + '</textarea>' +
+          '<p class="fl-meta" id="fl-unt-bsp">z. B. Wir fertigen Blechteile für den Maschinenbau, hauptsächlich für Kunden in Österreich und Süddeutschland.</p></div>' +
+          '<div class="fl-two"><div class="fl-field"><label class="fl-lab" for="fl-funktion">Funktion</label><input class="fl-in" id="fl-funktion" type="text" autocomplete="organization-title" value="' + esc(K.funktion) + '"></div>' +
+          '<div class="fl-field"><label class="fl-lab" for="fl-tel">Telefon</label><input class="fl-in" id="fl-tel" type="tel" autocomplete="tel" value="' + esc(K.telefon) + '"></div></div>' +
           '<div class="fl-field"><label class="fl-lab" for="fl-err2">Wann erreichen wir euch am besten?</label><select class="fl-sel" id="fl-err2"><option value="">Keine Angabe</option><option' + (K.erreichbar === "Vormittags" ? " selected" : "") + '>Vormittags</option><option' + (K.erreichbar === "Nachmittags" ? " selected" : "") + '>Nachmittags</option></select></div></details>' +
           '<div class="fl-field"><label style="display:flex; gap:10px; align-items:flex-start; line-height:1.45; font-size:15px"><input type="checkbox" id="fl-optin" style="margin-top:3px"' + (K.optin ? " checked" : "") + '><span>Ihr dürft uns gelegentlich Beispiele schicken. Für die Bewerbung nicht nötig.</span></label></div>' +
           '<p class="fl-meta" style="margin-top:16px"><strong>Noch kein Termin und kein Abo.</strong> Zur Verarbeitung eurer Angaben: <a href="https://www.wexplore.at/datenschutz" target="_blank" rel="noopener" style="color:#0A171D">Datenschutzerklärung</a>.</p>';
@@ -1498,6 +1491,8 @@ bereit(function () {
           el.addEventListener("change", function () { K[map[id]] = el.value; pruefen(); });
         });
         root.querySelector("#fl-optin").addEventListener("change", function (e) { K.optin = e.target.checked; });
+        root.querySelector("#fl-web").addEventListener("input", function (e) { S.website = e.target.value; sichern(); });
+        root.querySelector("#fl-unt").addEventListener("input", function (e) { S.unternehmen = e.target.value; sichern(); });
       },
       gueltig: function () {
         return K.name.trim().length >= 2 && K.firma.trim().length >= 2 &&
@@ -1506,6 +1501,22 @@ bereit(function () {
       fehler: "Bitte füllt Name, Unternehmen und eine gültige E-Mail-Adresse aus."
     }
   ];
+
+  function chips(liste, feld, labelId) {
+    return '<div class="fl-chips" role="group" aria-labelledby="' + labelId + '">' + liste.map(function (t) {
+      return '<button type="button" class="fl-chip" data-chip="' + esc(t) + '" aria-pressed="' + (S[feld] === t ? "true" : "false") + '">' + esc(t) + "</button>";
+    }).join("") + "</div>";
+  }
+  function chipsBinden(root, gruppe, feld) {
+    var knoepfe = root.querySelectorAll(gruppe + " [data-chip]");
+    knoepfe.forEach(function (b) {
+      b.addEventListener("click", function () {
+        S[feld] = b.getAttribute("data-chip");
+        knoepfe.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+        sichern(); pruefen();
+      });
+    });
+  }
 
   function mehrfachBinden(root, feld, exklusiv) {
     root.querySelectorAll("[data-opt]").forEach(function (b) {
@@ -1580,16 +1591,16 @@ bereit(function () {
     return [
       "Bewerbung für einen Probe-Content-Tag", "",
       "Ziel: " + r.ziel,
-      "Unternehmen: " + d.unternehmen,
-      "Website: " + (d.website || "keine Angabe"),
       "Antwort zum Ziel: " + d.zielAntwort,
-      "Mögliche Inhalte: " + d.inhalte.join(", "),
-      "Vor der Kamera: " + d.personen.join(", "),
-      "Standort: " + d.ort + (d.bundesland ? " (" + d.bundesland + ")" : ""),
-      "Größe: " + d.groesse, "",
+      "Mögliche Inhalte: " + d.inhalte.map(function (k) { return label(INHALTE, k); }).join(", "),
+      "Vor der Kamera: " + d.personen.map(function (k) { return label(PERSONEN, k); }).join(", "),
+      "Standort: " + (d.bundesland || "keine Angabe"),
+      "Größe: " + groesseText(d.groesse),
+      "Website: " + (d.website || "keine Angabe"),
+      "Beschreibung: " + (d.unternehmen || "keine Angabe"), "",
       "Name: " + d.kontakt.name,
       "Firma: " + d.kontakt.firma,
-      "Funktion: " + d.kontakt.funktion,
+      "Funktion: " + (d.kontakt.funktion || "keine Angabe"),
       "E-Mail: " + d.kontakt.email,
       "Telefon: " + (d.kontakt.telefon || "keine Angabe"),
       "Erreichbarkeit: " + (d.kontakt.erreichbar || "keine Angabe"),
