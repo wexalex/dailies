@@ -354,6 +354,9 @@
   .fl-weiter li + li { margin-top:8px }
   .fl-weiter li::before { counter-increment:w; content:counter(w); position:absolute; left:0; top:1px; width:22px; height:22px; border-radius:50%; background:var(--dunkel); color:#fff; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center }
   .fl-fussnote { max-width:760px; margin:0 auto 10px; font-size:13px; color:var(--text-hell); text-align:right }
+  .fl-foot .fl-err { max-width:760px; margin:0 auto 10px; text-align:right }
+  .fl-abschluss { display:flex; flex-wrap:wrap; gap:10px; margin-top:22px }
+  .fl-abschluss .fl-next { margin-left:0 }
   .fl-offen { margin-top:26px }
   .fl-offen ul { margin:0; padding-left:20px; line-height:1.55; color:var(--text-hell) }
   .fl-offen li + li { margin-top:6px }
@@ -365,7 +368,7 @@
   @media (max-width: 640px) {
     /* Standzeile einzeilig halten: kleinere Schrift, schmalerer Schliessen-Knopf */
     .fl-stand { font-size:13px; text-wrap:balance }
-    .fl-fussnote { text-align:center; margin-bottom:8px }
+    .fl-fussnote, .fl-foot .fl-err { text-align:center; margin-bottom:8px }
     .fl-x { letter-spacing:.08em; padding:10px 8px; margin-right:-8px }
     .fl-inner { padding:32px 20px }
     .fl-top, .fl-foot { padding-left:20px; padding-right:20px }
@@ -822,11 +825,12 @@
       <h2 class="fl-q" id="fl-frage" tabindex="-1"></h2>
       <p class="fl-hint" data-flow-hint hidden></p>
       <div data-flow-content></div>
-      <p class="fl-err" data-flow-error hidden role="alert"></p>
     </div>
   </div>
 
   <div class="fl-foot">
+    <!-- Fehler stehen direkt ueber dem Knopf: unten im Inhalt lagen sie am Handy ausserhalb des Sichtbereichs. -->
+    <p class="fl-err" data-flow-error hidden role="alert"></p>
     <p class="fl-fussnote" data-flow-fussnote hidden></p>
     <div class="fl-footrow">
       <button type="button" class="fl-back" data-flow-back>Zurück</button>
@@ -1233,7 +1237,12 @@ bereit(function () {
 
   var S = {
     ziel: "", unternehmen: "", website: "", zielAntwort: "",
-    inhalte: [], personen: [], ort: "", bundesland: "", groesse: ""
+    inhalte: [], personen: [], ort: "", bundesland: "", groesse: "", einstiege: []
+  };
+  var abgeschlossen = false;
+  var EINSTIEGE = {
+    nav: "Navigation", hero: "Startbereich", ziel: "Zielkarte", kontakt: "Abschnitt Wer dahintersteht",
+    sticky: "Leiste unten", "paket-start": "Paket Start", "paket-grow": "Paket Grow"
   };
   var K = { name: "", firma: "", funktion: "", email: "", telefon: "", erreichbar: "", optin: false };
 
@@ -1702,6 +1711,7 @@ bereit(function () {
     elCont.innerHTML = st.html();
     elErr.hidden = true;
     elBack.hidden = idx === 0;
+    elNext.disabled = false;
     elNext.textContent = st.weiter || "Weiter";
     elFuss.textContent = st.fussnote || "";
     elFuss.hidden = !st.fussnote;
@@ -1739,7 +1749,7 @@ bereit(function () {
       ziel: S.ziel, unternehmen: S.unternehmen, website: S.website, zielAntwort: S.zielAntwort,
       inhalte: S.inhalte, personen: S.personen, ort: S.ort, bundesland: S.bundesland, groesse: S.groesse,
       kontakt: { name: K.name, firma: K.firma, funktion: K.funktion, email: K.email, telefon: K.telefon, erreichbar: K.erreichbar },
-      marketingOptIn: K.optin, quelle: "dailies-flow"
+      marketingOptIn: K.optin, quelle: "dailies-flow", einstiege: S.einstiege
     };
   }
 
@@ -1754,7 +1764,8 @@ bereit(function () {
       "Standort: " + (d.bundesland || "keine Angabe"),
       "Größe: " + groesseText(d.groesse),
       "Website: " + (d.website || "keine Angabe"),
-      "Beschreibung: " + (d.unternehmen || "keine Angabe"), "",
+      "Beschreibung: " + (d.unternehmen || "keine Angabe"),
+      "Einstieg: " + (d.einstiege.length ? d.einstiege.map(function (q) { return EINSTIEGE[q] || q; }).join(", dann ") : "unbekannt"), "",
       "Gezeigte Ideen:"].concat(r.ideen.map(function (i) { return "- " + i.f + ": " + i.t; })).concat(["",
       "Name: " + d.kontakt.name,
       "Firma: " + d.kontakt.firma,
@@ -1767,6 +1778,7 @@ bereit(function () {
   }
 
   function ergebnis(titel, text, extra, stand) {
+    abgeschlossen = true;
     elStand.textContent = stand || "";
     elCount.textContent = "";
     elQ.textContent = titel;
@@ -1779,8 +1791,24 @@ bereit(function () {
     elLive.textContent = titel;
   }
 
+  function kopierenBinden(mail) {
+    var knopf = elCont.querySelector("[data-flow-kopieren]"), info = elCont.querySelector("[data-flow-kopiert]"), feld = elCont.querySelector("[data-flow-klartext]");
+    if (!knopf) return;
+    knopf.addEventListener("click", function () {
+      function zeigen() { feld.hidden = false; feld.focus(); feld.select(); info.textContent = "Der Text ist markiert und lässt sich jetzt kopieren."; }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(alsText()).then(function () {
+          info.textContent = "Kopiert. Jetzt in eine E-Mail an " + mail + " einfügen.";
+          track("lead_magnet_text_copied", {});
+        }, zeigen);
+      } else zeigen();
+    });
+  }
+
   function absenden() {
-    var u = (cfg && cfg.uebermittlung) || {};
+    // Erst hier lesen: assets/config.js laeuft per defer NACH diesem Skript. Beim Start
+    // gelesen war die Einstellung immer leer, ein eingetragener Endpunkt waere nie benutzt worden.
+    var u = (((window.DAILIES && window.DAILIES.flow) || cfg || {}).uebermittlung) || {};
     var mail = u.fallbackEmail || "office@wexplore.at";
 
     if (!u.endpoint) {
@@ -1789,10 +1817,14 @@ bereit(function () {
       var href = "mailto:" + mail + "?subject=" + encodeURIComponent("Bewerbung Probe-Content-Tag") + "&body=" + encodeURIComponent(alsText());
       track("lead_magnet_submission_error", { grund: "kein_endpoint" });
       ergebnis("Fast fertig: bitte einmal senden",
-        "Wir können eure Bewerbung hier noch nicht automatisch entgegennehmen. Über den Knopf öffnet sich eine fertig ausgefüllte E-Mail an uns. <strong>Abgeschickt ist eure Bewerbung erst, wenn ihr sie in eurem E-Mail-Programm sendet.</strong>",
-        '<p style="margin:22px 0 0"><a class="fl-next" style="text-decoration:none; display:inline-flex" href="' + esc(href) + '">Bewerbung per E-Mail öffnen</a></p>' +
-        '<p class="fl-meta" style="margin-top:14px">Klappt das nicht, schreibt uns direkt an <a href="mailto:' + esc(mail) + '" style="color:#0A171D">' + esc(mail) + "</a>.</p>",
+        "Hier kommt eure Bewerbung noch nicht automatisch bei uns an. Über den Knopf öffnet sich eine fertig ausgefüllte E-Mail an uns. <strong>Abgeschickt ist eure Bewerbung erst, wenn ihr sie in eurem E-Mail-Programm sendet.</strong>",
+        '<div class="fl-abschluss"><a class="fl-next" href="' + esc(href) + '">Bewerbung per E-Mail öffnen</a>' +
+        '<button type="button" class="fl-back" data-flow-kopieren>Text kopieren</button></div>' +
+        '<p class="fl-meta" data-flow-kopiert role="status" style="margin-top:10px"></p>' +
+        '<textarea class="fl-ta" data-flow-klartext readonly hidden aria-label="Text eurer Bewerbung" style="margin-top:4px; min-height:180px">' + esc(alsText()) + '</textarea>' +
+        '<p class="fl-meta" style="margin-top:14px">Kein E-Mail-Programm eingerichtet? Text kopieren und an <a href="mailto:' + esc(mail) + '" style="color:#0A171D">' + esc(mail) + '</a> schicken.</p>',
         "Bewerbung: bitte noch senden");
+      kopierenBinden(mail);
       return;
     }
 
@@ -1801,13 +1833,15 @@ bereit(function () {
     elNext.textContent = "Wird gesendet";
     fetch(u.endpoint, {
       method: u.methode || "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "Accept": "application/json" },
       body: JSON.stringify(nutzlast())
     }).then(function (r) {
       if (!r.ok) throw new Error("HTTP " + r.status);
       track("lead_magnet_application_submitted", { ziel: S.ziel });
       try { sessionStorage.removeItem(SPEICHER); sessionStorage.removeItem(SPEICHER + "-schritt"); } catch (e) {}
       idx = 0; stickyStand();
+      S = { ziel: "", unternehmen: "", website: "", zielAntwort: "", inhalte: [], personen: [], ort: "", bundesland: "", groesse: "", einstiege: [] };
+      K = { name: "", firma: "", funktion: "", email: "", telefon: "", erreichbar: "", optin: false };
       ergebnis("Danke, eure Bewerbung ist bei uns.",
         "Wir schauen uns eure Angaben persönlich an. Wenn der Probe-Content-Tag zu eurem Unternehmen passt, melden wir uns mit einem Vorschlag für ein 30-minütiges Dailies-Briefing. In dem Gespräch holen wir das Detailbriefing ein und planen anschließend die Inhalte für den Probe-Tag.",
         '<p class="fl-meta" style="margin-top:16px">Ihr habt noch keinen Termin gebucht. Es entsteht auch keine Verpflichtung zu einem Dailies-Abo.</p>',
@@ -1826,7 +1860,11 @@ bereit(function () {
     // Kommt man ueber eine Zielkarte, ist die erste Frage schon beantwortet.
     // Sie noch einmal zu stellen, kostet einen Klick und wirkt, als waere die Wahl verloren gegangen.
     var zielNeu = ziel && ziel !== S.ziel;
-    if (ziel) { S.ziel = ziel; sichern(); }
+    if (ziel) S.ziel = ziel;
+    // Alle Einstiege in Reihenfolge: "Paket Grow, dann Startbereich" sagt dem Vertrieb mehr als der letzte Klick.
+    if (quelle && S.einstiege.indexOf(quelle) === -1 && S.einstiege.length < 6) S.einstiege.push(quelle);
+    sichern();
+    abgeschlossen = false;
     // Wer zwischendurch schliesst, etwa um die Preise anzusehen, landet wieder beim selben Schritt.
     // Nie hinter einen Schritt, dessen Antwort fehlt.
     var bis = zielNeu ? schrittIndex("inhalte") : Math.min(gemerkterSchritt(), SCHRITTE.length - 1);
@@ -1853,6 +1891,8 @@ bereit(function () {
   }
 
   function schliessen() {
+    // Fuer die Auswertung, an welchem Schritt abgebrochen wird. Nur Schritt und Schluessel.
+    if (offen) track("lead_magnet_closed", { schritt: idx + 1, id: abgeschlossen ? "abschluss" : SCHRITTE[idx].id });
     offen = false;
     stickyStand();
     ovl.hidden = true;
@@ -1887,8 +1927,8 @@ bereit(function () {
 
   laden();
   stickyStand();
-  // Konfiguration liegt in assets/config.js unter window.DAILIES.flow und ist beim
-  // Start bereits geladen (defer). Fehlt sie, greifen die Standardwerte.
+  // Konfiguration liegt in assets/config.js unter window.DAILIES.flow. Die Datei laeuft per
+  // defer erst nach diesem Skript, deshalb liest absenden() sie beim Klick noch einmal.
   cfg = (window.DAILIES && window.DAILIES.flow) || {};
 })();
 </script></body>
