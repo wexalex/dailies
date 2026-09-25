@@ -3,6 +3,15 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Die beiden Schnitte, die der Hero sofort braucht. Die URLs muessen exakt den
+     src-Angaben der @font-face-Regeln weiter unten entsprechen (ohne ?v=), sonst
+     laedt der Browser die Dateien zweimal. crossorigin ist auch bei gleicher
+     Herkunft Pflicht, weil Schriften immer im CORS-Modus geholt werden.
+     Lt, Smbd und Bd folgen ueber die inline @font-face und brauchen kein preload. -->
+<link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/ESKlarheitPlakat-Xbd.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/ESKlarheitKurrent-Rg.woff2">
+
 <title>Dailies - Social-Media-Content im Abo | WEXPLORE, Linz</title>
 <meta name="description" content="Social-Media-Content im Abo von WEXPLORE: Videoproduktion aus Linz, ein Drehtag pro Quartal, fertige Videos und Fotos für Unternehmen in Oberösterreich.">
 <link rel="canonical" href="https://wexalex.github.io/dailies/">
@@ -28,7 +37,6 @@
 <link rel="icon" href="assets/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-<link rel="stylesheet" href="assets/fonts.css?v=1">
 <script src="assets/config.js?v=3" defer></script>
 <script type="application/ld+json">
 {
@@ -68,11 +76,124 @@
         "@type": "State",
         "name": "Oberösterreich"
       }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://wexalex.github.io/dailies/#faq",
+      "url": "https://wexalex.github.io/dailies/#faq",
+      "inLanguage": "de-AT",
+      "about": {
+        "@id": "https://wexalex.github.io/dailies/#dailies"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Was ist im Abo enthalten?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Planung, Drehtag, Postproduktion und Übergabe. Pro Quartal mindestens 13 Reels plus Fotoset, abgestimmt auf die Kanäle, die ihr wirklich bespielt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Müssen wir Themen und Skripte selbst liefern?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein. Der Themenplan kommt von uns, ihr streicht und ergänzt. Skripte gibt es nur dort, wo sie nötig sind - meistens reichen Leitfragen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie viel Zeit kostet uns das intern?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ein Planungscall pro Quartal, der Drehtag selbst und eine Freigaberunde. Alles dazwischen liegt bei uns. Freigaben und Übersicht laufen über die Kundenplattform, ihr braucht dafür kein eigenes Tool."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Für welche Kanäle produziert ihr?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Instagram, LinkedIn, TikTok, YouTube und Website. Formate und Crops sind beim Dreh bereits mitgedacht."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Übernehmt ihr auch Publishing und Community Management?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Publishing ist als Zusatzmodul möglich und wird im Scope einzeln vereinbart. Community Management gehört nicht zum Standardumfang."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Warum quartalsweise statt monatlich?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ein gebündelter Drehtag pro Quartal ist günstiger und störungsärmer als vier kleine Termine - und liefert trotzdem wöchentlichen Nachschub."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was kostet Dailies für ein kleines Unternehmen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Der Einstieg liegt bei € 1.290 netto pro Monat, verrechnet werden € 3.870 pro Quartal. Der genaue Umfang steht vor Start als schriftliche Assetliste fest."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Für welche Unternehmen in Oberösterreich passt das?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Betriebe mit laufendem Content-Bedarf und kleinem oder gar keinem Marketing-Team. Besonders gut passt es bei eigentümergeführten Unternehmen und Industriebetrieben."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was ist nicht enthalten?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mediabudget, Schauspiel, aufwendige Sets, Drohnengenehmigungen und Reisekosten außerhalb Oberösterreichs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie lange läuft das Abo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ein Jahr, also vier Drehtage. Danach verlängert es sich quartalsweise, solange ihr wollt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wem gehören die Nutzungsrechte?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Euch. Zeitlich und räumlich unbeschränkt für alle fertigen Videos und Fotos, Rohmaterial auf Anfrage."
+          }
+        }
+      ]
     }
   ]
 }
 </script>
 <style>
+  /* ---------------------------------------------------------------
+     WEXPLORE Webfonts, ES Klarheit. Quelle: offizielles Brand Guideline 2026.
+     Stehen bewusst hier und nicht in einem eigenen Stylesheet: als externe
+     Datei blockierte sie das Rendern und der Browser fand die woff2-Dateien
+     erst eine Runde spaeter. Nur die Schnitte, die die Seite verwendet:
+     Plakat fuer Headlines, Kurrent in 300/400/600/700 fuer alles andere.
+     Pfade und Dateinamen muessen zu den preload-Zeilen im <head> passen.
+     --------------------------------------------------------------- */
+  @font-face { font-family:"ES Klarheit Plakat";  src:url("assets/fonts/ESKlarheitPlakat-Xbd.woff2")  format("woff2"); font-weight:400 900; font-style:normal; font-display:swap; }
+  @font-face { font-family:"ES Klarheit Kurrent"; src:url("assets/fonts/ESKlarheitKurrent-Lt.woff2")   format("woff2"); font-weight:300; font-style:normal; font-display:swap; }
+  @font-face { font-family:"ES Klarheit Kurrent"; src:url("assets/fonts/ESKlarheitKurrent-Rg.woff2")   format("woff2"); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:"ES Klarheit Kurrent"; src:url("assets/fonts/ESKlarheitKurrent-Smbd.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:"ES Klarheit Kurrent"; src:url("assets/fonts/ESKlarheitKurrent-Bd.woff2")   format("woff2"); font-weight:700; font-style:normal; font-display:swap; }
+
   /* ---------------------------------------------------------------
      DAILIES, Design-Refresh.
      Quelle: Claude-Design-Projekt "WEXPLORE Dailies Branding-Richtungen",
@@ -399,7 +520,33 @@
         <div class="plan-tabs" data-plan-tabs role="tablist" aria-label="Paket wählen"></div>
       </div>
 
-      <!-- Tabelle wird aus assets/config.js gerendert. Preise und Merkmale nur dort pflegen. -->
+      <!-- Die vollstaendige Tabelle wird aus assets/config.js gerendert. Merkmale und
+           Feature-Werte nur dort pflegen.
+           Die Liste darunter ist der Stand ohne JavaScript: Suchmaschinen, Link-Vorschauen
+           und Lesemodi bekommen so wenigstens Paketnamen und Preise zu sehen. Sobald die
+           Tabelle gezeichnet wird, nimmt zeichnen() die Liste wieder heraus.
+           ACHTUNG, doppelte Pflege: die drei Preise hier muessen zu assets/config.js und
+           zur FAQ-Antwort "Was kostet Dailies fuer ein kleines Unternehmen?" passen. -->
+      <ul data-table-fallback style="list-style:none; margin:0 0 20px; padding:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap:16px;">
+        <li style="background:#fff; border-radius:16px; padding:20px 22px;">
+          <span class="plakat" style="font-size:28px; line-height:1; display:block;">Start</span>
+          <span style="display:block; margin-top:6px; font-size:15px; color:var(--text-hell);">Der Grundtakt</span>
+          <span style="display:block; margin-top:12px; font-size:17px; font-weight:600;">€ 1.290 pro Monat</span>
+          <span style="display:block; margin-top:3px; font-size:13px; color:var(--grau-hell);">€ 3.870 pro Quartal verrechnet</span>
+        </li>
+        <li style="background:#fff; border-radius:16px; padding:20px 22px;">
+          <span class="plakat" style="font-size:28px; line-height:1; display:block;">Grow</span>
+          <span style="display:block; margin-top:6px; font-size:15px; color:var(--text-hell);">Mehr Formate, zwei Kanäle</span>
+          <span style="display:block; margin-top:12px; font-size:17px; font-weight:600;">€ 2.690 pro Monat</span>
+          <span style="display:block; margin-top:3px; font-size:13px; color:var(--grau-hell);">€ 8.070 pro Quartal verrechnet</span>
+        </li>
+        <li style="background:#fff; border-radius:16px; padding:20px 22px;">
+          <span class="plakat" style="font-size:28px; line-height:1; display:block;">Scale</span>
+          <span style="display:block; margin-top:6px; font-size:15px; color:var(--text-hell);">Euer externes Content-Team</span>
+          <span style="display:block; margin-top:12px; font-size:17px; font-weight:600;">€ 4.990 pro Monat</span>
+          <span style="display:block; margin-top:3px; font-size:13px; color:var(--grau-hell);">€ 15.000 pro Quartal verrechnet</span>
+        </li>
+      </ul>
       <div style="overflow-x:auto; background:#fff; border-radius:16px;">
         <div data-table style="min-width:860px; display:grid; grid-template-columns:1.1fr repeat(3, minmax(0,1fr));"></div>
       </div>
@@ -495,7 +642,11 @@
         </div>
         <div style="position:relative;">
           <div style="position:absolute; z-index:1; left:9%; top:4.6%; width:82%; height:84.4%; background:var(--linie-dunkel); overflow:hidden;">
-            <video id="plattform-video" src="assets/dailies/plattform-screen-01.mp4?v=3" muted loop playsinline preload="none" aria-label="Bildschirmaufnahme der Dailies Kundenplattform" style="width:100%; height:100%; object-fit:cover; display:block;"></video>
+            <!-- Das Poster ist exakt Bild 1 des Videos, gleiche 1280 x 720, damit der
+                 object-fit:cover-Ausschnitt identisch ist und beim Start nichts springt.
+                 Wer reduzierte Bewegung eingestellt hat oder im Datensparmodus surft,
+                 sieht nur dieses Poster, das Video wird dann gar nicht geladen. -->
+            <video id="plattform-video" src="assets/dailies/plattform-screen-01.mp4?v=4" poster="assets/dailies/plattform-screen-01-poster.jpg" muted loop playsinline preload="none" aria-label="Bildschirmaufnahme der Dailies Kundenplattform" style="width:100%; height:100%; object-fit:cover; display:block;"></video>
           </div>
           <img src="assets/macbook-frame.png" alt="" aria-hidden="true" width="1280" height="781" loading="lazy" style="position:relative; z-index:2; width:100%; height:auto; display:block; pointer-events:none;">
         </div>
@@ -507,8 +658,16 @@
     <div class="wrap">
       <div class="kicker" style="color:var(--grau-hell);"><i></i>Clip 08 · Referenzen</div>
       <h2 id="cases-titel" class="plakat h2" style="margin:18px 0 44px;">Für wen wir schon gedreht haben.</h2>
-      <!-- Wird aus assets/config.js gerendert. Neue Cases nur dort pflegen. -->
-      <div data-cases style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap:28px;"></div>
+      <!-- Wird aus assets/config.js gerendert, neue Cases nur dort pflegen. Der Inhalt,
+           der hier schon im Markup steht, ist der Stand ohne JavaScript und deckt sich
+           1:1 mit dem, was das Skript zeichnet; beim Rendern wird er ersetzt. Ohne ihn
+           haetten Suchmaschinen und Link-Vorschauen keinen einzigen Referenznamen.
+           ACHTUNG, doppelte Pflege: Namen und Tags muessen zu assets/config.js passen. -->
+      <div data-cases style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap:28px;">
+        <div><h3 class="plakat" style="font-size:28px; line-height:1.1; margin:0 0 0; hyphens:manual;">F/LIST</h3><div style="display:inline-block; margin-top:10px; padding:4px 12px; border:1px solid #D83A2A; border-radius:999px; color:#D83A2A; font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;">Employer Brand</div></div>
+        <div><h3 class="plakat" style="font-size:28px; line-height:1.1; margin:0 0 0; hyphens:manual;">Sparkasse Oberösterreich</h3><div style="display:inline-block; margin-top:10px; padding:4px 12px; border:1px solid #D83A2A; border-radius:999px; color:#D83A2A; font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;">Brand</div></div>
+        <div><h3 class="plakat" style="font-size:28px; line-height:1.1; margin:0 0 0; hyphens:manual;">APG</h3><div style="display:inline-block; margin-top:10px; padding:4px 12px; border:1px solid #D83A2A; border-radius:999px; color:#D83A2A; font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;">Brand</div></div>
+      </div>
     </div>
   </section>
 
@@ -528,7 +687,7 @@
           <div style="font-weight:700; font-size:16px;">Alex Gruber · WEXPLORE Productions</div>
           <div style="font-size:15px; color:var(--grau-dunkel); margin-top:4px;">Videoproduktion aus Linz</div>
         </div>
-        <div style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--grau-dunkel);">powered by <img src="assets/wexplore-productions-light.png" alt="WEXPLORE Productions" width="700" height="41" loading="lazy" style="height:18px; width:auto;"></div>
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:10px; font-size:13px; color:var(--grau-dunkel);">powered by <img src="assets/wexplore-productions-light.png" alt="WEXPLORE Productions" width="700" height="41" loading="lazy" style="height:auto; width:auto; max-height:18px; max-width:100%;"></div>
         <button type="button" class="btn btn--rot" style="align-self:flex-start; margin-top:8px;" data-flow-start="kontakt">Eure Content-Ideen entdecken</button>
       </div>
     </div>
@@ -545,7 +704,9 @@
         <details class="faq-item"><summary><span>Für welche Kanäle produziert ihr?</span><span aria-hidden="true">+</span></summary><p>Instagram, LinkedIn, TikTok, YouTube und Website. Formate und Crops sind beim Dreh bereits mitgedacht.</p></details>
         <details class="faq-item"><summary><span>Übernehmt ihr auch Publishing und Community Management?</span><span aria-hidden="true">+</span></summary><p>Publishing ist als Zusatzmodul möglich und wird im Scope einzeln vereinbart. Community Management gehört nicht zum Standardumfang.</p></details>
         <details class="faq-item"><summary><span>Warum quartalsweise statt monatlich?</span><span aria-hidden="true">+</span></summary><p>Ein gebündelter Drehtag pro Quartal ist günstiger und störungsärmer als vier kleine Termine - und liefert trotzdem wöchentlichen Nachschub.</p></details>
-        <details class="faq-item"><summary><span>Was kostet Dailies für ein kleines Unternehmen?</span><span aria-hidden="true">+</span></summary><p>Der Einstieg liegt bei € 3.800 netto pro Quartal. Der genaue Umfang steht vor Start als schriftliche Assetliste fest.</p></details>
+        <details class="faq-item"><summary><span>Was kostet Dailies für ein kleines Unternehmen?</span><span aria-hidden="true">+</span></summary><p>Der Einstieg liegt bei € 1.290 netto pro Monat, verrechnet werden € 3.870 pro Quartal. Der genaue Umfang steht vor Start als schriftliche Assetliste fest.</p></details>
+        <!-- Preis oben: Paket Start aus assets/config.js. Bei jeder Preisaenderung dort
+             muss dieser Satz und die Liste [data-table-fallback] mitgezogen werden. -->
         <details class="faq-item"><summary><span>Für welche Unternehmen in Oberösterreich passt das?</span><span aria-hidden="true">+</span></summary><p>Betriebe mit laufendem Content-Bedarf und kleinem oder gar keinem Marketing-Team. Besonders gut passt es bei eigentümergeführten Unternehmen und Industriebetrieben.</p></details>
         <details class="faq-item"><summary><span>Was ist nicht enthalten?</span><span aria-hidden="true">+</span></summary><p>Mediabudget, Schauspiel, aufwendige Sets, Drohnengenehmigungen und Reisekosten außerhalb Oberösterreichs.</p></details>
         <details class="faq-item"><summary><span>Wie lange läuft das Abo?</span><span aria-hidden="true">+</span></summary><p>Ein Jahr, also vier Drehtage. Danach verlängert es sich quartalsweise, solange ihr wollt.</p></details>
@@ -560,7 +721,7 @@
     <div class="wrap" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap:36px;">
       <div style="display:flex; flex-direction:column; gap:16px;">
         <div style="display:flex; align-items:center; gap:10px;"><div style="width:14px; height:14px; border-radius:50%; background:var(--rot);"></div><span class="plakat" style="font-size:34px; line-height:1;">Dailies</span></div>
-        <a href="https://wexplore.at" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--grau-dunkel);">powered by <img src="assets/wexplore-productions-light.png" alt="WEXPLORE Productions" width="700" height="41" loading="lazy" style="height:18px; width:auto;"></a>
+        <a href="https://wexplore.at" target="_blank" rel="noopener" style="display:flex; flex-wrap:wrap; align-items:center; gap:10px; font-size:13px; color:var(--grau-dunkel);">powered by <img src="assets/wexplore-productions-light.png" alt="WEXPLORE Productions" width="700" height="41" loading="lazy" style="height:auto; width:auto; max-height:18px; max-width:100%;"></a>
       </div>
       <div style="display:flex; flex-direction:column; gap:8px; font-size:15px;">
         <a href="mailto:office@wexplore.at">office@wexplore.at</a>
@@ -726,6 +887,9 @@ bereit(function () {
     sichtbar.forEach(function (p) {
       h += '<div class="pk" data-col="' + esc(p.id) + '" style="padding:' + pCta + '; background:' + look(p.id).bg + ';">' + cta(p) + "</div>";
     });
+    // Die Liste fuer den Fall ohne JavaScript hat jetzt ausgedient.
+    var fb = document.querySelector("[data-table-fallback]");
+    if (fb) fb.remove();
     table.innerHTML = h;
 
     if (!eng) {
@@ -922,13 +1086,17 @@ bereit(function () {
   }
 
   // Das Plattform-Video laedt und spielt erst, wenn es sichtbar ist.
+  // Wer reduzierte Bewegung eingestellt hat, bekommt ohnehin kein play() - dann
+  // waeren die geladenen Megabyte reine Verschwendung. Dasselbe gilt im
+  // Datensparmodus. In beiden Faellen bleibt es beim Poster.
   var v = document.getElementById("plattform-video");
-  if (v && "IntersectionObserver" in window) {
+  var sparen = !!(navigator.connection && navigator.connection.saveData);
+  if (v && !reduce && !sparen && "IntersectionObserver" in window) {
     new IntersectionObserver(function (eintraege) {
       eintraege.forEach(function (e) {
         if (e.isIntersecting) {
           if (v.preload !== "auto") { v.preload = "auto"; v.load(); }
-          if (!reduce) v.play().catch(function () {});
+          v.play().catch(function () {});
         } else { v.pause(); }
       });
     }, { threshold: 0.25 }).observe(v);
