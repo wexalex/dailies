@@ -297,11 +297,9 @@
   .fl-ovl { position:fixed; inset:0; z-index:200; background:#fff; color:#000; display:flex; flex-direction:column }
   .fl-top { flex:none; padding:14px 24px; border-bottom:1px solid var(--linie-hell) }
   .fl-toprow { display:flex; align-items:center; justify-content:space-between; gap:16px; max-width:760px; margin:0 auto }
-  .fl-phases { display:flex; gap:6px; flex-wrap:wrap }
-  .fl-phase { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-hell); padding:5px 11px; border-radius:999px; border:1px solid var(--linie-hell) }
-  .fl-phase.on { background:#000; color:#fff; border-color:#000 }
+  .fl-stand { margin:0; font-size:14px; line-height:1.35; color:var(--text-hell) }
   .fl-x { border:0; background:transparent; cursor:pointer; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-hell); min-height:44px; min-width:44px; padding:10px 12px; margin-right:-12px }
-  .fl-bar { height:2px; background:#ececec }
+  .fl-bar { height:3px; background:#ececec }
   .fl-bar i { display:block; height:100%; width:0; background:var(--rot-hell); transition:width .3s cubic-bezier(.2,0,0,1) }
   .fl-body { flex:1; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch }
   .fl-inner { max-width:760px; margin:0 auto; padding:44px 24px 40px }
@@ -347,6 +345,9 @@
   .fl-mehr > summary::before { content:"+"; font-size:14px; line-height:1 }
   .fl-mehr[open] > summary::before { content:"\2212" }
   @media (max-width: 640px) {
+    /* Standzeile einzeilig halten: kleinere Schrift, schmalerer Schliessen-Knopf */
+    .fl-stand { font-size:13px; text-wrap:balance }
+    .fl-x { letter-spacing:.08em; padding:10px 8px; margin-right:-8px }
     .fl-inner { padding:32px 20px }
     .fl-top, .fl-foot { padding-left:20px; padding-right:20px }
     .fl-two { grid-template-columns:1fr }
@@ -790,11 +791,7 @@
 <div id="flow" class="fl-ovl" hidden role="dialog" aria-modal="true" aria-labelledby="fl-frage">
   <div class="fl-top">
     <div class="fl-toprow">
-      <div class="fl-phases" aria-hidden="true">
-        <span class="fl-phase" data-phase="ziel">Ziel</span>
-        <span class="fl-phase" data-phase="idee">Idee</span>
-        <span class="fl-phase" data-phase="bewerbung">Bewerbung</span>
-      </div>
+      <p class="fl-stand" data-flow-stand aria-hidden="true"></p>
       <button type="button" class="fl-x" data-flow-close>Schließen</button>
     </div>
   </div>
@@ -1205,7 +1202,7 @@ bereit(function () {
   var elBar   = ovl.querySelector("[data-flow-bar]");
   var elLive  = ovl.querySelector("[data-flow-live]");
   var elFoot  = ovl.querySelector(".fl-foot");
-  var phases  = Array.prototype.slice.call(ovl.querySelectorAll(".fl-phase"));
+  var elStand = ovl.querySelector("[data-flow-stand]");
 
   var SPEICHER = "dailies-flow-v2";
   var cfg = {};
@@ -1536,6 +1533,24 @@ bereit(function () {
     });
   }
 
+  /* ---- Fortschritt ----
+     Vor den Ideen nennt die Zeile die Belohnung, nicht die Gesamtzahl der Schritte.
+     Am Anfang zaehlt, was geschafft ist, gegen Ende, was noch fehlt (Koo & Fishbach 2012).
+     Der Balken beginnt nicht bei null: der Klick auf der Seite zaehlt als erster Schritt. */
+  function standText() {
+    var ideen = -1;
+    SCHRITTE.forEach(function (s, i) { if (s.id === "richtung") ideen = i; });
+    if (idx < ideen) {
+      var rest = ideen - idx;
+      if (rest === 1) return "Letzte Frage vor euren Ideen";
+      if (idx + 1 <= ideen / 2) return "Frage " + (idx + 1) + " von " + ideen + " bis zu euren Ideen";
+      return "Noch " + rest + " Fragen bis zu euren Ideen";
+    }
+    if (idx === ideen) return "Eure Content-Ideen";
+    var bew = SCHRITTE.length - 1 - ideen, nr = idx - ideen;
+    return nr === bew ? "Bewerbung: letzter Schritt" : "Bewerbung: Schritt " + nr + " von " + bew;
+  }
+
   /* ---- Rendern ---- */
   function pruefen() {
     // Der Knopf bleibt bedienbar. Ein deaktivierter Knopf sagt nicht, was fehlt,
@@ -1549,20 +1564,21 @@ bereit(function () {
 
   function rendern() {
     var st = SCHRITTE[idx];
-    elCount.textContent = "Schritt " + (idx + 1) + " von " + SCHRITTE.length;
+    elStand.textContent = standText();
+    elCount.textContent = "";
+    elCount.hidden = true;
     elQ.textContent = typeof st.frage === "function" ? st.frage() : st.frage;
     if (st.hinweis) { elHint.textContent = st.hinweis; elHint.hidden = false; } else { elHint.hidden = true; }
     elCont.innerHTML = st.html();
     elErr.hidden = true;
     elBack.hidden = idx === 0;
     elNext.textContent = st.weiter || "Weiter";
-    elBar.style.width = Math.round(((idx) / (SCHRITTE.length - 1)) * 100) + "%";
-    phases.forEach(function (p) { p.classList.toggle("on", p.getAttribute("data-phase") === st.phase); });
+    elBar.style.width = Math.round(((idx + 1) / (SCHRITTE.length + 1)) * 100) + "%";
     if (st.bind) st.bind(elCont);
     pruefen();
     elBody.scrollTop = 0;
     elQ.focus();
-    elLive.textContent = "Schritt " + (idx + 1) + " von " + SCHRITTE.length + ": " + elQ.textContent;
+    elLive.textContent = standText() + ": " + elQ.textContent;
     track("lead_magnet_step_viewed", { schritt: idx + 1, id: st.id });
   }
 
@@ -1608,7 +1624,8 @@ bereit(function () {
     ].join("\n");
   }
 
-  function ergebnis(titel, text, extra) {
+  function ergebnis(titel, text, extra, stand) {
+    elStand.textContent = stand || "";
     elCount.textContent = "";
     elQ.textContent = titel;
     elHint.hidden = true;
@@ -1632,7 +1649,8 @@ bereit(function () {
       ergebnis("Fast fertig: bitte einmal senden",
         "Wir können eure Bewerbung hier noch nicht automatisch entgegennehmen. Über den Knopf öffnet sich eine fertig ausgefüllte E-Mail an uns. <strong>Abgeschickt ist eure Bewerbung erst, wenn ihr sie in eurem E-Mail-Programm sendet.</strong>",
         '<p style="margin:22px 0 0"><a class="fl-next" style="text-decoration:none; display:inline-flex" href="' + esc(href) + '">Bewerbung per E-Mail öffnen</a></p>' +
-        '<p class="fl-meta" style="margin-top:14px">Klappt das nicht, schreibt uns direkt an <a href="mailto:' + esc(mail) + '" style="color:#0A171D">' + esc(mail) + "</a>.</p>");
+        '<p class="fl-meta" style="margin-top:14px">Klappt das nicht, schreibt uns direkt an <a href="mailto:' + esc(mail) + '" style="color:#0A171D">' + esc(mail) + "</a>.</p>",
+        "Bewerbung: bitte noch senden");
       return;
     }
 
@@ -1649,7 +1667,8 @@ bereit(function () {
       try { sessionStorage.removeItem(SPEICHER); } catch (e) {}
       ergebnis("Danke, eure Bewerbung ist bei uns.",
         "Wir schauen uns eure Angaben persönlich an. Wenn der Probe-Content-Tag zu eurem Unternehmen passt, melden wir uns mit einem Vorschlag für ein 30-minütiges Dailies-Briefing. In dem Gespräch holen wir das Detailbriefing ein und planen anschließend die Inhalte für den Probe-Tag.",
-        '<p class="fl-meta" style="margin-top:16px">Ihr habt noch keinen Termin gebucht. Es entsteht auch keine Verpflichtung zu einem Dailies-Abo.</p>');
+        '<p class="fl-meta" style="margin-top:16px">Ihr habt noch keinen Termin gebucht. Es entsteht auch keine Verpflichtung zu einem Dailies-Abo.</p>',
+        "Bewerbung: angekommen");
     }).catch(function (err) {
       track("lead_magnet_submission_error", { grund: "netzwerk" });
       elNext.disabled = false;
