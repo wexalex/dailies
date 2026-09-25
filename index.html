@@ -1066,37 +1066,47 @@ bereit(function () {
   };
   var layoutFloats = function () {
     if (!titel || !hero || !floats.length) return;
+    // Erst alles lesen, dann alles schreiben. Vorher las setzen() die Breite des naechsten
+    // Icons, nachdem es das vorige schon verschoben hatte: jede Abfrage erzwang ein neues
+    // Layout (PageSpeed mobil 25.09.2026: 155 ms erzwungener Umbruch).
     var hr = hero.getBoundingClientRect();
     var r = titel.getBoundingClientRect();
     var L = r.left - hr.left, T = r.top - hr.top, Rt = r.right - hr.left, B = r.bottom - hr.top;
     var GAP = 28;
-    var setzen = function (el, x, y) {
-      if (!el) return;
-      var w = el.offsetWidth;
-      x = Math.max(8, Math.min(hr.width - w - 8, x));
-      el.style.left = x + "px";
-      el.style.top = Math.round(y) + "px";
-      el.style.right = "auto";
-    };
     var H = B - T;
-    setzen(floatByLabel("Instagram"), L - 66 - GAP, T - 4);
-    setzen(floatByLabel("LinkedIn"), Rt + GAP, T + 12);
-    setzen(floatByLabel("TikTok"), L - 66 - GAP, T + H * 0.5 - 33);
-    setzen(floatByLabel("YouTube"), Rt + GAP, T + H * 0.56 - 33);
-    setzen(floatByLabel("Facebook"), L - 66 - GAP, B + 44);
-    setzen(floatByLabel("rec"), Rt + GAP - 8, B + 20);
+    var plan = [
+      ["Instagram", L - 66 - GAP, T - 4],
+      ["LinkedIn", Rt + GAP, T + 12],
+      ["TikTok", L - 66 - GAP, T + H * 0.5 - 33],
+      ["YouTube", Rt + GAP, T + H * 0.56 - 33],
+      ["Facebook", L - 66 - GAP, B + 44],
+      ["rec", Rt + GAP - 8, B + 20]
+    ].map(function (p) {
+      var el = floatByLabel(p[0]);
+      return el ? { el: el, w: el.offsetWidth, x: p[1], y: p[2] } : null;
+    });
+    plan.forEach(function (p) {
+      if (!p) return;
+      p.el.style.left = Math.max(8, Math.min(hr.width - p.w - 8, p.x)) + "px";
+      p.el.style.top = Math.round(p.y) + "px";
+      p.el.style.right = "auto";
+    });
   };
-  var layoutTimer = null;
+  // Alle Anlaesse laufen in einem Durchgang pro Frame zusammen: erst die Zonen und Groessen
+  // (fit), dann die Verankerung an der Headline. Vorher liefen beim Laden bis zu acht
+  // Durchgaenge, und fit() ueberschrieb bei jedem Resize die Verankerung, bis sie 150 ms
+  // spaeter wieder gesetzt wurde.
+  var geplant = false;
   var layoutBald = function () {
-    layoutFloats();
-    clearTimeout(layoutTimer);
-    layoutTimer = setTimeout(layoutFloats, 150);
+    if (geplant) return;
+    geplant = true;
+    requestAnimationFrame(function () { geplant = false; fit(); layoutFloats(); });
   };
-  layoutFloats();
+  layoutBald();
   window.addEventListener("resize", layoutBald);
   window.addEventListener("orientationchange", layoutBald);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layoutFloats);
-  window.addEventListener("load", layoutFloats);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layoutBald);
+  window.addEventListener("load", layoutBald);
   if (window.ResizeObserver && titel) {
     new ResizeObserver(layoutBald).observe(titel);
     if (hero) new ResizeObserver(layoutBald).observe(hero);
@@ -1132,8 +1142,7 @@ bereit(function () {
       el.style.right = pos.right || "auto";
     });
   }
-  fit();
-  window.addEventListener("resize", fit);
+  // fit() laeuft im gemeinsamen Durchgang von layoutBald(), nicht mehr einzeln.
 
   // Icons weichen dem Mauszeiger aus und schwingen zurueck.
   if (!reduce && floats.length) {
