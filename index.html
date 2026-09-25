@@ -336,9 +336,20 @@
   .fl-chip { min-height:44px; padding:10px 16px; border:2px solid var(--linie-hell); border-radius:999px; background:transparent; color:#000; font-family:inherit; font-size:16px; line-height:1.2; cursor:pointer; transition:background-color .16s ease, border-color .16s ease, color .16s ease }
   .fl-chip:hover { border-color:#000 }
   .fl-chip[aria-pressed="true"] { background:var(--dunkel); border-color:var(--dunkel); color:#fff }
-  .fl-card { border:2px solid var(--linie-hell); border-radius:16px; padding:24px 22px; margin-top:20px; background:#fff }
-  .fl-card h3 { margin:0; font-size:19px; font-weight:700; line-height:1.3 }
-  .fl-card p { margin:8px 0 0; line-height:1.55 }
+  .fl-ideen { display:grid; gap:14px; margin-top:26px }
+  .fl-idee { border:2px solid var(--linie-hell); border-radius:16px; padding:20px 22px; background:#fff; animation:fl-rein .45s cubic-bezier(.2,0,0,1) both }
+  .fl-idee:nth-child(2) { animation-delay:.08s }
+  .fl-idee:nth-child(3) { animation-delay:.16s }
+  @keyframes fl-rein { from { opacity:0; transform:translateY(10px) } to { opacity:1; transform:none } }
+  .fl-idee-format { margin:0; font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:var(--rot-hell) }
+  .fl-idee-titel { margin:8px 0 0; font-size:19px; font-weight:700; line-height:1.3; hyphens:manual }
+  .fl-idee-warum { margin:8px 0 0; line-height:1.55; color:var(--text-hell) }
+  .fl-idee-quelle { margin:10px 0 0; font-size:13px; color:var(--grau-hell) }
+  .fl-bruecke { margin-top:14px; border-radius:16px; padding:20px 22px; background:var(--dunkel); color:#fff }
+  .fl-bruecke p { margin:0; line-height:1.55 }
+  .fl-offen { margin-top:26px }
+  .fl-offen ul { margin:0; padding-left:20px; line-height:1.55; color:var(--text-hell) }
+  .fl-offen li + li { margin-top:6px }
   .fl-two { display:grid; grid-template-columns:1fr 1fr; gap:16px }
   [data-flow-content] > .fl-two:first-child { margin-top:26px }
   .fl-mehr { margin-top:22px; border-top:1px solid var(--linie-hell); padding-top:14px }
@@ -1289,42 +1300,104 @@ bereit(function () {
     return /^(\d|Über)/.test(g || "") ? g + " Mitarbeiter:innen" : (g || "keine Angabe");
   }
 
-  /* ---- Regelbasierte Content-Ideen ---- */
-  var ANSATZ = {
-    bewerbungen: "Menschen aus eurem Betrieb erzählen selbst, wie ein Arbeitstag bei euch abläuft. Wer sich bewirbt, weiß dann schon, worauf er sich einlässt.",
-    nachfrage:   "Die Fragen, die eure Kundschaft im Erstgespräch ohnehin stellt, einmal sauber beantwortet. Das nimmt dem Vertrieb die immer gleichen Erklärungen ab.",
-    bekanntheit: "Eine wiedererkennbare Stimme aus eurem Haus zu den Themen, bei denen ihr wirklich etwas zu sagen habt.",
-    anderes:     "Wir setzen an dem an, was ihr oben beschrieben habt, und bauen daraus eine Reihe, die sich jedes Quartal fortsetzen lässt."
+  /* ---- Content-Ideen aus den Antworten ----
+     Drei Ideen statt einer: je Format, Arbeitstitel in der Stimme des Unternehmens und
+     warum es zum Ziel passt. Arbeitstitel mit {fokus} setzen die eigene Antwort ein, aber
+     nur einmal und nur, wenn sie kurz genug ist. Wer die eigenen Worte im Ergebnis wiederfindet,
+     sieht, dass die Antworten verwendet wurden. */
+  var IDEEN = {
+    menschen: {
+      bewerbungen: { f: "Reel-Reihe", t: "„Warum ich hier arbeite“", w: "Kolleg:innen erzählen selbst. Bewerber:innen sehen echte Menschen statt einer Stellenanzeige." },
+      nachfrage:   { f: "Reel", t: "„Wer euren Auftrag bei uns betreut“", w: "Kund:innen entscheiden leichter, wenn sie wissen, wer dahintersteht." },
+      bekanntheit: { f: "Reel-Reihe", t: "„Drei Entscheidungen, die unseren Betrieb geprägt haben“", tf: "„{fokus}: Was das für unser Team heißt“", w: "Eine wiedererkennbare Stimme aus eurem Haus bleibt länger im Kopf als ein Logo." },
+      anderes:     { f: "Reel-Reihe", t: "„Kurz gefragt: Was machst du hier eigentlich?“", w: "Menschen aus dem Betrieb zeigen, was von außen niemand sieht." }
+    },
+    produkte: {
+      bewerbungen: { f: "Reel", t: "„Daran arbeitest du bei uns“", tf: "„{fokus}: Daran arbeitest du bei uns“", w: "Bewerber:innen sehen vorher, woran sie später mitarbeiten." },
+      nachfrage:   { f: "Reel", t: "„Woran ihr erkennt, ob ihr Standard oder Sonderanfertigung braucht“", tf: "„{fokus}: Woran ihr erkennt, was ihr wirklich braucht“", w: "Beantwortet eine Kauffrage, bevor sie im Vertrieb landet." },
+      bekanntheit: { f: "Fotoserie", t: "„Was in unseren Produkten steckt“", tf: "„{fokus}: Was davon in unseren Produkten steckt“", w: "Zeigt Qualität, statt sie zu behaupten." },
+      anderes:     { f: "Reel", t: "„Ein Produkt von Anfang bis Ende“", w: "Macht sichtbar, was hinter dem fertigen Produkt steckt." }
+    },
+    ablaeufe: {
+      bewerbungen: { f: "Reel", t: "„Ein Tag in der Fertigung, von der Frühschicht bis zur Übergabe“", tf: "„{fokus}: So sieht ein Arbeitstag wirklich aus“", w: "Bewerber:innen wissen vorher, worauf sie sich einlassen." },
+      nachfrage:   { f: "Reel", t: "„So entsteht euer Auftrag bei uns“", tf: "„{fokus}: So entsteht euer Auftrag bei uns“", w: "Macht sichtbar, wofür eure Kundschaft bezahlt." },
+      bekanntheit: { f: "Reel-Reihe", t: "„Was passiert, bevor etwas unser Haus verlässt“", tf: "„{fokus}: So sieht das bei uns im Alltag aus“", w: "Einblicke machen Sorgfalt sichtbar." },
+      anderes:     { f: "Reel", t: "„So läuft das bei uns wirklich“", w: "Zeigt den Alltag, den von außen niemand kennt." }
+    },
+    knowhow: {
+      bewerbungen: { f: "Reel", t: "„Was ihr im ersten Lehrjahr bei uns wirklich lernt“", tf: "„{fokus}: Was ihr im ersten Jahr bei uns lernt“", w: "Beantwortet die Fragen, die Bewerber:innen sonst nie stellen." },
+      nachfrage:   { f: "Reel-Reihe", t: "„Die drei Fragen, die uns jeder Kunde vor der Bestellung stellt“", tf: "„{fokus}: Die drei Fragen, die uns jeder Kunde stellt“", w: "Nimmt dem Vertrieb die immer gleichen Erklärungen ab." },
+      bekanntheit: { f: "Reel", t: "„Was sich in unserer Branche gerade ändert und was das für euch heißt“", tf: "„{fokus}: Woran man das bei uns erkennt“", w: "Macht euch zu der Stimme, die man zu dem Thema im Kopf hat." },
+      anderes:     { f: "Reel", t: "„Eine Frage, die wir ständig hören“", w: "Wer die Frage hat, findet die Antwort bei euch." }
+    },
+    projekte: {
+      bewerbungen: { f: "Fotoserie", t: "„Das Projekt, auf das unser Team stolz ist“", w: "Zeigt, woran man bei euch mitarbeiten kann." },
+      nachfrage:   { f: "Reel", t: "„Was bei diesem Auftrag schiefgehen konnte und warum es das nicht tat“", tf: "„{fokus}: Ein Auftrag von der Anfrage bis zur Übergabe“", w: "Ein echtes Projekt überzeugt mehr als jede Leistungsliste." },
+      bekanntheit: { f: "Reel", t: "„Das Projekt, von dem wir bis heute erzählen“", tf: "„{fokus}: Das Projekt, das es am besten zeigt“", w: "Eine Geschichte bleibt, eine Referenzliste nicht." },
+      anderes:     { f: "Fotoserie", t: "„Vorher und nachher“", w: "Ein sichtbares Ergebnis erklärt sich selbst." }
+    }
   };
-  var HOOK = {
-    bewerbungen: {
-      menschen: "„Was drei Leute aus der Produktion an ihrem Job unterschätzt finden.“",
-      ablaeufe: "„Ein Tag in der Fertigung, von der Frühschicht bis zur Übergabe.“",
-      knowhow:  "„Was ihr im ersten Lehrjahr bei uns wirklich lernt.“",
-      _:        "„Warum Leute bei uns bleiben, obwohl sie woanders mehr verdienen könnten.“"
-    },
-    nachfrage: {
-      knowhow:  "„Die drei Fragen, die uns jeder Kunde vor der Bestellung stellt.“",
-      produkte: "„Woran ihr erkennt, ob ihr Standard oder Sonderanfertigung braucht.“",
-      projekte: "„Was bei diesem Auftrag schiefgehen konnte und warum es das nicht tat.“",
-      _:        "„Was euch eine Fehlbestellung kostet und wie ihr sie vermeidet.“"
-    },
-    bekanntheit: {
-      projekte: "„Das Projekt, von dem wir bis heute erzählen.“",
-      knowhow:  "„Was sich in unserer Branche gerade ändert und was das für euch heißt.“",
-      menschen: "„Drei Entscheidungen, die unseren Betrieb geprägt haben.“",
-      _:        "„Woran man einen guten Lieferanten erkennt, bevor man bestellt.“"
-    },
-    anderes: { _: "„Das, was bei uns alle fragen und niemand von außen sieht.“" }
+  // Ideen aus der Personenfrage. "nur": fuer welche Ziele die Idee passt, sonst fuer alle.
+  var PERSONEN_IDEEN = {
+    gf:      { f: "Reel", t: "„Warum wir das so machen“", w: "Die Geschäftsführung erklärt eine Entscheidung. Das gibt dem Unternehmen ein Gesicht." },
+    kunden:  { f: "Reel", t: "„Wie die Zusammenarbeit mit uns wirklich läuft“", w: "Kund:innen erzählen selbst. Das wirkt stärker als jedes Eigenlob.", nur: ["nachfrage", "bekanntheit", "anderes"] },
+    objekte: { f: "Fotoserie", t: "„Unsere Maschinen und was sie können“", w: "Starke Bilder vom Arbeitsplatz tragen auch ohne viele Worte." }
   };
+  // Wenn die Auswahl nicht fuer drei Ideen reicht, etwa bei "Wissen wir noch nicht".
+  var STANDARD = {
+    bewerbungen: ["menschen", "ablaeufe", "knowhow"],
+    nachfrage:   ["knowhow", "produkte", "projekte"],
+    bekanntheit: ["projekte", "knowhow", "menschen"],
+    anderes:     ["menschen", "ablaeufe", "projekte"]
+  };
+
+  function kuerzen(t, max) {
+    t = String(t || "").trim();
+    if (t.length <= max) return t;
+    var schnitt = t.slice(0, max).replace(/\s+\S*$/, "");
+    return (schnitt || t.slice(0, max)) + " …";
+  }
+
+  function ideen() {
+    var z = IDEEN.menschen[S.ziel] ? S.ziel : "anderes";
+    var fokus = S.zielAntwort.trim();
+    var inh = S.inhalte.filter(function (k) { return IDEEN[k]; });
+    var pers = ["gf", "kunden", "objekte"].filter(function (k) {
+      var p = PERSONEN_IDEEN[k];
+      return S.personen.indexOf(k) !== -1 && (!p.nur || p.nur.indexOf(z) !== -1);
+    });
+    // Abwechselnd Inhalt und Person, damit nicht drei Mal dasselbe Format kommt.
+    var kandidaten = [];
+    function inhalt(k) { if (k) kandidaten.push({ quelle: label(INHALTE, k), i: IDEEN[k][z] }); }
+    function person(k) { if (k) kandidaten.push({ quelle: label(PERSONEN, k), i: PERSONEN_IDEEN[k] }); }
+    inhalt(inh[0]); person(pers[0]); inhalt(inh[1]); inhalt(inh[2]); person(pers[1]);
+    STANDARD[z].forEach(function (k) { if (inh.indexOf(k) === -1) kandidaten.push({ quelle: "", i: IDEEN[k][z] }); });
+
+    var gesehen = {}, drei = [];
+    kandidaten.forEach(function (x) {
+      if (drei.length < 3 && !gesehen[x.i.t]) { gesehen[x.i.t] = 1; drei.push({ quelle: x.quelle, f: x.i.f, t: x.i.t, w: x.i.w, tf: x.i.tf }); }
+    });
+    if (fokus && fokus.length <= 40 && z !== "anderes") {
+      for (var j = 0; j < drei.length; j++) {
+        if (drei[j].tf) { drei[j].t = drei[j].tf.replace("{fokus}", fokus.charAt(0).toUpperCase() + fokus.slice(1)); break; }
+      }
+    }
+    return drei;
+  }
+
+  // Zahlen fuer die Bruecke kommen aus der Preiskonfiguration, damit sie nur dort gepflegt werden.
+  function startPaketSatz() {
+    var p = (window.DAILIES && window.DAILIES.pricing) || {};
+    var plan = (p.plans || []).filter(function (x) { return x.id === "start"; })[0];
+    if (!plan) return "";
+    var L = p.featureLabels || [];
+    function wert(name) { var i = L.indexOf(name); return i === -1 ? "" : String(plan.features[i] || "").split(" /")[0]; }
+    var reels = wert("Reels (9:16)"), fotos = wert("Fotos (16:9 + 9:16)");
+    return reels && fotos ? "Im Start-Paket entstehen aus einem Drehtag pro Quartal " + reels + " Reels und " + fotos + " Fotos." : "";
+  }
 
   function richtung() {
     var z = S.ziel || "anderes";
-    var zTxt = (ZIELE.filter(function (x) { return x.k === z; })[0] || {}).t || "Euer Ziel";
-    var tabelle = HOOK[z] || HOOK.anderes;
-    var treffer = S.inhalte.filter(function (k) { return k !== "unklar" && tabelle[k]; })[0];
-    var hook = tabelle[treffer] || tabelle._;
-
     var offenePunkte = [];
     if (!S.inhalte.length || S.inhalte.indexOf("unklar") !== -1) {
       offenePunkte.push("Welche Themen bei euch überhaupt zur Verfügung stehen. Das klären wir im Briefing gemeinsam, ihr müsst das nicht vorher wissen.");
@@ -1341,7 +1414,7 @@ bereit(function () {
     if (!offenePunkte.length) {
       offenePunkte.push("Die Reihenfolge der Themen über das Quartal und wer die Freigaben macht.");
     }
-    return { ziel: zTxt, ansatz: ANSATZ[z] || ANSATZ.anderes, hook: hook, offen: offenePunkte.slice(0, 3) };
+    return { ziel: label(ZIELE, z), ideen: ideen(), offen: offenePunkte.slice(0, 2) };
   }
 
   /* ---- Schrittdefinitionen ---- */
@@ -1432,15 +1505,26 @@ bereit(function () {
 
     { id: "richtung", phase: "idee",
       frage: "Eure ersten Content-Ideen",
-      hinweis: "Erste Ideen, kein fertiges Konzept. Die Feinplanung machen wir im Briefing.",
+      hinweis: function () {
+        var r = richtung(), f = S.zielAntwort.trim();
+        // Bei "Etwas anderes" ist die Antwort ein ganzer Satz ("dass unsere Partner ..."),
+        // "mit Fokus auf" liest sich dort schief.
+        if (S.ziel === "anderes" || !S.ziel) return f ? "Für das, was sich verändern soll: „" + kuerzen(f, 90) + "“." : "Für euer Ziel.";
+        return "Für euer Ziel „" + r.ziel + "“" + (f ? ", mit Fokus auf „" + kuerzen(f, 60) + "“." : ".");
+      },
       weiter: "Weiter zur Bewerbung",
       html: function () {
-        var r = richtung();
-        return '<div class="fl-card"><h3>Euer Ziel</h3><p>' + esc(r.ziel) + "</p></div>" +
-          '<div class="fl-card"><h3>Möglicher Ansatz</h3><p>' + esc(r.ansatz) + "</p></div>" +
-          '<div class="fl-card"><h3>Eine erste mögliche Story</h3><p>' + esc(r.hook) + "</p></div>" +
-          '<div class="fl-card"><h3>Was wir im Briefing noch klären</h3><ul style="margin:8px 0 0; padding-left:20px; line-height:1.55">' +
-          r.offen.map(function (o) { return "<li>" + esc(o) + "</li>"; }).join("") + "</ul></div>";
+        var r = richtung(), satz = startPaketSatz();
+        return '<div class="fl-ideen">' + r.ideen.map(function (i) {
+            return '<article class="fl-idee"><p class="fl-idee-format">' + esc(i.f) + '</p>' +
+              '<h3 class="fl-idee-titel">' + esc(i.t) + '</h3>' +
+              '<p class="fl-idee-warum">' + esc(i.w) + '</p>' +
+              (i.quelle ? '<p class="fl-idee-quelle">Aus eurer Auswahl: ' + esc(i.quelle) + '</p>' : '') + '</article>';
+          }).join("") + '</div>' +
+          '<div class="fl-bruecke"><p>' + (satz ? esc(satz) + ' ' : '') + 'Ob die Ideen bei euch funktionieren, zeigt ein Probe-Content-Tag. Im nächsten Schritt bewerbt ihr euch dafür.</p></div>' +
+          '<div class="fl-offen"><p class="fl-lab">Was wir im Briefing gemeinsam klären</p><ul>' +
+          r.offen.map(function (o) { return "<li>" + esc(o) + "</li>"; }).join("") + '</ul></div>' +
+          '<p class="fl-meta" style="margin-top:16px">Erste Ideen, kein fertiges Konzept. Die Feinplanung machen wir im Briefing.</p>';
       },
       bind: function () { track("lead_magnet_preview_viewed", { ziel: S.ziel }); },
       gueltig: function () { return true; }
@@ -1574,7 +1658,8 @@ bereit(function () {
     elCount.textContent = kontext;
     elCount.hidden = !kontext;
     elQ.textContent = typeof st.frage === "function" ? st.frage() : st.frage;
-    if (st.hinweis) { elHint.textContent = st.hinweis; elHint.hidden = false; } else { elHint.hidden = true; }
+    var hinweis = typeof st.hinweis === "function" ? st.hinweis() : st.hinweis;
+    if (hinweis) { elHint.textContent = hinweis; elHint.hidden = false; } else { elHint.hidden = true; }
     elCont.innerHTML = st.html();
     elErr.hidden = true;
     elBack.hidden = idx === 0;
@@ -1620,6 +1705,7 @@ bereit(function () {
       "Größe: " + groesseText(d.groesse),
       "Website: " + (d.website || "keine Angabe"),
       "Beschreibung: " + (d.unternehmen || "keine Angabe"), "",
+      "Gezeigte Ideen:"].concat(r.ideen.map(function (i) { return "- " + i.f + ": " + i.t; })).concat(["",
       "Name: " + d.kontakt.name,
       "Firma: " + d.kontakt.firma,
       "Funktion: " + (d.kontakt.funktion || "keine Angabe"),
@@ -1627,7 +1713,7 @@ bereit(function () {
       "Telefon: " + (d.kontakt.telefon || "keine Angabe"),
       "Erreichbarkeit: " + (d.kontakt.erreichbar || "keine Angabe"),
       "Marketing-Einwilligung: " + (d.marketingOptIn ? "ja" : "nein")
-    ].join("\n");
+    ]).join("\n");
   }
 
   function ergebnis(titel, text, extra, stand) {
