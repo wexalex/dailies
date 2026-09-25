@@ -1102,24 +1102,23 @@ bereit(function () {
       p.el.style.right = "auto";
     });
   };
-  // Alle Anlaesse laufen in einem Durchgang pro Frame zusammen: erst die Zonen und Groessen
-  // (fit), dann die Verankerung an der Headline. Vorher liefen beim Laden bis zu acht
-  // Durchgaenge, und fit() ueberschrieb bei jedem Resize die Verankerung, bis sie 150 ms
-  // spaeter wieder gesetzt wurde.
-  var geplant = false;
-  var layoutBald = function () {
-    if (geplant) return;
-    geplant = true;
-    requestAnimationFrame(function () { geplant = false; fit(); layoutFloats(); });
-  };
-  layoutBald();
-  window.addEventListener("resize", layoutBald);
-  window.addEventListener("orientationchange", layoutBald);
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layoutBald);
-  window.addEventListener("load", layoutBald);
-  if (window.ResizeObserver && titel) {
-    new ResizeObserver(layoutBald).observe(titel);
-    if (hero) new ResizeObserver(layoutBald).observe(hero);
+  // Erst die Zonen und Groessen (fit), dann die Verankerung an der Headline, immer zusammen.
+  // Vorher liefen beim Laden bis zu acht Durchgaenge, und fit() ueberschrieb bei jedem Resize
+  // die Verankerung, bis sie 150 ms spaeter wieder gesetzt wurde.
+  // Dieselben Anlaesse wie zuvor, aber jeder Durchgang synchron und in einem Stueck:
+  // Verschoben werden muss im selben Bild wie die Aenderung, ein Frame spaeter ist ein
+  // Layout Shift. Der ResizeObserver faengt Groessenaenderungen, resize, load und
+  // fonts.ready auch reine Verschiebungen, etwa wenn der Kicker nach dem Schriftwechsel
+  // anders umbricht und die Headline dadurch tiefer rutscht.
+  var anordnen = function () { fit(); layoutFloats(); };
+  window.addEventListener("resize", anordnen);
+  window.addEventListener("orientationchange", anordnen);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(anordnen);
+  window.addEventListener("load", anordnen);
+  if (window.ResizeObserver && titel && hero) {
+    var ro = new ResizeObserver(anordnen);
+    ro.observe(titel);
+    ro.observe(hero);
   }
   // Auf dem Telefon sitzen die Icons in den Randzonen ueber und unter dem Text,
   // sonst liegen sie auf Kicker, Headline und Buttons. Facebook entfaellt dort,
@@ -1152,7 +1151,11 @@ bereit(function () {
       el.style.right = pos.right || "auto";
     });
   }
-  // fit() laeuft im gemeinsamen Durchgang von layoutBald(), nicht mehr einzeln.
+  // fit() laeuft im gemeinsamen Durchgang anordnen(), nicht mehr einzeln. Der erste
+  // Durchgang muss hier synchron laufen, sobald fit() und die Zonen stehen: Chrome zeichnet
+  // das erste Bild vor der ersten ResizeObserver-Meldung. Ohne diesen Aufruf standen die
+  // Icons dort noch an den Markup-Positionen und sprangen danach (gemessen: CLS 0,0069).
+  anordnen();
 
   // Icons weichen dem Mauszeiger aus und schwingen zurueck.
   if (!reduce && floats.length) {
