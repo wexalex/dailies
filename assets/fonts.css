@@ -1,0 +1,8 @@
+/* WEXPLORE Webfonts, ES Klarheit. Quelle: offizielles Brand Guideline 2026.
+   Nur die Schnitte, die die Seite tatsaechlich verwendet: Plakat fuer Headlines,
+   Kurrent in 300/400/600/700 fuer alles andere. */
+@font-face { font-family:"ES Klarheit Plakat";  src:url("fonts/ESKlarheitPlakat-Xbd.woff2")  format("woff2"); font-weight:400 900; font-style:normal; font-display:swap; }
+@font-face { font-family:"ES Klarheit Kurrent"; src:url("fonts/ESKlarheitKurrent-Lt.woff2")   format("woff2"); font-weight:300; font-style:normal; font-display:swap; }
+@font-face { font-family:"ES Klarheit Kurrent"; src:url("fonts/ESKlarheitKurrent-Rg.woff2")   format("woff2"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:"ES Klarheit Kurrent"; src:url("fonts/ESKlarheitKurrent-Smbd.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:swap; }
+@font-face { font-family:"ES Klarheit Kurrent"; src:url("fonts/ESKlarheitKurrent-Bd.woff2")   format("woff2"); font-weight:700; font-style:normal; font-display:swap; }
