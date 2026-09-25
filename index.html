@@ -1014,6 +1014,53 @@ bereit(function () {
 
   // Positionen der schwebenden Icons je Breite, damit sie den Text nicht ueberdecken.
   var floats = hero ? Array.prototype.slice.call(hero.querySelectorAll("[data-float]")) : [];
+
+  // Icons ankern an der Headline: fester Pixel-Abstand zur Schrift bei jeder Viewportgroesse.
+  var titel = document.getElementById("sichtung-titel");
+  var floatByLabel = function (name) {
+    for (var i = 0; i < floats.length; i++) {
+      var svg = floats[i].querySelector("svg[aria-label]");
+      if (name === "rec" ? !svg : (svg && svg.getAttribute("aria-label") === name)) return floats[i];
+    }
+    return null;
+  };
+  var layoutFloats = function () {
+    if (!titel || !hero || !floats.length) return;
+    var hr = hero.getBoundingClientRect();
+    var r = titel.getBoundingClientRect();
+    var L = r.left - hr.left, T = r.top - hr.top, Rt = r.right - hr.left, B = r.bottom - hr.top;
+    var GAP = 28;
+    var setzen = function (el, x, y) {
+      if (!el) return;
+      var w = el.offsetWidth;
+      x = Math.max(8, Math.min(hr.width - w - 8, x));
+      el.style.left = x + "px";
+      el.style.top = Math.round(y) + "px";
+      el.style.right = "auto";
+    };
+    var H = B - T;
+    setzen(floatByLabel("Instagram"), L - 66 - GAP, T - 4);
+    setzen(floatByLabel("LinkedIn"), Rt + GAP, T + 12);
+    setzen(floatByLabel("TikTok"), L - 66 - GAP, T + H * 0.5 - 33);
+    setzen(floatByLabel("YouTube"), Rt + GAP, T + H * 0.56 - 33);
+    setzen(floatByLabel("Facebook"), L - 66 - GAP, B + 44);
+    setzen(floatByLabel("rec"), Rt + GAP - 8, B + 20);
+  };
+  var layoutTimer = null;
+  var layoutBald = function () {
+    layoutFloats();
+    clearTimeout(layoutTimer);
+    layoutTimer = setTimeout(layoutFloats, 150);
+  };
+  layoutFloats();
+  window.addEventListener("resize", layoutBald);
+  window.addEventListener("orientationchange", layoutBald);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layoutFloats);
+  window.addEventListener("load", layoutFloats);
+  if (window.ResizeObserver && titel) {
+    new ResizeObserver(layoutBald).observe(titel);
+    if (hero) new ResizeObserver(layoutBald).observe(hero);
+  }
   // Auf dem Telefon sitzen die Icons in den Randzonen ueber und unter dem Text,
   // sonst liegen sie auf Kicker, Headline und Buttons. Facebook entfaellt dort,
   // vier Icons fuellen die beiden Zonen bereits aus.
