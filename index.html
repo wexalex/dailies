@@ -130,11 +130,12 @@
   .plan-tabs button.active { background:#000; color:#fff; }
 
   /* FAQ */
-  .faq-item { border-top:1px solid #ddd; padding:18px 0; }
-  .faq-item summary { display:flex; justify-content:space-between; align-items:flex-start; gap:20px; cursor:pointer; list-style:none; font-size:21px; font-weight:700; line-height:1.25; }
+  /* Padding sitzt auf der summary, nicht auf dem details: sonst ist nur die Textzeile klickbar. */
+  .faq-item { border-top:1px solid #ddd; padding:0; }
+  .faq-item summary { display:flex; justify-content:space-between; align-items:flex-start; gap:20px; padding:18px 0; cursor:pointer; list-style:none; font-size:21px; font-weight:700; line-height:1.25; }
   .faq-item summary span:last-child { flex:none; color:var(--rot-hell); font-size:24px; font-weight:400; line-height:1; transition:transform .2s ease; }
   .faq-item[open] summary span:last-child { transform:rotate(45deg); }
-  .faq-item p { margin:10px 0 0; max-width:68ch; font-size:16px; line-height:1.6; color:var(--text-hell); text-wrap:pretty; }
+  .faq-item p { margin:-8px 0 18px; max-width:68ch; font-size:16px; line-height:1.6; color:var(--text-hell); text-wrap:pretty; }
 
   .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
   /* Sprunglink: nur sichtbar, solange er den Fokus hat. */
@@ -142,10 +143,28 @@
 
   @media (max-width: 900px) {
     section { padding:72px 20px; }
+    /* Der Hero traegt sein Padding inline, deshalb hier mit !important. */
+    #sichtung { padding:96px 20px 110px !important; }
     header.nav { padding:14px 20px !important; }
-    .recbar { padding-left:20px !important; padding-right:20px !important; }
+    .recbar { padding-left:20px !important; padding-right:20px !important; gap:10px !important; letter-spacing:.06em !important; }
+    [data-section-readout] { text-align:right; }
     .nav-links { display:none !important; }
     footer { padding-left:20px !important; padding-right:20px !important; }
+    /* Touch-Ziele auf 44px: kleine Buttons und die Paket-Tabs. */
+    .btn--s { height:44px; }
+    .plan-tabs { gap:8px; }
+    .plan-tabs button { height:44px; padding:0 18px; }
+  }
+  @media (max-width: 640px) {
+    /* Tagline und Gesamtlaufzeit brauchen auf dem Telefon zu viel Breite. */
+    .nav-tagline { display:none; }
+    .tc-gesamt { display:none; }
+    /* Die Sticky-CTA wird zur Leiste. right und bottom stehen inline, daher !important. */
+    [data-sticky-cta] { left:16px; right:16px !important; bottom:calc(12px + env(safe-area-inset-bottom)) !important; padding:8px 8px 8px 14px !important; gap:12px !important; }
+    [data-sticky-cta] > span { display:none; }
+    [data-sticky-cta] .btn { flex:1; }
+    /* Platz, damit die Leiste die Footer-Links nicht dauerhaft verdeckt. */
+    footer { padding-bottom:calc(88px + env(safe-area-inset-bottom)) !important; }
   }
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior:auto; }
@@ -160,10 +179,10 @@
   .fl-phases { display:flex; gap:6px; flex-wrap:wrap }
   .fl-phase { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-hell); padding:5px 11px; border-radius:999px; border:1px solid var(--linie-hell) }
   .fl-phase.on { background:#000; color:#fff; border-color:#000 }
-  .fl-x { border:0; background:transparent; cursor:pointer; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-hell); padding:8px }
+  .fl-x { border:0; background:transparent; cursor:pointer; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-hell); min-height:44px; min-width:44px; padding:10px 12px; margin-right:-12px }
   .fl-bar { height:2px; background:#ececec }
   .fl-bar i { display:block; height:100%; width:0; background:var(--rot-hell); transition:width .3s cubic-bezier(.2,0,0,1) }
-  .fl-body { flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch }
+  .fl-body { flex:1; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch }
   .fl-inner { max-width:760px; margin:0 auto; padding:44px 24px 40px }
   .fl-count { font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-hell); margin:0 }
   .fl-q { margin:14px 0 0; font-family:'ES Klarheit Plakat', Helvetica, sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(28px,3.4vw,44px); line-height:1.04 }
@@ -176,7 +195,7 @@
   .fl-radio .fl-box { border-radius:50% }
   .fl-opt[aria-pressed="true"] .fl-box::after { content:"\2713" }
   .fl-field { margin-top:26px }
-  .fl-lab { display:block; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-hell); margin-bottom:7px }
+  .fl-lab { display:block; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-hell); margin-bottom:7px }
   .fl-in, .fl-ta, .fl-sel { width:100%; box-sizing:border-box; padding:13px 14px; border:1px solid #cfcfcf; border-radius:8px; background:#fff; color:#000; font-size:17px }
   .fl-in, .fl-sel { height:52px; padding:0 14px }
   .fl-ta { min-height:96px; resize:vertical; line-height:1.5 }
@@ -195,7 +214,7 @@
   .fl-card p { margin:8px 0 0; line-height:1.55 }
   .fl-two { display:grid; grid-template-columns:1fr 1fr; gap:16px }
   .fl-mehr { margin-top:22px; border-top:1px solid var(--linie-hell); padding-top:14px }
-  .fl-mehr > summary { display:inline-flex; align-items:center; gap:7px; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-hell); cursor:pointer; list-style:none }
+  .fl-mehr > summary { display:flex; align-items:center; min-height:44px; gap:7px; padding:10px 0; margin:-10px 0; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-hell); cursor:pointer; list-style:none }
   .fl-mehr > summary::before { content:"+"; font-size:14px; line-height:1 }
   .fl-mehr[open] > summary::before { content:"\2212" }
   @media (max-width: 640px) {
@@ -203,6 +222,10 @@
     .fl-top, .fl-foot { padding-left:20px; padding-right:20px }
     .fl-two { grid-template-columns:1fr }
     .fl-opt { padding:15px 16px; font-size:16px }
+    /* Lange Beschriftungen duerfen umbrechen, statt aus dem Knopf zu laufen.
+       Nur die Fusszeile, damit der Link mit .fl-next im Abschluss unberuehrt bleibt. */
+    .fl-footrow .fl-next { flex:1; height:auto; min-height:48px; padding:12px 16px; line-height:1.25; text-align:center }
+    .fl-footrow .fl-back { padding:0 14px }
   }
 </style>
 </head>
@@ -218,7 +241,8 @@
         <div style="display:flex; align-items:center; gap:10px;">
           <div style="width:8px; height:8px; border-radius:50%; background:var(--rot); animation:recblink 1.6s steps(1) infinite;"></div>
           <span style="color:var(--rot-text); font-weight:600;">Rec</span>
-          <span data-timecode>00:00:00 / 00:12:40</span>
+          <span data-timecode style="white-space:nowrap;">00:00:00</span>
+          <span class="tc-gesamt" style="white-space:nowrap;">/ 00:12:40</span>
         </div>
         <span data-section-readout style="color:var(--grau-dunkel);">Clip 01 · Sichtung</span>
       </div>
@@ -230,7 +254,7 @@
       <a href="#sichtung" style="display:flex; align-items:center; gap:10px;">
         <div style="width:11px; height:11px; border-radius:50%; background:var(--rot);"></div>
         <span class="plakat" style="font-size:24px; line-height:1;">Dailies</span>
-        <span style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--grau-dunkel); margin-left:6px;">Das Content-Abo von WEXPLORE</span>
+        <span class="nav-tagline" style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--grau-dunkel); margin-left:6px;">Das Content-Abo von WEXPLORE</span>
       </a>
       <nav aria-label="Hauptnavigation" style="display:flex; align-items:center; flex-wrap:wrap; gap:8px 26px; font-size:15px;">
         <a class="nav-links" href="#ablauf">Ablauf</a>
@@ -272,7 +296,7 @@
     <div class="wrap">
       <div class="kicker" style="color:var(--grau-hell);"><i></i>Clip 02 · Ziel</div>
       <h2 id="ziel-titel" class="plakat h2" style="margin:18px 0 44px;">Was soll euer Content für euch erreichen?</h2>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap:20px;">
 
         <div style="border:2px solid var(--linie-hell); border-radius:16px; padding:30px; display:flex; flex-direction:column; gap:12px;">
           <svg viewBox="0 0 24 24" fill="none" stroke="#D83A2A" stroke-width="1.8" style="width:34px; height:34px;"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.5 19a5.5 5.5 0 0 1 11 0"></path><circle cx="17" cy="9.5" r="2.4"></circle><path d="M15.5 14.6a4.6 4.6 0 0 1 5.5 4.4"></path></svg>
@@ -331,7 +355,7 @@
     <div class="wrap">
       <div class="kicker" style="color:var(--grau-hell);"><i></i>Clip 04 · Ablauf</div>
       <h2 id="ablauf-titel" class="plakat h2" style="margin:18px 0 48px; max-width:18ch;">Sechs Schritte, die sich jedes Quartal wiederholen.</h2>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:0; border-top:2px solid #000;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap:0; border-top:2px solid #000;">
         <div style="padding:28px 28px 36px 0; border-bottom:1px solid var(--linie-hell); display:flex; flex-direction:column; gap:10px;">
           <span style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;">Schritt 01</span>
           <h3 style="font-size:22px; font-weight:700; line-height:1.25; margin:0;">Jahres- und Themenplanung</h3>
@@ -390,7 +414,7 @@
         <div class="kicker" style="color:var(--grau-hell);"><i></i>In jedem Abo enthalten</div>
         <h3 id="enthalten-titel" class="plakat" style="font-size:clamp(30px, 3.4vw, 42px); line-height:1.05; margin:14px 0 12px;">Was jedes Abo mitbringt.</h3>
         <p style="font-size:18px; line-height:1.55; color:var(--text-hell); max-width:60ch; margin:0 0 32px; text-wrap:pretty;">Ein fixer Rahmen fürs Jahr - und dazu Plattform, Tools und Community, die es so nur bei Dailies gibt.</p>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:16px;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap:16px;">
           <div style="background:#fff; border-radius:16px; padding:24px; display:flex; flex-direction:column; gap:10px;">
             <div style="display:flex; align-items:center; gap:8px; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;"><span style="width:6px; height:6px; border-radius:50%; background:var(--rot-hell);"></span>Budget</div>
             <h4 style="font-size:19px; font-weight:700; line-height:1.3; margin:0;">Ein Preis, keine Überraschungen.</h4>
@@ -484,12 +508,12 @@
       <div class="kicker" style="color:var(--grau-hell);"><i></i>Clip 08 · Referenzen</div>
       <h2 id="cases-titel" class="plakat h2" style="margin:18px 0 44px;">Für wen wir schon gedreht haben.</h2>
       <!-- Wird aus assets/config.js gerendert. Neue Cases nur dort pflegen. -->
-      <div data-cases style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:28px;"></div>
+      <div data-cases style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap:28px;"></div>
     </div>
   </section>
 
-  <section id="team" aria-labelledby="team-titel" class="sec-dunkel" data-readout="Clip 08 · Wer dahintersteht" data-screen-label="08 Referenzen · Wer dahintersteht">
-    <div class="wrap" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:64px; align-items:center;">
+  <section id="team" aria-labelledby="team-titel" class="sec-dunkel" data-readout="Clip 08 · Wer dahintersteht" data-screen-label="08 Team">
+    <div class="wrap" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap:64px; align-items:center;">
       <div style="max-width:400px; width:100%; justify-self:center;">
         <div style="position:relative;">
           <div style="aspect-ratio:4/5; border-radius:20px; overflow:hidden; background:var(--linie-dunkel);"><img src="assets/alex-gruber.jpg?v=2" alt="Alex Gruber, WEXPLORE Productions" width="970" height="1212" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
@@ -532,8 +556,8 @@
 
   </main>
 
-  <footer data-readout="Clip 09 · Ende" data-screen-label="09 FAQ · Ende" style="background:#000; color:#fff; padding:64px 40px 40px;">
-    <div class="wrap" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:36px;">
+  <footer data-readout="Clip 09 · Ende" data-screen-label="09 Ende" style="background:#000; color:#fff; padding:64px 40px 40px;">
+    <div class="wrap" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap:36px;">
       <div style="display:flex; flex-direction:column; gap:16px;">
         <div style="display:flex; align-items:center; gap:10px;"><div style="width:14px; height:14px; border-radius:50%; background:var(--rot);"></div><span class="plakat" style="font-size:34px; line-height:1;">Dailies</span></div>
         <a href="https://wexplore.at" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:10px; font-size:13px; color:var(--grau-dunkel);">powered by <img src="assets/wexplore-productions-light.png" alt="WEXPLORE Productions" width="700" height="41" loading="lazy" style="height:18px; width:auto;"></a>
@@ -588,7 +612,7 @@
         <span class="fl-phase" data-phase="idee">Idee</span>
         <span class="fl-phase" data-phase="bewerbung">Bewerbung</span>
       </div>
-      <button type="button" class="fl-x" data-flow-close>Schliessen</button>
+      <button type="button" class="fl-x" data-flow-close>Schließen</button>
     </div>
   </div>
   <div class="fl-bar" aria-hidden="true"><i data-flow-bar></i></div>
@@ -605,7 +629,7 @@
 
   <div class="fl-foot">
     <div class="fl-footrow">
-      <button type="button" class="fl-back" data-flow-back>Zurueck</button>
+      <button type="button" class="fl-back" data-flow-back>Zurück</button>
       <button type="button" class="fl-next" data-flow-next>Weiter</button>
     </div>
   </div>
@@ -650,46 +674,61 @@ bereit(function () {
   function cta(p) {
     var l = (p.cta && p.cta.label) || "Content-Ideen entdecken";
     var s = look(p.id);
-    var stil = 'height:48px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:15px; text-align:center; width:100%; box-sizing:border-box; cursor:pointer; font-family:inherit; background:' + s.btnBg + '; color:' + s.btnFg + '; border:1px solid ' + s.btnLine + ';';
+    // In der schmalen Spalte darf die Beschriftung umbrechen, statt aus dem Knopf zu laufen.
+    var mass = schmal.matches ? 'min-height:48px; padding:12px 10px; line-height:1.25;' : 'height:48px;';
+    var stil = mass + ' border-radius:6px; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:15px; text-align:center; width:100%; box-sizing:border-box; cursor:pointer; font-family:inherit; background:' + s.btnBg + '; color:' + s.btnFg + '; border:1px solid ' + s.btnLine + ';';
     if (/scope/i.test(l)) return '<a href="' + esc((p.cta && p.cta.href) || "#") + '" style="' + stil + '">' + esc(l) + "</a>";
     return '<button type="button" data-flow-start="paket-' + esc(p.id) + '" style="' + stil + '">Content-Ideen entdecken</button>';
   }
 
   function zeichnen() {
-    var sichtbar = schmal.matches ? plans.filter(function (p) { return p.id === aktiv; }) : plans;
-    table.style.gridTemplateColumns = schmal.matches ? "minmax(110px,.9fr) 1fr" : "1.1fr repeat(3, minmax(0,1fr))";
+    var eng = schmal.matches;
+    var sichtbar = eng ? plans.filter(function (p) { return p.id === aktiv; }) : plans;
+    // Im Zweispalten-Modus muss die min-width aus dem Markup weg, sonst liegen
+    // Preis, Merkmale und CTA rechts ausserhalb des Bildschirms.
+    table.style.minWidth = eng ? "0" : "860px";
+    table.style.gridTemplateColumns = eng ? "minmax(0,.85fr) minmax(0,1.15fr)" : "1.1fr repeat(3, minmax(0,1fr))";
+    var pKopf  = eng ? "18px 14px 16px" : "24px 22px 20px";
+    var pLabel = eng ? "16px 14px" : "20px 22px 20px 26px";
+    var pWert  = eng ? "16px 14px" : "20px 22px";
+    var pZeilL = eng ? "12px 14px" : "14px 22px 14px 26px";
+    var pZeilW = eng ? "12px 14px" : "14px 22px";
+    var pCta   = eng ? "16px 14px" : "22px";
+    // Lange Begriffe und Preise duerfen in den schmalen Spalten brechen.
+    var brich  = "hyphens:auto; overflow-wrap:anywhere;";
+    var gPreis = eng ? "30px" : "34px";
     var h = '<div style="border-bottom:1px solid #e2e2e2;"></div>';
     sichtbar.forEach(function (p) {
       var s = look(p.id);
-      h += '<div class="pk" data-col="' + esc(p.id) + '" style="padding:24px 22px 20px; background:' + s.bg + '; color:' + s.fg + '; border-top:4px solid ' + s.bar + '; border-bottom:1px solid ' + s.line + ';">' +
-        '<div style="display:flex; justify-content:space-between; align-items:center; gap:8px;">' +
+      h += '<div class="pk" data-col="' + esc(p.id) + '" style="padding:' + pKopf + '; ' + brich + ' background:' + s.bg + '; color:' + s.fg + '; border-top:4px solid ' + s.bar + '; border-bottom:1px solid ' + s.line + ';">' +
+        '<div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:8px;">' +
         '<span class="plakat" style="font-size:28px; line-height:1;">' + esc(p.name) + "</span>" +
-        (p.highlighted ? '<span style="display:flex; align-items:center; gap:6px; font-size:11px; letter-spacing:.14em; text-transform:uppercase;"><span style="width:7px; height:7px; border-radius:50%; background:#E8483A;"></span>Empfohlen</span>' : "") +
+        (p.highlighted ? '<span style="display:flex; align-items:center; gap:6px; font-size:12px; letter-spacing:.14em; text-transform:uppercase;"><span style="width:7px; height:7px; border-radius:50%; background:#E8483A;"></span>Empfohlen</span>' : "") +
         "</div>" +
         '<div style="font-size:15px; color:' + s.sub + '; margin-top:6px;">' + esc(p.tagline) + "</div></div>";
     });
-    h += '<div style="padding:20px 22px 20px 26px; border-bottom:1px solid #e2e2e2; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#6f6f6f; display:flex; align-items:center;">Preis</div>';
+    h += '<div style="padding:' + pLabel + '; ' + brich + ' border-bottom:1px solid #e2e2e2; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#6f6f6f; display:flex; align-items:center;">Preis</div>';
     sichtbar.forEach(function (p) {
       var s = look(p.id);
-      h += '<div class="pk" data-col="' + esc(p.id) + '" style="padding:20px 22px; background:' + s.bg + '; color:' + s.fg + '; border-bottom:1px solid ' + s.line + ';">' +
-        '<div style="display:flex; align-items:baseline; gap:6px;"><span class="plakat" style="font-size:34px; line-height:1;">' + esc(p.price) + '</span><span style="font-size:15px; color:' + s.sub + ';">/ Monat</span></div>' +
+      h += '<div class="pk" data-col="' + esc(p.id) + '" style="padding:' + pWert + '; ' + brich + ' background:' + s.bg + '; color:' + s.fg + '; border-bottom:1px solid ' + s.line + ';">' +
+        '<div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:6px;"><span class="plakat" style="font-size:' + gPreis + '; line-height:1;">' + esc(p.price) + '</span><span style="font-size:15px; color:' + s.sub + ';">/ Monat</span></div>' +
         '<div style="font-size:13px; color:' + s.sub + '; margin-top:6px;">' + esc(p.priceSub) + "</div>" +
         (p.priceNote ? '<div style="font-size:13px; color:' + s.note + '; margin-top:3px; font-weight:600;">' + esc(p.priceNote) + "</div>" : "") + "</div>";
     });
     labels.forEach(function (label, i) {
-      h += '<div style="padding:14px 22px 14px 26px; border-bottom:1px solid #eee; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#6b6b6b; display:flex; align-items:center;">' + esc(label) + "</div>";
+      h += '<div style="padding:' + pZeilL + '; ' + brich + ' border-bottom:1px solid #eee; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#6b6b6b; display:flex; align-items:center;">' + esc(label) + "</div>";
       sichtbar.forEach(function (p) {
         var s = look(p.id);
-        h += '<div class="pk" data-col="' + esc(p.id) + '" style="padding:14px 22px; font-size:15px; line-height:1.4; background:' + s.bg + '; color:' + s.fg + '; border-bottom:1px solid ' + s.line + ';">' + esc(wert((p.features || [])[i])) + "</div>";
+        h += '<div class="pk" data-col="' + esc(p.id) + '" style="padding:' + pZeilW + '; ' + brich + ' font-size:15px; line-height:1.4; background:' + s.bg + '; color:' + s.fg + '; border-bottom:1px solid ' + s.line + ';">' + esc(wert((p.features || [])[i])) + "</div>";
       });
     });
     h += "<div></div>";
     sichtbar.forEach(function (p) {
-      h += '<div class="pk" data-col="' + esc(p.id) + '" style="padding:22px; background:' + look(p.id).bg + ';">' + cta(p) + "</div>";
+      h += '<div class="pk" data-col="' + esc(p.id) + '" style="padding:' + pCta + '; background:' + look(p.id).bg + ';">' + cta(p) + "</div>";
     });
     table.innerHTML = h;
 
-    if (!schmal.matches) {
+    if (!eng) {
       table.querySelectorAll("[data-col]").forEach(function (el) {
         el.addEventListener("mouseenter", function () {
           var id = el.getAttribute("data-col");
@@ -748,7 +787,7 @@ bereit(function () {
     var zitat = q ? '<blockquote style="margin:14px 0 0; font-size:15px; line-height:1.55; font-style:italic;">' + esc(q) + '</blockquote><div style="margin-top:6px; font-size:14px; color:#6f6f6f;">' + esc([c.testimonial.name, c.testimonial.role].filter(Boolean).join(" · ")) + "</div>" : "";
     return "<div>" + medium +
       '<h3 class="plakat" style="font-size:28px; line-height:1.1; margin:' + (medium ? "18px" : "0") + ' 0 0; hyphens:manual;">' + esc(c.name) + "</h3>" +
-      (c.tag ? '<div style="display:inline-block; margin-top:10px; padding:4px 12px; border:1px solid #D83A2A; border-radius:999px; color:#D83A2A; font-size:11px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;">' + esc(c.tag) + "</div>" : "") +
+      (c.tag ? '<div style="display:inline-block; margin-top:10px; padding:4px 12px; border:1px solid #D83A2A; border-radius:999px; color:#D83A2A; font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;">' + esc(c.tag) + "</div>" : "") +
       text + zitat + "</div>";
   }).join("");
 });
@@ -764,6 +803,9 @@ bereit(function () {
   var cta = document.querySelector("[data-sticky-cta]");
   var hero = document.querySelector("[data-hero]");
   var pad = function (n) { return String(n).padStart(2, "0"); };
+  // Unter 640px zeigt die Leiste die kurzen data-screen-label-Werte,
+  // sonst bricht sie zwei- bis dreizeilig um.
+  var kurz = window.matchMedia("(max-width: 640px)");
   var raf = null;
 
   function onScroll() {
@@ -774,12 +816,13 @@ bereit(function () {
       var max = se.scrollHeight - window.innerHeight;
       var p = max > 0 ? Math.min(1, Math.max(0, se.scrollTop / max)) : 0;
       if (fill) fill.style.width = (p * 100).toFixed(2) + "%";
-      if (tc) { var s = Math.round(p * 760); tc.textContent = "00:" + pad(Math.floor(s / 60)) + ":" + pad(s % 60) + " / 00:12:40"; }
+      if (tc) { var s = Math.round(p * 760); tc.textContent = "00:" + pad(Math.floor(s / 60)) + ":" + pad(s % 60); }
       if (read) {
-        var label = "Clip 01 · Sichtung";
+        var attr = kurz.matches ? "data-screen-label" : "data-readout";
+        var label = kurz.matches ? "01 Sichtung" : "Clip 01 · Sichtung";
         document.querySelectorAll("[data-readout]").forEach(function (sec) {
           if (!sec.getClientRects().length) return;   // ausgeblendete Sektionen zaehlen nicht mit
-          if (sec.getBoundingClientRect().top <= 140) label = sec.getAttribute("data-readout");
+          if (sec.getBoundingClientRect().top <= 140) label = sec.getAttribute(attr) || sec.getAttribute("data-readout");
         });
         read.textContent = label;
       }
@@ -797,17 +840,35 @@ bereit(function () {
 
   // Positionen der schwebenden Icons je Breite, damit sie den Text nicht ueberdecken.
   var floats = hero ? Array.prototype.slice.call(hero.querySelectorAll("[data-float]")) : [];
+  // Auf dem Telefon sitzen die Icons in den Randzonen ueber und unter dem Text,
+  // sonst liegen sie auf Kicker, Headline und Buttons. Facebook entfaellt dort,
+  // vier Icons fuellen die beiden Zonen bereits aus.
+  var posEng = [
+    { top: "22px", right: "14px" },
+    { bottom: "26px", left: "14px" },
+    null,
+    { top: "22px", left: "14px" },
+    { bottom: "26px", right: "14px" }
+  ];
+  var posWeit = [
+    { top: "11%", right: "12%" },
+    { top: "46%", left: "10%" },
+    { top: "74%", left: "15%" },
+    { top: "13%", left: "12%" },
+    { top: "44%", right: "11%" }
+  ];
   function fit() {
     var w = window.innerWidth, tiny = w < 900, narrow = w < 1100;
     floats.forEach(function (el, i) {
       if (i === 5) { el.style.display = narrow ? "none" : "flex"; return; }
+      var pos = (tiny ? posEng : posWeit)[i];
+      if (!pos) { el.style.display = "none"; return; }
+      el.style.display = "";
       el.style.width = el.style.height = tiny ? "44px" : "66px";
-      var pos = tiny ? [["14%", null, "4%"], ["30%", "3%"], ["80%", "4%"], ["8%", "4%"], ["32%", null, "3%"]][i]
-                     : [["11%", null, "12%"], ["46%", "10%"], ["74%", "15%"], ["13%", "12%"], ["44%", null, "11%"]][i];
-      if (!pos) return;
-      el.style.top = pos[0];
-      el.style.left = pos[1] || "auto";
-      el.style.right = pos[2] || "auto";
+      el.style.top = pos.top || "auto";
+      el.style.bottom = pos.bottom || "auto";
+      el.style.left = pos.left || "auto";
+      el.style.right = pos.right || "auto";
     });
   }
   fit();
@@ -815,28 +876,49 @@ bereit(function () {
 
   // Icons weichen dem Mauszeiger aus und schwingen zurueck.
   if (!reduce && floats.length) {
+    // Ohne Mauszeiger gibt es nichts auszuweichen. Dann entfallen die fuenf
+    // getBoundingClientRect-Abfragen pro Frame, auf dem Telefon bleibt das Wippen.
+    var zeiger = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     var icons = floats.map(function (el, i) {
       return { el: el, r: parseFloat(el.dataset.r) || 0, tx: 0, ty: 0, vx: 0, vy: 0, phase: i * 1.3 };
     });
     var mx = -9999, my = -9999;
-    window.addEventListener("pointermove", function (e) { mx = e.clientX; my = e.clientY; }, { passive: true });
-    document.addEventListener("pointerleave", function () { mx = -9999; my = -9999; });
+    if (zeiger) {
+      window.addEventListener("pointermove", function (e) { mx = e.clientX; my = e.clientY; }, { passive: true });
+      document.addEventListener("pointerleave", function () { mx = -9999; my = -9999; });
+    }
     var R = 140, PUSH = 4.2, SPRING = 0.014, DAMP = 0.86, MAX = 420, t = 0;
-    (function step() {
-      t += 0.016;
+    var imBild = true, laeuft = false, vorher = 0;
+    var step = function (jetzt) {
+      // Echte Zeitdifferenz, damit 120-Hz-Displays nicht doppelt so schnell wippen.
+      t += vorher ? Math.min(0.05, (jetzt - vorher) / 1000) : 0.016;
+      vorher = jetzt;
       icons.forEach(function (o) {
-        var b = o.el.getBoundingClientRect();
-        var dx = b.left + b.width / 2 - mx, dy = b.top + b.height / 2 - my, d = Math.hypot(dx, dy);
-        if (d < R && d > 0.001) { var f = (1 - d / R) * PUSH; o.vx += dx / d * f; o.vy += dy / d * f; }
-        o.vx += -o.tx * SPRING; o.vy += -o.ty * SPRING;
-        o.vx *= DAMP; o.vy *= DAMP;
-        o.tx = Math.max(-MAX, Math.min(MAX, o.tx + o.vx));
-        o.ty = Math.max(-MAX, Math.min(MAX, o.ty + o.vy));
+        if (zeiger) {
+          var b = o.el.getBoundingClientRect();
+          var dx = b.left + b.width / 2 - mx, dy = b.top + b.height / 2 - my, d = Math.hypot(dx, dy);
+          if (d < R && d > 0.001) { var f = (1 - d / R) * PUSH; o.vx += dx / d * f; o.vy += dy / d * f; }
+          o.vx += -o.tx * SPRING; o.vy += -o.ty * SPRING;
+          o.vx *= DAMP; o.vy *= DAMP;
+          o.tx = Math.max(-MAX, Math.min(MAX, o.tx + o.vx));
+          o.ty = Math.max(-MAX, Math.min(MAX, o.ty + o.vy));
+        }
         var bob = Math.sin(t + o.phase) * 5;
         o.el.style.transform = "translate(" + o.tx.toFixed(2) + "px," + (o.ty + bob).toFixed(2) + "px) rotate(" + o.r + "deg)";
       });
-      requestAnimationFrame(step);
-    })();
+      if (imBild) requestAnimationFrame(step);
+      else { laeuft = false; vorher = 0; }
+    };
+    var starten = function () { if (!laeuft) { laeuft = true; vorher = 0; requestAnimationFrame(step); } };
+    // Ist der Hero aus dem Bild gescrollt, ruht die Schleife. Sonst laeuft sie
+    // ueber die ganze Sitzung gegen den Scroll-Handler.
+    if (hero && "IntersectionObserver" in window) {
+      new IntersectionObserver(function (e) {
+        imBild = e[0].isIntersecting;
+        if (imBild) starten();
+      }).observe(hero);
+    }
+    starten();
   }
 
   // Das Plattform-Video laedt und spielt erst, wenn es sichtbar ist.
@@ -1066,7 +1148,7 @@ bereit(function () {
           '<textarea class="fl-ta" id="fl-unt" maxlength="200" placeholder="z. B. Wir fertigen Blechteile für den Maschinenbau, hauptsächlich für Kunden in Österreich und Süddeutschland.">' + esc(S.unternehmen) + "</textarea>" +
           '<p class="fl-meta"><span data-zaehler></span> von 200 Zeichen</p></div>' +
           '<div class="fl-field"><label class="fl-lab" for="fl-web">Website (optional)</label>' +
-          '<input class="fl-in" id="fl-web" type="text" inputmode="url" placeholder="beispiel.at" value="' + esc(S.website) + '"></div>';
+          '<input class="fl-in" id="fl-web" type="text" inputmode="url" autocomplete="url" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="beispiel.at" value="' + esc(S.website) + '"></div>';
       },
       bind: function (root) {
         var ta = root.querySelector("#fl-unt"), z = root.querySelector("[data-zaehler]");
@@ -1121,7 +1203,7 @@ bereit(function () {
           '<div class="fl-field" style="margin-top:0"><label class="fl-lab" for="fl-ort">Ort oder Postleitzahl</label>' +
           '<input class="fl-in" id="fl-ort" type="text" placeholder="4020 Linz" value="' + esc(S.ort) + '"></div>' +
           '<div class="fl-field" style="margin-top:0"><label class="fl-lab" for="fl-land">Bundesland</label>' +
-          '<input class="fl-in" id="fl-land" type="text" placeholder="wird ergänzt" value="' + esc(S.bundesland) + '">' +
+          '<input class="fl-in" id="fl-land" type="text" autocomplete="address-level1" placeholder="wird ergänzt" value="' + esc(S.bundesland) + '">' +
           '<p class="fl-meta">Wird aus der Postleitzahl ergänzt und lässt sich überschreiben.</p></div></div>' +
           '<div class="fl-field"><label class="fl-lab" for="fl-gr">Unternehmensgröße</label>' +
           '<select class="fl-sel" id="fl-gr"><option value="">Bitte wählen</option>' +
@@ -1161,7 +1243,7 @@ bereit(function () {
 
     { id: "bewerbung", phase: "bewerbung",
       frage: "Möchtet ihr diese Ideen mit uns ausprobieren?",
-      weiter: "Bewerbung unverbindlich absenden",
+      weiter: "Bewerbung absenden",
       html: function () {
         // Bewusst nur drei Pflichtfelder. Alles Weitere steht hinter "Optional ergaenzen",
         // damit der letzte Schritt vor dem Absenden leicht bleibt.
@@ -1265,15 +1347,15 @@ bereit(function () {
   function alsText() {
     var d = nutzlast(), r = richtung();
     return [
-      "Bewerbung fuer einen Probe-Content-Tag", "",
+      "Bewerbung für einen Probe-Content-Tag", "",
       "Ziel: " + r.ziel,
       "Unternehmen: " + d.unternehmen,
       "Website: " + (d.website || "keine Angabe"),
       "Antwort zum Ziel: " + d.zielAntwort,
-      "Moegliche Inhalte: " + d.inhalte.join(", "),
+      "Mögliche Inhalte: " + d.inhalte.join(", "),
       "Vor der Kamera: " + d.personen.join(", "),
       "Standort: " + d.ort + (d.bundesland ? " (" + d.bundesland + ")" : ""),
-      "Groesse: " + d.groesse, "",
+      "Größe: " + d.groesse, "",
       "Name: " + d.kontakt.name,
       "Firma: " + d.kontakt.firma,
       "Funktion: " + d.kontakt.funktion,
