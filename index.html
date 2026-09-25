@@ -306,7 +306,7 @@
   .fl-body { flex:1; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch }
   .fl-inner { max-width:760px; margin:0 auto; padding:44px 24px 40px }
   .fl-count { font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-hell); margin:0 }
-  .fl-q { margin:14px 0 0; font-family:'ES Klarheit Plakat', Helvetica, sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(28px,3.4vw,44px); line-height:1.04 }
+  .fl-q { margin:14px 0 0; font-family:'ES Klarheit Plakat', Helvetica, sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(28px,3.4vw,44px); line-height:1.04; hyphens:manual; overflow-wrap:break-word }
   .fl-hint { margin:14px 0 0; max-width:60ch; color:var(--text-hell); line-height:1.6 }
   .fl-opts { display:grid; gap:10px; margin-top:28px }
   .fl-opt { display:flex; align-items:center; gap:12px; width:100%; box-sizing:border-box; text-align:left; cursor:pointer; padding:17px 20px; border:2px solid var(--linie-hell); border-radius:12px; background:transparent; color:#000; font-size:17px; line-height:1.3; transition:background-color .16s ease, border-color .16s ease, color .16s ease }
@@ -327,13 +327,14 @@
   .fl-footrow { display:flex; align-items:center; justify-content:space-between; gap:12px; max-width:760px; margin:0 auto }
   .fl-back { border:1px solid #cfcfcf; background:transparent; cursor:pointer; height:48px; padding:0 20px; border-radius:6px; color:#000; font-size:16px }
   .fl-back[disabled] { opacity:.4; cursor:default }
-  .fl-next { border:0; cursor:pointer; height:48px; padding:0 26px; border-radius:6px; background:var(--rot-hell); color:#fff; font-weight:600; font-size:16px }
-  .fl-next.wait { background:#e6b3ac }
+  .fl-next { border:0; cursor:pointer; height:48px; padding:0 26px; border-radius:6px; background:var(--rot-hell); color:#fff; font-weight:600; font-size:16px; display:inline-flex; align-items:center; justify-content:center; margin-left:auto; text-decoration:none }
+  .fl-next.wait { background:#F3D6D1; color:#7A1F14 }
   .fl-next[disabled] { background:#ddd; color:#666; cursor:default }
   .fl-card { border:2px solid var(--linie-hell); border-radius:16px; padding:24px 22px; margin-top:20px; background:#fff }
   .fl-card h3 { margin:0; font-size:19px; font-weight:700; line-height:1.3 }
   .fl-card p { margin:8px 0 0; line-height:1.55 }
   .fl-two { display:grid; grid-template-columns:1fr 1fr; gap:16px }
+  [data-flow-content] > .fl-two:first-child { margin-top:26px }
   .fl-mehr { margin-top:22px; border-top:1px solid var(--linie-hell); padding-top:14px }
   .fl-mehr > summary { display:flex; align-items:center; min-height:44px; gap:7px; padding:10px 0; margin:-10px 0; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-hell); cursor:pointer; list-style:none }
   .fl-mehr > summary::before { content:"+"; font-size:14px; line-height:1 }
@@ -1196,6 +1197,7 @@ bereit(function () {
   var elNext  = ovl.querySelector("[data-flow-next]");
   var elBar   = ovl.querySelector("[data-flow-bar]");
   var elLive  = ovl.querySelector("[data-flow-live]");
+  var elFoot  = ovl.querySelector(".fl-foot");
   var phases  = Array.prototype.slice.call(ovl.querySelectorAll(".fl-phase"));
 
   var SPEICHER = "dailies-flow-v1";
@@ -1476,7 +1478,7 @@ bereit(function () {
       html: function () {
         // Bewusst nur drei Pflichtfelder. Alles Weitere steht hinter "Optional ergaenzen",
         // damit der letzte Schritt vor dem Absenden leicht bleibt.
-        return '<p style="margin:0 0 4px; max-width:60ch; line-height:1.6">Wir prüfen eure Angaben persönlich und melden uns. Passt es, schlagen wir einen Termin für ein 30-minütiges Briefing vor.</p>' +
+        return '<p style="margin:18px 0 4px; max-width:60ch; line-height:1.6">Wir prüfen eure Angaben persönlich und melden uns. Passt es, schlagen wir einen Termin für ein 30-minütiges Briefing vor.</p>' +
           '<div class="fl-two"><div class="fl-field"><label class="fl-lab" for="fl-name">Vor- und Nachname</label><input class="fl-in" id="fl-name" type="text" autocomplete="name" value="' + esc(K.name) + '"></div>' +
           '<div class="fl-field"><label class="fl-lab" for="fl-firma">Unternehmen</label><input class="fl-in" id="fl-firma" type="text" autocomplete="organization" value="' + esc(K.firma) + '"></div></div>' +
           '<div class="fl-field"><label class="fl-lab" for="fl-mail">Geschäftliche E-Mail-Adresse</label><input class="fl-in" id="fl-mail" type="email" autocomplete="email" value="' + esc(K.email) + '"></div>' +
@@ -1541,7 +1543,7 @@ bereit(function () {
     if (st.hinweis) { elHint.textContent = st.hinweis; elHint.hidden = false; } else { elHint.hidden = true; }
     elCont.innerHTML = st.html();
     elErr.hidden = true;
-    elBack.disabled = idx === 0;
+    elBack.hidden = idx === 0;
     elNext.textContent = st.weiter || "Weiter";
     elBar.style.width = Math.round(((idx) / (SCHRITTE.length - 1)) * 100) + "%";
     phases.forEach(function (p) { p.classList.toggle("on", p.getAttribute("data-phase") === st.phase); });
@@ -1601,8 +1603,7 @@ bereit(function () {
     elHint.hidden = true;
     elCont.innerHTML = '<p style="margin:18px 0 0; max-width:62ch; line-height:1.6">' + text + "</p>" + (extra || "");
     elErr.hidden = true;
-    elBack.style.display = "none";
-    elNext.style.display = "none";
+    elFoot.hidden = true;
     elBar.style.width = "100%";
     elQ.focus();
     elLive.textContent = titel;
@@ -1654,7 +1655,7 @@ bereit(function () {
     vorherFokus = document.activeElement;
     ovl.hidden = false;
     document.body.style.overflow = "hidden";
-    elBack.style.display = ""; elNext.style.display = "";
+    elFoot.hidden = false;
     rendern();
     track("lead_magnet_started", { quelle: quelle || "unbekannt", ziel: S.ziel || null });
   }
