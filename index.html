@@ -1553,7 +1553,7 @@ bereit(function () {
               '<p class="fl-idee-warum">' + esc(i.w) + '</p>' +
               (i.quelle ? '<p class="fl-idee-quelle">Aus eurer Auswahl: ' + esc(i.quelle) + '</p>' : '') + '</article>';
           }).join("") + '</div>' +
-          '<div class="fl-bruecke"><p>' + (satz ? esc(satz) + ' ' : '') + 'Ob die Ideen bei euch funktionieren, zeigt ein Probe-Content-Tag. Im nächsten Schritt bewerbt ihr euch dafür.</p></div>' +
+          '<div class="fl-bruecke"><p>' + (satz ? esc(satz) + ' ' : '') + 'Ob die Ideen bei euch funktionieren, zeigt ein kostenloser Probe-Content-Tag. Im nächsten Schritt bewerbt ihr euch dafür.</p></div>' +
           '<div class="fl-offen"><p class="fl-lab">Was wir im Briefing gemeinsam klären</p><ul>' +
           r.offen.map(function (o) { return "<li>" + esc(o) + "</li>"; }).join("") + '</ul></div>' +
           '<p class="fl-meta" style="margin-top:16px">Erste Ideen, kein fertiges Konzept. Die Feinplanung machen wir im Briefing.</p>';
@@ -1580,7 +1580,7 @@ bereit(function () {
     { id: "bewerbung", phase: "bewerbung",
       frage: "Möchtet ihr diese Ideen mit uns ausprobieren?",
       hinweis: "Drei Angaben genügen. Alles Weitere ist freiwillig.",
-      fussnote: "Noch kein Termin und kein Abo.",
+      fussnote: "Kostenlos. Noch kein Termin und kein Abo.",
       weiter: "Bewerbung absenden",
       html: function () {
         // Bewusst nur drei Pflichtfelder. Alles Weitere steht hinter "Optional ergaenzen",
@@ -1593,7 +1593,7 @@ bereit(function () {
           '<div class="fl-weiter"><p class="fl-lab">So geht es weiter</p><ol>' +
           '<li>Wir prüfen eure Angaben persönlich.</li>' +
           '<li>Passt es, schlagen wir einen Termin für ein 30-minütiges Briefing vor.</li>' +
-          '<li>Aus dem Briefing planen wir die Inhalte für euren Probe-Content-Tag.</li></ol>' +
+          '<li>Aus dem Briefing planen wir die Inhalte für euren kostenlosen Probe-Content-Tag.</li></ol>' +
           (refs ? '<p class="fl-meta" style="margin-top:14px">Gedreht unter anderem für ' + esc(refs) + '.</p>' : '') + '</div>' +
           '<details class="fl-mehr"' + ((K.funktion || K.telefon || K.erreichbar || S.website || S.unternehmen) ? ' open' : '') + '><summary>Optional ergänzen</summary>' +
           '<div class="fl-field" style="margin-top:14px"><label class="fl-lab" for="fl-web">Website</label><input class="fl-in" id="fl-web" type="text" inputmode="url" autocomplete="url" autocapitalize="none" autocorrect="off" spellcheck="false" value="' + esc(S.website) + '"></div>' +
@@ -1844,7 +1844,7 @@ bereit(function () {
       K = { name: "", firma: "", funktion: "", email: "", telefon: "", erreichbar: "", optin: false };
       ergebnis("Danke, eure Bewerbung ist bei uns.",
         "Wir schauen uns eure Angaben persönlich an. Wenn der Probe-Content-Tag zu eurem Unternehmen passt, melden wir uns mit einem Vorschlag für ein 30-minütiges Dailies-Briefing. In dem Gespräch holen wir das Detailbriefing ein und planen anschließend die Inhalte für den Probe-Tag.",
-        '<p class="fl-meta" style="margin-top:16px">Ihr habt noch keinen Termin gebucht. Es entsteht auch keine Verpflichtung zu einem Dailies-Abo.</p>',
+        '<p class="fl-meta" style="margin-top:16px">Ihr habt noch keinen Termin gebucht. Es entstehen weder Kosten noch eine Verpflichtung zu einem Dailies-Abo.</p>',
         "Bewerbung: angekommen");
     }).catch(function (err) {
       track("lead_magnet_submission_error", { grund: "netzwerk" });
