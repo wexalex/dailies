@@ -1291,7 +1291,7 @@ bereit(function () {
     { k: "ablaeufe",  t: "Einblicke in Arbeitsabläufe" },
     { k: "knowhow",   t: "Know-how und häufige Kundenfragen" },
     { k: "projekte",  t: "Projekte oder Kundenergebnisse" },
-    { k: "unklar",    t: "Das kann ich noch nicht einschätzen" }
+    { k: "unklar",    t: "Wissen wir noch nicht" }
   ];
 
   var PERSONEN = [
@@ -1299,7 +1299,7 @@ bereit(function () {
     { k: "team",      t: "Mitarbeiter:innen oder Fachleute" },
     { k: "kunden",    t: "Kund:innen oder Partner:innen" },
     { k: "objekte",   t: "Produkte, Maschinen oder Arbeitsabläufe" },
-    { k: "offen",     t: "Noch offen, wir brauchen dabei Unterstützung" }
+    { k: "offen",     t: "Noch offen" }
   ];
 
   var GROESSEN = ["1 bis 20", "21 bis 99", "100 bis 250", "Über 250", "Lieber im Gespräch"];
@@ -1325,10 +1325,10 @@ bereit(function () {
       bewerbungen: { f: "Reel-Reihe", t: "„Warum ich hier arbeite“", w: "Kolleg:innen erzählen selbst. Bewerber:innen sehen echte Menschen statt einer Stellenanzeige." },
       nachfrage:   { f: "Reel", t: "„Wer euren Auftrag bei uns betreut“", w: "Kund:innen entscheiden leichter, wenn sie wissen, wer dahintersteht." },
       bekanntheit: { f: "Reel-Reihe", t: "„Drei Entscheidungen, die unseren Betrieb geprägt haben“", tf: "„{fokus}: Was das für unser Team heißt“", w: "Eine wiedererkennbare Stimme aus eurem Haus bleibt länger im Kopf als ein Logo." },
-      anderes:     { f: "Reel-Reihe", t: "„Kurz gefragt: Was machst du hier eigentlich?“", w: "Menschen aus dem Betrieb zeigen, was von außen niemand sieht." }
+      anderes:     { f: "Reel-Reihe", t: "„Ein Job, den von außen niemand kennt“", w: "Menschen aus dem Betrieb zeigen, was von außen niemand sieht." }
     },
     produkte: {
-      bewerbungen: { f: "Reel", t: "„Daran arbeitest du bei uns“", tf: "„{fokus}: Daran arbeitest du bei uns“", w: "Bewerber:innen sehen vorher, woran sie später mitarbeiten." },
+      bewerbungen: { f: "Reel", t: "„Daran arbeitet ihr bei uns“", tf: "„{fokus}: Daran arbeitet ihr bei uns“", w: "Bewerber:innen sehen vorher, woran sie später mitarbeiten." },
       nachfrage:   { f: "Reel", t: "„Woran ihr erkennt, ob ihr Standard oder Sonderanfertigung braucht“", tf: "„{fokus}: Woran ihr erkennt, was ihr wirklich braucht“", w: "Beantwortet eine Kauffrage, bevor sie im Vertrieb landet." },
       bekanntheit: { f: "Fotoserie", t: "„Was in unseren Produkten steckt“", tf: "„{fokus}: Was davon in unseren Produkten steckt“", w: "Zeigt Qualität, statt sie zu behaupten." },
       anderes:     { f: "Reel", t: "„Ein Produkt von Anfang bis Ende“", w: "Macht sichtbar, was hinter dem fertigen Produkt steckt." }
@@ -1341,12 +1341,12 @@ bereit(function () {
     },
     knowhow: {
       bewerbungen: { f: "Reel", t: "„Was ihr im ersten Lehrjahr bei uns wirklich lernt“", tf: "„{fokus}: Was ihr im ersten Jahr bei uns lernt“", w: "Beantwortet die Fragen, die Bewerber:innen sonst nie stellen." },
-      nachfrage:   { f: "Reel-Reihe", t: "„Die drei Fragen, die uns jeder Kunde vor der Bestellung stellt“", tf: "„{fokus}: Die drei Fragen, die uns jeder Kunde stellt“", w: "Nimmt dem Vertrieb die immer gleichen Erklärungen ab." },
+      nachfrage:   { f: "Reel-Reihe", t: "„Die drei Fragen, die wir vor jeder Bestellung hören“", tf: "„{fokus}: Die drei Fragen, die wir vor jeder Bestellung hören“", w: "Nimmt dem Vertrieb die immer gleichen Erklärungen ab." },
       bekanntheit: { f: "Reel", t: "„Was sich in unserer Branche gerade ändert und was das für euch heißt“", tf: "„{fokus}: Woran man das bei uns erkennt“", w: "Macht euch zu der Stimme, die man zu dem Thema im Kopf hat." },
       anderes:     { f: "Reel", t: "„Eine Frage, die wir ständig hören“", w: "Wer die Frage hat, findet die Antwort bei euch." }
     },
     projekte: {
-      bewerbungen: { f: "Fotoserie", t: "„Das Projekt, auf das unser Team stolz ist“", w: "Zeigt, woran man bei euch mitarbeiten kann." },
+      bewerbungen: { f: "Fotoserie", t: "„Das Projekt, auf das unser Team stolz ist“", w: "Zeigt, woran man bei euch mitarbeitet." },
       nachfrage:   { f: "Reel", t: "„Was bei diesem Auftrag schiefgehen konnte und warum es das nicht tat“", tf: "„{fokus}: Ein Auftrag von der Anfrage bis zur Übergabe“", w: "Ein echtes Projekt überzeugt mehr als jede Leistungsliste." },
       bekanntheit: { f: "Reel", t: "„Das Projekt, von dem wir bis heute erzählen“", tf: "„{fokus}: Das Projekt, das es am besten zeigt“", w: "Eine Geschichte bleibt, eine Referenzliste nicht." },
       anderes:     { f: "Fotoserie", t: "„Vorher und nachher“", w: "Ein sichtbares Ergebnis erklärt sich selbst." }
@@ -1426,10 +1426,10 @@ bereit(function () {
       offenePunkte.push("Welche Themen bei euch überhaupt zur Verfügung stehen. Das klären wir im Briefing gemeinsam, ihr müsst das nicht vorher wissen.");
     }
     if (!S.personen.length || S.personen.indexOf("offen") !== -1) {
-      offenePunkte.push("Wer vor der Kamera stehen kann und wer lieber nicht. Wir bereiten die Personen vor, Erfahrung ist keine Voraussetzung.");
+      offenePunkte.push("Wer vor die Kamera möchte und wer lieber nicht. Wir bereiten die Personen vor, Erfahrung ist keine Voraussetzung.");
     }
     if (S.personen.indexOf("gf") !== -1) {
-      offenePunkte.push("Wie viel Zeit die Geschäftsführung am Drehtag tatsächlich einplanen kann.");
+      offenePunkte.push("Wie viel Zeit die Geschäftsführung am Drehtag tatsächlich hat.");
     }
     if (S.inhalte.indexOf("ablaeufe") !== -1 || S.inhalte.indexOf("produkte") !== -1) {
       offenePunkte.push("Welche Bereiche gefilmt werden dürfen und wo Geheimhaltung oder Sicherheit dagegen sprechen.");
@@ -1453,7 +1453,7 @@ bereit(function () {
   var SCHRITTE = [
     { id: "ziel", phase: "ziel",
       frage: "Was soll euer Content gerade am ehesten erreichen?",
-      hinweis: "Ihr könnt das später jederzeit ändern. Es geht nur um die Richtung.",
+      hinweis: "Das lässt sich später jederzeit ändern. Es geht nur um die Richtung.",
       html: function () { return optionen(ZIELE, "ziel", false); },
       bind: function (root) {
         root.querySelectorAll("[data-opt]").forEach(function (b) {
@@ -1471,8 +1471,8 @@ bereit(function () {
     },
 
     { id: "inhalte", phase: "idee",
-      frage: "Was könnten wir bei euch zeigen oder erzählen?",
-      hinweis: "Mehrfachauswahl. Wenn ihr es noch nicht wisst, ist das auch eine Antwort.",
+      frage: "Was gibt es bei euch zu zeigen oder zu erzählen?",
+      hinweis: "Mehrfachauswahl. „Wissen wir noch nicht“ ist auch eine Antwort.",
       html: function () { return optionen(INHALTE, "inhalte", true); },
       bind: function (root) { mehrfachBinden(root, "inhalte", "unklar"); },
       gueltig: function () { return S.inhalte.length > 0; },
@@ -1480,8 +1480,8 @@ bereit(function () {
     },
 
     { id: "personen", phase: "idee",
-      frage: "Wer könnte bei euch Inhalte mitgestalten oder vor der Kamera stehen?",
-      hinweis: "Das dient der Planung, nicht der Auswahl. Wir bereiten die Personen vor.",
+      frage: "Wer oder was soll bei euch vor die Kamera?",
+      hinweis: "Mehrfachauswahl, nur zur Planung. Erfahrung vor der Kamera braucht es nicht, wir bereiten alle vor.",
       html: function () { return optionen(PERSONEN, "personen", true); },
       bind: function (root) { mehrfachBinden(root, "personen", "offen"); },
       gueltig: function () { return S.personen.length > 0; },
