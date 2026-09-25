@@ -1,861 +1,761 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de-AT">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dailies - das Content-Abo von WEXPLORE</title>
-<!-- TODO: Meta-Description finalisieren (aktueller Text ist Arbeitsstand) -->
-<meta name="description" content="DAILIES ist das Content-Abo von WEXPLORE Productions: ein Drehtag pro Quartal, mindestens 13 Reels plus Fotos. Für Unternehmen in Oberösterreich.">
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,600;125,700&family=Inter+Tight:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-<script src="assets/config.js?v=2" defer></script>
+
+<!-- Die beiden Schnitte, die der Hero sofort braucht. Die URLs muessen exakt den
+     src-Angaben der @font-face-Regeln weiter unten entsprechen (ohne ?v=), sonst
+     laedt der Browser die Dateien zweimal. crossorigin ist auch bei gleicher
+     Herkunft Pflicht, weil Schriften immer im CORS-Modus geholt werden.
+     Lt, Smbd und Bd folgen ueber die inline @font-face und brauchen kein preload. -->
+<link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/ESKlarheitPlakat-Xbd.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/ESKlarheitKurrent-Rg.woff2">
+
+<title>Dailies - Social-Media-Content im Abo | WEXPLORE, Linz</title>
+<meta name="description" content="Social-Media-Content im Abo von WEXPLORE: Videoproduktion aus Linz, ein Drehtag pro Quartal, fertige Videos und Fotos für Unternehmen in Oberösterreich.">
+<link rel="canonical" href="https://wexalex.github.io/dailies/">
+<meta name="theme-color" content="#201f1f">
+
+<!-- Social-Vorschau. og:image ist eine Zwischenloesung: assets/dailies/bts-03.jpg ist
+     1000 x 625 px (1,6:1) und liegt damit ueber dem Minimum fuer eine grosse Vorschau.
+     Sobald ein gestaltetes Share-Bild in 1200 x 630 px vorliegt, hier og:image sowie
+     og:image:width und og:image:height tauschen. -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://wexalex.github.io/dailies/">
+<meta property="og:site_name" content="Dailies">
+<meta property="og:locale" content="de_AT">
+<meta property="og:title" content="Dailies - Social-Media-Content im Abo | WEXPLORE, Linz">
+<meta property="og:description" content="Social-Media-Content im Abo von WEXPLORE: Videoproduktion aus Linz, ein Drehtag pro Quartal, fertige Videos und Fotos für Unternehmen in Oberösterreich.">
+<meta property="og:image" content="https://wexalex.github.io/dailies/assets/dailies/bts-03.jpg">
+<meta property="og:image:width" content="1000">
+<meta property="og:image:height" content="625">
+<meta property="og:image:alt" content="Interview-Setup bei einem Dailies-Drehtag">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<script src="assets/config.js?v=3" defer></script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://wexalex.github.io/dailies/#anbieter",
+      "name": "WEXPLORE Productions",
+      "url": "https://wexplore.at",
+      "email": "office@wexplore.at",
+      "telephone": "+43 676 33 11 100",
+      "image": "https://wexalex.github.io/dailies/assets/dailies/bts-03.jpg",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Klammstraße 3/1",
+        "postalCode": "4020",
+        "addressLocality": "Linz",
+        "addressCountry": "AT"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Oberösterreich"
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://wexalex.github.io/dailies/#dailies",
+      "name": "Dailies",
+      "serviceType": "Social-Media-Content im Abo",
+      "description": "Social-Media-Content im Abo von WEXPLORE: Videoproduktion aus Linz, ein Drehtag pro Quartal, fertige Videos und Fotos für Unternehmen in Oberösterreich.",
+      "url": "https://wexalex.github.io/dailies/",
+      "provider": {
+        "@id": "https://wexalex.github.io/dailies/#anbieter"
+      },
+      "areaServed": {
+        "@type": "State",
+        "name": "Oberösterreich"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://wexalex.github.io/dailies/#faq",
+      "url": "https://wexalex.github.io/dailies/#faq",
+      "inLanguage": "de-AT",
+      "about": {
+        "@id": "https://wexalex.github.io/dailies/#dailies"
+      },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Was ist im Abo enthalten?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Planung, Drehtag, Postproduktion und Übergabe. Pro Quartal mindestens 13 Reels plus Fotoset, abgestimmt auf die Kanäle, die ihr wirklich bespielt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Müssen wir Themen und Skripte selbst liefern?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein. Der Themenplan kommt von uns, ihr streicht und ergänzt. Skripte gibt es nur dort, wo sie nötig sind - meistens reichen Leitfragen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie viel Zeit kostet uns das intern?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ein Planungscall pro Quartal, der Drehtag selbst und eine Freigaberunde. Alles dazwischen liegt bei uns. Freigaben und Übersicht laufen über die Kundenplattform, ihr braucht dafür kein eigenes Tool."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Für welche Kanäle produziert ihr?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Instagram, LinkedIn, TikTok, YouTube und Website. Formate und Crops sind beim Dreh bereits mitgedacht."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Übernehmt ihr auch Publishing und Community Management?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Publishing ist als Zusatzmodul möglich und wird im Scope einzeln vereinbart. Community Management gehört nicht zum Standardumfang."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Warum quartalsweise statt monatlich?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ein gebündelter Drehtag pro Quartal ist günstiger und störungsärmer als vier kleine Termine - und liefert trotzdem wöchentlichen Nachschub."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was kostet Dailies für ein kleines Unternehmen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Der Einstieg liegt bei € 1.290 netto pro Monat, verrechnet werden € 3.870 pro Quartal. Der genaue Umfang steht vor Start als schriftliche Assetliste fest."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Für welche Unternehmen in Oberösterreich passt das?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Betriebe mit laufendem Content-Bedarf und kleinem oder gar keinem Marketing-Team. Besonders gut passt es bei eigentümergeführten Unternehmen und Industriebetrieben."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was ist nicht enthalten?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mediabudget, Schauspiel, aufwendige Sets, Drohnengenehmigungen und Reisekosten außerhalb Oberösterreichs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie lange läuft das Abo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ein Jahr, also vier Drehtage. Danach verlängert es sich quartalsweise, solange ihr wollt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wem gehören die Nutzungsrechte?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Euch. Zeitlich und räumlich unbeschränkt für alle fertigen Videos und Fotos, Rohmaterial auf Anfrage."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <style>
-  html { scroll-behavior: smooth; }
-  body { margin: 0; background: #FDFAF3; color: #0A171D; font-family: 'Inter Tight', Helvetica, Arial, sans-serif; font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
-  a { color: #0A171D; text-decoration: none; }
-  a:hover { color: #003F47; }
-  h1, h2, h3 { hyphens: auto; }
-  summary::-webkit-details-marker { display: none; }
-  summary { list-style: none; cursor: pointer; }
-  input, select, textarea, button { font: inherit; color: inherit; }
-  *:focus-visible { outline: 2px solid #FFBD76; outline-offset: 2px; }
-  [data-table]::-webkit-scrollbar { display: none; }
-  ::selection { background: #FFBD76; color: #0A171D; }
+  /* ---------------------------------------------------------------
+     WEXPLORE Webfonts, ES Klarheit. Quelle: offizielles Brand Guideline 2026.
+     Stehen bewusst hier und nicht in einem eigenen Stylesheet: als externe
+     Datei blockierte sie das Rendern und der Browser fand die woff2-Dateien
+     erst eine Runde spaeter. Nur die Schnitte, die die Seite verwendet:
+     Plakat fuer Headlines, Kurrent in 300/400/600/700 fuer alles andere.
+     Pfade und Dateinamen muessen zu den preload-Zeilen im <head> passen.
+     --------------------------------------------------------------- */
+  @font-face { font-family:"ES Klarheit Plakat";  src:url("assets/fonts/ESKlarheitPlakat-Xbd.woff2")  format("woff2"); font-weight:400 900; font-style:normal; font-display:swap; }
+  @font-face { font-family:"ES Klarheit Kurrent"; src:url("assets/fonts/ESKlarheitKurrent-Lt.woff2")   format("woff2"); font-weight:300; font-style:normal; font-display:swap; }
+  @font-face { font-family:"ES Klarheit Kurrent"; src:url("assets/fonts/ESKlarheitKurrent-Rg.woff2")   format("woff2"); font-weight:400; font-style:normal; font-display:swap; }
+  @font-face { font-family:"ES Klarheit Kurrent"; src:url("assets/fonts/ESKlarheitKurrent-Smbd.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:swap; }
+  @font-face { font-family:"ES Klarheit Kurrent"; src:url("assets/fonts/ESKlarheitKurrent-Bd.woff2")   format("woff2"); font-weight:700; font-style:normal; font-display:swap; }
 
-  .pk { transition: background-color .18s ease, color .18s ease, border-color .18s ease }
-  .pk.hl { background:#003F47; color:#FDFAF3 }
-  .pk .sub { color:#7C8B8E; transition: color .18s ease } .pk.hl .sub { color:#9FBCBF }
-  .pk .chk { color:#003F47; font-weight:600; transition: color .18s ease } .pk.hl .chk { color:var(--accent, #FFBD76) }
-  .pk .dsh { color:#7C8B8E; transition: color .18s ease } .pk.hl .dsh { color:#9FBCBF }
-  .pk .note { color:#003F47; transition: color .18s ease } .pk.hl .note { color:var(--accent, #FFBD76) }
-  .pk-head { border-top:4px solid transparent } .pk-head.hl { border-top-color:var(--accent, #FFBD76) }
-  .pk-cta a { display:flex; align-items:center; justify-content:center; height:46px; border-radius:999px; border:1px solid #0A171D; color:#0A171D; font-weight:500; font-size:15px; text-align:center; transition: background-color .18s ease, border-color .18s ease }
-  .pk-cta.hl a { background:var(--accent, #FFBD76); border-color:var(--accent, #FFBD76); color:#0A171D; font-weight:600 }
+  /* ---------------------------------------------------------------
+     DAILIES, Design-Refresh.
+     Quelle: Claude-Design-Projekt "WEXPLORE Dailies Branding-Richtungen",
+     Datei "Dailies Landingpage.dc.html".
 
-  .app { position:absolute; width:66px; height:66px; pointer-events:none; user-select:none; transform:rotate(var(--r, 0deg)); will-change:transform }
-  .app svg { width:100%; height:100%; display:block }
-  .app--front { z-index:3; filter:drop-shadow(0 12px 20px rgba(10,23,29,.3)) }
-  .app--back { z-index:1; filter:drop-shadow(0 6px 12px rgba(10,23,29,.16)); opacity:.96 }
-  .chip { position:absolute; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:3px; width:66px; height:66px; padding:0; border-radius:14px; background:#0A171D; color:#FDFAF3; font-family:'DM Mono',monospace; font-size:8px; letter-spacing:.05em; text-transform:uppercase; text-align:center; white-space:nowrap; pointer-events:none; user-select:none; transform:rotate(var(--r, 0deg)); will-change:transform; z-index:3 }
-  .hero-copy { position:relative; z-index:2 }
-
-
-  @media (min-width: 901px) {
-    #sichtung { padding-top:64px !important; padding-bottom:88px !important }
-    #sichtung h1 { font-size:clamp(40px, 5.4vw, 78px) !important; margin-top:18px !important }
-    .hero-copy p:nth-of-type(2) { font-size:19px !important; margin-top:20px !important }
-    .hero-copy p:nth-of-type(3) { margin-top:12px !important }
-    .hero-copy > div { margin-top:26px !important }
+     Farben   Weiss #fff, Schwarz #000, Dunkelgrau #201f1f (WEXPLORE),
+              Rot #E8483A auf dunkel, #D83A2A auf hell,
+              Grau #bdbdbd auf dunkel, #6f6f6f und #4a4a4a auf hell,
+              Flaeche #F4F3F1, Linien #e2e2e2 hell und #3a3a3a dunkel.
+     Schrift  ES Klarheit Plakat fuer Headlines (versal),
+              ES Klarheit Kurrent fuer alles andere.
+     Radien   6px Buttons, 12px und 16px Karten.
+     --------------------------------------------------------------- */
+  :root {
+    --rot: #E8483A;          /* Flaechen, Punkte, Balken auf dunklem Grund */
+    --rot-text: #F14B3C;     /* Text auf #201f1f: #E8483A lag bei 4,24 zu 1 */
+    --rot-hell: #D83A2A;     /* auf hellem Grund, dunkler fuer Kontrast */
+    --dunkel: #201f1f;
+    --linie-hell: #e2e2e2;
+    --linie-dunkel: #3a3a3a;
+    --grau-dunkel: #bdbdbd;
+    --grau-hell: #6f6f6f;      /* aus #6f6f6f abgedunkelt: 3,41 zu 1 reichte fuer 12px nicht */
+    --text-hell: #4a4a4a;
+    --flaeche: #F4F3F1;
   }
+  html { scroll-behavior:smooth; }
+  body { margin:0; background:#fff; color:#000; font-family:'ES Klarheit Kurrent', Helvetica, Arial, sans-serif; -webkit-font-smoothing:antialiased; }
+  a { color:inherit; text-decoration:none; }
+  a:hover { opacity:.8; }
+  h1, h2, h3 { hyphens:auto; }
+  *:focus-visible { outline:2px solid var(--rot); outline-offset:2px; }
+  ::selection { background:var(--rot); color:#fff; }
+  input, select, textarea, button { font:inherit; color:inherit; }
+  summary::-webkit-details-marker { display:none; }
+  @keyframes recblink { 0%,55% { opacity:1 } 56%,100% { opacity:.2 } }
+
+  .plakat { font-family:'ES Klarheit Plakat', Helvetica, sans-serif; font-weight:400; text-transform:uppercase; hyphens:manual; }
+  .h2 { font-size:clamp(36px, 4.6vw, 58px); line-height:1.02; text-wrap:balance; }
+  .kicker { display:flex; align-items:center; gap:10px; font-size:13px; letter-spacing:.16em; text-transform:uppercase; }
+  .kicker i { width:8px; height:8px; border-radius:50%; background:var(--rot-hell); flex:none; }
+  .sec-dunkel .kicker i { background:var(--rot); }
+  .wrap { max-width:1200px; margin:0 auto; }
+  section { padding:110px 40px; scroll-margin-top:90px; }
+  .sec-dunkel { background:var(--dunkel); color:#fff; }
+  .btn { height:54px; padding:0 28px; border-radius:6px; display:inline-flex; align-items:center; justify-content:center; font-weight:600; border:0; cursor:pointer; font-family:inherit; font-size:16px; white-space:nowrap; }
+  .btn--rot { background:var(--rot-hell); color:#fff; }
+  .btn--linie { border:1px solid currentColor; background:transparent; }
+  .btn--s { height:40px; padding:0 22px; font-size:15px; }
+
+  /* Pakettabelle: Spalten-Hervorhebung */
+  .pk { transition:background-color .2s ease, color .2s ease; }
+  .pk-head { border-top:4px solid transparent; }
+  .plan-tabs { display:flex; gap:6px; padding:5px; background:#fff; border-radius:8px; }
+  .plan-tabs button { height:40px; padding:0 20px; border:0; border-radius:6px; font-family:inherit; font-size:15px; font-weight:600; cursor:pointer; background:transparent; color:#000; }
+  .plan-tabs button.active { background:#000; color:#fff; }
+
+  /* FAQ */
+  /* Padding sitzt auf der summary, nicht auf dem details: sonst ist nur die Textzeile klickbar. */
+  .faq-item { border-top:1px solid #ddd; padding:0; }
+  .faq-item summary { display:flex; justify-content:space-between; align-items:flex-start; gap:20px; padding:18px 0; cursor:pointer; list-style:none; font-size:21px; font-weight:700; line-height:1.25; }
+  .faq-item summary span:last-child { flex:none; color:var(--rot-hell); font-size:24px; font-weight:400; line-height:1; transition:transform .2s ease; }
+  .faq-item[open] summary span:last-child { transform:rotate(45deg); }
+  .faq-item p { margin:-8px 0 18px; max-width:68ch; font-size:16px; line-height:1.6; color:var(--text-hell); text-wrap:pretty; }
+
+  .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+  /* Sprunglink: nur sichtbar, solange er den Fokus hat. */
+  .skip:focus { position:fixed; top:10px; left:10px; z-index:300; width:auto; height:auto; margin:0; overflow:visible; clip:auto; padding:10px 16px; border-radius:6px; background:#000; color:#fff; font-size:15px; font-weight:600; }
+
   @media (max-width: 900px) {
-    .app { width:44px; height:44px }
-    .chip { display:none }
-    #sichtung > .app:nth-child(1) { top:14% !important; right:6% !important }
-    #sichtung > .app:nth-child(2) { top:38% !important; left:5% !important }
-    #sichtung > .app:nth-child(3) { top:58% !important; left:8% !important }
-    #sichtung > .app:nth-child(4) { top:11% !important; left:6% !important }
-    #sichtung > .app:nth-child(5) { top:47% !important; right:7% !important }
+    section { padding:72px 20px; }
+    /* Der Hero traegt sein Padding inline, deshalb hier mit !important. */
+    #sichtung { padding:96px 20px 110px !important; }
+    header.nav { padding:14px 20px !important; }
+    .recbar { padding-left:20px !important; padding-right:20px !important; gap:10px !important; letter-spacing:.06em !important; }
+    [data-section-readout] { text-align:right; }
+    .nav-links { display:none !important; }
+    footer { padding-left:20px !important; padding-right:20px !important; }
+    /* Touch-Ziele auf 44px: kleine Buttons und die Paket-Tabs. */
+    .btn--s { height:44px; }
+    .plan-tabs { gap:8px; }
+    .plan-tabs button { height:44px; padding:0 18px; }
   }
-  @media (max-width: 768px) {
-    header { padding:12px 16px !important }
-    header .navlink { display:none }
-    section:not(#ablauf) { padding-left:20px !important; padding-right:20px !important }
-    #sichtung { padding-top:84px !important; padding-bottom:88px !important }
-    #warum, #pakete, #output, #cases, #faq { padding-top:64px !important; padding-bottom:64px !important }
-    #ablauf { padding-top:64px !important; padding-bottom:64px !important }
-    #ablauf > div:first-child { padding:0 20px !important }
-    section > div[style*="padding:88px 40px"] { padding:64px 20px !important }
-    footer > div:first-child { padding:44px 20px 28px !important }
-    [data-sticky-cta] { left:0 !important; right:0 !important; bottom:0 !important; border-radius:0 !important; justify-content:space-between !important; padding:10px 14px 10px 18px !important }
-    .plan-tabs { display:flex !important }
-    [data-table] { grid-template-columns:minmax(110px,.8fr) 1.2fr !important }
-    [data-table] .pk { display:none }
-    [data-table][data-plan="start"] .pk-start, [data-table][data-plan="grow"] .pk-grow, [data-table][data-plan="scale"] .pk-scale { display:block }
-  }
-
-  .plan-tabs { display:none; border:1px solid #0A171D; border-radius:999px; overflow:hidden; margin:-14px 0 24px }
-  .plan-tabs button { flex:1; height:42px; border:0; background:transparent; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#0A171D; cursor:pointer; transition:background-color .18s ease, color .18s ease }
-  .plan-tabs button.active { background:#0A171D; color:#FDFAF3 }
-
-  @media (max-width: 768px) {
-  }
-
-
-  a[style*="border-radius:999px"], .pk-cta a, [data-submit], .plan-tabs button {
-    transition: transform .18s cubic-bezier(.2,0,0,1), box-shadow .18s ease, background-color .18s ease, color .18s ease, border-color .18s ease;
-    will-change: transform;
-  }
-  a[style*="border-radius:999px"]:hover, .pk-cta a:hover, [data-submit]:hover:not(:disabled) {
-    transform: translateY(-1px) scale(1.03);
-    animation: cta-pulse .9s cubic-bezier(.2,0,0,1);
-  }
-  a[style*="border-radius:999px"]:active, .pk-cta a:active, [data-submit]:active:not(:disabled), .plan-tabs button:active {
-    transform: scale(.96);
-    transition-duration: .08s;
-  }
-  @keyframes cta-pulse {
-    0% { box-shadow: 0 0 0 0 rgba(255,189,118,.55) }
-    100% { box-shadow: 0 0 0 14px rgba(255,189,118,0) }
+  @media (max-width: 640px) {
+    /* Tagline und Gesamtlaufzeit brauchen auf dem Telefon zu viel Breite. */
+    .nav-tagline { display:none; }
+    .tc-gesamt { display:none; }
+    /* Die Sticky-CTA wird zur Leiste. right und bottom stehen inline, daher !important. */
+    [data-sticky-cta] { left:16px; right:16px !important; bottom:calc(12px + env(safe-area-inset-bottom)) !important; padding:8px 8px 8px 14px !important; gap:12px !important; }
+    [data-sticky-cta] > span { display:none; }
+    [data-sticky-cta] .btn { flex:1; }
+    /* Platz, damit die Leiste die Footer-Links nicht dauerhaft verdeckt. */
+    footer { padding-bottom:calc(88px + env(safe-area-inset-bottom)) !important; }
   }
   @media (prefers-reduced-motion: reduce) {
-    a[style*="border-radius:999px"], .pk-cta a, [data-submit], .plan-tabs button { transition:none; animation:none !important; transform:none !important }
+    html { scroll-behavior:auto; }
+    * { animation:none !important; transition:none !important; }
   }
 
-
-  .steps { list-style:none; display:grid; grid-template-columns:repeat(6, 1fr); gap:0 28px; margin:48px 0 0; padding:0 40px }
-  .steps li { position:relative; padding-top:26px }
-  .steps li::before { content:""; position:absolute; top:5px; left:0; right:-28px; height:1px; background:rgba(10,23,29,.25) }
-  .steps li:last-child::before { right:0 }
-  .steps li::after { content:""; position:absolute; top:0; left:0; width:11px; height:11px; border-radius:50%; background:var(--accent, #FFBD76); border:1px solid rgba(10,23,29,.25); box-sizing:border-box }
-  @media (max-width: 1180px) {
-    .steps { grid-template-columns:repeat(3, 1fr); gap:36px 28px }
-    .steps li:nth-child(3n)::before { right:0 }
-  }
-  @media (max-width: 768px) {
-    .steps { grid-template-columns:1fr; gap:0; padding:0 20px; margin-top:36px }
-    .steps li { padding:0 0 30px 30px }
-    .steps li::before { top:5px; left:5px; right:auto; bottom:-5px; width:1px; height:auto }
-    .steps li:last-child::before { display:none }
-  }
-
-  .mb { position:relative }
-  .mb-frame { position:relative; z-index:2; width:100%; height:auto; display:block; pointer-events:none }
-  .mb-screen { position:absolute; z-index:1; left:9%; top:4.6%; width:82%; height:84.4%; background:#D9D5CC; overflow:hidden }
-  .mb-placeholder { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E }
-  .mb-slides { position:relative; display:flex; width:100%; height:100% }
-  .mb-slides img, .mb-slides video { width:100%; height:100%; object-fit:cover; flex:none }
-
-  .bts-collage { position:relative; aspect-ratio:1/1.05; align-self:center; max-width:560px; width:100% ; justify-self:center }
-  .bts-c { position:absolute; margin:0; border-radius:16px; overflow:hidden; background:#F5EFE3; box-shadow:0 14px 34px rgba(10,23,29,.14) }
-  .bts-c img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
-  .bts-platzhalter { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; border:1px dashed rgba(10,23,29,.35); border-radius:16px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E }
-  #bts-a { left:0; top:12%; width:46%; aspect-ratio:3/4; z-index:1 }
-  #bts-b { right:0; top:0; width:48%; aspect-ratio:3/4; z-index:1 }
-  #bts-c { left:20%; top:52%; width:72%; aspect-ratio:16/10; z-index:2 }
-
-  .ziel-cta { margin-top:16px; align-self:flex-start; border:1px solid #0A171D; cursor:pointer; background:transparent; color:#0A171D; font-family:inherit; font-size:15px; height:42px; padding:0 20px; border-radius:999px }
-  .ziel-cta:hover { background:#0A171D; color:#FDFAF3 }
-  @media (prefers-reduced-motion: reduce) { .ziel-cta { transition:none } }
-
-  .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0 }
-
-  /* ---- Lead-Magnet-Flow ---- */
+  /* ---- Lead-Magnet-Flow, auf die neuen Tokens gebracht ---- */
   .fl-ovl[hidden] { display:none }
-  .fl-ovl { position:fixed; inset:0; z-index:200; background:#FDFAF3; color:#0A171D; display:flex; flex-direction:column }
-  .fl-top { flex:none; padding:14px 24px; border-bottom:1px solid rgba(10,23,29,.14) }
+  .fl-ovl { position:fixed; inset:0; z-index:200; background:#fff; color:#000; display:flex; flex-direction:column }
+  .fl-top { flex:none; padding:14px 24px; border-bottom:1px solid var(--linie-hell) }
   .fl-toprow { display:flex; align-items:center; justify-content:space-between; gap:16px; max-width:760px; margin:0 auto }
   .fl-phases { display:flex; gap:6px; flex-wrap:wrap }
-  .fl-phase { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#636F72; padding:5px 11px; border-radius:999px; border:1px solid rgba(10,23,29,.18) }
-  .fl-phase.on { background:#0A171D; color:#FDFAF3; border-color:#0A171D }
-  .fl-x { border:0; background:transparent; cursor:pointer; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#636F72; padding:8px }
-  .fl-bar { height:3px; background:rgba(10,23,29,.12) }
-  .fl-bar i { display:block; height:100%; width:0; background:var(--accent, #FFBD76); transition:width .3s cubic-bezier(.2,0,0,1) }
-  .fl-body { flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch }
+  .fl-phase { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-hell); padding:5px 11px; border-radius:999px; border:1px solid var(--linie-hell) }
+  .fl-phase.on { background:#000; color:#fff; border-color:#000 }
+  .fl-x { border:0; background:transparent; cursor:pointer; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-hell); min-height:44px; min-width:44px; padding:10px 12px; margin-right:-12px }
+  .fl-bar { height:2px; background:#ececec }
+  .fl-bar i { display:block; height:100%; width:0; background:var(--rot-hell); transition:width .3s cubic-bezier(.2,0,0,1) }
+  .fl-body { flex:1; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch }
   .fl-inner { max-width:760px; margin:0 auto; padding:44px 24px 40px }
-  .fl-count { font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#636F72 }
-  .fl-q { margin:14px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(26px,3.2vw,42px); line-height:1.08; letter-spacing:-0.015em }
-  .fl-hint { margin:14px 0 0; max-width:60ch; color:#3C4A4E }
+  .fl-count { font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-hell); margin:0 }
+  .fl-q { margin:14px 0 0; font-family:'ES Klarheit Plakat', Helvetica, sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(28px,3.4vw,44px); line-height:1.04 }
+  .fl-hint { margin:14px 0 0; max-width:60ch; color:var(--text-hell); line-height:1.6 }
   .fl-opts { display:grid; gap:10px; margin-top:28px }
-  .fl-opt { display:flex; align-items:center; gap:12px; width:100%; box-sizing:border-box; text-align:left; cursor:pointer; padding:17px 20px; border:1px solid rgba(10,23,29,.18); border-radius:4px; background:transparent; color:#0A171D; font-size:17px; line-height:1.3; transition:background-color .16s ease, border-color .16s ease, color .16s ease }
-  .fl-opt:hover { border-color:#0A171D }
-  .fl-opt[aria-pressed="true"], .fl-opt.on { background:#003F47; border-color:#003F47; color:#FDFAF3 }
-  .fl-box { width:19px; height:19px; flex:none; border:1px solid currentColor; border-radius:3px; display:flex; align-items:center; justify-content:center; font-size:12px; line-height:1 }
-  .fl-opt[aria-pressed="false"] .fl-box::after { content:"" }
+  .fl-opt { display:flex; align-items:center; gap:12px; width:100%; box-sizing:border-box; text-align:left; cursor:pointer; padding:17px 20px; border:2px solid var(--linie-hell); border-radius:12px; background:transparent; color:#000; font-size:17px; line-height:1.3; transition:background-color .16s ease, border-color .16s ease, color .16s ease }
+  .fl-opt:hover { border-color:#000 }
+  .fl-opt[aria-pressed="true"] { background:var(--dunkel); border-color:var(--dunkel); color:#fff }
+  .fl-box { width:19px; height:19px; flex:none; border:1px solid currentColor; border-radius:4px; display:flex; align-items:center; justify-content:center; font-size:12px; line-height:1 }
+  .fl-radio .fl-box { border-radius:50% }
   .fl-opt[aria-pressed="true"] .fl-box::after { content:"\2713" }
-  .fl-radio .fl-box { border-radius:50%; }
   .fl-field { margin-top:26px }
-  .fl-lab { display:block; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#636F72; margin-bottom:7px }
-  .fl-in, .fl-ta, .fl-sel { width:100%; box-sizing:border-box; padding:13px 14px; border:1px solid rgba(10,23,29,.24); border-radius:4px; background:#fff; color:#0A171D; font-size:17px }
-  .fl-in { height:52px; padding:0 14px }
-  .fl-sel { height:52px; padding:0 14px }
+  .fl-lab { display:block; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-hell); margin-bottom:7px }
+  .fl-in, .fl-ta, .fl-sel { width:100%; box-sizing:border-box; padding:13px 14px; border:1px solid #cfcfcf; border-radius:8px; background:#fff; color:#000; font-size:17px }
+  .fl-in, .fl-sel { height:52px; padding:0 14px }
   .fl-ta { min-height:96px; resize:vertical; line-height:1.5 }
-  .fl-in::placeholder, .fl-ta::placeholder { color:#6B7A7D }
-  .fl-meta { margin-top:7px; font-size:14px; color:#636F72 }
-  .fl-err { margin-top:7px; font-size:14px; font-weight:600; color:#9A3412 }
-  .fl-foot { flex:none; border-top:1px solid rgba(10,23,29,.14); background:#FDFAF3; padding:14px 24px calc(14px + env(safe-area-inset-bottom)) }
+  .fl-in::placeholder, .fl-ta::placeholder { color:#6b6b6b }
+  .fl-meta { margin-top:7px; font-size:14px; color:var(--text-hell) }
+  .fl-err { margin-top:7px; font-size:14px; font-weight:600; color:#B3261E }
+  .fl-foot { flex:none; border-top:1px solid var(--linie-hell); background:#fff; padding:14px 24px calc(14px + env(safe-area-inset-bottom)) }
   .fl-footrow { display:flex; align-items:center; justify-content:space-between; gap:12px; max-width:760px; margin:0 auto }
-  .fl-back { border:1px solid rgba(10,23,29,.24); background:transparent; cursor:pointer; height:48px; padding:0 20px; border-radius:999px; color:#0A171D; font-size:16px }
+  .fl-back { border:1px solid #cfcfcf; background:transparent; cursor:pointer; height:48px; padding:0 20px; border-radius:6px; color:#000; font-size:16px }
   .fl-back[disabled] { opacity:.4; cursor:default }
-  .fl-next { border:0; cursor:pointer; height:48px; padding:0 26px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; font-size:16px }
-  .fl-next.wait { background:#E4DDD0 }
-  .fl-next[disabled] { background:#D9D2C6; cursor:default }
-  .fl-mehr { margin-top:22px; border-top:1px solid rgba(10,23,29,.16); padding-top:14px }
-  .fl-mehr > summary { display:inline-flex; align-items:center; gap:7px; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#636F72 }
-  .fl-mehr > summary::before { content:"+"; font-size:14px; line-height:1 }
-  .fl-mehr[open] > summary::before { content:"\2212" }
-  .fl-card { border:1px solid rgba(10,23,29,.18); border-radius:4px; padding:24px 22px; margin-top:20px; background:#fff }
-  .fl-card h3 { margin:0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:19px; line-height:1.25 }
+  .fl-next { border:0; cursor:pointer; height:48px; padding:0 26px; border-radius:6px; background:var(--rot-hell); color:#fff; font-weight:600; font-size:16px }
+  .fl-next.wait { background:#e6b3ac }
+  .fl-next[disabled] { background:#ddd; color:#666; cursor:default }
+  .fl-card { border:2px solid var(--linie-hell); border-radius:16px; padding:24px 22px; margin-top:20px; background:#fff }
+  .fl-card h3 { margin:0; font-size:19px; font-weight:700; line-height:1.3 }
   .fl-card p { margin:8px 0 0; line-height:1.55 }
   .fl-two { display:grid; grid-template-columns:1fr 1fr; gap:16px }
+  .fl-mehr { margin-top:22px; border-top:1px solid var(--linie-hell); padding-top:14px }
+  .fl-mehr > summary { display:flex; align-items:center; min-height:44px; gap:7px; padding:10px 0; margin:-10px 0; font-size:13px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-hell); cursor:pointer; list-style:none }
+  .fl-mehr > summary::before { content:"+"; font-size:14px; line-height:1 }
+  .fl-mehr[open] > summary::before { content:"\2212" }
   @media (max-width: 640px) {
-    .fl-inner { padding:32px 20px 32px }
+    .fl-inner { padding:32px 20px }
     .fl-top, .fl-foot { padding-left:20px; padding-right:20px }
     .fl-two { grid-template-columns:1fr }
     .fl-opt { padding:15px 16px; font-size:16px }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .fl-bar i, .fl-opt { transition:none }
+    /* Lange Beschriftungen duerfen umbrechen, statt aus dem Knopf zu laufen.
+       Nur die Fusszeile, damit der Link mit .fl-next im Abschluss unberuehrt bleibt. */
+    .fl-footrow .fl-next { flex:1; height:auto; min-height:48px; padding:12px 16px; line-height:1.25; text-align:center }
+    .fl-footrow .fl-back { padding:0 14px }
   }
 </style>
 </head>
 <body>
-<div lang="de" style="--accent: #FFBD76; background:#FDFAF3">
 
-  <div style="position:fixed; top:0; left:0; right:0; z-index:80; background:#0A171D; color:#FDFAF3">
-    <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; height:26px; padding:0 20px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">
-      <span data-timecode="" style="white-space:nowrap">00:00:00 / 00:12:40</span>
-      <span data-section-readout="" style="white-space:nowrap; overflow:hidden; text-overflow:ellipsis">Clip 01 · Sichtung</span>
+<a class="sr-only skip" href="#sichtung">Zum Inhalt springen</a>
+
+<div>
+
+  <div style="position:sticky; top:0; z-index:50;">
+    <div style="background:#000; color:#fff; position:relative;">
+      <div class="recbar" style="display:flex; justify-content:space-between; align-items:center; gap:16px; padding:7px 40px; font-size:12px; letter-spacing:.12em; text-transform:uppercase; font-variant-numeric:tabular-nums;">
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:8px; height:8px; border-radius:50%; background:var(--rot); animation:recblink 1.6s steps(1) infinite;"></div>
+          <span style="color:var(--rot-text); font-weight:600;">Rec</span>
+          <span data-timecode style="white-space:nowrap;">00:00:00</span>
+          <span class="tc-gesamt" style="white-space:nowrap;">/ 00:12:40</span>
+        </div>
+        <span data-section-readout style="color:var(--grau-dunkel);">Clip 01 · Sichtung</span>
+      </div>
+      <div style="height:2px; background:#2e2d2d;">
+        <div data-scrubfill style="height:2px; width:0%; background:var(--rot);"></div>
+      </div>
     </div>
-    <div style="height:3px; background:rgba(253,250,243,.2)">
-      <div data-scrubfill="" style="height:100%; width:0%; background:var(--accent, #FFBD76)"></div>
-    </div>
+    <header class="nav" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px 28px; padding:16px 40px; background:var(--dunkel); color:#fff; border-bottom:1px solid var(--linie-dunkel);">
+      <a href="#sichtung" style="display:flex; align-items:center; gap:10px;">
+        <div style="width:11px; height:11px; border-radius:50%; background:var(--rot);"></div>
+        <span class="plakat" style="font-size:24px; line-height:1;">Dailies</span>
+        <span class="nav-tagline" style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--grau-dunkel); margin-left:6px;">Das Content-Abo von WEXPLORE</span>
+      </a>
+      <nav aria-label="Hauptnavigation" style="display:flex; align-items:center; flex-wrap:wrap; gap:8px 26px; font-size:15px;">
+        <a class="nav-links" href="#ablauf">Ablauf</a>
+        <a class="nav-links" href="#pakete">Pakete</a>
+        <a class="nav-links" href="#output">Output</a>
+        <a class="nav-links" href="#cases">Referenzen</a>
+        <a class="nav-links" href="#faq">FAQ</a>
+        <button type="button" class="btn btn--rot btn--s" data-flow-start="nav">Content-Ideen entdecken</button>
+      </nav>
+    </header>
   </div>
 
-  <header style="position:sticky; top:29px; z-index:70; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:14px 32px; background:rgba(253,250,243,.94); backdrop-filter:blur(10px); border-bottom:1px solid rgba(10,23,29,.18)">
-    <div style="line-height:1.2">
-      <span style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:22px; letter-spacing:-0.02em; text-transform:uppercase; display:block">Dailies</span>
-      <span style="font-family:'DM Mono',monospace; font-size:9px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; display:block; margin-top:1px">Das Content-Abo von WEXPLORE</span>
-    </div>
-    <nav style="display:flex; align-items:center; gap:24px; font-size:15px; flex-wrap:wrap">
-      <a class="navlink" href="#ablauf">Ablauf</a>
-      <a class="navlink" href="#pakete">Pakete</a>
-      <a class="navlink" href="#output">Output</a>
-      <a class="navlink" href="#cases">Cases</a>
-      <a class="navlink" href="#faq">FAQ</a>
-      <button type="button" data-flow-start="nav" style="border:0; cursor:pointer; display:inline-flex; align-items:center; height:40px; padding:0 22px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; white-space:nowrap">Content-Ideen entdecken</button>
-    </nav>
-  </header>
+  <main>
 
-  <section id="sichtung" data-hero="" data-screen-label="01 Sichtung" style="position:relative; overflow:hidden; padding:130px 40px 140px; border-bottom:1px solid rgba(10,23,29,.18); text-align:center">
-      <div class="app app--front" style="top:11%; right:12%; --r:6deg"><svg viewBox="0 0 64 64" role="img" aria-label="LinkedIn"><rect width="64" height="64" rx="14" fill="#0A66C2"/><g transform="translate(13,13) scale(1.6)" fill="#fff"><path d="M4 9h3v11H4z M10 9h2.9v1.6c.6-1 1.7-1.8 3.4-1.8 2.6 0 3.7 1.6 3.7 4.4V20h-3v-6c0-1.4-.5-2.3-1.7-2.3-1.3 0-2.3 1-2.3 2.8V20h-3z"/><circle cx="5.5" cy="5.5" r="1.8"/></g></svg></div>
-      <div class="app app--front" style="top:46%; left:10%; --r:-5deg"><svg viewBox="0 0 64 64" role="img" aria-label="TikTok"><rect width="64" height="64" rx="14" fill="#010101"/><g transform="translate(12.5,12.5) scale(1.6)"><path d="M15.5 3c.4 2.2 1.9 3.7 4.2 4v3c-1.6 0-3-.5-4.2-1.3v6.2a5.6 5.6 0 1 1-5.6-5.6c.3 0 .7 0 1 .1v3.1a2.6 2.6 0 1 0 1.8 2.4V3z" fill="#25F4EE" transform="translate(-1.1,-1.1)"/><path d="M15.5 3c.4 2.2 1.9 3.7 4.2 4v3c-1.6 0-3-.5-4.2-1.3v6.2a5.6 5.6 0 1 1-5.6-5.6c.3 0 .7 0 1 .1v3.1a2.6 2.6 0 1 0 1.8 2.4V3z" fill="#FE2C55" transform="translate(1.1,1.1)"/><path d="M15.5 3c.4 2.2 1.9 3.7 4.2 4v3c-1.6 0-3-.5-4.2-1.3v6.2a5.6 5.6 0 1 1-5.6-5.6c.3 0 .7 0 1 .1v3.1a2.6 2.6 0 1 0 1.8 2.4V3z" fill="#fff"/></g></svg></div>
-      <div class="app app--front" style="top:74%; left:15%; --r:7deg"><svg viewBox="0 0 64 64" role="img" aria-label="Facebook"><rect width="64" height="64" rx="14" fill="#1877F2"/><g transform="translate(12.5,12.5) scale(1.6)" fill="#fff"><path d="M13.4 21v-7.2h2.4l.4-2.9h-2.8V9c0-.8.3-1.4 1.5-1.4h1.4V5c-.3 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.5v2.5H8.5v2.9h2.4V21z"/></g></svg></div>
-      <div class="app app--front" style="top:13%; left:12%; --r:-8deg"><svg viewBox="0 0 64 64" role="img" aria-label="Instagram"><defs><radialGradient id="igg" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"/><stop offset="45%" stop-color="#fd5949"/><stop offset="60%" stop-color="#d6249f"/><stop offset="90%" stop-color="#285AEB"/></radialGradient></defs><rect width="64" height="64" rx="14" fill="url(#igg)"/><g fill="none" stroke="#fff" stroke-width="3.6"><rect x="17" y="17" width="30" height="30" rx="9"/><circle cx="32" cy="32" r="7"/></g><circle cx="41" cy="23" r="2.4" fill="#fff"/></svg></div>
-      <div class="app app--front" style="top:44%; right:11%; --r:5deg"><svg viewBox="0 0 64 64" role="img" aria-label="YouTube"><rect width="64" height="64" rx="14" fill="#FF0000"/><path d="M26 21l18 11-18 11z" fill="#fff"/></svg></div>
-      <div class="chip" style="top:72%; right:14%; --r:-4deg"><span>13+ Reels</span><span>pro Quartal</span></div>
-    <div class="hero-copy">
-    <p style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Video + Foto · Für Unternehmen in Oberösterreich</p>
-    <h1 style="margin:24px auto 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(44px,7vw,104px); line-height:1; letter-spacing:-0.02em; max-width:22ch; hyphens:none">Social-Media-Content<br />im Abo.</h1>
-    <p style="margin:28px auto 0; font-size:21px; line-height:1.5; max-width:48ch">Ab einem Drehtag pro Quartal: Wir drehen Video und Foto bei euch und machen daraus mindestens 13 Reels plus Fotos. Das Budget plant ihr einmal im Jahr - alles andere übernehmen wir.</p>
-    <p style="margin:16px auto 0; font-size:15px; color:#7C8B8E; max-width:48ch">DAILIES ist das Content-Abo von WEXPLORE. Videoproduktion aus Linz.</p>
-    <!-- TODO: Claim einsetzen und hidden-Attribut entfernen -->
-    <p id="hero-claim" hidden style="margin:14px auto 0; font-family:'DM Mono',monospace; font-size:13px; letter-spacing:.08em; text-transform:uppercase; color:#003F47; max-width:48ch">[CLAIM FOLGT]</p>
-    <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:34px">
-      <button type="button" data-flow-start="hero" style="border:0; cursor:pointer; display:inline-flex; align-items:center; height:50px; padding:0 28px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; white-space:nowrap">Eure Content-Ideen entdecken</button>
-      <a href="#pakete" style="display:inline-flex; align-items:center; height:50px; padding:0 28px; border-radius:999px; border:1px solid #0A171D; white-space:nowrap">Pakete ansehen</a>
+  <section id="sichtung" data-hero aria-labelledby="sichtung-titel" data-readout="Clip 01 · Sichtung" data-screen-label="01 Sichtung" style="position:relative; overflow:hidden; background:var(--dunkel); color:#fff; padding:150px 40px 170px; text-align:center;">
+    <div data-float data-r="6" style="position:absolute; top:11%; right:12%; width:66px; height:66px; z-index:3; pointer-events:none; filter:drop-shadow(0 12px 20px rgba(0,0,0,.45)); transform:rotate(6deg);"><svg viewBox="0 0 64 64" role="img" aria-label="LinkedIn" style="width:100%; height:100%; display:block;"><rect width="64" height="64" rx="14" fill="#0A66C2"></rect><g transform="translate(13,13) scale(1.6)" fill="#fff"><path d="M4 9h3v11H4z M10 9h2.9v1.6c.6-1 1.7-1.8 3.4-1.8 2.6 0 3.7 1.6 3.7 4.4V20h-3v-6c0-1.4-.5-2.3-1.7-2.3-1.3 0-2.3 1-2.3 2.8V20h-3z"></path><circle cx="5.5" cy="5.5" r="1.8"></circle></g></svg></div>
+    <div data-float data-r="-5" style="position:absolute; top:46%; left:10%; width:66px; height:66px; z-index:3; pointer-events:none; filter:drop-shadow(0 12px 20px rgba(0,0,0,.45)); transform:rotate(-5deg);"><svg viewBox="0 0 64 64" role="img" aria-label="TikTok" style="width:100%; height:100%; display:block;"><rect width="64" height="64" rx="14" fill="#010101"></rect><g transform="translate(12.5,12.5) scale(1.6)"><path d="M15.5 3c.4 2.2 1.9 3.7 4.2 4v3c-1.6 0-3-.5-4.2-1.3v6.2a5.6 5.6 0 1 1-5.6-5.6c.3 0 .7 0 1 .1v3.1a2.6 2.6 0 1 0 1.8 2.4V3z" fill="#25F4EE" transform="translate(-1.1,-1.1)"></path><path d="M15.5 3c.4 2.2 1.9 3.7 4.2 4v3c-1.6 0-3-.5-4.2-1.3v6.2a5.6 5.6 0 1 1-5.6-5.6c.3 0 .7 0 1 .1v3.1a2.6 2.6 0 1 0 1.8 2.4V3z" fill="#FE2C55" transform="translate(1.1,1.1)"></path><path d="M15.5 3c.4 2.2 1.9 3.7 4.2 4v3c-1.6 0-3-.5-4.2-1.3v6.2a5.6 5.6 0 1 1-5.6-5.6c.3 0 .7 0 1 .1v3.1a2.6 2.6 0 1 0 1.8 2.4V3z" fill="#fff"></path></g></svg></div>
+    <div data-float data-r="7" style="position:absolute; top:74%; left:15%; width:66px; height:66px; z-index:3; pointer-events:none; filter:drop-shadow(0 12px 20px rgba(0,0,0,.45)); transform:rotate(7deg);"><svg viewBox="0 0 64 64" role="img" aria-label="Facebook" style="width:100%; height:100%; display:block;"><rect width="64" height="64" rx="14" fill="#1877F2"></rect><g transform="translate(12.5,12.5) scale(1.6)" fill="#fff"><path d="M13.4 21v-7.2h2.4l.4-2.9h-2.8V9c0-.8.3-1.4 1.5-1.4h1.4V5c-.3 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.5v2.5H8.5v2.9h2.4V21z"></path></g></svg></div>
+    <div data-float data-r="-8" style="position:absolute; top:13%; left:12%; width:66px; height:66px; z-index:3; pointer-events:none; filter:drop-shadow(0 12px 20px rgba(0,0,0,.45)); transform:rotate(-8deg);"><svg viewBox="0 0 64 64" role="img" aria-label="Instagram" style="width:100%; height:100%; display:block;"><defs><radialGradient id="igg" cx="30%" cy="107%" r="150%"><stop offset="0%" stop-color="#fdf497"></stop><stop offset="45%" stop-color="#fd5949"></stop><stop offset="60%" stop-color="#d6249f"></stop><stop offset="90%" stop-color="#285AEB"></stop></radialGradient></defs><rect width="64" height="64" rx="14" fill="url(#igg)"></rect><g fill="none" stroke="#fff" stroke-width="3.6"><rect x="17" y="17" width="30" height="30" rx="9"></rect><circle cx="32" cy="32" r="7"></circle></g><circle cx="41" cy="23" r="2.4" fill="#fff"></circle></svg></div>
+    <div data-float data-r="5" style="position:absolute; top:44%; right:11%; width:66px; height:66px; z-index:3; pointer-events:none; filter:drop-shadow(0 12px 20px rgba(0,0,0,.45)); transform:rotate(5deg);"><svg viewBox="0 0 64 64" role="img" aria-label="YouTube" style="width:100%; height:100%; display:block;"><rect width="64" height="64" rx="14" fill="#FF0000"></rect><path d="M26 21l18 11-18 11z" fill="#fff"></path></svg></div>
+    <div data-float data-r="-4" style="position:absolute; top:66%; right:9%; width:92px; height:92px; box-sizing:border-box; padding:10px; border-radius:14px; background:#000; border:1px solid var(--linie-dunkel); z-index:3; pointer-events:none; display:flex; flex-direction:column; justify-content:space-between; text-align:left; box-shadow:0 12px 20px rgba(0,0,0,.45); transform:rotate(-4deg);">
+      <div style="display:flex; align-items:center; gap:5px; font-size:9px; letter-spacing:.14em;"><div style="width:6px; height:6px; border-radius:50%; background:var(--rot);"></div>REC</div>
+      <div><div class="plakat" style="font-size:26px; line-height:1;">13+ Reels</div><div style="font-size:10px; color:var(--grau-dunkel); margin-top:2px;">pro Quartal</div></div>
     </div>
-    </div>
-  </section>
 
-
-  <section id="ziel" data-screen-label="02 Ziel" style="scroll-margin-top:100px; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
-    <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 02 · Ziel</p>
-    <h2 style="margin:20px 0 34px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Was ist dein Social-Media-Ziel?</h2>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:22px">
-      <div style="background:#F5EFE3; border-radius:4px; border-top:3px solid var(--accent, #FFBD76); padding:28px 26px; display:flex; flex-direction:column; gap:0">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#003F47" stroke-width="1.8" style="width:34px;height:34px"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9.5" r="2.4"/><path d="M15.5 14.6a4.6 4.6 0 0 1 5.5 4.4"/></svg>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:23px; line-height:1.25; margin-top:16px">Mitarbeiter &amp; Lehrlinge finden</div>
-        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px; margin-top:6px">Employer Brand</div>
-        <!-- TODO: Textentwurf freigeben -->
-        <p style="margin:12px 0 0; font-size:15px; line-height:1.55">Die besten Leute bewerben sich dort, wo sie sehen, wie ihr wirklich arbeitet. Regelmäßige Einblicke in Team und Alltag machen euren Auftritt zum Argument - und aus Zusehern Bewerbungen.</p>
-        <!-- TODO: Link später auf konkreten Case bzw. URL zeigen lassen -->
-        <a href="#cases" style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; color:#003F47; margin-top:14px">Zum Case →</a>
-        <button type="button" class="ziel-cta" data-flow-start="ziel" data-ziel-cta="bewerbungen">Content-Ideen entdecken</button>
-      </div>
-      <div style="background:#F5EFE3; border-radius:4px; border-top:3px solid var(--accent, #FFBD76); padding:28px 26px; display:flex; flex-direction:column; gap:0">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#003F47" stroke-width="1.8" style="width:34px;height:34px"><path d="M3 3h8l10 10-8 8L3 11z"/><circle cx="8" cy="8" r="1.6"/></svg>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:23px; line-height:1.25; margin-top:16px">Produkte verkaufen</div>
-        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px; margin-top:6px">Produkt</div>
-        <!-- TODO: Textentwurf freigeben -->
-        <p style="margin:12px 0 0; font-size:15px; line-height:1.55">Wer euer Produkt versteht, kauft es auch. Wir zeigen, was es kann, beantworten die Fragen eurer Kundschaft und machen aus Interesse Anfragen - Woche für Woche.</p>
-        <!-- TODO: Link später auf konkreten Case bzw. URL zeigen lassen -->
-        <a href="#cases" style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; color:#003F47; margin-top:14px">Zum Case →</a>
-        <button type="button" class="ziel-cta" data-flow-start="ziel" data-ziel-cta="nachfrage">Content-Ideen entdecken</button>
-      </div>
-      <div style="background:#F5EFE3; border-radius:4px; border-top:3px solid var(--accent, #FFBD76); padding:28px 26px; display:flex; flex-direction:column; gap:0">
-        <svg viewBox="0 0 24 24" fill="none" stroke="#003F47" stroke-width="1.8" style="width:34px;height:34px"><path d="M3 10v4h3l8 5V5l-8 5z"/><path d="M17.5 8.5a5 5 0 0 1 0 7"/><path d="M20 6a9 9 0 0 1 0 12"/></svg>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:23px; line-height:1.25; margin-top:16px">Als Marke sichtbar sein</div>
-        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px; margin-top:6px">Brand Awareness</div>
-        <!-- TODO: Textentwurf freigeben -->
-        <p style="margin:12px 0 0; font-size:15px; line-height:1.55">Wer regelmäßig auftaucht, bleibt im Kopf. Ein konsistenter Look und laufender Content sorgen dafür, dass man euch kennt, bevor man euch braucht.</p>
-        <!-- TODO: Link später auf konkreten Case bzw. URL zeigen lassen -->
-        <a href="#cases" style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; color:#003F47; margin-top:14px">Zum Case →</a>
-        <button type="button" class="ziel-cta" data-flow-start="ziel" data-ziel-cta="bekanntheit">Content-Ideen entdecken</button>
+    <div style="position:relative; z-index:2; max-width:900px; margin:0 auto; display:flex; flex-direction:column; align-items:center;">
+      <div class="kicker" style="color:var(--grau-dunkel);"><i></i>Video + Foto · Für Unternehmen in Oberösterreich</div>
+      <h1 id="sichtung-titel" class="plakat" style="font-size:clamp(52px, 8.4vw, 116px); line-height:.96; margin:28px 0 0; text-wrap:balance;">Social-Media-Content<br><span style="color:var(--rot);">im Abo.</span></h1>
+      <p style="font-size:21px; font-weight:300; line-height:1.5; max-width:50ch; margin:32px 0 0; text-wrap:pretty;">Wir planen mit euch Ziele und Themen, produzieren den Content gebündelt an einem Drehtag pro Quartal und stellen die fertigen Videos und Fotos geordnet bereit.</p>
+      <p style="font-size:15px; color:var(--grau-dunkel); margin:14px 0 0;">Dailies ist das Content-Abo von WEXPLORE. Videoproduktion aus Linz.</p>
+      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:38px;">
+        <button type="button" class="btn btn--rot" data-flow-start="hero">Eure Content-Ideen entdecken</button>
+        <a class="btn btn--linie" href="#ablauf" style="color:#fff;">So funktioniert Dailies</a>
       </div>
     </div>
   </section>
 
-  <section id="warum" data-screen-label="03 Warum" style="scroll-margin-top:100px; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
-    <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 03 · Warum es liegen bleibt</p>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:48px; margin-top:24px">
-      <div>
-        <h2 style="margin:0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Social Media scheitert selten an den Ideen.</h2>
-        <p style="margin:20px 0 0; max-width:52ch">In kleinen Marketing-Teams läuft Social neben allem anderen. Ein Reel wird intern gedreht, für die Fotos kommt jemand anderes, beim nächsten Mal beginnt die Suche von vorne. Am Ende sieht jeder dritte Post aus wie von einer anderen Firma.</p>
-        <p style="margin:14px 0 0; max-width:52ch">Bei DAILIES steht der Plan für das Jahr, bevor das Tagesgeschäft dazwischenkommt. Wir legen Themen und Formate fest, bündeln die Produktion auf einen Tag pro Quartal und liefern laufend aus.</p>
-        <ul style="margin:26px 0 0; padding:0; list-style:none; margin-top:26px">
-        <li style="display:grid; grid-template-columns:40px 1fr; gap:12px; padding:14px 0; border-top:1px solid rgba(10,23,29,.16)"><span style="font-family:'DM Mono',monospace; font-size:12px; color:#003F47">01</span>Ein Budget, das im Jahresplan steht statt in fünf Einzelangeboten</li>
-        <li style="display:grid; grid-template-columns:40px 1fr; gap:12px; padding:14px 0; border-top:1px solid rgba(10,23,29,.16)"><span style="font-family:'DM Mono',monospace; font-size:12px; color:#003F47">02</span>Nachschub, auch in Wochen, in denen intern nichts weitergeht</li>
-        <li style="display:grid; grid-template-columns:40px 1fr; gap:12px; padding:14px 0; border-top:1px solid rgba(10,23,29,.16)"><span style="font-family:'DM Mono',monospace; font-size:12px; color:#003F47">03</span>Ein Look über Instagram, LinkedIn und alles andere</li>
-        <li style="display:grid; grid-template-columns:40px 1fr; gap:12px; padding:14px 0; border-top:1px solid rgba(10,23,29,.16)"><span style="font-family:'DM Mono',monospace; font-size:12px; color:#003F47">04</span>Ein Ansprechpartner statt vier Dienstleister</li>
-        <li style="display:grid; grid-template-columns:40px 1fr; gap:12px; padding:14px 0; border-top:1px solid rgba(10,23,29,.16); border-bottom:1px solid rgba(10,23,29,.16)"><span style="font-family:'DM Mono',monospace; font-size:12px; color:#003F47">05</span>Ein Team, das eure Themen nach zwei Quartalen selbst erkennt</li>
-      </ul>
-      </div>
-      <!-- BTS-Collage: Bilder als assets/dailies/bts-01.jpg bis bts-03.jpg ablegen -->
-      <div class="bts-collage" aria-label="Behind the Scenes">
-        <figure class="bts-c" id="bts-a">
-          <span class="bts-platzhalter">BTS folgt</span>
-          <img src="assets/dailies/bts-01.jpg" alt="Behind the Scenes vom DAILIES-Drehtag" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-        </figure>
-        <figure class="bts-c" id="bts-b">
-          <span class="bts-platzhalter">BTS folgt</span>
-          <img src="assets/dailies/bts-02.jpg" alt="Behind the Scenes vom DAILIES-Drehtag" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-        </figure>
-        <figure class="bts-c" id="bts-c">
-          <span class="bts-platzhalter">BTS folgt</span>
-          <img src="assets/dailies/bts-03.jpg" alt="Behind the Scenes vom DAILIES-Drehtag" loading="lazy" decoding="async" onerror="this.style.display='none'" />
-        </figure>
-      </div>
-    </div>
-  </section>
+  <section id="ziel" aria-labelledby="ziel-titel" data-readout="Clip 02 · Ziel" data-screen-label="02 Ziel">
+    <div class="wrap">
+      <div class="kicker" style="color:var(--grau-hell);"><i></i>Clip 02 · Ziel</div>
+      <h2 id="ziel-titel" class="plakat h2" style="margin:18px 0 44px;">Was soll euer Content für euch erreichen?</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap:20px;">
 
-  <section id="ablauf" data-screen-label="04 Ablauf" style="scroll-margin-top:100px; background:#F5EFE3; padding:88px 0; border-bottom:1px solid rgba(10,23,29,.18)">
-    <div style="padding:0 40px">
-      <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 04 · Ablauf</p>
-      <h2 style="margin:20px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em; max-width:26ch">Sechs Schritte, die sich jedes Quartal wiederholen.</h2>
-    </div>
-    <ol class="steps">
-      <li>
-        <span style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px">Schritt 01</span>
-        <h3 style="margin:8px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:18px; line-height:1.3">Jahres- und Themenplanung</h3>
-        <p style="margin:8px 0 0; font-size:14px; line-height:1.55">Wir gehen einmal durch: Ziele, Termine, Angebote, wer im Lauf des Jahres vor die Kamera soll.</p>
-      </li>
-      <li>
-        <span style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px">Schritt 02</span>
-        <h3 style="margin:8px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:18px; line-height:1.3">Vorbereitung des Drehtags</h3>
-        <p style="margin:8px 0 0; font-size:14px; line-height:1.55">Ihr bekommt vorab einen konkreten Themen- und Ablaufplan. Jede beteiligte Person weiß, was gebraucht wird und wann.</p>
-      </li>
-      <li>
-        <span style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px">Schritt 03</span>
-        <h3 style="margin:8px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:18px; line-height:1.3">Video und Foto an einem Tag</h3>
-        <p style="margin:8px 0 0; font-size:14px; line-height:1.55">Zwei Leute, kompaktes Licht, professioneller Ton. Wir drehen bei euch oder an einer vereinbarten Location.</p>
-      </li>
-      <li>
-        <span style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px">Schritt 04</span>
-        <h3 style="margin:8px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:18px; line-height:1.3">Schnitt und Bildbearbeitung</h3>
-        <p style="margin:8px 0 0; font-size:14px; line-height:1.55">Schnitt, Grading, Sound, Untertitel, Fotoauswahl und -bearbeitung. Formate und Crops sind beim Dreh mitgedacht.</p>
-      </li>
-      <li>
-        <span style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px">Schritt 05</span>
-        <h3 style="margin:8px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:18px; line-height:1.3">Freigabe und Übergabe</h3>
-        <p style="margin:8px 0 0; font-size:14px; line-height:1.55">Alles liegt sortiert bereit. Ihr gebt frei und veröffentlicht Schritt für Schritt über das Quartal.</p>
-      </li>
-      <li>
-        <span style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px">Schritt 06</span>
-        <h3 style="margin:8px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:18px; line-height:1.3">Review und nächstes Quartal</h3>
-        <p style="margin:8px 0 0; font-size:14px; line-height:1.55">Wir schauen uns an, was funktioniert hat, und planen das nächste Quartal darauf. Danach beginnt der Zyklus von vorne.</p>
-      </li>
-    </ol>
-  </section>
-
-  <section id="pakete" data-screen-label="05 Pakete" style="scroll-margin-top:100px; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
-    <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 05 · Pakete</p>
-    <h2 style="margin:20px 0 34px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Drei Größen, ein System.</h2>
-    <div class="plan-tabs" role="tablist" aria-label="Paket wählen">
-      <button type="button" data-plan="start">Start</button>
-      <button type="button" data-plan="grow" class="active">Grow</button>
-      <button type="button" data-plan="scale">Scale</button>
-    </div>
-    <div data-table="" data-plan="grow" style="display:grid; grid-template-columns:minmax(150px,.9fr) repeat(3, minmax(210px,1.1fr)); overflow-x:auto"></div>
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var table = document.querySelector('[data-table]');
-      if (!table || !window.DAILIES) return;
-      var P = window.DAILIES.pricing;
-      var MONO = "font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E";
-      var ARCH = "font-family:Archivo,Helvetica,sans-serif; font-stretch:125%";
-      function val(v) {
-        if (v === true) return '<span class="chk">\u2713</span>';
-        if (v === false) return '<span class="dsh">-</span>';
-        return v;
-      }
-      var out = [];
-      out.push('<div style="border-bottom:1px solid rgba(10,23,29,.2)"></div>');
-      P.plans.forEach(function (p) {
-        out.push('<div class="pk pk-' + p.id + ' pk-head' + (p.highlighted ? ' hl' : '') + '" style="border-bottom:1px solid rgba(10,23,29,.2); padding:18px 20px">' +
-          '<div style="' + ARCH + '; font-weight:700; font-size:26px; text-transform:uppercase; letter-spacing:-0.015em">' + p.name + '</div>' +
-          '<div class="sub" style="font-size:15px">' + p.tagline + '</div></div>');
-      });
-      out.push('<div style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 0; ' + MONO + '; display:flex; align-items:center">Preis</div>');
-      P.plans.forEach(function (p) {
-        out.push('<div class="pk pk-' + p.id + (p.highlighted ? ' hl' : '') + '" style="border-bottom:1px solid rgba(10,23,29,.14); padding:18px 20px">' +
-          '<div style="' + ARCH + "; font-weight:700; font-size:28px; letter-spacing:-0.015em\">" + p.price + '<span class="sub" style="font-family:\'Inter Tight\',sans-serif; font-size:15px; font-weight:400"> / Monat</span></div>' +
-          '<div class="sub" style="font-size:13px; margin-top:4px">' + p.priceSub + '</div>' +
-          (p.priceNote ? '<div class="note" style="font-size:13px; margin-top:2px">' + p.priceNote + '</div>' : '') +
-        '</div>');
-      });
-      P.featureLabels.forEach(function (label, i) {
-        out.push('<div style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 0; ' + MONO + '; display:flex; align-items:center">' + label + '</div>');
-        P.plans.forEach(function (p) {
-          out.push('<div class="pk pk-' + p.id + (p.highlighted ? ' hl' : '') + '" style="border-bottom:1px solid rgba(10,23,29,.14); padding:14px 20px; font-size:15px">' + val(p.features[i]) + '</div>');
-        });
-      });
-      out.push('<div style="padding:22px 0"></div>');
-      P.plans.forEach(function (p) {
-        out.push('<div class="pk pk-' + p.id + ' pk-cta' + (p.highlighted ? ' hl' : '') + '" style="padding:22px 20px"><a href="' + p.cta.href + '">' + p.cta.label + '</a></div>');
-      });
-      table.innerHTML = out.join('');
-    });
-    </script>
-    <div style="margin:18px 0 0; font-size:15px; color:#7C8B8E; display:grid; gap:4px">
-      <p style="margin:0">Alle Preise netto, exklusive Reisekosten außerhalb Oberösterreichs. Verrechnung quartalsweise, der Monatspreis ist die Darstellungsform.</p>
-      <p style="margin:0">Zusätzliche Feedbackschleifen, Zusatzdrehs und Community Management werden separat verrechnet.</p>
-      <p style="margin:0">Der genaue Umfang steht vor Start als schriftliche Assetliste fest.</p>
-    </div>
-    <div style="margin-top:56px">
-      <p style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">In jedem Abo enthalten</p>
-      <h3 style="margin:14px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(24px,2.4vw,34px); line-height:1.15; letter-spacing:-0.015em">Was jedes Abo mitbringt.</h3>
-      <p style="margin:14px 0 0; max-width:60ch">Ein fixer Rahmen fürs Jahr - und dazu Plattform, Tools und Community, die es so nur bei DAILIES gibt.</p>
-    </div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:22px; margin-top:28px">
-      <div style="background:#F5EFE3; border-radius:4px; border-top:3px solid var(--accent, #FFBD76); padding:26px 24px">
-        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px">Budget</div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:21px; line-height:1.25; margin-top:8px">Ein Preis, keine Überraschungen.</div>
-        <p style="margin:10px 0 0; font-size:15px; line-height:1.55">Mit dem Abo ist euer Social-Content für eure Kanäle abgedeckt - es kommen keine weiteren Kosten dazu.</p>
-      </div>
-      <div style="background:#F5EFE3; border-radius:4px; border-top:3px solid var(--accent, #FFBD76); padding:26px 24px">
-        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px">Kundenplattform</div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:21px; line-height:1.25; margin-top:8px">Alle Assets im Überblick.</div>
-        <p style="margin:10px 0 0; font-size:15px; line-height:1.55">In der Kundenplattform habt ihr alle produzierten Inhalte an einem Ort - jederzeit abrufbar, nichts geht verloren, nichts muss gesucht werden.</p>
-      </div>
-      <div style="background:#F5EFE3; border-radius:4px; border-top:3px solid var(--accent, #FFBD76); padding:26px 24px">
-        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px">Creator-Tools</div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:21px; line-height:1.25; margin-top:8px">Sounds, Skripte, Hooks, Teleprompter.</div>
-        <p style="margin:10px 0 0; font-size:15px; line-height:1.55">Sound Library, Skript- und Hook-Vorschläge und die Teleprompter-App: alles, was eure Inhalte schneller und besser macht.</p>
-      </div>
-      <div style="background:#F5EFE3; border-radius:4px; border-top:3px solid var(--accent, #FFBD76); padding:26px 24px">
-        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px">Shot-List</div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:21px; line-height:1.25; margin-top:8px">Eigene Drehs, einfach geplant.</div>
-        <p style="margin:10px 0 0; font-size:15px; line-height:1.55">Wollt ihr zwischendurch selbst etwas filmen, plant ihr eure eigenen Drehs ganz einfach mit dem Shot-List-Tool in der Kundenplattform.</p>
-      </div>
-      <div style="background:#F5EFE3; border-radius:4px; border-top:3px solid var(--accent, #FFBD76); padding:26px 24px">
-        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; font-size:11px">Ressourcen</div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:21px; line-height:1.25; margin-top:8px">Vorlagen, die mitwachsen.</div>
-        <p style="margin:10px 0 0; font-size:15px; line-height:1.55">Ihr profitiert von Vorlagen und gemeinsamen Ressourcen aus allen DAILIES-Projekten - jedes Quartal kommt Wissen dazu.</p>
-      </div>
-    </div>
-    <p style="margin:18px 0 0; font-size:15px; color:#7C8B8E">Mehr zur Plattform in der Sektion <a href="#plattform" style="color:#003F47; text-decoration:underline">Kundenplattform</a> weiter unten.</p>
-    <p style="margin:6px 0 0; font-size:15px; color:#7C8B8E">Und wenn doch einmal mehr ansteht - ein Imagefilm, eine Projektkommunikation oder ein größerer Dreh - unterstützt euch WEXPLORE gerne darüber hinaus.</p>
-  </section>
-
-  <section id="output" data-screen-label="06 Output" style="scroll-margin-top:100px; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
-    <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 06 · Output</p>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:48px; margin-top:24px">
-      <div>
-        <h2 style="margin:0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Formate, die immer wieder funktionieren.</h2>
-        <p style="margin:20px 0 0; max-width:54ch">Ein Teil der Reels entsteht direkt mit euren Mitarbeitenden: kurze Antworten auf Fragen, die eure Kundschaft sowieso ständig stellt. Dazu drehen wir Arbeitssituationen, Produkte und Details. Parallel entstehen Fotos für Social, Website und Newsletter.</p>
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:0 32px; margin-top:26px">
-          <ul style="margin:0; padding:0; list-style:none">
-            <li style="padding:12px 0; border-top:1px solid rgba(10,23,29,.16); font-size:15px">Erklärvideos mit Geschäftsführung oder Team</li>
-            <li style="padding:12px 0; border-top:1px solid rgba(10,23,29,.16); font-size:15px">Einblicke in Arbeitsabläufe</li>
-            <li style="padding:12px 0; border-top:1px solid rgba(10,23,29,.16); font-size:15px">Antworten auf häufige Kundenfragen</li>
-          </ul>
-          <ul style="margin:0; padding:0; list-style:none">
-            <li style="padding:12px 0; border-top:1px solid rgba(10,23,29,.16); font-size:15px">Kundenbeispiele und Ergebnisse</li>
-            <li style="padding:12px 0; border-top:1px solid rgba(10,23,29,.16); font-size:15px">Produkt- und Leistungsinfos</li>
-            <li style="padding:12px 0; border-top:1px solid rgba(10,23,29,.16); font-size:15px">Team- und Behind-the-Scenes-Content</li>
-          </ul>
+        <div style="border:2px solid var(--linie-hell); border-radius:16px; padding:30px; display:flex; flex-direction:column; gap:12px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D83A2A" stroke-width="1.8" style="width:34px; height:34px;"><circle cx="9" cy="8" r="3.2"></circle><path d="M3.5 19a5.5 5.5 0 0 1 11 0"></path><circle cx="17" cy="9.5" r="2.4"></circle><path d="M15.5 14.6a4.6 4.6 0 0 1 5.5 4.4"></path></svg>
+          <h3 style="font-size:24px; font-weight:700; line-height:1.25; margin:8px 0 0; hyphens:manual;">Mitarbeiter &amp; Lehrlinge finden</h3>
+          <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;">Employer Brand</div>
+          <p style="font-size:16px; line-height:1.6; color:var(--text-hell); margin:0; text-wrap:pretty;">Die besten Leute bewerben sich dort, wo sie sehen, wie ihr wirklich arbeitet. Regelmäßige Einblicke in Team und Alltag machen euren Auftritt zum Argument - und aus Zusehern Bewerbungen.</p>
+          <button type="button" class="btn btn--linie btn--s" style="margin-top:auto; align-self:flex-start;" data-flow-start="ziel" data-ziel-cta="bewerbungen">Content-Ideen entdecken</button>
         </div>
-        <p style="margin:22px 0 0; font-size:15px; line-height:1.55; color:#7C8B8E; max-width:54ch">Rund 70 % davon sind effizient produzierte Talking Heads. Wechselnde Ausschnitte, B-Roll, Fotos und Orte sorgen dafür, dass trotzdem nichts gleich aussieht.</p>
-      </div>
-      <div>
-        <div style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; margin-bottom:12px">Kontaktbogen · 4 Clips</div>
-        <div data-stagger="" style="display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:10px">
-          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F5EFE3"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C001</div></div>
-          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F5EFE3"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C002</div></div>
-          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F5EFE3"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C003</div></div>
-          <div><div style="aspect-ratio:9/16; border-radius:4px; overflow:hidden; background:#F5EFE3"><div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E; opacity:.55">9:16</div></div><div style="font-family:'DM Mono',monospace; font-size:11px; color:#7C8B8E; margin-top:5px">C004</div></div>
-                                                </div>
+
+        <div style="border:2px solid var(--linie-hell); border-radius:16px; padding:30px; display:flex; flex-direction:column; gap:12px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D83A2A" stroke-width="1.8" style="width:34px; height:34px;"><path d="M3 3h8l10 10-8 8L3 11z"></path><circle cx="8" cy="8" r="1.6"></circle></svg>
+          <h3 style="font-size:24px; font-weight:700; line-height:1.25; margin:8px 0 0; hyphens:manual;">Produkte verkaufen</h3>
+          <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;">Produkt</div>
+          <p style="font-size:16px; line-height:1.6; color:var(--text-hell); margin:0; text-wrap:pretty;">Wer euer Produkt versteht, kauft es auch. Wir zeigen, was es kann, beantworten die Fragen eurer Kundschaft und machen aus Interesse Anfragen - Woche für Woche.</p>
+          <button type="button" class="btn btn--linie btn--s" style="margin-top:auto; align-self:flex-start;" data-flow-start="ziel" data-ziel-cta="nachfrage">Content-Ideen entdecken</button>
+        </div>
+
+        <div style="border:2px solid var(--linie-hell); border-radius:16px; padding:30px; display:flex; flex-direction:column; gap:12px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#D83A2A" stroke-width="1.8" style="width:34px; height:34px;"><path d="M3 10v4h3l8 5V5l-8 5z"></path><path d="M17.5 8.5a5 5 0 0 1 0 7"></path><path d="M20 6a9 9 0 0 1 0 12"></path></svg>
+          <h3 style="font-size:24px; font-weight:700; line-height:1.25; margin:8px 0 0; hyphens:manual;">Als Marke sichtbar sein</h3>
+          <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;">Brand Awareness</div>
+          <p style="font-size:16px; line-height:1.6; color:var(--text-hell); margin:0; text-wrap:pretty;">Wer regelmäßig auftaucht, bleibt im Kopf. Ein konsistenter Look und laufender Content sorgen dafür, dass man euch kennt, bevor man euch braucht.</p>
+          <button type="button" class="btn btn--linie btn--s" style="margin-top:auto; align-self:flex-start;" data-flow-start="ziel" data-ziel-cta="bekanntheit">Content-Ideen entdecken</button>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <section id="plattform" data-screen-label="07 Plattform" style="scroll-margin-top:100px; background:#F5EFE3; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
-    <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 07 · Plattform</p>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:48px; align-items:center; margin-top:24px">
-      <div>
-        <h2 style="margin:0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Alles an einem Ort. Für beide Seiten.</h2>
-        <p style="margin:20px 0 0; max-width:52ch">Jedes DAILIES-Abo läuft über unsere Kundenplattform. Ihr und wir schauen auf denselben Stand: wo das Projekt gerade steht, was der nächste Schritt ist und wer euer Ansprechpartner ist - kein Suchen, kein Nachfragen.</p>
-        <ul style="margin:22px 0 0; padding:0; list-style:none; max-width:56ch">
-          <li style="display:grid; grid-template-columns:40px 1fr; gap:12px; padding:12px 0; border-top:1px solid rgba(10,23,29,.16)"><span style="font-family:'DM Mono',monospace; font-size:12px; color:#003F47">01</span>Projektstand live - von der Planung über den Dreh bis zur Lieferung</li>
-          <li style="display:grid; grid-template-columns:40px 1fr; gap:12px; padding:12px 0; border-top:1px solid rgba(10,23,29,.16)"><span style="font-family:'DM Mono',monospace; font-size:12px; color:#003F47">02</span>Termine und Dispo griffbereit - Drehtag, Startzeit und Ablaufplan an einem Ort</li>
-          <li style="display:grid; grid-template-columns:40px 1fr; gap:12px; padding:12px 0; border-top:1px solid rgba(10,23,29,.16)"><span style="font-family:'DM Mono',monospace; font-size:12px; color:#003F47">03</span>Freigaben direkt im Browser - immer die aktuelle Version, keine Mail-Ketten</li>
-          <li style="display:grid; grid-template-columns:40px 1fr; gap:12px; padding:12px 0; border-top:1px solid rgba(10,23,29,.16)"><span style="font-family:'DM Mono',monospace; font-size:12px; color:#003F47">04</span>Alle Assets im Überblick - fertige Reels und Fotos sortiert zum Download</li>
-          <li style="display:grid; grid-template-columns:40px 1fr; gap:12px; padding:12px 0; border-top:1px solid rgba(10,23,29,.16); border-bottom:1px solid rgba(10,23,29,.16)"><span style="font-family:'DM Mono',monospace; font-size:12px; color:#003F47">05</span>Mitentscheiden - bei Casting und Locations direkt in der Plattform abstimmen</li>
-        </ul>
-        <p style="margin:16px 0 0; font-size:15px; color:#7C8B8E">Ein Login ohne Passwort - und beide Seiten sehen immer denselben Stand.</p>
-      </div>
-      <div class="mb">
-        <!-- Slides-Container: weitere <img>/<video> einfach ergaenzen, spaeter Karussell/GIF ohne Umbau moeglich -->
-        <div class="mb-screen">
-          <span class="mb-placeholder">Screen folgt</span>
-          <div class="mb-slides">
-            <video id="plattform-video" src="assets/dailies/plattform-screen-01.mp4?v=3" muted loop playsinline preload="none" aria-label="Bildschirmaufnahme der DAILIES Kundenplattform"></video>
+  <section id="warum" aria-labelledby="warum-titel" class="sec-dunkel" data-readout="Clip 03 · Warum es liegen bleibt" data-screen-label="03 Warum">
+    <div class="wrap">
+      <div class="kicker" style="color:var(--grau-dunkel);"><i></i>Clip 03 · Warum es liegen bleibt</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap:64px; margin-top:18px; align-items:center;">
+        <div>
+          <h2 id="warum-titel" class="plakat h2" style="margin:0 0 28px;">Social Media scheitert selten an den Ideen.</h2>
+          <p style="font-size:18px; font-weight:300; line-height:1.6; margin:0 0 16px; text-wrap:pretty;">In kleinen Marketing-Teams läuft Social neben allem anderen. Ein Reel wird intern gedreht, für die Fotos kommt jemand anderes, beim nächsten Mal beginnt die Suche von vorne. Am Ende sieht jeder dritte Post aus wie von einer anderen Firma.</p>
+          <p style="font-size:18px; font-weight:300; line-height:1.6; margin:0 0 32px; text-wrap:pretty;">Bei Dailies steht der Plan für das Jahr, bevor das Tagesgeschäft dazwischenkommt. Wir legen Themen und Formate fest, bündeln die Produktion auf einen Tag pro Quartal und liefern laufend aus.</p>
+          <div style="display:flex; flex-direction:column; border-bottom:1px solid var(--linie-dunkel);">
+            <div style="display:grid; grid-template-columns:44px 1fr; gap:12px; padding:14px 0; border-top:1px solid var(--linie-dunkel); font-size:16px; line-height:1.5;"><span style="color:var(--rot-text); font-weight:600;">01</span>Ein Budget, das im Jahresplan steht statt in fünf Einzelangeboten</div>
+            <div style="display:grid; grid-template-columns:44px 1fr; gap:12px; padding:14px 0; border-top:1px solid var(--linie-dunkel); font-size:16px; line-height:1.5;"><span style="color:var(--rot-text); font-weight:600;">02</span>Nachschub, auch in Wochen, in denen intern nichts weitergeht</div>
+            <div style="display:grid; grid-template-columns:44px 1fr; gap:12px; padding:14px 0; border-top:1px solid var(--linie-dunkel); font-size:16px; line-height:1.5;"><span style="color:var(--rot-text); font-weight:600;">03</span>Ein Look über Instagram, LinkedIn und alles andere</div>
+            <div style="display:grid; grid-template-columns:44px 1fr; gap:12px; padding:14px 0; border-top:1px solid var(--linie-dunkel); font-size:16px; line-height:1.5;"><span style="color:var(--rot-text); font-weight:600;">04</span>Ein Ansprechpartner statt vier Dienstleister</div>
+            <div style="display:grid; grid-template-columns:44px 1fr; gap:12px; padding:14px 0; border-top:1px solid var(--linie-dunkel); font-size:16px; line-height:1.5;"><span style="color:var(--rot-text); font-weight:600;">05</span>Ein Team, das eure Themen nach zwei Quartalen selbst erkennt</div>
           </div>
         </div>
-        <img class="mb-frame" src="assets/macbook-frame.png" alt="" aria-hidden="true" loading="lazy" decoding="async" width="1280" height="781" />
-      </div>
-    </div>
-  </section>
-
-  <section id="cases" data-screen-label="08 Referenzen" style="scroll-margin-top:100px; background:#F5EFE3; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
-    <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 08 · Referenzen</p>
-    <h2 style="margin:20px 0 34px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Für wen wir schon gedreht haben.</h2>
-    <div id="cases-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:22px"></div>
-    <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      var grid = document.getElementById('cases-grid');
-      if (!grid || !window.DAILIES) return;
-      var MONO = "font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase";
-      grid.innerHTML = window.DAILIES.cases.map(function (c) {
-        var media;
-        if (c.video) {
-          media = '<video src="' + c.video + '" autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover; display:block"></video>';
-        } else if (c.image) {
-          media = '<img src="' + c.image + '" alt="' + c.name + '" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block" />';
-        } else {
-          media = '<div style="width:100%; height:100%; box-sizing:border-box; display:flex; align-items:center; justify-content:center; border:1px dashed currentColor; ' + MONO + '; font-size:11px; color:#7C8B8E; opacity:.55">Standbild 16:9</div>';
-        }
-        var t = c.testimonial;
-        var testimonial = (t && t.quote)
-          ? '<blockquote style="margin:14px 0 0; padding:14px 16px; background:#FDFAF3; border-left:3px solid var(--accent, #FFBD76); font-size:15px; line-height:1.5">\u201E' + t.quote + '\u201C<footer style="margin-top:8px; font-size:13px; color:#7C8B8E">' + t.name + (t.role ? ' \u00B7 ' + t.role : '') + '</footer></blockquote>'
-          : '';
-        return '<div>' +
-          '<div style="aspect-ratio:16/9; border-radius:4px; overflow:hidden; background:#FDFAF3">' + media + '</div>' +
-          '<div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:28px; line-height:1.2; margin-top:14px">' + c.name + '</div>' +
-          '<div style="display:inline-block; margin-top:8px; padding:4px 12px; border:1px solid #003F47; border-radius:999px; color:#003F47; ' + MONO + '; font-size:11px">' + c.tag + '</div>' +
-          '<p style="margin:10px 0 0; font-size:15px; line-height:1.55">' + c.text + '</p>' +
-          testimonial +
-        '</div>';
-      }).join('');
-    });
-    </script>
-  </section>
-
-  <section data-screen-label="08 Referenzen · Wer dahintersteht" style="background:#003F47; color:#FDFAF3">
-    <div style="padding:88px 40px; display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:48px; align-items:center">
-      <div style="max-width:400px">
-        <div style="position:relative">
-          <div style="aspect-ratio:4/5; border-radius:20px; overflow:hidden; background:#0A171D"><img src="assets/alex-gruber.jpg?v=2" alt="Alex Gruber, WEXPLORE Productions" loading="lazy" decoding="async" style="width:100%; height:100%; object-fit:cover; display:block" /></div>
-          <div aria-hidden="true" style="position:absolute; top:50%; transform:translateY(-50%); height:34%; left:-16px; width:14px; border:3px solid #FDFAF3; border-right:none"></div>
-          <div aria-hidden="true" style="position:absolute; top:50%; transform:translateY(-50%); height:34%; right:-16px; width:14px; border:3px solid #FDFAF3; border-left:none"></div>
+        <div style="position:relative; aspect-ratio:1/1.05; width:100%; max-width:560px; justify-self:center;">
+          <figure style="position:absolute; margin:0; left:0; top:12%; width:46%; aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:var(--linie-dunkel); box-shadow:0 14px 34px rgba(0,0,0,.4); z-index:1;"><img src="assets/dailies/bts-01.jpg" alt="Smartphone-Dreh im Kamera-Rig bei einem Dailies-Drehtag" width="800" height="1066" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"></figure>
+          <figure style="position:absolute; margin:0; right:0; top:0; width:48%; aspect-ratio:3/4; border-radius:16px; overflow:hidden; background:var(--linie-dunkel); box-shadow:0 14px 34px rgba(0,0,0,.4); z-index:1;"><img src="assets/dailies/bts-02.jpg" alt="Blick auf das Aufnahme-Display beim Dailies-Drehtag" width="800" height="1066" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"></figure>
+          <figure style="position:absolute; margin:0; left:20%; top:52%; width:72%; aspect-ratio:16/10; border-radius:16px; overflow:hidden; background:var(--linie-dunkel); box-shadow:0 14px 34px rgba(0,0,0,.4); z-index:2;"><img src="assets/dailies/bts-03.jpg" alt="Interview-Setup bei einem Dailies-Drehtag" width="1000" height="625" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"></figure>
         </div>
       </div>
-      <div>
-        <p style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF">Wer dahintersteht</p>
-        <blockquote style="margin:18px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:clamp(23px,2.3vw,30px); line-height:1.3; letter-spacing:-0.01em">„Ich höre in fast jedem Gespräch mit kleineren Betrieben dasselbe: Es gäbe genug zu erzählen, aber niemand hat Zeit, jede Woche eine Produktion anzuschieben. Genau diese Aufgabe nehmen wir ab."</blockquote>
-        <div style="margin-top:22px; font-weight:600">Alex Gruber · WEXPLORE Productions</div>
-        <div style="font-size:15px; color:#9FBCBF">Videoproduktion aus Linz</div>
-        <div style="display:flex; align-items:center; gap:8px; margin-top:18px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#9FBCBF">powered by <img src="assets/wexplore-productions-light.png" alt="WEXPLORE Productions" loading="lazy" decoding="async" style="height:10px; width:auto; display:block" /></div>
-        <button type="button" data-flow-start="kontakt" style="border:0; cursor:pointer; display:inline-flex; align-items:center; height:50px; padding:0 28px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; margin-top:26px">Eure Content-Ideen entdecken</button>
+    </div>
+  </section>
+
+  <section id="ablauf" aria-labelledby="ablauf-titel" data-readout="Clip 04 · Ablauf" data-screen-label="04 Ablauf">
+    <div class="wrap">
+      <div class="kicker" style="color:var(--grau-hell);"><i></i>Clip 04 · Ablauf</div>
+      <h2 id="ablauf-titel" class="plakat h2" style="margin:18px 0 48px; max-width:18ch;">Sechs Schritte, die sich jedes Quartal wiederholen.</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap:0; border-top:2px solid #000;">
+        <div style="padding:28px 28px 36px 0; border-bottom:1px solid var(--linie-hell); display:flex; flex-direction:column; gap:10px;">
+          <span style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;">Schritt 01</span>
+          <h3 style="font-size:22px; font-weight:700; line-height:1.25; margin:0;">Jahres- und Themenplanung</h3>
+          <p style="font-size:16px; line-height:1.6; color:var(--text-hell); margin:0; text-wrap:pretty;">Wir gehen einmal durch: Ziele, Termine, Angebote, wer im Lauf des Jahres vor die Kamera soll.</p>
+        </div>
+        <div style="padding:28px 28px 36px 0; border-bottom:1px solid var(--linie-hell); display:flex; flex-direction:column; gap:10px;">
+          <span style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;">Schritt 02</span>
+          <h3 style="font-size:22px; font-weight:700; line-height:1.25; margin:0;">Vorbereitung des Drehtags</h3>
+          <p style="font-size:16px; line-height:1.6; color:var(--text-hell); margin:0; text-wrap:pretty;">Ihr bekommt vorab einen konkreten Themen- und Ablaufplan. Jede beteiligte Person weiß, was gebraucht wird und wann.</p>
+        </div>
+        <div style="padding:28px 28px 36px 0; border-bottom:1px solid var(--linie-hell); display:flex; flex-direction:column; gap:10px;">
+          <span style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;">Schritt 03</span>
+          <h3 style="font-size:22px; font-weight:700; line-height:1.25; margin:0;">Video und Foto an einem Tag</h3>
+          <p style="font-size:16px; line-height:1.6; color:var(--text-hell); margin:0; text-wrap:pretty;">Zwei Leute, kompaktes Licht, professioneller Ton. Wir drehen bei euch oder an einer vereinbarten Location.</p>
+        </div>
+        <div style="padding:28px 28px 36px 0; border-bottom:1px solid var(--linie-hell); display:flex; flex-direction:column; gap:10px;">
+          <span style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;">Schritt 04</span>
+          <h3 style="font-size:22px; font-weight:700; line-height:1.25; margin:0;">Schnitt und Bildbearbeitung</h3>
+          <p style="font-size:16px; line-height:1.6; color:var(--text-hell); margin:0; text-wrap:pretty;">Schnitt, Grading, Sound, Untertitel, Fotoauswahl und -bearbeitung. Formate und Crops sind beim Dreh mitgedacht.</p>
+        </div>
+        <div style="padding:28px 28px 36px 0; border-bottom:1px solid var(--linie-hell); display:flex; flex-direction:column; gap:10px;">
+          <span style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;">Schritt 05</span>
+          <h3 style="font-size:22px; font-weight:700; line-height:1.25; margin:0;">Freigabe und Übergabe</h3>
+          <p style="font-size:16px; line-height:1.6; color:var(--text-hell); margin:0; text-wrap:pretty;">Alles liegt sortiert in der Kundenplattform bereit. Ihr gebt frei und veröffentlicht Schritt für Schritt über das Quartal.</p>
+        </div>
+        <div style="padding:28px 28px 36px 0; border-bottom:1px solid var(--linie-hell); display:flex; flex-direction:column; gap:10px;">
+          <span style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;">Schritt 06</span>
+          <h3 style="font-size:22px; font-weight:700; line-height:1.25; margin:0;">Review und nächstes Quartal</h3>
+          <p style="font-size:16px; line-height:1.6; color:var(--text-hell); margin:0; text-wrap:pretty;">Wir schauen uns an, was funktioniert hat, und planen das nächste Quartal darauf. Danach beginnt der Zyklus von vorne.</p>
+        </div>
+      </div>
+      <p style="font-size:16px; line-height:1.6; color:var(--text-hell); margin:28px 0 0; max-width:70ch; text-wrap:pretty;">Vor einem Probe-Content-Tag sprechen wir 30 Minuten. Aus diesem Briefing planen wir die konkreten Inhalte für den Dreh.</p>
+    </div>
+  </section>
+
+  <section id="pakete" aria-labelledby="pakete-titel" data-readout="Clip 05 · Pakete" data-screen-label="05 Pakete" style="background:var(--flaeche);">
+    <div class="wrap">
+      <div class="kicker" style="color:var(--grau-hell);"><i></i>Clip 05 · Pakete</div>
+      <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:20px; margin:18px 0 36px;">
+        <h2 id="pakete-titel" class="plakat h2" style="margin:0;">Drei Größen, ein System.</h2>
+        <div class="plan-tabs" data-plan-tabs role="tablist" aria-label="Paket wählen"></div>
+      </div>
+
+      <!-- Die vollstaendige Tabelle wird aus assets/config.js gerendert. Merkmale und
+           Feature-Werte nur dort pflegen.
+           Die Liste darunter ist der Stand ohne JavaScript: Suchmaschinen, Link-Vorschauen
+           und Lesemodi bekommen so wenigstens Paketnamen und Preise zu sehen. Sobald die
+           Tabelle gezeichnet wird, nimmt zeichnen() die Liste wieder heraus.
+           ACHTUNG, doppelte Pflege: die drei Preise hier muessen zu assets/config.js und
+           zur FAQ-Antwort "Was kostet Dailies fuer ein kleines Unternehmen?" passen. -->
+      <ul data-table-fallback style="list-style:none; margin:0 0 20px; padding:0; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap:16px;">
+        <li style="background:#fff; border-radius:16px; padding:20px 22px;">
+          <span class="plakat" style="font-size:28px; line-height:1; display:block;">Start</span>
+          <span style="display:block; margin-top:6px; font-size:15px; color:var(--text-hell);">Der Grundtakt</span>
+          <span style="display:block; margin-top:12px; font-size:17px; font-weight:600;">€ 1.290 pro Monat</span>
+          <span style="display:block; margin-top:3px; font-size:13px; color:var(--grau-hell);">€ 3.870 pro Quartal verrechnet</span>
+        </li>
+        <li style="background:#fff; border-radius:16px; padding:20px 22px;">
+          <span class="plakat" style="font-size:28px; line-height:1; display:block;">Grow</span>
+          <span style="display:block; margin-top:6px; font-size:15px; color:var(--text-hell);">Mehr Formate, zwei Kanäle</span>
+          <span style="display:block; margin-top:12px; font-size:17px; font-weight:600;">€ 2.690 pro Monat</span>
+          <span style="display:block; margin-top:3px; font-size:13px; color:var(--grau-hell);">€ 8.070 pro Quartal verrechnet</span>
+        </li>
+        <li style="background:#fff; border-radius:16px; padding:20px 22px;">
+          <span class="plakat" style="font-size:28px; line-height:1; display:block;">Scale</span>
+          <span style="display:block; margin-top:6px; font-size:15px; color:var(--text-hell);">Euer externes Content-Team</span>
+          <span style="display:block; margin-top:12px; font-size:17px; font-weight:600;">€ 4.990 pro Monat</span>
+          <span style="display:block; margin-top:3px; font-size:13px; color:var(--grau-hell);">€ 15.000 pro Quartal verrechnet</span>
+        </li>
+      </ul>
+      <div style="overflow-x:auto; background:#fff; border-radius:16px;">
+        <div data-table style="min-width:860px; display:grid; grid-template-columns:1.1fr repeat(3, minmax(0,1fr));"></div>
+      </div>
+
+      <div style="display:flex; flex-direction:column; gap:4px; margin-top:20px; font-size:14px; line-height:1.55; color:var(--text-hell);">
+        <p style="margin:0;">Alle Preise netto, exklusive Reisekosten außerhalb Oberösterreichs. Verrechnung quartalsweise, der Monatspreis ist die Darstellungsform.</p>
+        <p style="margin:0;">Zusätzliche Feedbackschleifen, Zusatzdrehs und Community Management werden separat verrechnet.</p>
+        <p style="margin:0;">Der genaue Umfang steht vor Start als schriftliche Assetliste fest.</p>
+      </div>
+
+      <div style="margin-top:96px;">
+        <div class="kicker" style="color:var(--grau-hell);"><i></i>In jedem Abo enthalten</div>
+        <h3 id="enthalten-titel" class="plakat" style="font-size:clamp(30px, 3.4vw, 42px); line-height:1.05; margin:14px 0 12px;">Was jedes Abo mitbringt.</h3>
+        <p style="font-size:18px; line-height:1.55; color:var(--text-hell); max-width:60ch; margin:0 0 32px; text-wrap:pretty;">Ein fixer Rahmen fürs Jahr - und dazu Plattform, Tools und Community, die es so nur bei Dailies gibt.</p>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 210px), 1fr)); gap:16px;">
+          <div style="background:#fff; border-radius:16px; padding:24px; display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; align-items:center; gap:8px; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;"><span style="width:6px; height:6px; border-radius:50%; background:var(--rot-hell);"></span>Budget</div>
+            <h4 style="font-size:19px; font-weight:700; line-height:1.3; margin:0;">Ein Preis, keine Überraschungen.</h4>
+            <p style="font-size:15px; line-height:1.55; color:var(--text-hell); margin:0; text-wrap:pretty;">Mit dem Abo ist euer Social-Content für eure Kanäle abgedeckt - es kommen keine weiteren Kosten dazu.</p>
+          </div>
+          <div style="background:#fff; border-radius:16px; padding:24px; display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; align-items:center; gap:8px; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;"><span style="width:6px; height:6px; border-radius:50%; background:var(--rot-hell);"></span>Kundenplattform</div>
+            <h4 style="font-size:19px; font-weight:700; line-height:1.3; margin:0;">Alles im Überblick.</h4>
+            <p style="font-size:15px; line-height:1.55; color:var(--text-hell); margin:0; text-wrap:pretty;">In der Kundenplattform habt ihr alle produzierten Inhalte an einem Ort - jederzeit abrufbar, nichts geht verloren, nichts muss gesucht werden.</p>
+          </div>
+          <div style="background:#fff; border-radius:16px; padding:24px; display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; align-items:center; gap:8px; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;"><span style="width:6px; height:6px; border-radius:50%; background:var(--rot-hell);"></span>Creator-Tools</div>
+            <h4 style="font-size:19px; font-weight:700; line-height:1.3; margin:0;">Sounds, Skripte, Hooks, Teleprompter.</h4>
+            <p style="font-size:15px; line-height:1.55; color:var(--text-hell); margin:0; text-wrap:pretty;">Sound Library, Skript- und Hook-Vorschläge und die Teleprompter-App: alles, was eure Inhalte schneller und besser macht.</p>
+          </div>
+          <div style="background:#fff; border-radius:16px; padding:24px; display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; align-items:center; gap:8px; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;"><span style="width:6px; height:6px; border-radius:50%; background:var(--rot-hell);"></span>Shot-List</div>
+            <h4 style="font-size:19px; font-weight:700; line-height:1.3; margin:0;">Eigene Drehs, einfach geplant.</h4>
+            <p style="font-size:15px; line-height:1.55; color:var(--text-hell); margin:0; text-wrap:pretty;">Wollt ihr zwischendurch selbst etwas filmen, plant ihr eure eigenen Drehs ganz einfach mit dem Shot-List-Tool in der Kundenplattform.</p>
+          </div>
+          <div style="background:#fff; border-radius:16px; padding:24px; display:flex; flex-direction:column; gap:10px;">
+            <div style="display:flex; align-items:center; gap:8px; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;"><span style="width:6px; height:6px; border-radius:50%; background:var(--rot-hell);"></span>Ressourcen</div>
+            <h4 style="font-size:19px; font-weight:700; line-height:1.3; margin:0;">Vorlagen, die mitwachsen.</h4>
+            <p style="font-size:15px; line-height:1.55; color:var(--text-hell); margin:0; text-wrap:pretty;">Ihr profitiert von Vorlagen und gemeinsamen Ressourcen aus allen Dailies-Projekten - jedes Quartal kommt Wissen dazu.</p>
+          </div>
+        </div>
+        <p style="font-size:16px; line-height:1.55; margin:28px 0 0;">Mehr zur Plattform in der Sektion <a href="#plattform" style="font-weight:600; border-bottom:2px solid var(--rot-hell);">Kundenplattform</a> weiter unten.</p>
+        <p style="font-size:16px; line-height:1.55; color:var(--text-hell); margin:8px 0 0; max-width:70ch; text-wrap:pretty;">Und wenn doch einmal mehr ansteht - ein Imagefilm, eine Projektkommunikation oder ein größerer Dreh - übernimmt das WEXPLORE.</p>
       </div>
     </div>
   </section>
 
-
-  <section id="faq" data-screen-label="09 FAQ" style="scroll-margin-top:100px; padding:88px 40px; border-bottom:1px solid rgba(10,23,29,.18)">
-    <div>
-      <div style="max-width:34ch">
-        <p data-label="" style="margin:0; font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">Clip 09 · FAQ</p>
-        <h2 style="margin:20px 0 0; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:clamp(30px,3.2vw,48px); line-height:1.05; letter-spacing:-0.015em">Häufige Fragen</h2>
-      </div>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(360px, 1fr)); gap:0 48px; align-items:start; margin-top:36px">
-        <details open="open" style="border-top:1px solid rgba(10,23,29,.18); padding:18px 0">
-          <summary style="display:flex; justify-content:space-between; gap:20px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:22px; line-height:1.2">Was ist im Abo enthalten?<span style="color:#003F47">+</span></summary>
-          <p style="margin:10px 0 0; max-width:68ch">Planung, Drehtag, Postproduktion und Übergabe. Pro Quartal mindestens 13 Reels plus Fotoset, abgestimmt auf die Kanäle, die ihr wirklich bespielt.</p>
-        </details>
-        <details style="border-top:1px solid rgba(10,23,29,.18); padding:18px 0">
-          <summary style="display:flex; justify-content:space-between; gap:20px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:22px; line-height:1.2">Müssen wir Themen und Skripte selbst liefern?<span style="color:#003F47">+</span></summary>
-          <p style="margin:10px 0 0; max-width:68ch">Nein. Der Themenplan kommt von uns, ihr streicht und ergänzt. Skripte gibt es nur dort, wo sie helfen - meistens reichen Leitfragen.</p>
-        </details>
-        <details style="border-top:1px solid rgba(10,23,29,.18); padding:18px 0">
-          <summary style="display:flex; justify-content:space-between; gap:20px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:22px; line-height:1.2">Wie viel Zeit kostet uns das intern?<span style="color:#003F47">+</span></summary>
-          <p style="margin:10px 0 0; max-width:68ch">Ein Planungscall pro Quartal, der Drehtag selbst und eine Freigaberunde. Alles dazwischen liegt bei uns.</p>
-        </details>
-        <details style="border-top:1px solid rgba(10,23,29,.18); padding:18px 0">
-          <summary style="display:flex; justify-content:space-between; gap:20px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:22px; line-height:1.2">Für welche Kanäle produziert ihr?<span style="color:#003F47">+</span></summary>
-          <p style="margin:10px 0 0; max-width:68ch">Instagram, LinkedIn, TikTok, YouTube und Website. Formate und Crops sind beim Dreh bereits mitgedacht.</p>
-        </details>
-        <details style="border-top:1px solid rgba(10,23,29,.18); padding:18px 0">
-          <summary style="display:flex; justify-content:space-between; gap:20px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:22px; line-height:1.2">Übernehmt ihr auch Publishing und Community Management?<span style="color:#003F47">+</span></summary>
-          <p style="margin:10px 0 0; max-width:68ch">Publishing ist als Zusatzmodul möglich und wird im Scope einzeln vereinbart. Community Management gehört nicht zum Standardumfang.</p>
-        </details>
-        <details style="border-top:1px solid rgba(10,23,29,.18); padding:18px 0">
-          <summary style="display:flex; justify-content:space-between; gap:20px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:22px; line-height:1.2">Warum quartalsweise statt monatlich?<span style="color:#003F47">+</span></summary>
-          <p style="margin:10px 0 0; max-width:68ch">Ein gebündelter Drehtag pro Quartal ist günstiger und störungsärmer als vier kleine Termine - und liefert trotzdem wöchentlichen Nachschub.</p>
-        </details>
-        <details style="border-top:1px solid rgba(10,23,29,.18); padding:18px 0">
-          <summary style="display:flex; justify-content:space-between; gap:20px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:22px; line-height:1.2">Was kostet DAILIES für ein kleines Unternehmen?<span style="color:#003F47">+</span></summary>
-          <p style="margin:10px 0 0; max-width:68ch">Der Einstieg liegt bei € 3.800 netto pro Quartal. Der genaue Umfang steht vor Start als schriftliche Assetliste fest.</p>
-        </details>
-        <details style="border-top:1px solid rgba(10,23,29,.18); padding:18px 0">
-          <summary style="display:flex; justify-content:space-between; gap:20px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:22px; line-height:1.2">Für welche Unternehmen in Oberösterreich passt das?<span style="color:#003F47">+</span></summary>
-          <p style="margin:10px 0 0; max-width:68ch">Betriebe mit etwa 15 bis 60 Mitarbeitenden, laufendem Content-Bedarf und kleinem oder gar keinem Marketing-Team.</p>
-        </details>
-        <details style="border-top:1px solid rgba(10,23,29,.18); padding:18px 0">
-          <summary style="display:flex; justify-content:space-between; gap:20px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:22px; line-height:1.2">Was ist nicht enthalten?<span style="color:#003F47">+</span></summary>
-          <p style="margin:10px 0 0; max-width:68ch">Mediabudget, Schauspiel, aufwendige Sets, Drohnengenehmigungen und Reisekosten außerhalb Oberösterreichs.</p>
-        </details>
-        <details style="border-top:1px solid rgba(10,23,29,.18); padding:18px 0">
-          <summary style="display:flex; justify-content:space-between; gap:20px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:22px; line-height:1.2">Wie lange läuft das Abo?<span style="color:#003F47">+</span></summary>
-          <p style="margin:10px 0 0; max-width:68ch">Ein Jahr, also vier Drehtage. Danach verlängert es sich quartalsweise, solange ihr wollt.</p>
-        </details>
-        <details style="border-top:1px solid rgba(10,23,29,.18); border-bottom:1px solid rgba(10,23,29,.18); padding:18px 0">
-          <summary style="display:flex; justify-content:space-between; gap:20px; font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:600; font-size:22px; line-height:1.2">Wem gehören die Nutzungsrechte?<span style="color:#003F47">+</span></summary>
-          <p style="margin:10px 0 0; max-width:68ch">Euch. Zeitlich und räumlich unbeschränkt für alle fertigen Assets, Rohmaterial auf Anfrage.</p>
-        </details>
+  <section id="output" aria-labelledby="output-titel" data-readout="Clip 06 · Output" data-screen-label="06 Output">
+    <div class="wrap">
+      <div class="kicker" style="color:var(--grau-hell);"><i></i>Clip 06 · Output</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap:64px; margin-top:18px; align-items:center;">
+        <div>
+          <h2 id="output-titel" class="plakat h2" style="margin:0 0 28px;">Formate, die immer wieder funktionieren.</h2>
+          <p style="font-size:18px; line-height:1.6; color:#2a2a2a; margin:0 0 28px; text-wrap:pretty;">Ein Teil der Reels entsteht direkt mit euren Mitarbeitenden: kurze Antworten auf Fragen, die eure Kundschaft sowieso ständig stellt. Dazu drehen wir Arbeitssituationen, Produkte und Details. Parallel entstehen Fotos für Social, Website und Newsletter.</p>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:0 28px; margin-bottom:28px;">
+            <div style="display:flex; gap:10px; align-items:baseline; padding:12px 0; border-top:1px solid var(--linie-hell); font-size:16px; line-height:1.45;"><span style="width:6px; height:6px; border-radius:50%; background:var(--rot-hell); flex:none; transform:translateY(-2px);"></span>Erklärvideos mit Geschäftsführung oder Team</div>
+            <div style="display:flex; gap:10px; align-items:baseline; padding:12px 0; border-top:1px solid var(--linie-hell); font-size:16px; line-height:1.45;"><span style="width:6px; height:6px; border-radius:50%; background:var(--rot-hell); flex:none; transform:translateY(-2px);"></span>Einblicke in Arbeitsabläufe</div>
+            <div style="display:flex; gap:10px; align-items:baseline; padding:12px 0; border-top:1px solid var(--linie-hell); font-size:16px; line-height:1.45;"><span style="width:6px; height:6px; border-radius:50%; background:var(--rot-hell); flex:none; transform:translateY(-2px);"></span>Antworten auf häufige Kundenfragen</div>
+            <div style="display:flex; gap:10px; align-items:baseline; padding:12px 0; border-top:1px solid var(--linie-hell); font-size:16px; line-height:1.45;"><span style="width:6px; height:6px; border-radius:50%; background:var(--rot-hell); flex:none; transform:translateY(-2px);"></span>Kundenbeispiele und Ergebnisse</div>
+            <div style="display:flex; gap:10px; align-items:baseline; padding:12px 0; border-top:1px solid var(--linie-hell); font-size:16px; line-height:1.45;"><span style="width:6px; height:6px; border-radius:50%; background:var(--rot-hell); flex:none; transform:translateY(-2px);"></span>Produkt- und Leistungsinfos</div>
+            <div style="display:flex; gap:10px; align-items:baseline; padding:12px 0; border-top:1px solid var(--linie-hell); font-size:16px; line-height:1.45;"><span style="width:6px; height:6px; border-radius:50%; background:var(--rot-hell); flex:none; transform:translateY(-2px);"></span>Team- und Behind-the-Scenes-Content</div>
+          </div>
+          <p style="font-size:15px; line-height:1.6; color:var(--text-hell); margin:0; text-wrap:pretty;">Rund 70 % sind Menschen, die reden: das Format, das auf Social am besten funktioniert. Wechselnde Ausschnitte, B-Roll, Fotos und Orte sorgen dafür, dass trotzdem nichts gleich aussieht.</p>
+        </div>
+        <div style="background:var(--dunkel); color:#fff; border-radius:16px; padding:22px;">
+          <div style="display:flex; justify-content:space-between; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-dunkel); margin-bottom:16px;"><span>Kontaktbogen · 4 Clips</span><span style="display:flex; align-items:center; gap:6px;"><span style="width:7px; height:7px; border-radius:50%; background:var(--rot);"></span>Rec</span></div>
+          <div style="display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:10px;">
+            <div style="display:flex; flex-direction:column; gap:8px; transform:translateY(0px);"><div style="aspect-ratio:9/16; border-radius:8px; background:var(--linie-dunkel); display:flex; align-items:flex-end; padding:8px; box-sizing:border-box; font-size:11px; letter-spacing:.1em; color:var(--grau-dunkel);">9:16</div><div style="font-size:12px; letter-spacing:.12em; color:var(--grau-dunkel);">C001</div></div>
+            <div style="display:flex; flex-direction:column; gap:8px; transform:translateY(18px);"><div style="aspect-ratio:9/16; border-radius:8px; background:var(--linie-dunkel); display:flex; align-items:flex-end; padding:8px; box-sizing:border-box; font-size:11px; letter-spacing:.1em; color:var(--grau-dunkel);">9:16</div><div style="font-size:12px; letter-spacing:.12em; color:var(--grau-dunkel);">C002</div></div>
+            <div style="display:flex; flex-direction:column; gap:8px; transform:translateY(6px);"><div style="aspect-ratio:9/16; border-radius:8px; background:var(--linie-dunkel); display:flex; align-items:flex-end; padding:8px; box-sizing:border-box; font-size:11px; letter-spacing:.1em; color:var(--grau-dunkel);">9:16</div><div style="font-size:12px; letter-spacing:.12em; color:var(--grau-dunkel);">C003</div></div>
+            <div style="display:flex; flex-direction:column; gap:8px; transform:translateY(24px);"><div style="aspect-ratio:9/16; border-radius:8px; background:var(--linie-dunkel); display:flex; align-items:flex-end; padding:8px; box-sizing:border-box; font-size:11px; letter-spacing:.1em; color:var(--grau-dunkel);">9:16</div><div style="font-size:12px; letter-spacing:.12em; color:var(--grau-dunkel);">C004</div></div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <footer data-screen-label="09 FAQ · Ende" style="background:#0A171D; color:#FDFAF3">
-    <div style="padding:56px 40px 36px; display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:36px">
-      <div>
-        <div style="font-family:Archivo,Helvetica,sans-serif; font-stretch:125%; font-weight:700; font-size:26px; letter-spacing:-0.02em; text-transform:uppercase">Dailies</div>
-        <div style="display:flex; align-items:center; gap:8px; margin-top:10px; font-family:'DM Mono',monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#7C8B8E">powered by <a href="https://wexplore.at" target="_blank" rel="noopener" style="display:block"><img src="assets/wexplore-productions-light.png" alt="WEXPLORE Productions" loading="lazy" decoding="async" style="height:10px; width:auto; display:block" /></a></div>
-      </div>
-      <div style="font-size:15px; line-height:1.7; color:#D9D2C6">
-        <div><a href="mailto:office@wexplore.at" style="color:#FDFAF3">office@wexplore.at</a></div>
-        <div><a href="tel:+436763311100" style="color:#FDFAF3">+43 676 33 11 100</a></div>
-        <div>Klammstraße 3/1, 4020 Linz</div>
-      </div>
-      <div style="display:grid; gap:6px; font-size:15px">
-        <a href="#ablauf" style="color:#FDFAF3">Ablauf</a>
-        <a href="#pakete" style="color:#FDFAF3">Pakete</a>
-        <a href="#cases" style="color:#FDFAF3">Cases</a>
-        <a href="#faq" style="color:#FDFAF3">FAQ</a>
-      </div>
-      <div style="display:grid; gap:6px; font-size:15px">
-        <a href="#impressum" style="color:#FDFAF3">Impressum</a>
-        <a href="#datenschutz" style="color:#FDFAF3">Datenschutz</a>
+  <section id="plattform" aria-labelledby="plattform-titel" class="sec-dunkel" data-readout="Clip 07 · Plattform" data-screen-label="07 Plattform">
+    <div class="wrap">
+      <div class="kicker" style="color:var(--grau-dunkel);"><i></i>Clip 07 · Plattform</div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 440px), 1fr)); gap:64px; margin-top:18px; align-items:center;">
+        <div>
+          <h2 id="plattform-titel" class="plakat h2" style="margin:0 0 28px;">Alles an einem Ort. Für beide Seiten.</h2>
+          <p style="font-size:18px; font-weight:300; line-height:1.6; margin:0 0 28px; text-wrap:pretty;">Jedes Dailies-Abo läuft über unsere Kundenplattform. Ihr und wir schauen auf denselben Stand: wo das Projekt gerade steht, was der nächste Schritt ist und wer euer Ansprechpartner ist - kein Suchen, kein Nachfragen.</p>
+          <div style="display:flex; flex-direction:column; border-bottom:1px solid var(--linie-dunkel);">
+            <div style="display:grid; grid-template-columns:44px 1fr; gap:12px; padding:14px 0; border-top:1px solid var(--linie-dunkel); font-size:16px; line-height:1.5;"><span style="color:var(--rot-text); font-weight:600;">01</span>Projektstand live - von der Planung über den Dreh bis zur Lieferung</div>
+            <div style="display:grid; grid-template-columns:44px 1fr; gap:12px; padding:14px 0; border-top:1px solid var(--linie-dunkel); font-size:16px; line-height:1.5;"><span style="color:var(--rot-text); font-weight:600;">02</span>Termine und Dispo griffbereit - Drehtag, Startzeit und Ablaufplan an einem Ort</div>
+            <div style="display:grid; grid-template-columns:44px 1fr; gap:12px; padding:14px 0; border-top:1px solid var(--linie-dunkel); font-size:16px; line-height:1.5;"><span style="color:var(--rot-text); font-weight:600;">03</span>Freigaben direkt im Browser - immer die aktuelle Version, keine Mail-Ketten</div>
+            <div style="display:grid; grid-template-columns:44px 1fr; gap:12px; padding:14px 0; border-top:1px solid var(--linie-dunkel); font-size:16px; line-height:1.5;"><span style="color:var(--rot-text); font-weight:600;">04</span>Alle Inhalte im Überblick - fertige Reels und Fotos sortiert zum Download</div>
+            <div style="display:grid; grid-template-columns:44px 1fr; gap:12px; padding:14px 0; border-top:1px solid var(--linie-dunkel); font-size:16px; line-height:1.5;"><span style="color:var(--rot-text); font-weight:600;">05</span>Mitentscheiden - bei Casting und Locations direkt in der Plattform abstimmen</div>
+          </div>
+          <p style="font-size:15px; color:var(--grau-dunkel); margin:18px 0 0;">Ein Login ohne Passwort - und beide Seiten sehen immer denselben Stand.</p>
+        </div>
+        <div style="position:relative;">
+          <div style="position:absolute; z-index:1; left:9%; top:4.6%; width:82%; height:84.4%; background:var(--linie-dunkel); overflow:hidden;">
+            <!-- Das Poster ist exakt Bild 1 des Videos, gleiche 1280 x 720, damit der
+                 object-fit:cover-Ausschnitt identisch ist und beim Start nichts springt.
+                 Wer reduzierte Bewegung eingestellt hat oder im Datensparmodus surft,
+                 sieht nur dieses Poster, das Video wird dann gar nicht geladen. -->
+            <video id="plattform-video" src="assets/dailies/plattform-screen-01.mp4?v=4" poster="assets/dailies/plattform-screen-01-poster.jpg" muted loop playsinline preload="none" aria-label="Bildschirmaufnahme der Dailies Kundenplattform" style="width:100%; height:100%; object-fit:cover; display:block;"></video>
+          </div>
+          <img src="assets/macbook-frame.png" alt="" aria-hidden="true" width="1280" height="781" loading="lazy" style="position:relative; z-index:2; width:100%; height:auto; display:block; pointer-events:none;">
+        </div>
       </div>
     </div>
-    <div style="display:flex; height:6px">
-      <div style="flex:1; background:#FDFAF3"></div>
-      <div style="flex:1; background:#FFBD76"></div>
-      <div style="flex:1; background:#9FBCBF"></div>
-      <div style="flex:1; background:#003F47"></div>
-      <div style="flex:1; background:#16303A"></div>
-      <div style="flex:1; background:#0A171D"></div>
+  </section>
+
+  <section id="cases" aria-labelledby="cases-titel" data-readout="Clip 08 · Referenzen" data-screen-label="08 Referenzen">
+    <div class="wrap">
+      <div class="kicker" style="color:var(--grau-hell);"><i></i>Clip 08 · Referenzen</div>
+      <h2 id="cases-titel" class="plakat h2" style="margin:18px 0 44px;">Für wen wir schon gedreht haben.</h2>
+      <!-- Wird aus assets/config.js gerendert, neue Cases nur dort pflegen. Der Inhalt,
+           der hier schon im Markup steht, ist der Stand ohne JavaScript und deckt sich
+           1:1 mit dem, was das Skript zeichnet; beim Rendern wird er ersetzt. Ohne ihn
+           haetten Suchmaschinen und Link-Vorschauen keinen einzigen Referenznamen.
+           ACHTUNG, doppelte Pflege: Namen und Tags muessen zu assets/config.js passen. -->
+      <div data-cases style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap:28px;">
+        <div><h3 class="plakat" style="font-size:28px; line-height:1.1; margin:0 0 0; hyphens:manual;">F/LIST</h3><div style="display:inline-block; margin-top:10px; padding:4px 12px; border:1px solid #D83A2A; border-radius:999px; color:#D83A2A; font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;">Employer Brand</div></div>
+        <div><h3 class="plakat" style="font-size:28px; line-height:1.1; margin:0 0 0; hyphens:manual;">Sparkasse Oberösterreich</h3><div style="display:inline-block; margin-top:10px; padding:4px 12px; border:1px solid #D83A2A; border-radius:999px; color:#D83A2A; font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;">Brand</div></div>
+        <div><h3 class="plakat" style="font-size:28px; line-height:1.1; margin:0 0 0; hyphens:manual;">APG</h3><div style="display:inline-block; margin-top:10px; padding:4px 12px; border:1px solid #D83A2A; border-radius:999px; color:#D83A2A; font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;">Brand</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="team" aria-labelledby="team-titel" class="sec-dunkel" data-readout="Clip 08 · Wer dahintersteht" data-screen-label="08 Team">
+    <div class="wrap" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap:64px; align-items:center;">
+      <div style="max-width:400px; width:100%; justify-self:center;">
+        <div style="position:relative;">
+          <div style="aspect-ratio:4/5; border-radius:20px; overflow:hidden; background:var(--linie-dunkel);"><img src="assets/alex-gruber.jpg?v=2" alt="Alex Gruber, WEXPLORE Productions" width="970" height="1212" loading="lazy" style="width:100%; height:100%; object-fit:cover; display:block;"></div>
+          <div aria-hidden="true" style="position:absolute; top:33%; height:34%; left:-18px; width:14px; border:3px solid var(--rot); border-right:none;"></div>
+          <div aria-hidden="true" style="position:absolute; top:33%; height:34%; right:-18px; width:14px; border:3px solid var(--rot); border-left:none;"></div>
+        </div>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:18px;">
+        <h2 id="team-titel" class="kicker" style="margin:0; font-weight:400; color:var(--grau-dunkel);"><i></i>Wer dahintersteht</h2>
+        <blockquote style="margin:0; font-size:clamp(20px, 2.2vw, 28px); font-weight:300; line-height:1.45; text-wrap:pretty;">„Ich höre in fast jedem Gespräch mit kleineren Betrieben dasselbe: Es gäbe genug zu erzählen, aber niemand hat Zeit, jede Woche eine Produktion anzuschieben. Genau diese Aufgabe nehmen wir ab."</blockquote>
+        <div>
+          <div style="font-weight:700; font-size:16px;">Alex Gruber · WEXPLORE Productions</div>
+          <div style="font-size:15px; color:var(--grau-dunkel); margin-top:4px;">Videoproduktion aus Linz</div>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; align-items:center; gap:10px; font-size:13px; color:var(--grau-dunkel);">powered by <img src="assets/wexplore-productions-light.png" alt="WEXPLORE Productions" width="700" height="41" loading="lazy" style="height:auto; width:auto; max-height:18px; max-width:100%;"></div>
+        <button type="button" class="btn btn--rot" style="align-self:flex-start; margin-top:8px;" data-flow-start="kontakt">Eure Content-Ideen entdecken</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" aria-labelledby="faq-titel" data-readout="Clip 09 · FAQ" data-screen-label="09 FAQ" style="border-bottom:1px solid #ddd;">
+    <div class="wrap">
+      <div class="kicker" style="color:var(--grau-hell);"><i></i>Clip 09 · FAQ</div>
+      <h2 id="faq-titel" class="plakat h2" style="margin:18px 0 0;">Häufige Fragen</h2>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap:0 48px; align-items:start; margin-top:40px;">
+        <details class="faq-item" open><summary><span>Was ist im Abo enthalten?</span><span aria-hidden="true">+</span></summary><p>Planung, Drehtag, Postproduktion und Übergabe. Pro Quartal mindestens 13 Reels plus Fotoset, abgestimmt auf die Kanäle, die ihr wirklich bespielt.</p></details>
+        <details class="faq-item"><summary><span>Müssen wir Themen und Skripte selbst liefern?</span><span aria-hidden="true">+</span></summary><p>Nein. Der Themenplan kommt von uns, ihr streicht und ergänzt. Skripte gibt es nur dort, wo sie nötig sind - meistens reichen Leitfragen.</p></details>
+        <details class="faq-item"><summary><span>Wie viel Zeit kostet uns das intern?</span><span aria-hidden="true">+</span></summary><p>Ein Planungscall pro Quartal, der Drehtag selbst und eine Freigaberunde. Alles dazwischen liegt bei uns. Freigaben und Übersicht laufen über die Kundenplattform, ihr braucht dafür kein eigenes Tool.</p></details>
+        <details class="faq-item"><summary><span>Für welche Kanäle produziert ihr?</span><span aria-hidden="true">+</span></summary><p>Instagram, LinkedIn, TikTok, YouTube und Website. Formate und Crops sind beim Dreh bereits mitgedacht.</p></details>
+        <details class="faq-item"><summary><span>Übernehmt ihr auch Publishing und Community Management?</span><span aria-hidden="true">+</span></summary><p>Publishing ist als Zusatzmodul möglich und wird im Scope einzeln vereinbart. Community Management gehört nicht zum Standardumfang.</p></details>
+        <details class="faq-item"><summary><span>Warum quartalsweise statt monatlich?</span><span aria-hidden="true">+</span></summary><p>Ein gebündelter Drehtag pro Quartal ist günstiger und störungsärmer als vier kleine Termine - und liefert trotzdem wöchentlichen Nachschub.</p></details>
+        <details class="faq-item"><summary><span>Was kostet Dailies für ein kleines Unternehmen?</span><span aria-hidden="true">+</span></summary><p>Der Einstieg liegt bei € 1.290 netto pro Monat, verrechnet werden € 3.870 pro Quartal. Der genaue Umfang steht vor Start als schriftliche Assetliste fest.</p></details>
+        <!-- Preis oben: Paket Start aus assets/config.js. Bei jeder Preisaenderung dort
+             muss dieser Satz und die Liste [data-table-fallback] mitgezogen werden. -->
+        <details class="faq-item"><summary><span>Für welche Unternehmen in Oberösterreich passt das?</span><span aria-hidden="true">+</span></summary><p>Betriebe mit laufendem Content-Bedarf und kleinem oder gar keinem Marketing-Team. Besonders gut passt es bei eigentümergeführten Unternehmen und Industriebetrieben.</p></details>
+        <details class="faq-item"><summary><span>Was ist nicht enthalten?</span><span aria-hidden="true">+</span></summary><p>Mediabudget, Schauspiel, aufwendige Sets, Drohnengenehmigungen und Reisekosten außerhalb Oberösterreichs.</p></details>
+        <details class="faq-item"><summary><span>Wie lange läuft das Abo?</span><span aria-hidden="true">+</span></summary><p>Ein Jahr, also vier Drehtage. Danach verlängert es sich quartalsweise, solange ihr wollt.</p></details>
+        <details class="faq-item"><summary><span>Wem gehören die Nutzungsrechte?</span><span aria-hidden="true">+</span></summary><p>Euch. Zeitlich und räumlich unbeschränkt für alle fertigen Videos und Fotos, Rohmaterial auf Anfrage.</p></details>
+      </div>
+    </div>
+  </section>
+
+  </main>
+
+  <footer data-readout="Clip 09 · Ende" data-screen-label="09 Ende" style="background:#000; color:#fff; padding:64px 40px 40px;">
+    <div class="wrap" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap:36px;">
+      <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="display:flex; align-items:center; gap:10px;"><div style="width:14px; height:14px; border-radius:50%; background:var(--rot);"></div><span class="plakat" style="font-size:34px; line-height:1;">Dailies</span></div>
+        <a href="https://wexplore.at" target="_blank" rel="noopener" style="display:flex; flex-wrap:wrap; align-items:center; gap:10px; font-size:13px; color:var(--grau-dunkel);">powered by <img src="assets/wexplore-productions-light.png" alt="WEXPLORE Productions" width="700" height="41" loading="lazy" style="height:auto; width:auto; max-height:18px; max-width:100%;"></a>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:8px; font-size:15px;">
+        <a href="mailto:office@wexplore.at">office@wexplore.at</a>
+        <a href="tel:+436763311100">+43 676 33 11 100</a>
+        <span style="color:var(--grau-dunkel);">Klammstraße 3/1, 4020 Linz</span>
+      </div>
+      <nav aria-label="Sektionen" style="display:flex; flex-direction:column; gap:8px; font-size:15px;">
+        <a href="#ablauf">Ablauf</a>
+        <a href="#pakete">Pakete</a>
+        <a href="#cases">Referenzen</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <nav aria-label="Rechtliches" style="display:flex; flex-direction:column; gap:8px; font-size:15px; color:var(--grau-dunkel);">
+        <a href="https://www.wexplore.at/impressum" target="_blank" rel="noopener">Impressum</a>
+        <a href="https://www.wexplore.at/datenschutz" target="_blank" rel="noopener">Datenschutz</a>
+      </nav>
+    </div>
+    <div class="wrap" style="margin-top:48px; display:grid; grid-template-columns:repeat(6, 1fr); gap:6px;">
+      <div style="height:6px; border-radius:3px; background:var(--rot);"></div>
+      <div style="height:6px; border-radius:3px; background:#2e2d2d;"></div>
+      <div style="height:6px; border-radius:3px; background:#2e2d2d;"></div>
+      <div style="height:6px; border-radius:3px; background:#2e2d2d;"></div>
+      <div style="height:6px; border-radius:3px; background:#2e2d2d;"></div>
+      <div style="height:6px; border-radius:3px; background:#2e2d2d;"></div>
     </div>
   </footer>
 
-  <div data-sticky-cta="" style="position:fixed; right:24px; bottom:24px; z-index:75; display:flex; align-items:center; gap:14px; padding:10px 12px 10px 18px; border-radius:999px; background:#003F47; color:#FDFAF3; opacity:0; transform:translateY(12px); pointer-events:none; transition:opacity .3s ease, transform .3s ease">
-    <span style="font-family:'DM Mono',monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; white-space:nowrap">3 Plätze im Monat</span>
-    <button type="button" data-flow-start="sticky" style="border:0; cursor:pointer; display:inline-flex; align-items:center; height:40px; padding:0 20px; border-radius:999px; background:var(--accent, #FFBD76); color:#0A171D; font-weight:600; white-space:nowrap">Content-Ideen entdecken</button>
+  <div data-sticky-cta style="position:fixed; right:24px; bottom:24px; z-index:60; display:flex; align-items:center; gap:14px; padding:8px 8px 8px 18px; border-radius:10px; background:#000; color:#fff; box-shadow:0 8px 24px rgba(0,0,0,.3); opacity:0; transform:translateY(12px); pointer-events:none; transition:opacity .3s, transform .3s;">
+    <div style="width:8px; height:8px; border-radius:50%; background:var(--rot); animation:recblink 1.6s steps(1) infinite;"></div>
+    <span style="font-size:12px; letter-spacing:.14em; text-transform:uppercase;">Etwa 2 Minuten</span>
+    <button type="button" class="btn btn--rot btn--s" data-flow-start="sticky">Content-Ideen entdecken</button>
   </div>
+
 </div>
-
-<script>
-(function () {
-  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var pending = [];
-  var raf = null;
-
-  function reveal(el) {
-    el.style.opacity = "1";
-    el.style.transform = "none";
-  }
-
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      reveal(e.target);
-      io.unobserve(e.target);
-    });
-  }, { rootMargin: "0px 0px -8% 0px", threshold: 0.05 });
-
-  var countIo = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (!e.isIntersecting) return;
-      countIo.unobserve(e.target);
-      var target = parseInt(e.target.getAttribute("data-count"), 10) || 0;
-      var suffix = e.target.getAttribute("data-suffix") || "";
-      if (reduce) { e.target.textContent = target + suffix; return; }
-      var t0 = performance.now(), dur = 800;
-      function tick(now) {
-        var p = Math.min(1, (now - t0) / dur);
-        e.target.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + suffix;
-        if (p < 1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    });
-  }, { threshold: 0.6 });
-
-  if (!reduce) {
-    document.querySelectorAll("[data-label]").forEach(function (el) {
-      el.style.opacity = "0";
-      el.style.transform = "translateY(8px)";
-      el.style.transition = "opacity .4s cubic-bezier(.2,0,0,1), transform .4s cubic-bezier(.2,0,0,1)";
-      pending.push(el);
-      io.observe(el);
-    });
-  }
-  document.querySelectorAll("[data-count]").forEach(function (el) { countIo.observe(el); });
-
-  function onScroll() {
-    if (raf) return;
-    raf = requestAnimationFrame(function () {
-      raf = null;
-      var vh = window.innerHeight;
-
-      pending = pending.filter(function (el) {
-        var r = el.getBoundingClientRect();
-        if (r.top > vh * 0.94) return true;
-        reveal(el);
-        io.unobserve(el);
-        return false;
-      });
-
-      var max = document.documentElement.scrollHeight - vh;
-      var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
-      var fill = document.querySelector("[data-scrubfill]");
-      if (fill) fill.style.width = (p * 100).toFixed(2) + "%";
-      var tc = document.querySelector("[data-timecode]");
-      if (tc) {
-        var s = Math.round(p * 760);
-        var pad = function (n) { return String(n).padStart(2, "0"); };
-        tc.textContent = "00:" + pad(Math.floor(s / 60)) + ":" + pad(s % 60) + " / 00:12:40";
-      }
-
-      var read = document.querySelector("[data-section-readout]");
-      if (read) {
-        var label = "Clip 01 · Sichtung";
-        document.querySelectorAll("[data-screen-label]").forEach(function (sec) {
-          var r = sec.getBoundingClientRect();
-          if (r.top <= 140) label = sec.getAttribute("data-screen-label");
-        });
-        read.textContent = label;
-      }
-
-      if (!reduce) {
-        document.querySelectorAll("[data-drift]").forEach(function (el) {
-          var r = el.getBoundingClientRect();
-          if (r.bottom < -200 || r.top > vh + 200) return;
-          var rel = (r.top + r.height / 2 - vh / 2) / vh;
-          var amt = parseFloat(el.getAttribute("data-drift")) || 0;
-          el.style.transform = "translate3d(0," + (-rel * amt * vh).toFixed(1) + "px,0)";
-        });
-      }
-
-      var hero = document.querySelector("[data-hero]");
-      var cta = document.querySelector("[data-sticky-cta]");
-      if (hero && cta) {
-        var show = window.scrollY > hero.offsetHeight * 0.6;
-        cta.style.opacity = show ? "1" : "0";
-        cta.style.transform = show ? "none" : "translateY(12px)";
-        cta.style.pointerEvents = show ? "auto" : "none";
-      }
-    });
-  }
-
-  window.addEventListener("scroll", onScroll, { passive: true });
-  window.addEventListener("resize", onScroll);
-  onScroll();
-
-})();
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  var table = document.querySelector('[data-table]');
-  if (!table) return;
-  var cells = Array.prototype.slice.call(table.querySelectorAll('.pk'));
-  function setHl(col) {
-    cells.forEach(function (c) { c.classList.toggle('hl', c.classList.contains('pk-' + col)); });
-  }
-  ['start', 'grow', 'scale'].forEach(function (col) {
-    cells.filter(function (c) { return c.classList.contains('pk-' + col); }).forEach(function (c) {
-      c.addEventListener('mouseenter', function () { setHl(col); });
-    });
-  });
-  table.addEventListener('mouseleave', function () { setHl('grow'); });
-});
-</script>
-<script>
-(function () {
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  var icons = [];
-  document.querySelectorAll('.app, .chip').forEach(function (el, i) {
-    icons.push({ el: el, tx: 0, ty: 0, vx: 0, vy: 0, phase: i * 1.3 });
-  });
-  if (!icons.length) return;
-  var mx = -9999, my = -9999;
-  window.addEventListener('pointermove', function (e) { mx = e.clientX; my = e.clientY; }, { passive: true });
-  document.addEventListener('pointerleave', function () { mx = -9999; my = -9999; });
-
-  var R = 140;      // Fluchtradius in px
-  var PUSH = 4.2;   // Fluchtkraft
-  var SPRING = 0.014, DAMP = 0.86, MAX = 420;
-  var t = 0;
-
-  function step() {
-    t += 0.016;
-    icons.forEach(function (o) {
-      var r = o.el.getBoundingClientRect();
-      var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-      var dx = cx - mx, dy = cy - my;
-      var d = Math.hypot(dx, dy);
-      if (d < R && d > 0.001) {
-        var f = (1 - d / R) * PUSH;
-        o.vx += dx / d * f;
-        o.vy += dy / d * f;
-      }
-      o.vx += -o.tx * SPRING;
-      o.vy += -o.ty * SPRING;
-      o.vx *= DAMP; o.vy *= DAMP;
-      o.tx = Math.max(-MAX, Math.min(MAX, o.tx + o.vx));
-      o.ty = Math.max(-MAX, Math.min(MAX, o.ty + o.vy));
-      var bob = Math.sin(t + o.phase) * 5;
-      o.el.style.transform = 'translate(' + o.tx.toFixed(2) + 'px,' + (o.ty + bob).toFixed(2) + 'px) rotate(var(--r, 0deg))';
-    });
-    requestAnimationFrame(step);
-  }
-  requestAnimationFrame(step);
-})();
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-  var table = document.querySelector('[data-table]');
-  var tabs = document.querySelectorAll('.plan-tabs button');
-  if (!table || !tabs.length) return;
-  tabs.forEach(function (b) {
-    b.addEventListener('click', function () {
-      var col = b.getAttribute('data-plan');
-      table.setAttribute('data-plan', col);
-      tabs.forEach(function (x) { x.classList.toggle('active', x === b); });
-      table.querySelectorAll('.pk').forEach(function (c) { c.classList.toggle('hl', c.classList.contains('pk-' + col)); });
-    });
-  });
-});
-</script>
-<script>
-(function () {
-  var video = document.getElementById('plattform-video');
-  if (!video || !('IntersectionObserver' in window)) return;
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var io = new IntersectionObserver(function (entries) {
-    entries.forEach(function (e) {
-      if (e.isIntersecting) {
-        if (reduce) { video.preload = 'metadata'; video.load(); }
-        else { video.play().catch(function () {}); }
-      } else if (!video.paused) {
-        video.pause();
-      }
-    });
-  }, { threshold: 0.25 });
-  io.observe(video);
-})();
-</script>
 <!--
   LEAD-MAGNET-FLOW "Content-Ideen entdecken"
 
@@ -873,7 +773,7 @@ document.addEventListener('DOMContentLoaded', function () {
         <span class="fl-phase" data-phase="idee">Idee</span>
         <span class="fl-phase" data-phase="bewerbung">Bewerbung</span>
       </div>
-      <button type="button" class="fl-x" data-flow-close>Schliessen</button>
+      <button type="button" class="fl-x" data-flow-close>Schließen</button>
     </div>
   </div>
   <div class="fl-bar" aria-hidden="true"><i data-flow-bar></i></div>
@@ -890,13 +790,319 @@ document.addEventListener('DOMContentLoaded', function () {
 
   <div class="fl-foot">
     <div class="fl-footrow">
-      <button type="button" class="fl-back" data-flow-back>Zurueck</button>
+      <button type="button" class="fl-back" data-flow-back>Zurück</button>
       <button type="button" class="fl-next" data-flow-next>Weiter</button>
     </div>
   </div>
   <p class="sr-only" aria-live="polite" data-flow-live></p>
 </div>
+<script>
+/* Preistabelle aus assets/config.js. Preise und Merkmale werden nur dort gepflegt.
+   Die Spalte unter dem Mauszeiger hebt sich hervor, mobil schalten Tabs um. */
+function bereit(fn) {
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", fn);
+  else fn();
+}
+bereit(function () {
+  var table = document.querySelector("[data-table]");
+  var tabsBox = document.querySelector("[data-plan-tabs]");
+  if (!table || !window.DAILIES || !window.DAILIES.pricing) return;
+  var P = window.DAILIES.pricing;
+  var plans = P.plans || [];
+  var labels = P.featureLabels || [];
+  if (!plans.length) return;
 
+  var gewaehlt = (plans.filter(function (p) { return p.highlighted; })[0] || plans[0]).id;
+  var aktiv = gewaehlt;
+  var schmal = window.matchMedia("(max-width: 900px)");
+
+  function look(id) {
+    var on = id === aktiv;
+    return {
+      bg: on ? "#201f1f" : "transparent", fg: on ? "#fff" : "#000",
+      sub: on ? "#bdbdbd" : "#4a4a4a", line: on ? "#3a3a3a" : "#eee",
+      note: on ? "#E8483A" : "#D83A2A", bar: on ? "#E8483A" : "transparent",
+      btnBg: on ? "#D83A2A" : "transparent", btnFg: on ? "#fff" : "#000", btnLine: on ? "#D83A2A" : "#000"
+    };
+  }
+  function wert(v) { return v === true ? "✓" : v === false ? "–" : v; }
+  function esc(t) {
+    return String(t == null ? "" : t).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  // Scale fuehrt ein eigenes Gespraech, alle anderen starten die Umfrage.
+  function cta(p) {
+    var l = (p.cta && p.cta.label) || "Content-Ideen entdecken";
+    var s = look(p.id);
+    // In der schmalen Spalte darf die Beschriftung umbrechen, statt aus dem Knopf zu laufen.
+    var mass = schmal.matches ? 'min-height:48px; padding:12px 10px; line-height:1.25;' : 'height:48px;';
+    var stil = mass + ' border-radius:6px; display:flex; align-items:center; justify-content:center; font-weight:600; font-size:15px; text-align:center; width:100%; box-sizing:border-box; cursor:pointer; font-family:inherit; background:' + s.btnBg + '; color:' + s.btnFg + '; border:1px solid ' + s.btnLine + ';';
+    if (/scope/i.test(l)) return '<a href="' + esc((p.cta && p.cta.href) || "#") + '" style="' + stil + '">' + esc(l) + "</a>";
+    return '<button type="button" data-flow-start="paket-' + esc(p.id) + '" style="' + stil + '">Content-Ideen entdecken</button>';
+  }
+
+  function zeichnen() {
+    var eng = schmal.matches;
+    var sichtbar = eng ? plans.filter(function (p) { return p.id === aktiv; }) : plans;
+    // Im Zweispalten-Modus muss die min-width aus dem Markup weg, sonst liegen
+    // Preis, Merkmale und CTA rechts ausserhalb des Bildschirms.
+    table.style.minWidth = eng ? "0" : "860px";
+    table.style.gridTemplateColumns = eng ? "minmax(0,.85fr) minmax(0,1.15fr)" : "1.1fr repeat(3, minmax(0,1fr))";
+    var pKopf  = eng ? "18px 14px 16px" : "24px 22px 20px";
+    var pLabel = eng ? "16px 14px" : "20px 22px 20px 26px";
+    var pWert  = eng ? "16px 14px" : "20px 22px";
+    var pZeilL = eng ? "12px 14px" : "14px 22px 14px 26px";
+    var pZeilW = eng ? "12px 14px" : "14px 22px";
+    var pCta   = eng ? "16px 14px" : "22px";
+    // Lange Begriffe und Preise duerfen in den schmalen Spalten brechen.
+    var brich  = "hyphens:auto; overflow-wrap:anywhere;";
+    var gPreis = eng ? "30px" : "34px";
+    var h = '<div style="border-bottom:1px solid #e2e2e2;"></div>';
+    sichtbar.forEach(function (p) {
+      var s = look(p.id);
+      h += '<div class="pk" data-col="' + esc(p.id) + '" style="padding:' + pKopf + '; ' + brich + ' background:' + s.bg + '; color:' + s.fg + '; border-top:4px solid ' + s.bar + '; border-bottom:1px solid ' + s.line + ';">' +
+        '<div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:8px;">' +
+        '<span class="plakat" style="font-size:28px; line-height:1;">' + esc(p.name) + "</span>" +
+        (p.highlighted ? '<span style="display:flex; align-items:center; gap:6px; font-size:12px; letter-spacing:.14em; text-transform:uppercase;"><span style="width:7px; height:7px; border-radius:50%; background:#E8483A;"></span>Empfohlen</span>' : "") +
+        "</div>" +
+        '<div style="font-size:15px; color:' + s.sub + '; margin-top:6px;">' + esc(p.tagline) + "</div></div>";
+    });
+    h += '<div style="padding:' + pLabel + '; ' + brich + ' border-bottom:1px solid #e2e2e2; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:#6f6f6f; display:flex; align-items:center;">Preis</div>';
+    sichtbar.forEach(function (p) {
+      var s = look(p.id);
+      h += '<div class="pk" data-col="' + esc(p.id) + '" style="padding:' + pWert + '; ' + brich + ' background:' + s.bg + '; color:' + s.fg + '; border-bottom:1px solid ' + s.line + ';">' +
+        '<div style="display:flex; flex-wrap:wrap; align-items:baseline; gap:6px;"><span class="plakat" style="font-size:' + gPreis + '; line-height:1;">' + esc(p.price) + '</span><span style="font-size:15px; color:' + s.sub + ';">/ Monat</span></div>' +
+        '<div style="font-size:13px; color:' + s.sub + '; margin-top:6px;">' + esc(p.priceSub) + "</div>" +
+        (p.priceNote ? '<div style="font-size:13px; color:' + s.note + '; margin-top:3px; font-weight:600;">' + esc(p.priceNote) + "</div>" : "") + "</div>";
+    });
+    labels.forEach(function (label, i) {
+      h += '<div style="padding:' + pZeilL + '; ' + brich + ' border-bottom:1px solid #eee; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#6b6b6b; display:flex; align-items:center;">' + esc(label) + "</div>";
+      sichtbar.forEach(function (p) {
+        var s = look(p.id);
+        h += '<div class="pk" data-col="' + esc(p.id) + '" style="padding:' + pZeilW + '; ' + brich + ' font-size:15px; line-height:1.4; background:' + s.bg + '; color:' + s.fg + '; border-bottom:1px solid ' + s.line + ';">' + esc(wert((p.features || [])[i])) + "</div>";
+      });
+    });
+    h += "<div></div>";
+    sichtbar.forEach(function (p) {
+      h += '<div class="pk" data-col="' + esc(p.id) + '" style="padding:' + pCta + '; background:' + look(p.id).bg + ';">' + cta(p) + "</div>";
+    });
+    // Die Liste fuer den Fall ohne JavaScript hat jetzt ausgedient.
+    var fb = document.querySelector("[data-table-fallback]");
+    if (fb) fb.remove();
+    table.innerHTML = h;
+
+    if (!eng) {
+      table.querySelectorAll("[data-col]").forEach(function (el) {
+        el.addEventListener("mouseenter", function () {
+          var id = el.getAttribute("data-col");
+          if (id !== aktiv) { aktiv = id; zeichnen(); }
+        });
+      });
+      table.addEventListener("mouseleave", function () {
+        if (aktiv !== gewaehlt) { aktiv = gewaehlt; zeichnen(); }
+      }, { once: true });
+    }
+    verdrahten();
+  }
+
+  function tabs() {
+    if (!tabsBox) return;
+    tabsBox.innerHTML = plans.map(function (p) {
+      return '<button type="button" role="tab" data-tab="' + esc(p.id) + '" class="' + (p.id === aktiv ? "active" : "") + '" aria-selected="' + (p.id === aktiv ? "true" : "false") + '">' + esc(p.name) + "</button>";
+    }).join("");
+    tabsBox.querySelectorAll("[data-tab]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        aktiv = gewaehlt = b.getAttribute("data-tab");
+        tabs(); zeichnen();
+      });
+    });
+  }
+
+  function verdrahten() {
+    // Die CTAs in der Tabelle entstehen neu bei jedem Zeichnen und brauchen ihren Hook zurueck.
+    if (typeof window.dailiesFlowBind === "function") window.dailiesFlowBind();
+  }
+
+  tabs(); zeichnen();
+  if (schmal.addEventListener) schmal.addEventListener("change", function () { tabs(); zeichnen(); });
+});
+</script>
+
+<script>
+/* Cases aus assets/config.js. Leere Felder erzeugen keinen Leertext. */
+bereit(function () {
+  var grid = document.querySelector("[data-cases]");
+  if (!grid || !window.DAILIES || !Array.isArray(window.DAILIES.cases)) return;
+  function esc(t) {
+    return String(t == null ? "" : t).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+  grid.innerHTML = window.DAILIES.cases.map(function (c) {
+    var medium = c.video
+      ? '<video src="' + esc(c.video) + '" muted loop playsinline preload="none" style="width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:12px; display:block;"></video>'
+      : c.image
+        ? '<img src="' + esc(c.image) + '" alt="' + esc(c.name) + '" loading="lazy" style="width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:12px; display:block;">'
+        : "";   // ohne Bild und Video bleibt die saubere Referenzliste aus Name und Tag
+    var t = (c.text || "").trim();
+    var text = t && t !== "[TEXT FOLGT]" ? '<p style="margin:12px 0 0; font-size:15px; line-height:1.55; color:#4a4a4a;">' + esc(t) + "</p>" : "";
+    var q = c.testimonial && (c.testimonial.quote || "").trim();
+    var zitat = q ? '<blockquote style="margin:14px 0 0; font-size:15px; line-height:1.55; font-style:italic;">' + esc(q) + '</blockquote><div style="margin-top:6px; font-size:14px; color:#6f6f6f;">' + esc([c.testimonial.name, c.testimonial.role].filter(Boolean).join(" · ")) + "</div>" : "";
+    return "<div>" + medium +
+      '<h3 class="plakat" style="font-size:28px; line-height:1.1; margin:' + (medium ? "18px" : "0") + ' 0 0; hyphens:manual;">' + esc(c.name) + "</h3>" +
+      (c.tag ? '<div style="display:inline-block; margin-top:10px; padding:4px 12px; border:1px solid #D83A2A; border-radius:999px; color:#D83A2A; font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;">' + esc(c.tag) + "</div>" : "") +
+      text + zitat + "</div>";
+  }).join("");
+});
+</script>
+
+<script>
+/* Scrubber-Leiste, Sticky-CTA, schwebende Icons und das Plattform-Video. */
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var tc = document.querySelector("[data-timecode]");
+  var fill = document.querySelector("[data-scrubfill]");
+  var read = document.querySelector("[data-section-readout]");
+  var cta = document.querySelector("[data-sticky-cta]");
+  var hero = document.querySelector("[data-hero]");
+  var pad = function (n) { return String(n).padStart(2, "0"); };
+  // Unter 640px zeigt die Leiste die kurzen data-screen-label-Werte,
+  // sonst bricht sie zwei- bis dreizeilig um.
+  var kurz = window.matchMedia("(max-width: 640px)");
+  var raf = null;
+
+  function onScroll() {
+    if (raf) return;
+    raf = requestAnimationFrame(function () {
+      raf = null;
+      var se = document.scrollingElement || document.documentElement;
+      var max = se.scrollHeight - window.innerHeight;
+      var p = max > 0 ? Math.min(1, Math.max(0, se.scrollTop / max)) : 0;
+      if (fill) fill.style.width = (p * 100).toFixed(2) + "%";
+      if (tc) { var s = Math.round(p * 760); tc.textContent = "00:" + pad(Math.floor(s / 60)) + ":" + pad(s % 60); }
+      if (read) {
+        var attr = kurz.matches ? "data-screen-label" : "data-readout";
+        var label = kurz.matches ? "01 Sichtung" : "Clip 01 · Sichtung";
+        document.querySelectorAll("[data-readout]").forEach(function (sec) {
+          if (!sec.getClientRects().length) return;   // ausgeblendete Sektionen zaehlen nicht mit
+          if (sec.getBoundingClientRect().top <= 140) label = sec.getAttribute(attr) || sec.getAttribute("data-readout");
+        });
+        read.textContent = label;
+      }
+      if (hero && cta) {
+        var show = se.scrollTop > hero.offsetHeight * 0.6;
+        cta.style.opacity = show ? "1" : "0";
+        cta.style.transform = show ? "none" : "translateY(12px)";
+        cta.style.pointerEvents = show ? "auto" : "none";
+      }
+    });
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  onScroll();
+
+  // Positionen der schwebenden Icons je Breite, damit sie den Text nicht ueberdecken.
+  var floats = hero ? Array.prototype.slice.call(hero.querySelectorAll("[data-float]")) : [];
+  // Auf dem Telefon sitzen die Icons in den Randzonen ueber und unter dem Text,
+  // sonst liegen sie auf Kicker, Headline und Buttons. Facebook entfaellt dort,
+  // vier Icons fuellen die beiden Zonen bereits aus.
+  var posEng = [
+    { top: "22px", right: "14px" },
+    { bottom: "26px", left: "14px" },
+    null,
+    { top: "22px", left: "14px" },
+    { bottom: "26px", right: "14px" }
+  ];
+  var posWeit = [
+    { top: "11%", right: "12%" },
+    { top: "46%", left: "10%" },
+    { top: "74%", left: "15%" },
+    { top: "13%", left: "12%" },
+    { top: "44%", right: "11%" }
+  ];
+  function fit() {
+    var w = window.innerWidth, tiny = w < 900, narrow = w < 1100;
+    floats.forEach(function (el, i) {
+      if (i === 5) { el.style.display = narrow ? "none" : "flex"; return; }
+      var pos = (tiny ? posEng : posWeit)[i];
+      if (!pos) { el.style.display = "none"; return; }
+      el.style.display = "";
+      el.style.width = el.style.height = tiny ? "44px" : "66px";
+      el.style.top = pos.top || "auto";
+      el.style.bottom = pos.bottom || "auto";
+      el.style.left = pos.left || "auto";
+      el.style.right = pos.right || "auto";
+    });
+  }
+  fit();
+  window.addEventListener("resize", fit);
+
+  // Icons weichen dem Mauszeiger aus und schwingen zurueck.
+  if (!reduce && floats.length) {
+    // Ohne Mauszeiger gibt es nichts auszuweichen. Dann entfallen die fuenf
+    // getBoundingClientRect-Abfragen pro Frame, auf dem Telefon bleibt das Wippen.
+    var zeiger = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    var icons = floats.map(function (el, i) {
+      return { el: el, r: parseFloat(el.dataset.r) || 0, tx: 0, ty: 0, vx: 0, vy: 0, phase: i * 1.3 };
+    });
+    var mx = -9999, my = -9999;
+    if (zeiger) {
+      window.addEventListener("pointermove", function (e) { mx = e.clientX; my = e.clientY; }, { passive: true });
+      document.addEventListener("pointerleave", function () { mx = -9999; my = -9999; });
+    }
+    var R = 140, PUSH = 4.2, SPRING = 0.014, DAMP = 0.86, MAX = 420, t = 0;
+    var imBild = true, laeuft = false, vorher = 0;
+    var step = function (jetzt) {
+      // Echte Zeitdifferenz, damit 120-Hz-Displays nicht doppelt so schnell wippen.
+      t += vorher ? Math.min(0.05, (jetzt - vorher) / 1000) : 0.016;
+      vorher = jetzt;
+      icons.forEach(function (o) {
+        if (zeiger) {
+          var b = o.el.getBoundingClientRect();
+          var dx = b.left + b.width / 2 - mx, dy = b.top + b.height / 2 - my, d = Math.hypot(dx, dy);
+          if (d < R && d > 0.001) { var f = (1 - d / R) * PUSH; o.vx += dx / d * f; o.vy += dy / d * f; }
+          o.vx += -o.tx * SPRING; o.vy += -o.ty * SPRING;
+          o.vx *= DAMP; o.vy *= DAMP;
+          o.tx = Math.max(-MAX, Math.min(MAX, o.tx + o.vx));
+          o.ty = Math.max(-MAX, Math.min(MAX, o.ty + o.vy));
+        }
+        var bob = Math.sin(t + o.phase) * 5;
+        o.el.style.transform = "translate(" + o.tx.toFixed(2) + "px," + (o.ty + bob).toFixed(2) + "px) rotate(" + o.r + "deg)";
+      });
+      if (imBild) requestAnimationFrame(step);
+      else { laeuft = false; vorher = 0; }
+    };
+    var starten = function () { if (!laeuft) { laeuft = true; vorher = 0; requestAnimationFrame(step); } };
+    // Ist der Hero aus dem Bild gescrollt, ruht die Schleife. Sonst laeuft sie
+    // ueber die ganze Sitzung gegen den Scroll-Handler.
+    if (hero && "IntersectionObserver" in window) {
+      new IntersectionObserver(function (e) {
+        imBild = e[0].isIntersecting;
+        if (imBild) starten();
+      }).observe(hero);
+    }
+    starten();
+  }
+
+  // Das Plattform-Video laedt und spielt erst, wenn es sichtbar ist.
+  // Wer reduzierte Bewegung eingestellt hat, bekommt ohnehin kein play() - dann
+  // waeren die geladenen Megabyte reine Verschwendung. Dasselbe gilt im
+  // Datensparmodus. In beiden Faellen bleibt es beim Poster.
+  var v = document.getElementById("plattform-video");
+  var sparen = !!(navigator.connection && navigator.connection.saveData);
+  if (v && !reduce && !sparen && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (eintraege) {
+      eintraege.forEach(function (e) {
+        if (e.isIntersecting) {
+          if (v.preload !== "auto") { v.preload = "auto"; v.load(); }
+          v.play().catch(function () {});
+        } else { v.pause(); }
+      });
+    }, { threshold: 0.25 }).observe(v);
+  }
+})();
+</script>
 <script>
 /*
   LEAD-MAGNET-FLOW
@@ -1110,7 +1316,7 @@ document.addEventListener('DOMContentLoaded', function () {
           '<textarea class="fl-ta" id="fl-unt" maxlength="200" placeholder="z. B. Wir fertigen Blechteile für den Maschinenbau, hauptsächlich für Kunden in Österreich und Süddeutschland.">' + esc(S.unternehmen) + "</textarea>" +
           '<p class="fl-meta"><span data-zaehler></span> von 200 Zeichen</p></div>' +
           '<div class="fl-field"><label class="fl-lab" for="fl-web">Website (optional)</label>' +
-          '<input class="fl-in" id="fl-web" type="text" inputmode="url" placeholder="beispiel.at" value="' + esc(S.website) + '"></div>';
+          '<input class="fl-in" id="fl-web" type="text" inputmode="url" autocomplete="url" autocapitalize="none" autocorrect="off" spellcheck="false" placeholder="beispiel.at" value="' + esc(S.website) + '"></div>';
       },
       bind: function (root) {
         var ta = root.querySelector("#fl-unt"), z = root.querySelector("[data-zaehler]");
@@ -1165,7 +1371,7 @@ document.addEventListener('DOMContentLoaded', function () {
           '<div class="fl-field" style="margin-top:0"><label class="fl-lab" for="fl-ort">Ort oder Postleitzahl</label>' +
           '<input class="fl-in" id="fl-ort" type="text" placeholder="4020 Linz" value="' + esc(S.ort) + '"></div>' +
           '<div class="fl-field" style="margin-top:0"><label class="fl-lab" for="fl-land">Bundesland</label>' +
-          '<input class="fl-in" id="fl-land" type="text" placeholder="wird ergänzt" value="' + esc(S.bundesland) + '">' +
+          '<input class="fl-in" id="fl-land" type="text" autocomplete="address-level1" placeholder="wird ergänzt" value="' + esc(S.bundesland) + '">' +
           '<p class="fl-meta">Wird aus der Postleitzahl ergänzt und lässt sich überschreiben.</p></div></div>' +
           '<div class="fl-field"><label class="fl-lab" for="fl-gr">Unternehmensgröße</label>' +
           '<select class="fl-sel" id="fl-gr"><option value="">Bitte wählen</option>' +
@@ -1205,7 +1411,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     { id: "bewerbung", phase: "bewerbung",
       frage: "Möchtet ihr diese Ideen mit uns ausprobieren?",
-      weiter: "Bewerbung unverbindlich absenden",
+      weiter: "Bewerbung absenden",
       html: function () {
         // Bewusst nur drei Pflichtfelder. Alles Weitere steht hinter "Optional ergaenzen",
         // damit der letzte Schritt vor dem Absenden leicht bleibt.
@@ -1218,7 +1424,7 @@ document.addEventListener('DOMContentLoaded', function () {
           '<div class="fl-field" style="margin-top:0"><label class="fl-lab" for="fl-tel">Telefon</label><input class="fl-in" id="fl-tel" type="tel" autocomplete="tel" value="' + esc(K.telefon) + '"></div></div>' +
           '<div class="fl-field"><label class="fl-lab" for="fl-err2">Wann erreichen wir euch am besten?</label><select class="fl-sel" id="fl-err2"><option value="">Keine Angabe</option><option' + (K.erreichbar === "Vormittags" ? " selected" : "") + '>Vormittags</option><option' + (K.erreichbar === "Nachmittags" ? " selected" : "") + '>Nachmittags</option></select></div></details>' +
           '<div class="fl-field"><label style="display:flex; gap:10px; align-items:flex-start; line-height:1.45; font-size:15px"><input type="checkbox" id="fl-optin" style="margin-top:3px"' + (K.optin ? " checked" : "") + '><span>Ihr dürft uns gelegentlich Beispiele schicken. Für die Bewerbung nicht nötig.</span></label></div>' +
-          '<p class="fl-meta" style="margin-top:16px"><strong>Noch kein Termin und kein Abo.</strong> Zur Verarbeitung eurer Angaben: <a href="#datenschutz" style="color:#0A171D">Datenschutzerklärung</a>.</p>';
+          '<p class="fl-meta" style="margin-top:16px"><strong>Noch kein Termin und kein Abo.</strong> Zur Verarbeitung eurer Angaben: <a href="https://www.wexplore.at/datenschutz" target="_blank" rel="noopener" style="color:#0A171D">Datenschutzerklärung</a>.</p>';
       },
       bind: function (root) {
         track("lead_magnet_application_started", { ziel: S.ziel });
@@ -1309,15 +1515,15 @@ document.addEventListener('DOMContentLoaded', function () {
   function alsText() {
     var d = nutzlast(), r = richtung();
     return [
-      "Bewerbung fuer einen Probe-Content-Tag", "",
+      "Bewerbung für einen Probe-Content-Tag", "",
       "Ziel: " + r.ziel,
       "Unternehmen: " + d.unternehmen,
       "Website: " + (d.website || "keine Angabe"),
       "Antwort zum Ziel: " + d.zielAntwort,
-      "Moegliche Inhalte: " + d.inhalte.join(", "),
+      "Mögliche Inhalte: " + d.inhalte.join(", "),
       "Vor der Kamera: " + d.personen.join(", "),
       "Standort: " + d.ort + (d.bundesland ? " (" + d.bundesland + ")" : ""),
-      "Groesse: " + d.groesse, "",
+      "Größe: " + d.groesse, "",
       "Name: " + d.kontakt.name,
       "Firma: " + d.kontakt.firma,
       "Funktion: " + d.kontakt.funktion,
@@ -1398,11 +1604,18 @@ document.addEventListener('DOMContentLoaded', function () {
     if (vorherFokus && vorherFokus.focus) vorherFokus.focus();
   }
 
-  document.querySelectorAll("[data-flow-start]").forEach(function (b) {
-    b.addEventListener("click", function () {
-      oeffnen(b.getAttribute("data-flow-start"), b.getAttribute("data-ziel-cta") || "");
+  // Einstiege verdrahten. Wird auch von aussen aufgerufen, weil die CTAs der
+  // Preistabelle bei jedem Neuzeichnen neu entstehen.
+  window.dailiesFlowBind = function () {
+    document.querySelectorAll("[data-flow-start]").forEach(function (b) {
+      if (b.dataset.flowBound) return;
+      b.dataset.flowBound = "1";
+      b.addEventListener("click", function () {
+        oeffnen(b.getAttribute("data-flow-start"), b.getAttribute("data-ziel-cta") || "");
+      });
     });
-  });
+  };
+  window.dailiesFlowBind();
   ovl.querySelector("[data-flow-close]").addEventListener("click", schliessen);
 
   ovl.addEventListener("keydown", function (ev) {
@@ -1421,6 +1634,5 @@ document.addEventListener('DOMContentLoaded', function () {
   // Start bereits geladen (defer). Fehlt sie, greifen die Standardwerte.
   cfg = (window.DAILIES && window.DAILIES.flow) || {};
 })();
-</script>
-</body>
+</script></body>
 </html>

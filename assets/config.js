@@ -30,6 +30,10 @@ window.DAILIES = {
    * image: Pfad zu Thumbnail/Standbild (16:9). Leer = gestrichelter Platzhalter.
    * video: optionaler Pfad zu einem MP4 (ersetzt das Bild).
    * testimonial: { quote, name, role } - wird nur gerendert, wenn quote nicht leer ist.
+   *
+   * ACHTUNG, zweite Stelle: in index.html steht im <div data-cases> dieselbe Liste
+   * noch einmal als Markup, damit Suchmaschinen und Link-Vorschauen die Namen sehen.
+   * Wer hier einen Case ergaenzt, umbenennt oder entfernt, muss ihn dort mitziehen.
    */
   cases: [
     {
@@ -61,6 +65,17 @@ window.DAILIES = {
   /* ---------- Pricing (Sektion "Pakete") ----------
    * Werte 1:1 von der Live-Seite übernommen (Stand 23.09.2026).
    * Feature-Werte: String = Text, true = Häkchen, false = Strich.
+   *
+   * ACHTUNG, zwei weitere Stellen in index.html: die Liste [data-table-fallback]
+   * direkt über der Tabelle und die FAQ-Antwort "Was kostet Dailies für ein kleines
+   * Unternehmen?". Beide nennen Preise im Markup, damit Suchmaschinen und
+   * Link-Vorschauen sie überhaupt sehen. Jede Preisänderung hier muss dort mit.
+   *
+   * OFFEN, bitte klären: bei Start und Grow ist priceSub exakt das Dreifache von
+   * price (1.290 x 3 = 3.870, 2.690 x 3 = 8.070). Bei Scale ergibt 4.990 x 3 aber
+   * 14.970 und nicht die angegebenen 15.000. Entweder priceSub auf "€ 14.970 pro
+   * Quartal verrechnet" oder price auf "€ 5.000" - welche Zahl gilt, entscheidet
+   * WEXPLORE. Bis dahin bleiben beide Werte unverändert stehen.
    */
   pricing: {
     featureLabels: [
