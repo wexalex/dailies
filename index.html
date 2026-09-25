@@ -1250,6 +1250,12 @@ bereit(function () {
   function sichern() {
     try { sessionStorage.setItem(SPEICHER, JSON.stringify(S)); } catch (e) {}
   }
+  function merkeSchritt() {
+    try { sessionStorage.setItem(SPEICHER + "-schritt", String(idx)); } catch (e) {}
+  }
+  function gemerkterSchritt() {
+    try { return Math.max(0, parseInt(sessionStorage.getItem(SPEICHER + "-schritt"), 10) || 0); } catch (e) { return 0; }
+  }
   function laden() {
     try {
       var roh = sessionStorage.getItem(SPEICHER);
@@ -1705,6 +1711,7 @@ bereit(function () {
     elBody.scrollTop = 0;
     elQ.focus();
     elLive.textContent = standText() + ": " + elQ.textContent;
+    merkeSchritt();
     track("lead_magnet_step_viewed", { schritt: idx + 1, id: st.id });
   }
 
@@ -1799,7 +1806,8 @@ bereit(function () {
     }).then(function (r) {
       if (!r.ok) throw new Error("HTTP " + r.status);
       track("lead_magnet_application_submitted", { ziel: S.ziel });
-      try { sessionStorage.removeItem(SPEICHER); } catch (e) {}
+      try { sessionStorage.removeItem(SPEICHER); sessionStorage.removeItem(SPEICHER + "-schritt"); } catch (e) {}
+      idx = 0; stickyStand();
       ergebnis("Danke, eure Bewerbung ist bei uns.",
         "Wir schauen uns eure Angaben persönlich an. Wenn der Probe-Content-Tag zu eurem Unternehmen passt, melden wir uns mit einem Vorschlag für ein 30-minütiges Dailies-Briefing. In dem Gespräch holen wir das Detailbriefing ein und planen anschließend die Inhalte für den Probe-Tag.",
         '<p class="fl-meta" style="margin-top:16px">Ihr habt noch keinen Termin gebucht. Es entsteht auch keine Verpflichtung zu einem Dailies-Abo.</p>',
@@ -1817,8 +1825,14 @@ bereit(function () {
   function oeffnen(quelle, ziel) {
     // Kommt man ueber eine Zielkarte, ist die erste Frage schon beantwortet.
     // Sie noch einmal zu stellen, kostet einen Klick und wirkt, als waere die Wahl verloren gegangen.
+    var zielNeu = ziel && ziel !== S.ziel;
     if (ziel) { S.ziel = ziel; sichern(); }
-    idx = ziel ? schrittIndex("inhalte") : 0;
+    // Wer zwischendurch schliesst, etwa um die Preise anzusehen, landet wieder beim selben Schritt.
+    // Nie hinter einen Schritt, dessen Antwort fehlt.
+    var bis = zielNeu ? schrittIndex("inhalte") : Math.min(gemerkterSchritt(), SCHRITTE.length - 1);
+    if (ziel && !zielNeu) bis = Math.max(bis, schrittIndex("inhalte"));
+    idx = 0;
+    while (idx < bis && SCHRITTE[idx].gueltig()) idx++;
     offen = true;
     vorherFokus = document.activeElement;
     ovl.hidden = false;
@@ -1827,8 +1841,20 @@ bereit(function () {
     rendern();
     track("lead_magnet_started", { quelle: quelle || "unbekannt", ziel: S.ziel || null });
   }
+  var sticky = document.querySelector("[data-sticky-cta]");
+  var stickyKnopf = sticky && sticky.querySelector("[data-flow-start]");
+  var stickyText = sticky && sticky.querySelector("span");
+  var STICKY = { knopf: stickyKnopf ? stickyKnopf.textContent : "", text: stickyText ? stickyText.textContent : "" };
+  function stickyStand() {
+    if (!stickyKnopf) return;
+    var s = gemerkterSchritt();
+    stickyKnopf.textContent = s <= 0 ? STICKY.knopf : (s < schrittIndex("richtung") ? "Weiter bei euren Ideen" : "Weiter zur Bewerbung");
+    if (stickyText) stickyText.textContent = s <= 0 ? STICKY.text : "Eure Antworten sind noch da";
+  }
+
   function schliessen() {
     offen = false;
+    stickyStand();
     ovl.hidden = true;
     document.body.style.overflow = "";
     if (vorherFokus && vorherFokus.focus) vorherFokus.focus();
@@ -1860,6 +1886,7 @@ bereit(function () {
   });
 
   laden();
+  stickyStand();
   // Konfiguration liegt in assets/config.js unter window.DAILIES.flow und ist beim
   // Start bereits geladen (defer). Fehlt sie, greifen die Standardwerte.
   cfg = (window.DAILIES && window.DAILIES.flow) || {};
