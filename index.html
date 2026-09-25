@@ -4,12 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Die beiden Schnitte, die der Hero sofort braucht. Die URLs muessen exakt den
+<!-- Die drei Schnitte, die der Hero sofort braucht. Die URLs muessen exakt den
      src-Angaben der @font-face-Regeln weiter unten entsprechen (ohne ?v=), sonst
      laedt der Browser die Dateien zweimal. crossorigin ist auch bei gleicher
      Herkunft Pflicht, weil Schriften immer im CORS-Modus geholt werden.
-     Lt, Smbd und Bd folgen ueber die inline @font-face und brauchen kein preload. -->
+     Lt steht im Hero-Untertitel, dem LCP-Element am Handy (PageSpeed 25.09.2026:
+     1.450 ms Renderverzoegerung). Smbd und Bd folgen ueber die inline @font-face. -->
 <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/ESKlarheitPlakat-Xbd.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/ESKlarheitKurrent-Lt.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="assets/fonts/ESKlarheitKurrent-Rg.woff2">
 
 <title>Dailies - Social-Media-Content im Abo | WEXPLORE, Linz</title>
