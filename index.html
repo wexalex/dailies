@@ -304,6 +304,7 @@
   .fl-body { flex:1; overflow-y:auto; overscroll-behavior:contain; -webkit-overflow-scrolling:touch }
   .fl-inner { max-width:760px; margin:0 auto; padding:44px 24px 40px }
   .fl-count { font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-hell); margin:0 }
+  .fl-count::before { content:"\2713"; color:var(--rot-hell); font-weight:700; margin-right:8px; letter-spacing:0 }
   .fl-q { margin:14px 0 0; font-family:'ES Klarheit Plakat', Helvetica, sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(28px,3.4vw,44px); line-height:1.04; hyphens:manual; overflow-wrap:break-word }
   .fl-hint { margin:14px 0 0; max-width:60ch; color:var(--text-hell); line-height:1.6 }
   .fl-opts { display:grid; gap:10px; margin-top:28px }
@@ -1242,9 +1243,10 @@ bereit(function () {
 
   /* ---- Inhalte der Schritte ---- */
   var ZIELE = [
-    { k: "bewerbungen", t: "Mehr passende Bewerbungen" },
-    { k: "nachfrage",   t: "Mehr Nachfrage für Produkt oder Leistung" },
-    { k: "bekanntheit", t: "Mehr Bekanntheit und Vertrauen" },
+    // Wortgleich mit den Zielkarten auf der Seite, damit man die eigene Wahl wiedererkennt.
+    { k: "bewerbungen", t: "Mitarbeiter & Lehrlinge finden" },
+    { k: "nachfrage",   t: "Produkte und Leistungen verkaufen" },
+    { k: "bekanntheit", t: "Als Marke sichtbar sein" },
     { k: "anderes",     t: "Etwas anderes" }
   ];
 
@@ -1537,9 +1539,12 @@ bereit(function () {
      Vor den Ideen nennt die Zeile die Belohnung, nicht die Gesamtzahl der Schritte.
      Am Anfang zaehlt, was geschafft ist, gegen Ende, was noch fehlt (Koo & Fishbach 2012).
      Der Balken beginnt nicht bei null: der Klick auf der Seite zaehlt als erster Schritt. */
+  function schrittIndex(id) {
+    for (var i = 0; i < SCHRITTE.length; i++) if (SCHRITTE[i].id === id) return i;
+    return 0;
+  }
   function standText() {
-    var ideen = -1;
-    SCHRITTE.forEach(function (s, i) { if (s.id === "richtung") ideen = i; });
+    var ideen = schrittIndex("richtung");
     if (idx < ideen) {
       var rest = ideen - idx;
       if (rest === 1) return "Letzte Frage vor euren Ideen";
@@ -1565,8 +1570,9 @@ bereit(function () {
   function rendern() {
     var st = SCHRITTE[idx];
     elStand.textContent = standText();
-    elCount.textContent = "";
-    elCount.hidden = true;
+    var kontext = S.ziel && ["inhalte", "personen", "zielfrage"].indexOf(st.id) !== -1 ? "Ziel: " + label(ZIELE, S.ziel) : "";
+    elCount.textContent = kontext;
+    elCount.hidden = !kontext;
     elQ.textContent = typeof st.frage === "function" ? st.frage() : st.frage;
     if (st.hinweis) { elHint.textContent = st.hinweis; elHint.hidden = false; } else { elHint.hidden = true; }
     elCont.innerHTML = st.html();
@@ -1680,8 +1686,11 @@ bereit(function () {
 
   /* ---- Oeffnen und schliessen ---- */
   function oeffnen(quelle, ziel) {
-    if (ziel) S.ziel = ziel;
-    idx = 0; offen = true;
+    // Kommt man ueber eine Zielkarte, ist die erste Frage schon beantwortet.
+    // Sie noch einmal zu stellen, kostet einen Klick und wirkt, als waere die Wahl verloren gegangen.
+    if (ziel) { S.ziel = ziel; sichern(); }
+    idx = ziel ? schrittIndex("inhalte") : 0;
+    offen = true;
     vorherFokus = document.activeElement;
     ovl.hidden = false;
     document.body.style.overflow = "hidden";
