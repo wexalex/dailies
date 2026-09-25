@@ -299,6 +299,11 @@
   .ablauf-raster { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:0; border-top:2px solid #000; }
   @media (max-width: 760px) { .ablauf-raster { grid-template-columns:1fr; } }
 
+  /* Footer-Links: Trefferflaeche von 17 auf 25 px (WCAG 2.5.8), ohne dass sich etwas
+     verschiebt. Das Padding vergroessert die Flaeche, der negative Rand haelt den Abstand.
+     Bei 25 px Zeilenabstand stossen die Flaechen genau aneinander, ohne zu ueberlappen. */
+  footer .wrap a { padding:4px 0; margin:-4px 0; }
+
   /* ---- Lead-Magnet-Flow, auf die neuen Tokens gebracht ---- */
   .fl-ovl[hidden] { display:none }
   .fl-ovl { position:fixed; inset:0; z-index:200; background:#fff; color:#000; display:flex; flex-direction:column }
