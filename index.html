@@ -292,6 +292,11 @@
     * { animation:none !important; transition:none !important; }
   }
 
+  /* Ablauf: die sechs Schritte immer als 3 + 3. Schmaler geht es direkt auf eine Spalte,
+     auto-fit hatte bei breiten Bildschirmen 4 + 2 und bei mittleren 2 + 2 + 2 ergeben. */
+  .ablauf-raster { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:0; border-top:2px solid #000; }
+  @media (max-width: 760px) { .ablauf-raster { grid-template-columns:1fr; } }
+
   /* ---- Lead-Magnet-Flow, auf die neuen Tokens gebracht ---- */
   .fl-ovl[hidden] { display:none }
   .fl-ovl { position:fixed; inset:0; z-index:200; background:#fff; color:#000; display:flex; flex-direction:column }
@@ -521,7 +526,7 @@
     <div class="wrap">
       <div class="kicker" style="color:var(--grau-hell);"><i></i>Clip 04 · Ablauf</div>
       <h2 id="ablauf-titel" class="plakat h2" style="margin:18px 0 48px; max-width:18ch;">Sechs Schritte, die sich jedes Quartal wiederholen.</h2>
-      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap:0; border-top:2px solid #000;">
+      <div class="ablauf-raster">
         <div style="padding:28px 28px 36px 0; border-bottom:1px solid var(--linie-hell); display:flex; flex-direction:column; gap:10px;">
           <span style="font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;">Schritt 01</span>
           <h3 style="font-size:22px; font-weight:700; line-height:1.25; margin:0;">Jahres- und Themenplanung</h3>
