@@ -64,7 +64,8 @@ window.DAILIES = {
 
   /* ---------- Pricing (Sektion "Pakete") ----------
    * Werte 1:1 von der Live-Seite übernommen (Stand 23.09.2026).
-   * 28.09.2026: Zeile "Postings aufbereitet" auf Wunsch von WEXPLORE gestrichen.
+   * 28.09.2026: Zeile "Postings aufbereitet" auf Wunsch von WEXPLORE gestrichen,
+   * Zeile "Post" heisst jetzt "Schnitt" (Werte unveraendert).
    * Feature-Werte: String = Text, true = Häkchen, false = Strich.
    *
    * ACHTUNG, zwei weitere Stellen in index.html: die Liste [data-table-fallback]
@@ -88,7 +89,7 @@ window.DAILIES = {
       "Rohmaterial",
       "Planung (PrePro)",
       "Dreh",
-      "Post",
+      "Schnitt",
       "Feedbackschleifen pro Asset",
       "Kanäle"
     ],
