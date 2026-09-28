@@ -64,6 +64,7 @@ window.DAILIES = {
 
   /* ---------- Pricing (Sektion "Pakete") ----------
    * Werte 1:1 von der Live-Seite übernommen (Stand 23.09.2026).
+   * 28.09.2026: Zeile "Postings aufbereitet" auf Wunsch von WEXPLORE gestrichen.
    * Feature-Werte: String = Text, true = Häkchen, false = Strich.
    *
    * ACHTUNG, zwei weitere Stellen in index.html: die Liste [data-table-fallback]
@@ -85,7 +86,6 @@ window.DAILIES = {
       "Titelbilder",
       "Untertitel",
       "Rohmaterial",
-      "Postings aufbereitet",
       "Planung (PrePro)",
       "Dreh",
       "Post",
@@ -102,7 +102,7 @@ window.DAILIES = {
         priceSub: "€ 3.870 pro Quartal verrechnet",
         priceNote: "",
         cta: { label: "Probe-Contenttag anfragen", href: "mailto:office@wexplore.at?subject=Gratis%20Probe-Contenttag" },
-        features: ["2", "13 / Quartal", "36 / Quartal", false, true, false, false, "0,5 Tage", "1 ganzer Drehtag, 2 Personen", "2,5 Tage", "1", "Instagram"]
+        features: ["2", "13 / Quartal", "36 / Quartal", false, true, false, "0,5 Tage", "1 ganzer Drehtag, 2 Personen", "2,5 Tage", "1", "Instagram"]
       },
       {
         id: "grow",
@@ -113,7 +113,7 @@ window.DAILIES = {
         priceSub: "€ 8.070 pro Quartal verrechnet",
         priceNote: "",
         cta: { label: "Probe-Contenttag anfragen", href: "mailto:office@wexplore.at?subject=Gratis%20Probe-Contenttag" },
-        features: ["3", "30 / Quartal", "72 / Quartal", "30 / Quartal", true, false, false, "1 Tag", "3 Halbtage über das Quartal verteilt, 2 Personen", "5 Tage", "2", "Instagram, LinkedIn"]
+        features: ["3", "30 / Quartal", "72 / Quartal", "30 / Quartal", true, false, "1 Tag", "3 Halbtage über das Quartal verteilt, 2 Personen", "5 Tage", "2", "Instagram, LinkedIn"]
       },
       {
         id: "scale",
@@ -124,7 +124,7 @@ window.DAILIES = {
         priceSub: "€ 15.000 pro Quartal verrechnet",
         priceNote: "",
         cta: { label: "Scope besprechen", href: "mailto:office@wexplore.at?subject=DAILIES%20Scale%20-%20Scope%20besprechen" },
-        features: ["5", "Individuell", "Individuell", "Individuell", true, true, true, "2 Tage", "3 ganze Drehtage, 3 Personen", "7 Tage", "4", "Instagram, TikTok, LinkedIn"]
+        features: ["5", "Individuell", "Individuell", "Individuell", true, true, "2 Tage", "3 ganze Drehtage, 3 Personen", "7 Tage", "4", "Instagram, TikTok, LinkedIn"]
       }
     ]
   }
