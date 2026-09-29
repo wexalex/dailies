@@ -61,22 +61,22 @@
   <!-- Schwebende Assets: echte Ausschnitte aus den Projekten. Reine Deko,
        deshalb pointer-events:none und aria-hidden. Positionen in Prozent,
        Groessen mit clamp - unter 640px bleiben nur die zwei "klein"-Kacheln. -->
-  <div class="float-tile" aria-hidden="true" style="--tilt:-5deg; top:10%; left:6%; width:clamp(110px, 13vw, 190px); aspect-ratio:2/3; animation-delay:-1.2s;">
+  <div class="float-tile" data-anchor="foto-purora" aria-hidden="true" style="--tilt:-5deg; top:10%; left:6%; width:clamp(110px, 13vw, 190px); aspect-ratio:2/3; animation-delay:-1.2s;">
     <img src="assets/projekte/purora/foto-01-500.jpg" alt="" width="500" height="750" loading="lazy">
   </div>
-  <div class="float-tile klein" aria-hidden="true" style="--tilt:4deg; top:8%; right:7%; width:clamp(120px, 15vw, 230px); aspect-ratio:16/9; animation-delay:-3.4s;">
+  <div class="float-tile klein" data-anchor="mango" aria-hidden="true" style="--tilt:4deg; top:8%; right:7%; width:clamp(120px, 15vw, 230px); aspect-ratio:16/9; animation-delay:-3.4s;">
     <video src="assets/projekte/purora/mango-169.mp4" poster="assets/projekte/purora/mango-poster.jpg" autoplay muted loop playsinline preload="metadata" data-loop></video>
   </div>
-  <div class="float-tile" aria-hidden="true" style="--tilt:6deg; bottom:12%; left:9%; width:clamp(120px, 14vw, 210px); aspect-ratio:3/2; animation-delay:-5.1s;">
+  <div class="float-tile" data-anchor="foto-sparkasse" aria-hidden="true" style="--tilt:6deg; bottom:12%; left:9%; width:clamp(120px, 14vw, 210px); aspect-ratio:3/2; animation-delay:-5.1s;">
     <img src="assets/projekte/sparkasse/foto-03-500.jpg" alt="" width="500" height="333" loading="lazy">
   </div>
-  <div class="float-tile klein" aria-hidden="true" style="--tilt:-4deg; bottom:9%; right:8%; width:clamp(84px, 9.5vw, 140px); aspect-ratio:9/16; animation-delay:-2.2s;">
+  <div class="float-tile klein" data-anchor="reel" aria-hidden="true" style="--tilt:-4deg; bottom:9%; right:8%; width:clamp(84px, 9.5vw, 140px); aspect-ratio:9/16; animation-delay:-2.2s;">
     <video src="assets/projekte/purora/hero-916.mp4" poster="assets/projekte/purora/hero-poster.jpg" autoplay muted loop playsinline preload="metadata" data-loop></video>
   </div>
-  <div class="float-tile" aria-hidden="true" style="--tilt:5deg; top:44%; right:3.5%; width:clamp(84px, 9vw, 130px); aspect-ratio:9/16; animation-delay:-6.3s;">
+  <div class="float-tile" data-anchor="teaser-hoch" aria-hidden="true" style="--tilt:5deg; top:44%; right:3.5%; width:clamp(84px, 9vw, 130px); aspect-ratio:9/16; animation-delay:-6.3s;">
     <img src="assets/projekte/sparkasse/teaser-hoch-poster.jpg" alt="" width="400" height="710" loading="lazy">
   </div>
-  <div class="float-tile" aria-hidden="true" style="--tilt:-6deg; top:47%; left:4%; width:clamp(90px, 9.5vw, 130px); aspect-ratio:1/1; background:#000; border:1px solid var(--linie-dunkel); animation-delay:-4s;">
+  <div class="float-tile" data-anchor="rec" aria-hidden="true" style="--tilt:-6deg; top:47%; left:4%; width:clamp(90px, 9.5vw, 130px); aspect-ratio:1/1; background:#000; border:1px solid var(--linie-dunkel); animation-delay:-4s;">
     <div style="position:absolute; inset:0; box-sizing:border-box; padding:14px; display:flex; flex-direction:column; justify-content:space-between; text-align:left;">
       <div style="display:flex; align-items:center; gap:5px; font-size:9px; letter-spacing:.14em;"><span style="width:6px; height:6px; border-radius:50%; background:var(--rot); animation:recblink 1.6s steps(1) infinite;"></span>REC</div>
       <div><div class="plakat" style="font-size:20px; line-height:1.05;">1 Drehtag</div><div style="font-size:10px; color:var(--grau-dunkel); margin-top:3px;">1 Quartal Content</div></div>
@@ -85,7 +85,7 @@
 
   <div class="text">
     <div class="kicker" style="color:var(--grau-dunkel); justify-content:center;"><i></i>Dailies · Referenzen</div>
-    <h1 id="ref-titel" class="plakat" style="font-size:clamp(48px, 7.6vw, 108px); line-height:.98; margin:26px 0 0; text-wrap:balance;"><span class="hl-marker">Zeigen</span> statt erzählen.</h1>
+    <h1 id="ref-titel" class="plakat" style="font-size:clamp(48px, 7.6vw, 108px); line-height:.98; margin:26px 0 0; text-wrap:balance;"><span class="hl-marker">Zeigen</span> <span style="position:relative; z-index:1;">statt erzählen.</span></h1>
     <p style="font-size:20px; font-weight:300; line-height:1.5; max-width:52ch; margin:30px 0 0; text-wrap:pretty;">Reels, Hero-Filme, Fotos, AI-Clips und B-Roll aus echten Projekten - produziert vom Team hinter Dailies, quer durch alle Formate und Branchen.</p>
     <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:36px;">
       <a class="btn btn--rot" href="#raster">Formate ansehen</a>
@@ -234,5 +234,63 @@
 </footer>
 
 <script src="assets/projekt.js?v=1" defer></script>
+<script>
+/* Schwebende Kacheln ankern an der Headline: fester Abstand von 28px zur Schrift
+   bei jeder Viewportgroesse, wie die Icons auf der Startseite. Unter 1100px ist
+   neben der Headline kein Platz, dann gelten wieder die Positionen aus dem Markup. */
+(function () {
+  var hero = document.querySelector(".ref-hero");
+  var titel = document.getElementById("ref-titel");
+  if (!hero || !titel) return;
+  var floats = Array.prototype.slice.call(hero.querySelectorAll("[data-anchor]")).map(function (el) {
+    return { name: el.getAttribute("data-anchor"), el: el, orig: el.getAttribute("style") };
+  });
+  if (!floats.length) return;
+  var byName = {};
+  floats.forEach(function (f) { byName[f.name] = f; });
+  var verankert = false;
+
+  function layout() {
+    if (window.innerWidth < 1100) {
+      if (verankert) { floats.forEach(function (f) { f.el.setAttribute("style", f.orig); }); verankert = false; }
+      return;
+    }
+    var hr = hero.getBoundingClientRect();
+    var r = titel.getBoundingClientRect();
+    var L = r.left - hr.left, T = r.top - hr.top, Rt = r.right - hr.left;
+    var GAP = 28, LUFT = 18;
+    // Erst alles lesen, dann alles schreiben - sonst erzwingt jede Abfrage ein neues Layout.
+    var mass = {};
+    floats.forEach(function (f) { mass[f.name] = { w: f.el.offsetWidth, h: f.el.offsetHeight }; });
+    function spalte(namen, x0rechts) {
+      var y = T - 50;
+      namen.forEach(function (n) {
+        var f = byName[n], m = mass[n];
+        if (!f || !m) return;
+        var x = x0rechts ? Rt + GAP : L - m.w - GAP;
+        f.el.style.left = Math.max(8, Math.min(hr.width - m.w - 8, x)) + "px";
+        f.el.style.top = Math.round(Math.max(8, y)) + "px";
+        f.el.style.right = "auto";
+        f.el.style.bottom = "auto";
+        y += m.h + LUFT;
+      });
+    }
+    spalte(["foto-purora", "rec", "foto-sparkasse"], false);
+    spalte(["mango", "teaser-hoch", "reel"], true);
+    verankert = true;
+  }
+
+  window.addEventListener("resize", layout);
+  window.addEventListener("orientationchange", layout);
+  window.addEventListener("load", layout);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);
+  if (window.ResizeObserver) {
+    var ro = new ResizeObserver(layout);
+    ro.observe(titel);
+    ro.observe(hero);
+  }
+  layout();
+})();
+</script>
 </body>
 </html>

@@ -43,6 +43,7 @@
 
 <section id="projekt" class="sec-dunkel" style="padding-bottom:64px;">
   <div class="wrap">
+    <a href="../referenzen.html" data-zurueck style="display:inline-flex; align-items:center; gap:8px; font-size:13px; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:var(--grau-dunkel); margin-bottom:26px;"><span aria-hidden="true">&larr;</span> Zurück zur Übersicht</a>
     <div class="kicker" style="color:var(--grau-dunkel);"><i></i>Referenz · F/LIST</div>
     <h1 class="plakat" style="font-size:clamp(48px, 7.4vw, 104px); line-height:.98; margin:22px 0 0; max-width:14ch;">Content Week</h1>
     <p style="font-size:clamp(19px, 2.1vw, 24px); font-weight:300; line-height:1.5; max-width:52ch; margin:28px 0 0; text-wrap:pretty;">Drei Produktionstage, fünf Content-Säulen und eine Bibliothek für ein ganzes Quartal. Für F/LIST machten wir Handwerk, Materialien, Innovation und Unternehmenskultur in unterschiedlichen Formaten sichtbar.</p>
@@ -151,5 +152,16 @@
 </footer>
 
 <script src="../assets/projekt.js?v=1" defer></script>
+<script>
+/* Zurueck-Link: kam man von einer anderen Dailies-Seite, geht es dorthin zurueck,
+   sonst (z. B. direkt aus der Mail-Kampagne) zur Referenzuebersicht. */
+(function () {
+  var a = document.querySelector("[data-zurueck]");
+  if (!a) return;
+  if (document.referrer && new URL(document.referrer).origin === location.origin && history.length > 1) {
+    a.addEventListener("click", function (e) { e.preventDefault(); history.back(); });
+  }
+})();
+</script>
 </body>
 </html>
