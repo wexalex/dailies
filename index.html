@@ -680,12 +680,14 @@
           <p style="font-size:15px; line-height:1.6; color:var(--text-hell); margin:0; text-wrap:pretty;">Rund 70 % sind Menschen, die reden: das Format, das auf Social am besten funktioniert. Wechselnde Ausschnitte, B-Roll, Fotos und Orte sorgen dafür, dass trotzdem nichts gleich aussieht.</p>
         </div>
         <div style="background:var(--dunkel); color:#fff; border-radius:16px; padding:22px 22px 46px;">
-          <div style="display:flex; justify-content:space-between; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-dunkel); margin-bottom:16px;"><span>Kontaktbogen · 4 Clips</span><span style="display:flex; align-items:center; gap:6px;"><span style="width:7px; height:7px; border-radius:50%; background:var(--rot);"></span>Rec</span></div>
+          <!-- Kontaktbogen-Clips: Platzhalter aus Sparkasse- und Purora-Projekten.
+             Werden gegen F/LIST-Material getauscht, sobald die Content Week fertig ist. -->
+        <div style="display:flex; justify-content:space-between; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--grau-dunkel); margin-bottom:16px;"><span>Kontaktbogen · 4 Clips</span><span style="display:flex; align-items:center; gap:6px;"><span style="width:7px; height:7px; border-radius:50%; background:var(--rot);"></span>Rec</span></div>
           <div style="display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:10px;">
-            <div style="display:flex; flex-direction:column; gap:8px; transform:translateY(0px);"><div style="aspect-ratio:9/16; border-radius:8px; background:var(--linie-dunkel); display:flex; align-items:flex-end; padding:8px; box-sizing:border-box; font-size:11px; letter-spacing:.1em; color:var(--grau-dunkel);">9:16</div><div style="font-size:12px; letter-spacing:.12em; color:var(--grau-dunkel);">C001</div></div>
-            <div style="display:flex; flex-direction:column; gap:8px; transform:translateY(18px);"><div style="aspect-ratio:9/16; border-radius:8px; background:var(--linie-dunkel); display:flex; align-items:flex-end; padding:8px; box-sizing:border-box; font-size:11px; letter-spacing:.1em; color:var(--grau-dunkel);">9:16</div><div style="font-size:12px; letter-spacing:.12em; color:var(--grau-dunkel);">C002</div></div>
-            <div style="display:flex; flex-direction:column; gap:8px; transform:translateY(6px);"><div style="aspect-ratio:9/16; border-radius:8px; background:var(--linie-dunkel); display:flex; align-items:flex-end; padding:8px; box-sizing:border-box; font-size:11px; letter-spacing:.1em; color:var(--grau-dunkel);">9:16</div><div style="font-size:12px; letter-spacing:.12em; color:var(--grau-dunkel);">C003</div></div>
-            <div style="display:flex; flex-direction:column; gap:8px; transform:translateY(24px);"><div style="aspect-ratio:9/16; border-radius:8px; background:var(--linie-dunkel); display:flex; align-items:flex-end; padding:8px; box-sizing:border-box; font-size:11px; letter-spacing:.1em; color:var(--grau-dunkel);">9:16</div><div style="font-size:12px; letter-spacing:.12em; color:var(--grau-dunkel);">C004</div></div>
+            <div style="display:flex; flex-direction:column; gap:8px; transform:translateY(0px);"><div style="position:relative; aspect-ratio:9/16; border-radius:8px; overflow:hidden; background:var(--linie-dunkel);"><video data-clip-video src="assets/projekte/sparkasse/teaser-916.mp4" poster="assets/projekte/sparkasse/teaser-916-poster.jpg" muted loop playsinline preload="none" aria-label="Beispiel-Reel: Sparkasse Homestory-Teaser" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"></video></div><div style="font-size:12px; letter-spacing:.12em; color:var(--grau-dunkel);">C001</div></div>
+            <div style="display:flex; flex-direction:column; gap:8px; transform:translateY(18px);"><div style="position:relative; aspect-ratio:9/16; border-radius:8px; overflow:hidden; background:var(--linie-dunkel);"><video data-clip-video src="assets/projekte/purora/hero-916.mp4" poster="assets/projekte/purora/hero-poster.jpg" muted loop playsinline preload="none" aria-label="Beispiel-Reel: Purora Geschmacks-Mix" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"></video></div><div style="font-size:12px; letter-spacing:.12em; color:var(--grau-dunkel);">C002</div></div>
+            <div style="display:flex; flex-direction:column; gap:8px; transform:translateY(6px);"><div style="position:relative; aspect-ratio:9/16; border-radius:8px; overflow:hidden; background:var(--linie-dunkel);"><video data-clip-video src="assets/projekte/purora/funktion-916.mp4" poster="assets/projekte/purora/funktion-poster.jpg" muted loop playsinline preload="none" aria-label="Beispiel-Reel: Purora Funktionen" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"></video></div><div style="font-size:12px; letter-spacing:.12em; color:var(--grau-dunkel);">C003</div></div>
+            <div style="display:flex; flex-direction:column; gap:8px; transform:translateY(24px);"><div style="position:relative; aspect-ratio:9/16; border-radius:8px; overflow:hidden; background:var(--linie-dunkel);"><video data-clip-video src="assets/projekte/purora/broll-916.mp4" poster="assets/projekte/purora/broll-poster.jpg" muted loop playsinline preload="none" aria-label="Beispiel-Reel: Purora B-Roll" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;"></video></div><div style="font-size:12px; letter-spacing:.12em; color:var(--grau-dunkel);">C004</div></div>
           </div>
         </div>
       </div>
@@ -1218,17 +1220,19 @@ bereit(function () {
   // Wer reduzierte Bewegung eingestellt hat, bekommt ohnehin kein play() - dann
   // waeren die geladenen Megabyte reine Verschwendung. Dasselbe gilt im
   // Datensparmodus. In beiden Faellen bleibt es beim Poster.
-  var v = document.getElementById("plattform-video");
+  var lazyVids = Array.prototype.slice.call(document.querySelectorAll("#plattform-video, [data-clip-video]"));
   var sparen = !!(navigator.connection && navigator.connection.saveData);
-  if (v && !reduce && !sparen && "IntersectionObserver" in window) {
-    new IntersectionObserver(function (eintraege) {
+  if (lazyVids.length && !reduce && !sparen && "IntersectionObserver" in window) {
+    var vio = new IntersectionObserver(function (eintraege) {
       eintraege.forEach(function (e) {
+        var v = e.target;
         if (e.isIntersecting) {
           if (v.preload !== "auto") { v.preload = "auto"; v.load(); }
           v.play().catch(function () {});
         } else { v.pause(); }
       });
-    }, { threshold: 0.25 }).observe(v);
+    }, { threshold: 0.25 });
+    lazyVids.forEach(function (v) { vio.observe(v); });
   }
 })();
 </script>
