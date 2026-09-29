@@ -39,7 +39,7 @@
 <link rel="icon" href="assets/favicon-48.png" sizes="48x48" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 
-<script src="assets/config.js?v=4" defer></script>
+<script src="assets/config.js?v=5" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -732,9 +732,12 @@
            haetten Suchmaschinen und Link-Vorschauen keinen einzigen Referenznamen.
            ACHTUNG, doppelte Pflege: Namen und Tags muessen zu assets/config.js passen. -->
       <div data-cases style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap:28px;">
-        <div><h3 class="plakat" style="font-size:28px; line-height:1.1; margin:0 0 0; hyphens:manual;">F/LIST</h3><div style="display:inline-block; margin-top:10px; padding:4px 12px; border:1px solid #D83A2A; border-radius:999px; color:#D83A2A; font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;">Employer Brand</div></div>
-        <div><h3 class="plakat" style="font-size:28px; line-height:1.1; margin:0 0 0; hyphens:manual;">Sparkasse Oberösterreich</h3><div style="display:inline-block; margin-top:10px; padding:4px 12px; border:1px solid #D83A2A; border-radius:999px; color:#D83A2A; font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;">Brand</div></div>
+        <div><h3 class="plakat" style="font-size:28px; line-height:1.1; margin:0 0 0; hyphens:manual;">F/LIST</h3><div style="display:inline-block; margin-top:10px; padding:4px 12px; border:1px solid #D83A2A; border-radius:999px; color:#D83A2A; font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;">Employer Brand</div><p style="margin:12px 0 0; font-size:15px; line-height:1.55; color:#4a4a4a;">Content Week: drei Produktionstage, fünf Content-Säulen, 20-30 Assets für ein ganzes Quartal.</p><a href="projekte/flist-content-week.html" style="display:inline-flex; align-items:center; gap:8px; margin-top:14px; font-size:13px; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:#D83A2A;">Zur Projektseite <span aria-hidden="true">&rarr;</span></a></div>
+        <div><img src="assets/projekte/sparkasse/teaser-quer-poster.jpg" alt="Sparkasse Oberösterreich" loading="lazy" style="width:100%; aspect-ratio:16/9; object-fit:cover; border-radius:12px; display:block;"><h3 class="plakat" style="font-size:28px; line-height:1.1; margin:18px 0 0; hyphens:manual;">Sparkasse Oberösterreich</h3><div style="display:inline-block; margin-top:10px; padding:4px 12px; border:1px solid #D83A2A; border-radius:999px; color:#D83A2A; font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;">Brand</div><p style="margin:12px 0 0; font-size:15px; line-height:1.55; color:#4a4a4a;">Homestories: eine fünfteilige Serie - pro Episode ein Drehtag, ausgespielt über mehrere Kanäle und Wochen.</p><a href="projekte/sparkasse-homestories.html" style="display:inline-flex; align-items:center; gap:8px; margin-top:14px; font-size:13px; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:#D83A2A;">Zur Projektseite <span aria-hidden="true">&rarr;</span></a></div>
         <div><h3 class="plakat" style="font-size:28px; line-height:1.1; margin:0 0 0; hyphens:manual;">APG</h3><div style="display:inline-block; margin-top:10px; padding:4px 12px; border:1px solid #D83A2A; border-radius:999px; color:#D83A2A; font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;">Brand</div></div>
+      </div>
+      <div style="margin-top:44px;">
+        <a class="btn btn--linie" href="referenzen.html">Alle Referenzen ansehen</a>
       </div>
     </div>
   </section>
@@ -1015,10 +1018,11 @@ bereit(function () {
     var text = t && t !== "[TEXT FOLGT]" ? '<p style="margin:12px 0 0; font-size:15px; line-height:1.55; color:#4a4a4a;">' + esc(t) + "</p>" : "";
     var q = c.testimonial && (c.testimonial.quote || "").trim();
     var zitat = q ? '<blockquote style="margin:14px 0 0; font-size:15px; line-height:1.55; font-style:italic;">' + esc(q) + '</blockquote><div style="margin-top:6px; font-size:14px; color:#6f6f6f;">' + esc([c.testimonial.name, c.testimonial.role].filter(Boolean).join(" · ")) + "</div>" : "";
+    var link = c.href ? '<a href="' + esc(c.href) + '" style="display:inline-flex; align-items:center; gap:8px; margin-top:14px; font-size:13px; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:#D83A2A;">Zur Projektseite <span aria-hidden="true">&rarr;</span></a>' : "";
     return "<div>" + medium +
       '<h3 class="plakat" style="font-size:28px; line-height:1.1; margin:' + (medium ? "18px" : "0") + ' 0 0; hyphens:manual;">' + esc(c.name) + "</h3>" +
       (c.tag ? '<div style="display:inline-block; margin-top:10px; padding:4px 12px; border:1px solid #D83A2A; border-radius:999px; color:#D83A2A; font-size:12px; letter-spacing:.14em; text-transform:uppercase; font-weight:600;">' + esc(c.tag) + "</div>" : "") +
-      text + zitat + "</div>";
+      text + zitat + link + "</div>";
   }).join("");
 });
 </script>

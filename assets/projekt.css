@@ -1,0 +1,113 @@
+/* ---------------------------------------------------------------
+   DAILIES Referenz- und Projektseiten, gemeinsames Stylesheet.
+   Tokens und Grundklassen sind 1:1 aus index.html uebernommen -
+   wer dort am Designsystem dreht, muss hier mitziehen.
+   Die Pfade (fonts/...) sind relativ zu dieser Datei, deshalb
+   funktioniert sie fuer Seiten im Root und im Ordner projekte/.
+   --------------------------------------------------------------- */
+@font-face { font-family:"ES Klarheit Plakat";  src:url("fonts/ESKlarheitPlakat-Xbd.woff2")  format("woff2"); font-weight:400 900; font-style:normal; font-display:swap; }
+@font-face { font-family:"ES Klarheit Kurrent"; src:url("fonts/ESKlarheitKurrent-Lt.woff2")   format("woff2"); font-weight:300; font-style:normal; font-display:swap; }
+@font-face { font-family:"ES Klarheit Kurrent"; src:url("fonts/ESKlarheitKurrent-Rg.woff2")   format("woff2"); font-weight:400; font-style:normal; font-display:swap; }
+@font-face { font-family:"ES Klarheit Kurrent"; src:url("fonts/ESKlarheitKurrent-Smbd.woff2") format("woff2"); font-weight:600; font-style:normal; font-display:swap; }
+@font-face { font-family:"ES Klarheit Kurrent"; src:url("fonts/ESKlarheitKurrent-Bd.woff2")   format("woff2"); font-weight:700; font-style:normal; font-display:swap; }
+
+:root {
+  --rot: #E8483A;
+  --rot-text: #F14B3C;
+  --rot-hell: #D83A2A;
+  --dunkel: #201f1f;
+  --linie-hell: #e2e2e2;
+  --linie-dunkel: #3a3a3a;
+  --grau-dunkel: #bdbdbd;
+  --grau-hell: #6f6f6f;
+  --text-hell: #4a4a4a;
+  --flaeche: #F4F3F1;
+}
+html { scroll-behavior:smooth; }
+body { margin:0; background:#fff; color:#000; font-family:'ES Klarheit Kurrent', Helvetica, Arial, sans-serif; -webkit-font-smoothing:antialiased; }
+a { color:inherit; text-decoration:none; }
+a:hover { opacity:.8; }
+h1, h2, h3 { hyphens:auto; }
+*:focus-visible { outline:2px solid var(--rot); outline-offset:2px; }
+::selection { background:var(--rot); color:#fff; }
+button { font:inherit; color:inherit; }
+@keyframes recblink { 0%,55% { opacity:1 } 56%,100% { opacity:.2 } }
+
+.plakat { font-family:'ES Klarheit Plakat', Helvetica, sans-serif; font-weight:400; text-transform:uppercase; hyphens:manual; }
+.h2 { font-size:clamp(36px, 4.6vw, 58px); line-height:1.02; text-wrap:balance; }
+.kicker { display:flex; align-items:center; gap:10px; font-size:13px; letter-spacing:.16em; text-transform:uppercase; }
+.kicker i { width:8px; height:8px; border-radius:50%; background:var(--rot-hell); flex:none; }
+.sec-dunkel .kicker i { background:var(--rot); }
+.wrap { max-width:1200px; margin:0 auto; }
+section { padding:110px 40px; scroll-margin-top:90px; }
+.sec-dunkel { background:var(--dunkel); color:#fff; }
+.btn { height:54px; padding:0 28px; border-radius:6px; display:inline-flex; align-items:center; justify-content:center; font-weight:600; border:0; cursor:pointer; font-family:inherit; font-size:16px; white-space:nowrap; }
+.btn--rot { background:var(--rot-hell); color:#fff; }
+.btn--linie { border:1px solid currentColor; background:transparent; }
+.btn--s { height:40px; padding:0 22px; font-size:15px; }
+.btn, .plakette { transition: transform .18s cubic-bezier(.2,0,0,1), box-shadow .18s ease, background-color .18s ease, filter .18s ease; }
+@media (hover: hover) {
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(32,31,31,.14); }
+  .btn--rot:hover { filter: brightness(.92); }
+  .btn--linie:hover { background: rgba(128,128,128,.12); }
+}
+.btn:active { transform: scale(.97); transition-duration:.08s; }
+
+.hl-marker { position:relative; display:inline-block; z-index:0; padding:0 .16em; color:#fff; }
+.hl-marker::before { content:""; position:absolute; left:-.03em; right:-.03em; top:-.18em; bottom:-.05em; background:var(--rot); transform:rotate(-2deg); border-radius:3px; z-index:-1; }
+
+/* ---- Navigation der Unterseiten (ohne Rec-Leiste und Flow) ---- */
+.pnav { position:sticky; top:0; z-index:50; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px 28px; padding:16px 40px; background:var(--dunkel); color:#fff; border-bottom:1px solid var(--linie-dunkel); }
+.pnav nav { display:flex; align-items:center; flex-wrap:wrap; gap:8px 26px; font-size:15px; }
+
+/* ---- Meta-Zeile: Kunde, Timeline, Produktion, Output ---- */
+.meta { display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap:0 32px; border-top:1px solid var(--linie-dunkel); }
+.meta > div { padding:18px 0; border-bottom:1px solid var(--linie-dunkel); }
+.meta dt { font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--grau-dunkel); margin:0 0 8px; }
+.meta dd { margin:0; font-size:16px; line-height:1.5; }
+
+/* ---- Asset-Kacheln ---- */
+.tile { position:relative; border-radius:14px; overflow:hidden; background:var(--linie-dunkel); }
+.tile img, .tile video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+.tile-tag { position:absolute; left:10px; bottom:10px; z-index:3; display:inline-flex; align-items:center; gap:7px; padding:6px 12px; border-radius:999px; background:rgba(20,19,19,.78); color:#fff; font-size:11px; letter-spacing:.12em; text-transform:uppercase; backdrop-filter:blur(4px); max-width:calc(100% - 40px); }
+.tile-tag i { width:6px; height:6px; border-radius:50%; background:var(--rot); flex:none; }
+.tile--strich { border:2px dashed var(--linie-dunkel); background:transparent; display:flex; align-items:center; justify-content:center; }
+.tile--strich .innen { text-align:center; padding:16px; }
+
+/* Klick-zum-Abspielen (Teaser mit Ton) */
+.play-btn { position:absolute; inset:0; z-index:2; width:100%; border:0; background:transparent; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0; }
+.play-btn span { width:64px; height:64px; border-radius:50%; background:rgba(20,19,19,.72); backdrop-filter:blur(4px); display:flex; align-items:center; justify-content:center; transition:transform .18s cubic-bezier(.2,0,0,1), background-color .18s ease; }
+.play-btn svg { width:22px; height:22px; display:block; margin-left:3px; }
+@media (hover: hover) { .play-btn:hover span { transform:scale(1.08); background:var(--rot-hell); } }
+
+/* ---- Gemischtes Raster der Hauptreferenzseite ---- */
+.masonry { columns:3 300px; column-gap:18px; }
+.masonry .tile { margin:0 0 18px; break-inside:avoid; }
+
+/* ---- Schwebende Kacheln im Referenz-Hero ---- */
+.float-tile { position:absolute; z-index:1; border-radius:12px; overflow:hidden; background:var(--linie-dunkel); box-shadow:0 18px 40px rgba(0,0,0,.5); pointer-events:none; }
+.float-tile img, .float-tile video { width:100%; height:100%; object-fit:cover; display:block; }
+@keyframes schweben { 0%,100% { transform:translateY(0) rotate(var(--tilt, 0deg)); } 50% { transform:translateY(-12px) rotate(var(--tilt, 0deg)); } }
+.float-tile { animation:schweben 7s ease-in-out infinite; }
+
+/* ---- Projektkarten ---- */
+.pcard { display:flex; flex-direction:column; border-radius:16px; overflow:hidden; background:#fff; color:#000; transition:transform .18s cubic-bezier(.2,0,0,1), box-shadow .18s ease; }
+@media (hover: hover) { .pcard:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.35); opacity:1; } }
+.pcard .bild { position:relative; aspect-ratio:16/10; background:var(--linie-dunkel); overflow:hidden; }
+.pcard .bild img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; display:block; }
+
+.sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+footer .wrap a { padding:4px 0; margin:-4px 0; }
+
+@media (max-width: 900px) {
+  section { padding:72px 20px; }
+  .pnav { padding:14px 20px; }
+  .pnav .nav-links { display:none; }
+  footer { padding-left:20px !important; padding-right:20px !important; }
+  .masonry { columns:2 160px; column-gap:12px; }
+  .masonry .tile { margin-bottom:12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior:auto; }
+  * { animation:none !important; transition:none !important; }
+}

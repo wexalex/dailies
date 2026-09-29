@@ -29,6 +29,7 @@ window.DAILIES = {
    * tag: "Employer Brand" | "Produkt" | "Brand"
    * image: Pfad zu Thumbnail/Standbild (16:9). Leer = gestrichelter Platzhalter.
    * video: optionaler Pfad zu einem MP4 (ersetzt das Bild).
+   * href: optionaler Link zur Projektseite (projekte/...) - erzeugt "Zur Projektseite".
    * testimonial: { quote, name, role } - wird nur gerendert, wenn quote nicht leer ist.
    *
    * ACHTUNG, zweite Stelle: in index.html steht im <div data-cases> dieselbe Liste
@@ -39,17 +40,19 @@ window.DAILIES = {
     {
       name: "F/LIST",
       tag: "Employer Brand", // TODO: Ziel-Tag bestätigen
-      text: "[TEXT FOLGT]", // TODO: 1 Satz zum Case
+      text: "Content Week: drei Produktionstage, fünf Content-Säulen, 20-30 Assets für ein ganzes Quartal.",
       image: "",
       video: "",
+      href: "projekte/flist-content-week.html",
       testimonial: { quote: "", name: "", role: "" }
     },
     {
       name: "Sparkasse Oberösterreich",
       tag: "Brand", // TODO: Ziel-Tag bestätigen
-      text: "[TEXT FOLGT]", // TODO: 1 Satz zum Case
-      image: "",
+      text: "Homestories: eine fünfteilige Serie - pro Episode ein Drehtag, ausgespielt über mehrere Kanäle und Wochen.",
+      image: "assets/projekte/sparkasse/teaser-quer-poster.jpg",
       video: "",
+      href: "projekte/sparkasse-homestories.html",
       testimonial: { quote: "", name: "", role: "" }
     },
     {
