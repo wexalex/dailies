@@ -451,7 +451,8 @@
         <a class="nav-links" href="#output">Output</a>
         <a class="nav-links" href="referenzen.html">Referenzen</a>
         <a class="nav-links" href="#faq">FAQ</a>
-        <button type="button" class="btn btn--rot btn--s" data-flow-start="nav">Content-Ideen entdecken</button>
+        <!-- TODO Calendly: sobald der Buchungslink steht, hier und bei allen "Probe-Contenttag anfragen"-CTAs mailto ersetzen -->
+        <a class="btn btn--rot btn--s" href="mailto:max@wexplore.at?subject=Gratis%20Probe-Contenttag">Probe-Contenttag anfragen</a>
       </nav>
     </header>
   </div>
@@ -471,13 +472,24 @@
 
     <div style="position:relative; z-index:2; max-width:900px; margin:0 auto; display:flex; flex-direction:column; align-items:center;">
       <div class="kicker" style="color:var(--grau-dunkel);"><i></i>Video + Foto · Für Unternehmen in Oberösterreich</div>
-      <h1 id="sichtung-titel" class="plakat" style="font-size:clamp(52px, 8.4vw, 116px); line-height:.96; margin:28px 0 0; text-wrap:balance;">Social Media<br><span style="position:relative; z-index:1;">Content</span><br><span class="hl-marker">im Abo.</span></h1>
-      <p style="font-size:21px; font-weight:300; line-height:1.5; max-width:50ch; margin:32px 0 0; text-wrap:pretty;">Wir planen mit euch Ziele und Themen, produzieren den Content gebündelt an einem Drehtag pro Quartal und stellen die fertigen Videos und Fotos geordnet bereit.</p>
+      <!-- Headline-Alternativen (Tausch = eine Zeile, Marker-Span auf das letzte Wort setzen):
+           "Social Media Content im Abo." (Stand bis 30.09.2026)
+           "Ein Drehtag. Ein Quartal Content."
+           "Social Media im Abo. Für Betriebe, die Besseres zu tun haben."
+           "Euer Social Media läuft. Auch wenn intern niemand Zeit hat."
+           "Zeigt, wie ihr wirklich arbeitet. Ohne dass es Arbeit macht."
+           "Gedreht an einem Tag. Geliefert das ganze Quartal." -->
+      <h1 id="sichtung-titel" class="plakat" style="font-size:clamp(42px, 6.6vw, 92px); line-height:.98; margin:28px 0 0; text-wrap:balance;">Ihr macht euren Job.<br><span style="position:relative; z-index:1;">Wir machen daraus</span> <span class="hl-marker">Content.</span></h1>
+      <p style="font-size:21px; font-weight:300; line-height:1.5; max-width:52ch; margin:32px 0 0; text-wrap:pretty;">Social Media im Abo für Betriebe in Oberösterreich. Ein Drehtag pro Quartal bei euch, der Rest bei uns: Themen, Dreh, Schnitt, Fotos. Jede Woche ein fertiges Reel.</p>
       <p style="font-size:15px; color:var(--grau-dunkel); margin:14px 0 0;">Dailies ist das Content-Abo von WEXPLORE. Videoproduktion aus Linz.</p>
-      <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:12px; margin-top:38px;">
-        <button type="button" class="btn btn--rot" data-flow-start="hero">Eure Content-Ideen entdecken</button>
-        <a class="btn btn--linie" href="#ablauf" style="color:#fff;">So funktioniert Dailies</a>
+      <div style="display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:12px 22px; margin-top:38px;">
+        <!-- TODO Calendly: Buchungslink als Klick-Lade-Embed, bis dahin mailto an Max -->
+        <a class="btn btn--rot" href="mailto:max@wexplore.at?subject=Gratis%20Probe-Contenttag">Probe-Contenttag anfragen</a>
+        <a href="#ablauf" style="font-size:16px; font-weight:600; border-bottom:2px solid var(--rot); padding-bottom:2px;">So funktioniert Dailies</a>
       </div>
+      <!-- TODO Max: Antwortzeit ergaenzen, sobald zugesagt, z. B. "Antwort innerhalb von 24 Stunden." -->
+      <p style="font-size:14px; color:var(--grau-dunkel); margin:16px 0 0;">Gratis und unverbindlich. Keine Mindestlaufzeit.</p>
+      <button type="button" data-flow-start="hero" style="border:0; background:transparent; cursor:pointer; font-size:14px; color:var(--grau-dunkel); text-decoration:underline; text-underline-offset:3px; padding:6px 4px; margin-top:4px;">Oder erst eure Content-Ideen entdecken</button>
     </div>
   </section>
 
@@ -824,8 +836,8 @@
 
   <div data-sticky-cta style="position:fixed; right:24px; bottom:24px; z-index:60; display:flex; align-items:center; gap:14px; padding:8px 8px 8px 18px; border-radius:10px; background:#000; color:#fff; box-shadow:0 8px 24px rgba(0,0,0,.3); opacity:0; transform:translateY(12px); pointer-events:none; transition:opacity .3s, transform .3s;">
     <div style="width:8px; height:8px; border-radius:50%; background:var(--rot); animation:recblink 1.6s steps(1) infinite;"></div>
-    <span style="font-size:12px; letter-spacing:.14em; text-transform:uppercase;">Etwa 2 Minuten</span>
-    <button type="button" class="btn btn--rot btn--s" data-flow-start="sticky">Content-Ideen entdecken</button>
+    <span style="font-size:12px; letter-spacing:.14em; text-transform:uppercase;">Keine Mindestlaufzeit</span>
+    <a class="btn btn--rot btn--s" href="mailto:max@wexplore.at?subject=Gratis%20Probe-Contenttag">Probe-Contenttag anfragen</a>
   </div>
 
 </div>
