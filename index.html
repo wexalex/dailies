@@ -805,6 +805,33 @@
       <div style="margin-top:44px;">
         <a class="btn btn--linie" href="referenzen.html">Alle Referenzen ansehen</a>
       </div>
+
+      <!-- ============ Referenz einfügen ============
+           Zwei fertige Komponenten, bewusst versteckt (hidden). Sobald ein Kunde
+           Zitat oder Case freigibt: Platzhalter [[...]] ersetzen, hidden entfernen.
+           Nichts anzeigen, solange Felder leer sind. -->
+      <div hidden data-referenz-zitat style="margin-top:44px; display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap:24px;">
+        <figure style="margin:0; border:2px solid var(--linie-hell); border-radius:16px; padding:28px; display:flex; flex-direction:column; gap:16px;">
+          <blockquote style="margin:0; font-size:18px; font-weight:300; line-height:1.55; text-wrap:pretty;">„[[Zitat des Kunden, ein bis zwei Sätze]]"</blockquote>
+          <figcaption style="display:flex; align-items:center; gap:14px;">
+            <img src="[[Pfad zum Foto, quadratisch]]" alt="" width="56" height="56" loading="lazy" style="width:56px; height:56px; border-radius:50%; object-fit:cover; background:var(--linie-hell);">
+            <span>
+              <span style="display:block; font-weight:700; font-size:15px;">[[Name]]</span>
+              <span style="display:block; font-size:14px; color:var(--grau-hell);">[[Funktion]], [[Firma]]</span>
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+      <div hidden data-referenz-case style="margin-top:24px;">
+        <div style="border-radius:16px; background:var(--flaeche); padding:28px; display:flex; flex-wrap:wrap; align-items:center; gap:20px 32px;">
+          <img src="[[Pfad zum Logo]]" alt="[[Firma]]" height="28" loading="lazy" style="height:28px; width:auto;">
+          <div style="flex:1; min-width:240px;">
+            <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;">[[Ziel, z. B. Employer Brand]]</div>
+            <p style="margin:6px 0 0; font-size:16px; line-height:1.55;">[[Ein Satz Ergebnis, ohne Superlative]]</p>
+          </div>
+          <a href="[[Link zum Reel oder zur Projektseite, z. B. projekte/sparkasse-homestories.html]]" style="font-size:13px; letter-spacing:.14em; text-transform:uppercase; font-weight:600; color:var(--rot-hell);">Zum Reel <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
     </div>
   </section>
 
