@@ -20,7 +20,7 @@ window.DAILIES = {
     uebermittlung: {
       endpoint: null,          // TODO: Formular-Endpunkt oder CRM-Webhook eintragen
       methode: "POST",
-      fallbackEmail: "office@wexplore.at"
+      fallbackEmail: "max@wexplore.at"   // bis Calendly steht, gehen Anfragen an Max
     }
   },
 
@@ -102,7 +102,7 @@ window.DAILIES = {
         price: "€ 1.500",
         priceSub: "€ 4.500 pro Quartal verrechnet",
         priceNote: "",
-        cta: { label: "Probe-Contenttag anfragen", href: "mailto:office@wexplore.at?subject=Gratis%20Probe-Contenttag" },
+        cta: { label: "Probe-Contenttag anfragen", href: "mailto:max@wexplore.at?subject=Gratis%20Probe-Contenttag" },
         features: ["2", "13 / Quartal", "36 / Quartal", false, true, false, "0,5 Tage", "1 ganzer Drehtag, 2 Personen", "2,5 Tage", "1", "Instagram"]
       },
       {
@@ -113,7 +113,7 @@ window.DAILIES = {
         price: "€ 2.700",
         priceSub: "€ 8.100 pro Quartal verrechnet",
         priceNote: "",
-        cta: { label: "Probe-Contenttag anfragen", href: "mailto:office@wexplore.at?subject=Gratis%20Probe-Contenttag" },
+        cta: { label: "Probe-Contenttag anfragen", href: "mailto:max@wexplore.at?subject=Gratis%20Probe-Contenttag" },
         features: ["3", "30 / Quartal", "72 / Quartal", "30 / Quartal", true, false, "1 Tag", "3 Halbtage über das Quartal verteilt, 2 Personen", "5 Tage", "2", "Instagram, LinkedIn"]
       },
       {
