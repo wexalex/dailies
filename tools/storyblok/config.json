@@ -1,0 +1,36 @@
+{
+  "space": 144996,
+  "api": "https://mapi.storyblok.com/v1",
+  "schluesselbund": "storyblok-mapi",
+  "zielUrl": "https://www.wexplore.at/dailies",
+  "githubUrl": "https://wexalex.github.io/dailies/",
+  "wrapper": "wx-dailies",
+  "story": {
+    "name": "Dailies",
+    "slug": "dailies",
+    "fullSlug": "dailies",
+    "parent_id": 0,
+    "nav_light": true,
+    "hamburger_reverse": false
+  },
+  "assetOrdner": "Dailies",
+  "umbenennen": {
+    "btn": "wxd-btn",
+    "nav": "wxd-nav",
+    "active": "wxd-active",
+    "h2": "wxd-h2"
+  },
+  "jsLiterale": ["active"],
+  "schriftPrefix": "WX Dailies",
+  "schriften": [
+    { "familie": "Plakat", "gewicht": "400 900", "datei": "assets/fonts/ESKlarheitPlakat-Xbd.woff2", "host": "/fonts/ESKlarheitPlakat-Xbd.woff", "preload": true },
+    { "familie": "Kurrent", "gewicht": "300", "datei": "assets/fonts/ESKlarheitKurrent-Lt.woff2", "preload": true },
+    { "familie": "Kurrent", "gewicht": "400", "datei": "assets/fonts/ESKlarheitKurrent-Rg.woff2", "host": "/fonts/ESKlarheitKurrent-Rg.woff", "preload": true },
+    { "familie": "Kurrent", "gewicht": "600", "datei": "assets/fonts/ESKlarheitKurrent-Smbd.woff2" },
+    { "familie": "Kurrent", "gewicht": "700", "datei": "assets/fonts/ESKlarheitKurrent-Bd.woff2", "host": "/fonts/ESKlarheitKurrent-Bd.woff" }
+  ],
+  "vorschau": {
+    "huelle": "https://www.wexplore.at/leistungen/projektkomm",
+    "port": 4174
+  }
+}

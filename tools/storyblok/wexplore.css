@@ -1,0 +1,14 @@
+/* Anpassungen nur fuer wexplore.at. Der Build haengt diese Datei hinter das Dailies-CSS.
+   Die Selektoren stehen hier ausgeschrieben, der Build scoped sie nicht. */
+
+/* Die Navigation von wexplore.at liegt auf z-index 600, das Kontakt-Modal auf 900.
+   Das Overlay "Content-Ideen entdecken" muss ueber der Navigation liegen, sonst
+   verdeckt sie den Schliessen-Knopf. */
+.wx-dailies .fl-ovl { z-index: 800; }
+
+/* Bis 900px liegt die Navigation von wexplore.at (mit nav_light) ueber den obersten 96px
+   des Heros. Das Logo endet bei 96px, die Dachzeile begann genau dort. 40px Luft dazu.
+   Ab 901px steht die Dachzeile mittig neben dem Logo und braucht nichts. */
+@media (max-width: 900px) {
+  .wx-dailies #sichtung { padding-top: 136px !important; }
+}
