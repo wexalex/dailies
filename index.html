@@ -449,10 +449,16 @@
 </head>
 <body>
 
+<!-- Bereiche zwischen storyblok:weglassen und /storyblok:weglassen fehlen in der Fassung fuer
+     wexplore.at, weil dort Navigation, Skip-Link und Footer von der Website kommen.
+     Siehe tools/storyblok/README.md. -->
+<!-- storyblok:weglassen -->
 <a class="sr-only skip" href="#sichtung">Zum Inhalt springen</a>
+<!-- /storyblok:weglassen -->
 
 <div>
 
+  <!-- storyblok:weglassen -->
   <div style="position:sticky; top:0; z-index:50;">
     <div style="background:#000; color:#fff; position:relative;">
       <div class="recbar" style="display:flex; justify-content:space-between; align-items:center; gap:16px; padding:7px 40px; font-size:12px; letter-spacing:.12em; text-transform:uppercase; font-variant-numeric:tabular-nums;">
@@ -485,6 +491,7 @@
       </nav>
     </header>
   </div>
+  <!-- /storyblok:weglassen -->
 
   <main>
 
@@ -931,6 +938,7 @@
 
   </main>
 
+  <!-- storyblok:weglassen -->
   <footer data-readout="Clip 09 · Ende" data-screen-label="09 Ende" style="background:#000; color:#fff; padding:64px 40px 40px;">
     <div class="wrap" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap:36px;">
       <div style="display:flex; flex-direction:column; gap:16px;">
@@ -962,6 +970,7 @@
       <div style="height:6px; border-radius:3px; background:#2e2d2d;"></div>
     </div>
   </footer>
+  <!-- /storyblok:weglassen -->
 
   <div data-sticky-cta style="position:fixed; right:24px; bottom:24px; z-index:60; display:flex; align-items:center; gap:14px; padding:8px 8px 8px 18px; border-radius:10px; background:#000; color:#fff; box-shadow:0 8px 24px rgba(0,0,0,.3); opacity:0; transform:translateY(12px); pointer-events:none; transition:opacity .3s, transform .3s;">
     <div style="width:8px; height:8px; border-radius:50%; background:var(--rot); animation:recblink 1.6s steps(1) infinite;"></div>
