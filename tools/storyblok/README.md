@@ -6,7 +6,8 @@ GitHub Pages (https://wexalex.github.io/dailies/) bleibt die Arbeitsfassung.
 
 Es ist derselbe Weg wie bei der Projektkomm-Seite: eine Story vom Typ `page` mit Meta-Daten
 und genau einem Block „Custom Code (HTML)“ (`section-custom-html-inline`). Laravel rendert
-den Block direkt ins DOM. Navigation, Kontakt-Modal und Footer kommen von der Website.
+den Block direkt ins DOM. Oben steht die eigene Dailies-Kopfleiste mit CTA, die Navigation der
+Website ist auf dieser Seite ausgeblendet. Der Footer kommt von der Website.
 
 ## Ablauf
 
@@ -27,7 +28,7 @@ Sie nutzt CSS, JavaScript und Schriften von wexplore.at, ohne Google Tag Manager
 ## Was der Build macht
 
 - Bereiche zwischen `<!-- storyblok:weglassen -->` und `<!-- /storyblok:weglassen -->` in
-  `index.html` fallen weg: Skip-Link, eigene Kopfleiste, eigener Footer.
+  `index.html` fallen weg. Das ist nur noch der eigene Footer.
 - Alles liegt in `<div class="wx-dailies">`. Jede CSS-Regel bekommt `.wx-dailies` davor.
 - Ein Schutz-CSS setzt innerhalb von `.wx-dailies` alles auf Browser-Standard zurück
   (`all: revert`). Die Seite wurde gegen die Browser-Standards gebaut, das CSS von
@@ -46,8 +47,11 @@ Sie nutzt CSS, JavaScript und Schriften von wexplore.at, ohne Google Tag Manager
 - Elemente mit `hidden`, die noch Platzhalter `[[...]]` enthalten, fallen weg. Das sind
   vorbereitete Komponenten. Ohne `hidden` und mit echten Inhalten kommen sie automatisch mit.
 
-Anpassungen nur für wexplore.at stehen in `wexplore.css`: Das Overlay liegt über der
-Navigation (z-index), und der Hero hat bis 900px Breite Platz für das Logo.
+Anpassungen nur für wexplore.at stehen in `wexplore.css`: Die Navigation der Website ist auf
+dieser Seite ausgeblendet (`#main-nav`), das Overlay liegt sicherheitshalber über ihr (z-index).
+Die Regel steht im Block und damit im `<body>`. Auf langsamen Verbindungen zeigt der Browser die
+Navigation darum eventuell einen Moment lang. Sauber wäre ein Schalter im Seitentyp, den Laravel
+im Layout auswertet.
 
 ## Regeln
 
