@@ -2,14 +2,14 @@
   "space": 144996,
   "api": "https://mapi.storyblok.com/v1",
   "schluesselbund": "storyblok-mapi",
-  "zielUrl": "https://www.wexplore.at/dailies",
+  "zielUrl": "https://www.wexplore.at/leistungen/dailies",
   "githubUrl": "https://wexalex.github.io/dailies/",
   "wrapper": "wx-dailies",
   "story": {
     "name": "Dailies",
     "slug": "dailies",
-    "fullSlug": "dailies",
-    "parent_id": 0,
+    "fullSlug": "leistungen/dailies",
+    "parent_id": 115262244195519,
     "nav_light": true,
     "hamburger_reverse": false
   },

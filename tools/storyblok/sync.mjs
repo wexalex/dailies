@@ -477,7 +477,8 @@ async function entwurf() {
     content._uid = alt.content?._uid || content._uid;
     content.meta[0]._uid = alt.content?.meta?.[0]?._uid || content.meta[0]._uid;
     content.body[0]._uid = alt.content?.body?.[0]?._uid || content.body[0]._uid;
-    await mapi("PUT", `stories/${id}`, { story: { name: K.story.name, slug: K.story.slug, content }, force_update: 1 });
+    // parent_id mitschicken: aendert sich der Ordner in config.json, wandert die Story mit
+    await mapi("PUT", `stories/${id}`, { story: { name: K.story.name, slug: K.story.slug, parent_id: K.story.parent_id, content }, force_update: 1 });
     stand.storyId = id;
   } else {
     const r = await mapi("POST", "stories/", { story: { name: K.story.name, slug: K.story.slug, parent_id: K.story.parent_id, content } });

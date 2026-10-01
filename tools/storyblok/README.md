@@ -1,7 +1,7 @@
 # Dailies auf wexplore.at
 
 Dieses Repo bleibt die Quelle der Dailies-Seite. Das Skript `sync.mjs` baut daraus einen
-Block für Storyblok, und wexplore.at zeigt ihn unter **https://www.wexplore.at/dailies**.
+Block für Storyblok, und wexplore.at zeigt ihn unter **https://www.wexplore.at/leistungen/dailies**.
 GitHub Pages (https://wexalex.github.io/dailies/) bleibt die Arbeitsfassung.
 
 Es ist derselbe Weg wie bei der Projektkomm-Seite: eine Story vom Typ `page` mit Meta-Daten

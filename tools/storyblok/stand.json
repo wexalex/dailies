@@ -1,11 +1,11 @@
 {
   "assetOrdnerId": 225919729176036,
   "storyId": 225920176162626,
-  "letzterHash": "d1a66f2fe23ee821439213766533ba9a7437e9d607ff7f447c9fb8592afb019a",
+  "letzterHash": "32b1d91025133d3a6605e58849e71bb7a709d12bc0b0e9f332f7eae0bc1a7a75",
   "entwurf": {
-    "zeit": "2026-10-01T09:11:33.165Z",
+    "zeit": "2026-10-01T10:38:25.113Z",
     "quelle": {
-      "commit": "9f1ff5f",
+      "commit": "9ecac4e",
       "branch": "storyblok-weg",
       "sauber": true
     }
