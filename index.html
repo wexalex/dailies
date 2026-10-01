@@ -486,8 +486,9 @@
         <a class="nav-links" href="#output">Output</a>
         <a class="nav-links" href="referenzen.html">Referenzen</a>
         <a class="nav-links" href="#faq">FAQ</a>
-        <!-- TODO Calendly: sobald der Buchungslink steht, hier und bei allen "Probe-Contenttag anfragen"-CTAs mailto ersetzen -->
-        <a class="btn btn--rot btn--s" href="mailto:max@wexplore.at?subject=Gratis%20Probe-Contenttag">Probe-Contenttag anfragen</a>
+        <!-- Alle "Probe-Contenttag anfragen"-CTAs oeffnen das Formular (#flow, Umfrage mit Bewerbung).
+             TODO Calendly: kommt ein Buchungslink, klaeren, ob er das Formular ersetzt oder ergaenzt -->
+        <button type="button" class="btn btn--rot btn--s" data-flow-start="nav">Probe-Contenttag anfragen</button>
       </nav>
     </header>
   </div>
@@ -519,8 +520,8 @@
       <p style="font-size:21px; font-weight:300; line-height:1.5; max-width:52ch; margin:32px 0 0; text-wrap:pretty;">Social Media im Abo für Betriebe in Oberösterreich. Ein Drehtag pro Quartal bei euch, der Rest bei uns: Themen, Dreh, Schnitt, Fotos. Jede Woche ein fertiges Reel.</p>
       <p style="font-size:15px; color:var(--grau-dunkel); margin:14px 0 0;">Dailies ist das Content-Abo von WEXPLORE. Videoproduktion aus Linz.</p>
       <div style="display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:12px 22px; margin-top:38px;">
-        <!-- TODO Calendly: Buchungslink als Klick-Lade-Embed, bis dahin mailto an Max -->
-        <a class="btn btn--rot" href="mailto:max@wexplore.at?subject=Gratis%20Probe-Contenttag">Probe-Contenttag anfragen</a>
+        <!-- Oeffnet das Formular. TODO Calendly: siehe Kopfleiste -->
+        <button type="button" class="btn btn--rot" data-flow-start="hero">Probe-Contenttag anfragen</button>
         <a href="#ablauf" style="font-size:16px; font-weight:600; border-bottom:2px solid var(--rot); padding-bottom:2px;">So funktioniert Dailies</a>
       </div>
       <!-- TODO Max: Antwortzeit ergaenzen, sobald zugesagt, z. B. "Antwort innerhalb von 24 Stunden." -->
@@ -572,7 +573,7 @@
           <h3 style="font-size:24px; font-weight:700; line-height:1.25; margin:8px 0 0; hyphens:manual;">Mitarbeiter &amp; Lehrlinge finden</h3>
           <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;">Employer Brand</div>
           <p style="font-size:16px; line-height:1.6; color:var(--text-hell); margin:0; text-wrap:pretty;">Die besten Leute bewerben sich dort, wo sie sehen, wie ihr wirklich arbeitet. Regelmäßige Einblicke in Team und Alltag machen euren Auftritt zum Argument - und aus Zusehern Bewerbungen.</p>
-          <a class="btn btn--linie btn--s" style="margin-top:auto; align-self:flex-start;" href="mailto:max@wexplore.at?subject=Gratis%20Probe-Contenttag">Probe-Contenttag anfragen</a>
+          <button type="button" class="btn btn--linie btn--s" style="margin-top:auto; align-self:flex-start;" data-flow-start="ziel" data-ziel-cta="bewerbungen">Probe-Contenttag anfragen</button>
         </div>
 
         <div style="border:2px solid var(--linie-hell); border-radius:16px; padding:30px; display:flex; flex-direction:column; gap:12px;">
@@ -580,7 +581,7 @@
           <h3 style="font-size:24px; font-weight:700; line-height:1.25; margin:8px 0 0; hyphens:manual;">Produkte verkaufen</h3>
           <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;">Produkt</div>
           <p style="font-size:16px; line-height:1.6; color:var(--text-hell); margin:0; text-wrap:pretty;">Wer euer Produkt versteht, kauft es auch. Wir zeigen, was es kann, beantworten die Fragen eurer Kundschaft und machen aus Interesse Anfragen - Woche für Woche.</p>
-          <a class="btn btn--linie btn--s" style="margin-top:auto; align-self:flex-start;" href="mailto:max@wexplore.at?subject=Gratis%20Probe-Contenttag">Probe-Contenttag anfragen</a>
+          <button type="button" class="btn btn--linie btn--s" style="margin-top:auto; align-self:flex-start;" data-flow-start="ziel" data-ziel-cta="nachfrage">Probe-Contenttag anfragen</button>
         </div>
 
         <div style="border:2px solid var(--linie-hell); border-radius:16px; padding:30px; display:flex; flex-direction:column; gap:12px;">
@@ -588,7 +589,7 @@
           <h3 style="font-size:24px; font-weight:700; line-height:1.25; margin:8px 0 0; hyphens:manual;">Als Marke sichtbar sein</h3>
           <div style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--rot-hell); font-weight:600;">Brand Awareness</div>
           <p style="font-size:16px; line-height:1.6; color:var(--text-hell); margin:0; text-wrap:pretty;">Wer regelmäßig auftaucht, bleibt im Kopf. Ein konsistenter Look und laufender Content sorgen dafür, dass man euch kennt, bevor man euch braucht.</p>
-          <a class="btn btn--linie btn--s" style="margin-top:auto; align-self:flex-start;" href="mailto:max@wexplore.at?subject=Gratis%20Probe-Contenttag">Probe-Contenttag anfragen</a>
+          <button type="button" class="btn btn--linie btn--s" style="margin-top:auto; align-self:flex-start;" data-flow-start="ziel" data-ziel-cta="bekanntheit">Probe-Contenttag anfragen</button>
         </div>
 
       </div>
@@ -755,8 +756,8 @@
         <p hidden style="font-size:15px; line-height:1.6; color:var(--text-hell); margin:14px 0 0; max-width:58ch;">Wir starten pro Quartal [[X]] neue Abos, damit jeder Drehtag die volle Aufmerksamkeit bekommt. Für einen Start im ersten Quartal 2027 planen wir bis [[Datum]].</p>
       </div>
       <div style="justify-self:start;">
-        <!-- TODO Calendly: Buchungslink, bis dahin mailto an Max -->
-        <a class="btn btn--rot" href="mailto:max@wexplore.at?subject=Gratis%20Probe-Contenttag">Probe-Contenttag anfragen</a>
+        <!-- Oeffnet das Formular. TODO Calendly: siehe Kopfleiste -->
+        <button type="button" class="btn btn--rot" data-flow-start="laufzeit">Probe-Contenttag anfragen</button>
         <p style="font-size:14px; color:var(--grau-hell); margin:12px 0 0;">Gratis und unverbindlich.</p>
       </div>
     </div>
@@ -926,8 +927,8 @@
       <h2 id="anfrage-titel" class="plakat h2" style="margin:18px 0 0; max-width:22ch;">Gratis Probe-Contenttag anfragen.</h2>
       <p style="font-size:18px; font-weight:300; line-height:1.6; max-width:54ch; margin:22px 0 0; text-wrap:pretty;">Vorher sprechen wir 30 Minuten. Aus diesem Briefing planen wir die konkreten Inhalte für den Dreh. Keine Mindestlaufzeit, keine Verpflichtung zu einem Abo.</p>
       <div style="margin-top:34px;">
-        <!-- TODO Calendly: Buchungslink als Klick-Lade-Embed samt Datenschutzhinweis zum Anbieter, bis dahin mailto an Max -->
-        <a class="btn btn--rot" href="mailto:max@wexplore.at?subject=Gratis%20Probe-Contenttag">Probe-Contenttag anfragen</a>
+        <!-- Oeffnet das Formular. TODO Calendly: siehe Kopfleiste -->
+        <button type="button" class="btn btn--rot" data-flow-start="anfrage">Probe-Contenttag anfragen</button>
       </div>
       <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:8px 28px; margin-top:22px; font-size:15px; color:var(--grau-dunkel);">
         <a href="tel:+436763311100" style="color:#fff;">+43 676 33 11 100</a>
@@ -975,7 +976,7 @@
   <div data-sticky-cta style="position:fixed; right:24px; bottom:24px; z-index:60; display:flex; align-items:center; gap:14px; padding:8px 8px 8px 18px; border-radius:10px; background:#000; color:#fff; box-shadow:0 8px 24px rgba(0,0,0,.3); opacity:0; transform:translateY(12px); pointer-events:none; transition:opacity .3s, transform .3s;">
     <div style="width:8px; height:8px; border-radius:50%; background:var(--rot); animation:recblink 1.6s steps(1) infinite;"></div>
     <span style="font-size:12px; letter-spacing:.14em; text-transform:uppercase;">Keine Mindestlaufzeit</span>
-    <a class="btn btn--rot btn--s" href="mailto:max@wexplore.at?subject=Gratis%20Probe-Contenttag">Probe-Contenttag anfragen</a>
+    <button type="button" class="btn btn--rot btn--s" data-flow-start="sticky">Probe-Contenttag anfragen</button>
   </div>
 
 </div>
@@ -1435,7 +1436,8 @@ bereit(function () {
   var abgeschlossen = false;
   var EINSTIEGE = {
     nav: "Navigation", hero: "Startbereich", ziel: "Zielkarte", kontakt: "Abschnitt Wer dahintersteht",
-    sticky: "Leiste unten", "paket-start": "Paket Start", "paket-grow": "Paket Grow"
+    sticky: "Leiste unten", "paket-start": "Paket Start", "paket-grow": "Paket Grow",
+    laufzeit: "Abschnitt Keine Mindestlaufzeit", anfrage: "Abschnitt Probe-Contenttag anfragen"
   };
   var K = { name: "", firma: "", funktion: "", email: "", telefon: "", erreichbar: "", optin: false };
 
