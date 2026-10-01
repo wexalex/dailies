@@ -41,6 +41,10 @@ Sie nutzt CSS, JavaScript und Schriften von wexplore.at, ohne Google Tag Manager
 - Asset-Pfade zeigen auf Storyblok (`tools/storyblok/assets.json`), Adressen von GitHub Pages
   in den strukturierten Daten auf wexplore.at.
 - Titel, Beschreibung und OG-Bild aus dem `<head>` landen im Meta-Block der Story.
+- Links auf weitere Seiten des Repos (`referenzen.html`, `projekte/...`) zeigen auf GitHub Pages,
+  solange es diese Seiten auf wexplore.at nicht gibt. Der Build listet sie auf.
+- Elemente mit `hidden`, die noch Platzhalter `[[...]]` enthalten, fallen weg. Das sind
+  vorbereitete Komponenten. Ohne `hidden` und mit echten Inhalten kommen sie automatisch mit.
 
 Anpassungen nur für wexplore.at stehen in `wexplore.css`: Das Overlay liegt über der
 Navigation (z-index), und der Hero hat bis 900px Breite Platz für das Logo.

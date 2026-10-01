@@ -199,6 +199,47 @@ function schriftNamen(s) {
   return s.replace(/(["'])ES Klarheit (Kurrent|Plakat)\1/g, (m, q, f) => `${q}${K.schriftPrefix} ${f}${q}`);
 }
 
+// Weitere Seiten des Repos (referenzen.html, projekte/...) gibt es auf wexplore.at noch nicht.
+// Links darauf zeigen vorerst auf GitHub Pages, index.html#x wird zu #x.
+function seitenLinks(s, bericht) {
+  const ziel = (pfad, hash) => {
+    const p = pfad.replace(/^\.\//, "");
+    if (p === "index.html") return hash || "#";
+    if (!existsSync(join(REPO, p))) return null;
+    bericht.seitenLinks.add(p);
+    return K.githubUrl + p + (hash || "");
+  };
+  const PFAD = "((?:\\./)?[\\w-]+(?:/[\\w-]+)*\\.html)(#[\\w-]*)?";
+  return s
+    .replace(new RegExp(`(\\bhref\\s*=\\s*\\\\?["'])${PFAD}(?=\\\\?["'])`, "g"), (m, vor, p, h) => { const z = ziel(p, h); return z == null ? m : vor + z; })
+    .replace(new RegExp(`(["'])${PFAD}\\1`, "g"), (m, q, p, h) => { const z = ziel(p, h); return z == null ? m : q + z + q; });
+}
+
+// Elemente mit hidden-Attribut, die noch Platzhalter [[...]] enthalten, sind vorbereitete
+// Komponenten. Auf wexplore.at bleiben sie weg; ohne hidden und Platzhalter kommen sie mit.
+function versteckteEntwuerfe(html, bericht) {
+  const start = /<(\w+)\b[^>]*\shidden(?=[\s>=/])[^>]*>/g;
+  let aus = html;
+  let m;
+  bericht.versteckt = 0;
+  while ((m = start.exec(aus))) {
+    const paar = new RegExp(`<${m[1]}\\b|</${m[1]}>`, "g");
+    paar.lastIndex = m.index;
+    let tiefe = 0, ende = -1, t;
+    while ((t = paar.exec(aus))) {
+      tiefe += t[0][1] === "/" ? -1 : 1;
+      if (tiefe === 0) { ende = t.index + t[0].length; break; }
+    }
+    if (ende < 0) throw new Error(`Element <${m[1]} hidden> ohne schliessendes Tag`);
+    if (/\[\[[^\]\n]{1,80}\]\]/.test(aus.slice(m.index, ende))) {
+      aus = aus.slice(0, m.index) + aus.slice(ende);
+      bericht.versteckt++;
+      start.lastIndex = m.index;
+    }
+  }
+  return aus;
+}
+
 function gitStand() {
   try {
     const commit = execFileSync("git", ["-C", REPO, "rev-parse", "--short", "HEAD"], { encoding: "utf8" }).trim();
@@ -212,7 +253,7 @@ function gitStand() {
 function bauen(url) {
   const html = lesen("index.html");
   const cfg = lesen("assets/config.js");
-  const bericht = {};
+  const bericht = { seitenLinks: new Set() };
   const kopf = html.slice(0, html.indexOf("</head>"));
   const meta = {
     titel: htmlDecode(kopf.match(/<title>([^<]*)<\/title>/)[1]),
@@ -247,14 +288,15 @@ function bauen(url) {
     return `\u0000S${skripte.length - 1}\u0000`;
   });
   body = body.replace(/<!--[\s\S]*?-->/g, "");
+  body = versteckteEntwuerfe(body, bericht);
   if (/<(pre|textarea)\b/.test(body)) bericht.hinweis = "pre/textarea gefunden: Einrueckungen bleiben stehen";
   else body = body.replace(/\n[ \t]+/g, "\n");
   body = body.replace(/\n{2,}/g, "\n").trim();
-  body = urls(schriftNamen(klassenInAttributen(body)));
+  body = seitenLinks(urls(schriftNamen(klassenInAttributen(body))), bericht);
 
   // Skripte: config.js zuerst, damit window.DAILIES von Anfang an da ist
   const js = (s) => {
-    let x = urls(schriftNamen(klassenInJs(klassenInAttributen(s), bericht)));
+    let x = seitenLinks(urls(schriftNamen(klassenInJs(klassenInAttributen(s), bericht))), bericht);
     if (!x.includes("`") && !/\\\n/.test(x)) x = x.replace(/\n[ \t]+/g, "\n").replace(/^\/\/[^\n]*\n/gm, "").replace(/\n{2,}/g, "\n");
     return x.trim();
   };
@@ -294,7 +336,11 @@ function pruefeBlock(block, bericht) {
     if (new RegExp(`["'][^"'\\n]*\\.${reEsc(alt)}(?![\\w-])[^"'\\n]*["']`).test(jsTeil)) fehler.push(`Selektor ".${alt}" steht in einem JS-String: von Hand pruefen`);
   }
   if (/(["'])ES Klarheit/.test(block)) fehler.push('Schriftname "ES Klarheit" nicht ersetzt');
-  if (/github\.io/.test(block)) fehler.push("Verweis auf github.io im Block");
+  // Erlaubt sind nur Links auf weitere Seiten (seitenLinks), keine Assets und nicht die Seite selbst
+  const github = (block.match(/https?:\/\/wexalex\.github\.io\/dailies\/[^"'\s)<]*/g) || []).filter((u) => !/\/[\w/-]+\.html(#[\w-]*)?$/.test(u) || /\/index\.html/.test(u));
+  if (github.length) fehler.push("Verweis auf github.io im Block: " + [...new Set(github)].join(", "));
+  const tot = block.match(new RegExp(reEsc(K.zielUrl.replace(/\/$/, "")) + "/[\\w/-]+\\.html", "g"));
+  if (tot) fehler.push("Link auf eine Seite, die es auf wexplore.at nicht gibt: " + [...new Set(tot)].join(", "));
   if (/(?<![\w/])assets\/(?!config\.js)[\w./-]+\.\w{2,5}/.test(markup)) fehler.push("Asset-Pfad nicht aufgeloest");
   if (fehler.length) abbruch("Pruefung des Blocks:\n  - " + fehler.join("\n  - "));
   const platzhalter = [...new Set(markup.match(/\[\[[^\]\n]{1,80}\]\]/g) || [])];
@@ -308,7 +354,8 @@ function assetZiel(modus) {
     if (modus === "sammeln") { fehlend.add(pfad); return "https://example.invalid/" + pfad; }
     if (modus === "lokal") { fehlend.add(pfad); return "/_dailies/" + pfad; }
     const e = manifest[pfad];
-    if (!e) { fehlend.add(pfad); return "FEHLT:" + pfad; }
+    // Fehlende Dateien meldet build() gesammelt, die Block-Pruefung soll vorher nicht anschlagen
+    if (!e) { fehlend.add(pfad); return "/_fehlt_/" + pfad; }
     if (e.sha !== sha(readFileSync(join(REPO, pfad)))) fehlend.add(pfad);
     return e.url;
   };
@@ -329,6 +376,8 @@ function build() {
   console.log(`Titel: ${erg.meta.titel}`);
   console.log(`Quelle: ${erg.stand.branch} ${erg.stand.commit}${erg.stand.sauber ? "" : " mit lokalen Aenderungen"}`);
   if (erg.bericht.hinweis) console.log("Hinweis: " + erg.bericht.hinweis);
+  if (erg.bericht.versteckt) console.log(`Versteckte Bloecke mit Platzhaltern weggelassen: ${erg.bericht.versteckt}`);
+  if (erg.bericht.seitenLinks.size) console.log(`Links auf GitHub Pages, weil es die Seiten auf wexplore.at noch nicht gibt: ${[...erg.bericht.seitenLinks].join(", ")}`);
   if (erg.bericht.platzhalter.length) console.log(`Platzhalter im Text (${erg.bericht.platzhalter.length}), "live" verweigert so: ${erg.bericht.platzhalter.join(", ")}`);
   return erg;
 }
