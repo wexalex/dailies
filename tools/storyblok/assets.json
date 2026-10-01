@@ -125,6 +125,78 @@
     "url": "https://a.storyblok.com/f/144996/0aab23768f/macbook-frame.png",
     "bytes": 81021
   },
+  "assets/max-dorfner-400.jpg": {
+    "sha": "7794c220bd9a4f06825d00d6408416ff9db94642b951f59edc99b29ed61c9ce5",
+    "id": 225943064776056,
+    "url": "https://a.storyblok.com/f/144996/a70bf9d737/max-dorfner-400.jpg",
+    "bytes": 46996
+  },
+  "assets/max-dorfner-800.jpg": {
+    "sha": "778e29e981ab854ddaf5a8f1bdc2767ef7d4bc4fe182c97d138127b1f821b313",
+    "id": 225943072894330,
+    "url": "https://a.storyblok.com/f/144996/9d91ccd659/max-dorfner-800.jpg",
+    "bytes": 174674
+  },
+  "assets/max-dorfner.jpg": {
+    "sha": "b3aa5317b3bc92fdd0dc9aa8953a35cafaf9fcd466b9822dee1221db1fafe403",
+    "id": 225943080508795,
+    "url": "https://a.storyblok.com/f/144996/c5271199c0/max-dorfner.jpg",
+    "bytes": 267978
+  },
+  "assets/projekte/purora/broll-916.mp4": {
+    "sha": "ebf6b9b3557ea992d8425a09b90367fa3c9504f4f1a07b09d778a8ccf5bc57f6",
+    "id": 225943087611261,
+    "url": "https://a.storyblok.com/f/144996/1648c77b53/broll-916.mp4",
+    "bytes": 3867644
+  },
+  "assets/projekte/purora/broll-poster.jpg": {
+    "sha": "d7a99db5e92778e52ef1ad034db441b1c4ae53afb07a0691c89ea4cf1df0bc35",
+    "id": 225943124127103,
+    "url": "https://a.storyblok.com/f/144996/f0af0a32cc/broll-poster.jpg",
+    "bytes": 65499
+  },
+  "assets/projekte/purora/funktion-916.mp4": {
+    "sha": "ae5dd162ce20326f2487952b5a91139ea3c58b09849f7ab90180d5354a42498a",
+    "id": 225943127756160,
+    "url": "https://a.storyblok.com/f/144996/a4a620abbe/funktion-916.mp4",
+    "bytes": 5025975
+  },
+  "assets/projekte/purora/funktion-poster.jpg": {
+    "sha": "6829ddf79f3c1049831ebe7b32232d371fca09497c03cc08eb077491824ac3db",
+    "id": 225943161208193,
+    "url": "https://a.storyblok.com/f/144996/5dfb27a361/funktion-poster.jpg",
+    "bytes": 20016
+  },
+  "assets/projekte/purora/hero-916.mp4": {
+    "sha": "09972666b94e3a1c24fdd3fcfed22c416592b24b3d9fa6b5491fba41f028c756",
+    "id": 225943164870018,
+    "url": "https://a.storyblok.com/f/144996/b47131cd07/hero-916.mp4",
+    "bytes": 1724425
+  },
+  "assets/projekte/purora/hero-poster.jpg": {
+    "sha": "c9b465883ba2ff693b1c825199f6f88705d6a4e39f64f87269c354e777eb1402",
+    "id": 225943179013507,
+    "url": "https://a.storyblok.com/f/144996/7c70fde9ce/hero-poster.jpg",
+    "bytes": 37503
+  },
+  "assets/projekte/sparkasse/teaser-916-poster.jpg": {
+    "sha": "2e746a82c76679f0aaf3eed6b621d73ce4b413910ab108d70edfa0b606c49cdd",
+    "id": 225943182466436,
+    "url": "https://a.storyblok.com/f/144996/b62ea0b2aa/teaser-916-poster.jpg",
+    "bytes": 152678
+  },
+  "assets/projekte/sparkasse/teaser-916.mp4": {
+    "sha": "020a355c65ec565cc2dea0399c0babfe1c6b87cd797b2ed3313b4c997d1b7949",
+    "id": 225943186304390,
+    "url": "https://a.storyblok.com/f/144996/f5693cba09/teaser-916.mp4",
+    "bytes": 10519717
+  },
+  "assets/projekte/sparkasse/teaser-quer-poster.jpg": {
+    "sha": "c7c6e52960eb624e417c4812537d4f6bcf69001c3b4d2fe91da4aeb289732a7c",
+    "id": 225943251791248,
+    "url": "https://a.storyblok.com/f/144996/97f0354e32/teaser-quer-poster.jpg",
+    "bytes": 237155
+  },
   "assets/wexplore-productions-light.png": {
     "sha": "b7ed4fc2a5bc7648f2814a8e481003aa04b8e519258724dc5c8ac1448e5b2b52",
     "id": 225919816472072,
