@@ -1,12 +1,12 @@
 {
   "assetOrdnerId": 225919729176036,
   "storyId": 225920176162626,
-  "letzterHash": "7b543c5df92ae4506dc4464263065366d0d2da19e887d7f3d2c9291a5365aac5",
+  "letzterHash": "4f01c42a13a9889bb137d58acce3561737c1104f381c91a5fcba1d3564caf065",
   "entwurf": {
-    "zeit": "2026-10-01T10:48:10.785Z",
+    "zeit": "2026-10-01T15:14:30.365Z",
     "quelle": {
-      "commit": "56d1b9d",
-      "branch": "storyblok-weg",
+      "commit": "412164d",
+      "branch": "formular-cta",
       "sauber": true
     }
   }
