@@ -1,0 +1,134 @@
+{
+  "assets/alex-gruber-400.jpg": {
+    "sha": "a5b593c4aa0fd133d6b523c946807ae1606d6fee0e08c43db79d7ce3d2f93324",
+    "id": 225919729726953,
+    "url": "https://a.storyblok.com/f/144996/7feab08294/alex-gruber-400.jpg",
+    "bytes": 57574
+  },
+  "assets/alex-gruber-800.jpg": {
+    "sha": "d8d00fffb3cfcff61dc889c9762fc2895b43a687a7e54f5fbce59c8bf6722c98",
+    "id": 225919735117290,
+    "url": "https://a.storyblok.com/f/144996/30863b5d96/alex-gruber-800.jpg",
+    "bytes": 159130
+  },
+  "assets/alex-gruber.jpg": {
+    "sha": "b8c9dbacb2a82ef4572e07efb0b2da3add4db4b03609bccd96d7d964a08e6f85",
+    "id": 225919739700716,
+    "url": "https://a.storyblok.com/f/144996/4940341256/alex-gruber.jpg",
+    "bytes": 270452
+  },
+  "assets/dailies/bts-01-400.jpg": {
+    "sha": "205673ee6c5c69a034e94dbeecf01c5e3b1158819719a662011904c4612ffd23",
+    "id": 225919743935981,
+    "url": "https://a.storyblok.com/f/144996/6b24c685e0/bts-01-400.jpg",
+    "bytes": 61172
+  },
+  "assets/dailies/bts-01-600.jpg": {
+    "sha": "e97934781302227d167daec8da89de7f5865bb9ddc5fd5917f075c00c3dfc35b",
+    "id": 225919747274222,
+    "url": "https://a.storyblok.com/f/144996/c29df9a8c6/bts-01-600.jpg",
+    "bytes": 81937
+  },
+  "assets/dailies/bts-01.jpg": {
+    "sha": "3eae38ef47e830c8d2e1a040503bb66dbcad483b04de8cba0162ebef2ccbff4d",
+    "id": 225919750145519,
+    "url": "https://a.storyblok.com/f/144996/c75da3a1f8/bts-01.jpg",
+    "bytes": 132606
+  },
+  "assets/dailies/bts-02-400.jpg": {
+    "sha": "1904e5e2f1341966a56a1392854e1820e04112fc8fbef3fa9236fbcfbc74ae15",
+    "id": 225919754581488,
+    "url": "https://a.storyblok.com/f/144996/53f99bdcc5/bts-02-400.jpg",
+    "bytes": 46093
+  },
+  "assets/dailies/bts-02-600.jpg": {
+    "sha": "e7322d2f820ac890d1c179b11ebb35018024dd069044bf106024d45fae00caa4",
+    "id": 225919761077748,
+    "url": "https://a.storyblok.com/f/144996/a4f20adff5/bts-02-600.jpg",
+    "bytes": 58640
+  },
+  "assets/dailies/bts-02.jpg": {
+    "sha": "7b8af4feb86e875c1cd4439d77a348794819d76ad2fa161bf5db588b6b9258e2",
+    "id": 225919765702133,
+    "url": "https://a.storyblok.com/f/144996/5b4dae5d10/bts-02.jpg",
+    "bytes": 81244
+  },
+  "assets/dailies/bts-03-500.jpg": {
+    "sha": "eb762e8b13a53f02cb6c76b153afee3138ffd5a8cbe9c074d877408ff1718620",
+    "id": 225919769622009,
+    "url": "https://a.storyblok.com/f/144996/3f00af2eb2/bts-03-500.jpg",
+    "bytes": 61247
+  },
+  "assets/dailies/bts-03-800.jpg": {
+    "sha": "e563850e32bc64b0d34da2dad92f0f9d5b8fa4f015ddc899c7acc085b5324a68",
+    "id": 225919773275644,
+    "url": "https://a.storyblok.com/f/144996/2835696e69/bts-03-800.jpg",
+    "bytes": 103950
+  },
+  "assets/dailies/bts-03.jpg": {
+    "sha": "37a51b4fcbeded8b4a5abd612a283e645c2c239b5d5c9d3a7229c6d1b3fae4b8",
+    "id": 225919776859645,
+    "url": "https://a.storyblok.com/f/144996/e4f3ee3d49/bts-03.jpg",
+    "bytes": 132364
+  },
+  "assets/dailies/plattform-screen-01-poster.jpg": {
+    "sha": "598b0c9a9403c93695ed68ebb5baa6976ae745ffd62c313ba268b87b058e3800",
+    "id": 225919780627967,
+    "url": "https://a.storyblok.com/f/144996/3a030289f0/plattform-screen-01-poster.jpg",
+    "bytes": 35032
+  },
+  "assets/dailies/plattform-screen-01.mp4": {
+    "sha": "4948137dfeee5a919f208d87df613db45252630a17260b73cdcfd9648dc0da27",
+    "id": 225919785870848,
+    "url": "https://a.storyblok.com/f/144996/b9638c55be/plattform-screen-01.mp4",
+    "bytes": 1199080
+  },
+  "assets/fonts/ESKlarheitKurrent-Bd.woff2": {
+    "sha": "42eaa33572c0b5ed67c7cf2b488f85a7e207efae80316abb6ff5747c3e546285",
+    "id": 225919794214401,
+    "url": "https://a.storyblok.com/f/144996/c875f1f8f0/esklarheitkurrent-bd.woff2",
+    "bytes": 46056
+  },
+  "assets/fonts/ESKlarheitKurrent-Lt.woff2": {
+    "sha": "2ff6a0459a87ce621f0c30035081ebccf5e9211398dcb16637c544ce392e646d",
+    "id": 225919797069314,
+    "url": "https://a.storyblok.com/f/144996/982c2b882f/esklarheitkurrent-lt.woff2",
+    "bytes": 45132
+  },
+  "assets/fonts/ESKlarheitKurrent-Rg.woff2": {
+    "sha": "053dd733d7e9886770eb2c9cdad88eb66f21035e0b3fa4496ef8fa1b35b39296",
+    "id": 225919800071683,
+    "url": "https://a.storyblok.com/f/144996/f6be0da2fe/esklarheitkurrent-rg.woff2",
+    "bytes": 45016
+  },
+  "assets/fonts/ESKlarheitKurrent-Smbd.woff2": {
+    "sha": "72d7fc5e2ba2ec25d5e95182520ecb80b523c8615c8e5d0db5beb1d53e637b84",
+    "id": 225919803319812,
+    "url": "https://a.storyblok.com/f/144996/e3ffa73118/esklarheitkurrent-smbd.woff2",
+    "bytes": 45092
+  },
+  "assets/fonts/ESKlarheitPlakat-Xbd.woff2": {
+    "sha": "3589f8545dde5239b2de9813ff137e8ead934c679eb3de461b5da36155a14ae7",
+    "id": 225919805662725,
+    "url": "https://a.storyblok.com/f/144996/86d81ccdaf/esklarheitplakat-xbd.woff2",
+    "bytes": 62512
+  },
+  "assets/macbook-frame-700.png": {
+    "sha": "b544858b3176c19c0de5758674e4ed31e73ca8b8cb5e228348d00a909661fa88",
+    "id": 225919808607750,
+    "url": "https://a.storyblok.com/f/144996/da614038d7/macbook-frame-700.png",
+    "bytes": 43042
+  },
+  "assets/macbook-frame.png": {
+    "sha": "e51ee9809a869322aee325b6fcc8de2b6565189ced121051702cc156405edbd8",
+    "id": 225919813088775,
+    "url": "https://a.storyblok.com/f/144996/0aab23768f/macbook-frame.png",
+    "bytes": 81021
+  },
+  "assets/wexplore-productions-light.png": {
+    "sha": "b7ed4fc2a5bc7648f2814a8e481003aa04b8e519258724dc5c8ac1448e5b2b52",
+    "id": 225919816472072,
+    "url": "https://a.storyblok.com/f/144996/ae93a106d5/wexplore-productions-light.png",
+    "bytes": 29359
+  }
+}
